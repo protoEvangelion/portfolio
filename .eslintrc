@@ -1,6 +1,17 @@
 {
 	"extends": ["airbnb", "prettier"],
 	"plugins": ["prettier"],
+	"globals": {
+		"__dirname": true,
+		"CodeMirror": true,
+		"document": true,
+		"Firepad": true,
+		"graphql": true,
+		"exports": true,
+		"module": true,
+		"process": true,
+		"window": true
+	},
 	"settings": {
 		"import/resolver": {
 			"node": {

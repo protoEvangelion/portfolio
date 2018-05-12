@@ -1,4 +1,15 @@
+html {
+	height: 100%;
+}
+
 body {
 	font-family: 'Open Sans', sans-serif;
+	height: 100%;
 	margin: 0 0 3rem;
+	position: relative;
+}
+
+#firepad-container {
+	width: 100%;
+	height: 100%;
 }

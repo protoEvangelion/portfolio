@@ -1,5 +1,5 @@
-import { FIREBASE_CONFIG } from 'appConfig';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase'
+import FIREBASE_CONFIG from '../../appConfig.json'
 
 if (!firebase.apps.length) {
 	firebase.initializeApp(FIREBASE_CONFIG)

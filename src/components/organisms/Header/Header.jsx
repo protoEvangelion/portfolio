@@ -1,5 +1,11 @@
 import React from 'react'
+import styled from 'styled-components'
 
-const Header = () => <header>my header</header>
+const StyledHeader = styled.header`
+	border: 1px solid black;
+	width: 100%;
+`
+
+const Header = () => <StyledHeader>my StyledHeader</StyledHeader>
 
 export default Header

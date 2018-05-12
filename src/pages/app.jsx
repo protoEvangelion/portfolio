@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom'
 
 const AppPage = () => (
 	<div>
-		<Route path="/app/:path" component={App} />
+		<Route path="/app/:topic/:subtopic" component={App} />
 	</div>
 )
 
