@@ -44,7 +44,7 @@
 	"main": "n/a",
 	"scripts": {
 		"dev": "gatsby develop",
-		"getconfig": "firebase setup:web",
+		"setup": "firebase setup:web",
 		"build": "gatsby build",
 		"format": "prettier-eslint --write \"src/**/*.js\"",
 		"deploy": "firebase deploy",

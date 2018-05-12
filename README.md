@@ -4,5 +4,5 @@ Currently not ready for release.
 
 ## Setup
 
-Add `appConfig.json` at root and run `npm run setup:web` and place the JSON of that output in the `appConfig.json` file
+Add `appConfig.json` at root and run `npm run setup` and place the JSON of that output in the `appConfig.json` file
 
