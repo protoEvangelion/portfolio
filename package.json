@@ -1,0 +1,46 @@
+{
+	"name": "floorplan",
+	"description": "A blazingly fast live-edit note taking web app backed by firebase & firepad.",
+	"version": "0.0.1",
+	"author": "Ryan Garant",
+	"dependencies": {
+		"firebase": "^4.11.0",
+		"gatsby-link": "^1.6.30",
+		"lodash": "^4.17.5",
+		"prop-types": "^15.6.0",
+		"styled-components": "^3.2.3",
+		"styled-theme": "^0.3.3",
+		"styled-tools": "^0.4.0"
+	},
+	"devDependencies": {
+		"eslint": "^4.19.1",
+		"eslint-config-prettier": "^2.9.0",
+		"eslint-plugin-prettier": "^2.6.0",
+		"eslint-plugin-react": "^7.7.0",
+		"gatsby": "^1.9.127",
+		"gatsby-plugin-react-helmet": "^1.0.8",
+		"gatsby-plugin-react-next": "^1.0.11",
+		"gatsby-plugin-resolve-src": "^1.0.0",
+		"gatsby-plugin-styled-components": "^2.0.9",
+		"prettier": "^1.8.2"
+	},
+	"keywords": [
+		"gatsby",
+		"firebase",
+		"live-edit",
+		"notes",
+		"firepad",
+		"react",
+		"styled-components",
+		"serverless"
+	],
+	"license": "MIT",
+	"main": "n/a",
+	"scripts": {
+		"dev": "gatsby develop",
+		"build": "gatsby build",
+		"format": "prettier-eslint --write \"src/**/*.js\"",
+		"deploy": "firebase deploy",
+		"deploy:hosting": "firebase deploy --only hosting"
+	}
+}
