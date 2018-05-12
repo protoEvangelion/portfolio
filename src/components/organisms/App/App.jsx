@@ -23,7 +23,10 @@ class App extends Component {
 			console.log('nope')
 		}
 		const firepadNode = document.getElementById('firepad1')
-		const codeMirror = CodeMirror(firepadNode)
+		const codeMirror = CodeMirror(firepadNode, {
+			lineNumbers: true,
+			mode: 'javascript',
+		})
 		const firepad = window.Firepad.fromCodeMirror(db.ref(), codeMirror, {
 			defaultText:
 				'// JavaScript Editing with Firepad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}',

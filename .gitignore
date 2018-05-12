@@ -1,5 +1,5 @@
 node_modules
 npm-debug.log
-firebaseConfig.js
+appConfig.js
 public
 .cache
