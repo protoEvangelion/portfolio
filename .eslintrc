@@ -1,12 +1,21 @@
 {
-	"extends": ["eslint:recommended", "prettier"],
+	"extends": ["airbnb", "prettier"],
 	"plugins": ["prettier"],
-	"env": {
-		"es6": true,
-		"browser": true
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"paths": ["src"]
+			}
+		}
 	},
 	"rules": {
 		"prettier/prettier": "error",
-		"no-console": 0
+		"no-console": 0,
+		"import/extensions": 0,
+		"react/jsx-indent": 0,
+		"react/jsx-indent-props": 0,
+		"react/jsx-uses-react": 2,
+		"react/jsx-uses-vars": 2,
+		"react/react-in-jsx-scope": 2
 	}
 }

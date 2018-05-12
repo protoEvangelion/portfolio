@@ -1,3 +1,2 @@
-export default () => (
-	<header>my header</header>
-)
+import Header from './Header'
+export default Header

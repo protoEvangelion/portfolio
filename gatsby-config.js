@@ -1,4 +1,3 @@
-
 module.exports = {
 	siteMetadata: {
 		title: 'Live Editing Note-taking Web App',
