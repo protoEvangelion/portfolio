@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import SortableTree, { addNodeUnderParent, removeNodeAtPath } from 'react-sortable-tree'
+import { CustomTreeRenderer } from 'components/organisms'
 // import FileExplorerTheme from 'react-sortable-tree-theme-minimal'
 import 'react-sortable-tree/style.css'
 
@@ -59,7 +60,7 @@ class Sidebar extends Component {
 		super(props)
 
 		this.state = {
-			treeData: [{ title: 'src/', children: [{ title: 'index.js' }] }],
+			treeData: [{ title: 'src things', children: [{ title: 'index.js' }] }],
 		}
 	}
 
@@ -73,8 +74,9 @@ class Sidebar extends Component {
 					treeData={this.state.treeData}
 					onChange={treeData => this.setState({ treeData })}
 					maxDepth={3}
+					nodeContentRenderer={CustomTreeRenderer}
 					generateNodeProps={({ node, path }) => ({
-						onClick: () => console.log(node, path),
+						currentUrl: this.props.topic,
 						buttons: [
 							<button
 								onClick={() =>

@@ -29,7 +29,7 @@ class App extends Component {
 
 		return (
 			<div style={{ height: '100%', display: 'flex' }}>
-				<Sidebar />
+				<Sidebar topic={this.props.match.params.topic} />
 
 				<div id="firepad" />
 			</div>
