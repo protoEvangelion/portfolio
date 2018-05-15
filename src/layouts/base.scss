@@ -9,14 +9,15 @@ $purple: #bd93f9;
 $red: #ff5555;
 $yellow: #f1fa8c;
 
-html {
+html,
+body,
+#___gatsby {
 	height: 100%;
 }
 
 body {
 	color: $purple;
 	font-family: 'Open Sans', sans-serif;
-	height: 100%;
 	margin: 0 0 3rem;
 	position: relative;
 }
@@ -39,7 +40,7 @@ body,
 	background-color: $background;
 }
 
-// Modify text color options
+/* Modify Firepad text color options */
 
 $colors: $comment $cyan $foreground $orange $pink $purple $red $yellow;
 $classNames: 'black' 'red' 'green' 'blue' 'yellow' 'cyan' 'magenta' 'grey';

@@ -1,20 +1,12 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { db } from 'firebase-db'
-import styled from 'styled-components'
-
-const StyledFirepad = styled.div`
-	min-height: 500px;
-
-	> div {
-		min-height: 500px;
-	}
-`
+import { Sidebar } from 'components/organisms'
 
 class App extends Component {
 	constructor(props) {
 		super(props)
 
-		// this.state = {  };
+		this.state = {}
 	}
 	componentDidMount() {
 		if (window.CodeMirror) {
@@ -36,8 +28,9 @@ class App extends Component {
 		console.log(this.props.match.params)
 
 		return (
-			<div>
-				app {this.props.match.params.topic}
+			<div style={{ height: '100%', display: 'flex' }}>
+				<Sidebar />
+
 				<div id="firepad" />
 			</div>
 		)
