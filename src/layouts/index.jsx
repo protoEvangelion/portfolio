@@ -5,7 +5,7 @@ import { Header } from 'components/organisms'
 
 import { withPrefix } from 'gatsby-link'
 
-import './base.css'
+import './base.scss'
 
 const Layout = ({ children, data }) => (
 	<div>

@@ -22,9 +22,10 @@ class App extends Component {
 		} else {
 			console.log('nope')
 		}
-		const firepadNode = document.getElementById('firepad1')
+		const firepadNode = document.getElementById('firepad')
 		const codeMirror = CodeMirror(firepadNode, {
 			mode: 'javascript',
+			theme: 'dracula',
 		})
 		const firepad = window.Firepad.fromCodeMirror(db.ref(), codeMirror, {
 			richTextShortcuts: true,
@@ -37,7 +38,7 @@ class App extends Component {
 		return (
 			<div>
 				app {this.props.match.params.topic}
-				<StyledFirepad id="firepad1" />
+				<div id="firepad" />
 			</div>
 		)
 	}
