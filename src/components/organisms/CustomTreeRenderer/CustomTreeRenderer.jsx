@@ -65,6 +65,7 @@ class CustomTreeRenderer extends Component {
 			saveChanges,
 			...otherProps
 		} = this.props
+
 		const nodeTitle = title || node.title
 		const nodeSubtitle = subtitle || node.subtitle
 
@@ -96,7 +97,18 @@ class CustomTreeRenderer extends Component {
 
 		const isDraggedDescendant = draggedNode && isDescendant(draggedNode, node)
 		const isLandingPadActive = !didDrop && isDragging
+
+		/* Custom variables */
+
 		const isEditing = editMode.isEditing && editMode.nodeTitle == nodeTitle
+
+		const handleKeyPress = e => {
+			if (e.key === 'Enter') {
+				saveChanges(this.state.textInputValue, node, path)
+			}
+		}
+
+		/* -----------------*/
 
 		return (
 			<div style={{ height: '100%' }} {...otherProps}>
@@ -153,7 +165,9 @@ class CustomTreeRenderer extends Component {
 								<div className="rst__rowLabel">
 									{isEditing ? (
 										<input
+											autoFocus
 											onChange={this.handleChange}
+											onKeyPress={handleKeyPress}
 											type="text"
 											value={this.state.textInputValue}
 										/>
