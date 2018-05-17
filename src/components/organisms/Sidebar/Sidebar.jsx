@@ -17,6 +17,7 @@ class Sidebar extends Component {
 		}
 
 		this.insertNodeUnderParent = this.insertNodeUnderParent.bind(this)
+		this.removeNode = this.removeNode.bind(this)
 		this.saveChanges = this.saveChanges.bind(this)
 		this.toggleEditMode = this.toggleEditMode.bind(this)
 	}
@@ -38,6 +39,16 @@ class Sidebar extends Component {
 				getNodeKey: this.getNodeKey,
 				newNode: { title },
 			}).treeData,
+		}))
+	}
+
+	removeNode(path) {
+		this.setState(state => ({
+			treeData: removeNodeAtPath({
+				treeData: state.treeData,
+				path,
+				getNodeKey: this.getNodeKey,
+			}),
 		}))
 	}
 
@@ -74,22 +85,8 @@ class Sidebar extends Component {
 						editMode: this.state.editMode,
 						toggleEditMode: this.toggleEditMode,
 						insertNodeUnderParent: this.insertNodeUnderParent,
+						removeNode: this.removeNode,
 						saveChanges: this.saveChanges,
-						buttons: [
-							<button
-								onClick={() =>
-									this.setState(state => ({
-										treeData: removeNodeAtPath({
-											treeData: state.treeData,
-											path,
-											getNodeKey: this.getNodeKey,
-										}),
-									}))
-								}
-							>
-								-
-							</button>,
-						],
 					})}
 				/>
 			</div>

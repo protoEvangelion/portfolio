@@ -63,6 +63,7 @@ class CustomTreeRenderer extends Component {
 			editMode,
 			toggleEditMode,
 			insertNodeUnderParent,
+			removeNode,
 			saveChanges,
 			...otherProps
 		} = this.props
@@ -211,6 +212,8 @@ class CustomTreeRenderer extends Component {
 								</div>
 
 								<div className="rst__rowToolbar">
+									{/* Custom Buttons  */}
+
 									{isEditing ? (
 										<button onClick={() => saveChanges(this.state.textInputValue, node, path)}>
 											save
@@ -220,6 +223,10 @@ class CustomTreeRenderer extends Component {
 									)}
 
 									<button onClick={() => insertNodeUnderParent(path)}>+</button>
+
+									<button onClick={() => removeNode(path)}>-</button>
+
+									{/* End Custom Buttons */}
 
 									{buttons.map((btn, index) => (
 										<div
