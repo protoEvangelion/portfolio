@@ -25,8 +25,6 @@ class App extends Component {
 		})
 	}
 	render() {
-		console.log(this.props.match.params)
-
 		return (
 			<div style={{ height: '100%', display: 'flex' }}>
 				<Sidebar topic={this.props.match.params.topic} />

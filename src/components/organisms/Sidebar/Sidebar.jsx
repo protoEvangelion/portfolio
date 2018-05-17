@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
-import SortableTree, { addNodeUnderParent, removeNodeAtPath } from 'react-sortable-tree'
+import SortableTree, {
+	addNodeUnderParent,
+	changeNodeAtPath,
+	removeNodeAtPath,
+} from 'react-sortable-tree'
 import { CustomTreeRenderer } from 'components/organisms'
 // import FileExplorerTheme from 'react-sortable-tree-theme-minimal'
 import 'react-sortable-tree/style.css'
@@ -60,16 +64,39 @@ class Sidebar extends Component {
 		super(props)
 
 		this.state = {
+			editMode: { isEditing: false },
 			treeData: [{ title: 'src things', children: [{ title: 'index.js' }] }],
 		}
+
+		this.saveChanges = this.saveChanges.bind(this)
+		this.enterEditMode = this.enterEditMode.bind(this)
+	}
+
+	getNodeKey({ treeIndex }) {
+		return treeIndex
+	}
+
+	saveChanges(title, node, path) {
+		this.setState(state => ({
+			editMode: { isEditing: false, nodeTitle: title },
+			treeData: changeNodeAtPath({
+				getNodeKey: this.getNodeKey,
+				treeData: state.treeData,
+				path,
+				newNode: { ...node, title },
+			}),
+		}))
+	}
+
+	enterEditMode(nodeTitle) {
+		this.setState({ editMode: { isEditing: true, nodeTitle } })
 	}
 
 	render() {
-		const getNodeKey = ({ treeIndex }) => treeIndex
 		const getRandomName = () => firstNames[Math.floor(Math.random() * firstNames.length)]
 
 		return (
-			<div style={{ height: '100%', width: 300 }}>
+			<div style={{ height: '100%', width: 400 }}>
 				<SortableTree
 					treeData={this.state.treeData}
 					onChange={treeData => this.setState({ treeData })}
@@ -77,6 +104,9 @@ class Sidebar extends Component {
 					nodeContentRenderer={CustomTreeRenderer}
 					generateNodeProps={({ node, path }) => ({
 						currentUrl: this.props.topic,
+						editMode: this.state.editMode,
+						enterEditMode: this.enterEditMode,
+						saveChanges: this.saveChanges,
 						buttons: [
 							<button
 								onClick={() =>
@@ -85,7 +115,7 @@ class Sidebar extends Component {
 											treeData: state.treeData,
 											parentKey: path[path.length - 1],
 											expandParent: true,
-											getNodeKey,
+											getNodeKey: this.getNodeKey,
 											newNode: {
 												title: `${getRandomName()} ${node.title.split(' ')[0]}sson`,
 											},
@@ -101,7 +131,7 @@ class Sidebar extends Component {
 										treeData: removeNodeAtPath({
 											treeData: state.treeData,
 											path,
-											getNodeKey,
+											getNodeKey: this.getNodeKey,
 										}),
 									}))
 								}
@@ -110,7 +140,6 @@ class Sidebar extends Component {
 							</button>,
 						],
 					})}
-					// theme={FileExplorerTheme}
 				/>
 			</div>
 		)

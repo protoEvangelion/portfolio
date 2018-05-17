@@ -17,9 +17,23 @@ function classnames(...classes) {
 	return classes.filter(Boolean).join(' ')
 }
 
-console.log('hellow there', getSlug('23lk *9### + slkd dfj'))
-
 class CustomTreeRenderer extends Component {
+	constructor(props) {
+		super(props)
+
+		const nodeTitle = props.title || props.node.title
+
+		this.state = {
+			textInputValue: nodeTitle,
+		}
+
+		this.handleChange = this.handleChange.bind(this)
+	}
+
+	handleChange(e) {
+		this.setState({ textInputValue: e.target.value })
+	}
+
 	render() {
 		const {
 			currentUrl,
@@ -45,6 +59,10 @@ class CustomTreeRenderer extends Component {
 			treeId,
 			isOver, // Not needed, but preserved for other renderers
 			parentNode, // Needed for dndManager
+			// custom props
+			editMode,
+			enterEditMode,
+			saveChanges,
 			...otherProps
 		} = this.props
 		const nodeTitle = title || node.title
@@ -76,10 +94,9 @@ class CustomTreeRenderer extends Component {
 			}
 		}
 
-		console.log('parent?', parentNode)
-
 		const isDraggedDescendant = draggedNode && isDescendant(draggedNode, node)
 		const isLandingPadActive = !didDrop && isDragging
+		const isEditing = editMode.isEditing && editMode.nodeTitle == nodeTitle
 
 		return (
 			<div style={{ height: '100%' }} {...otherProps}>
@@ -127,60 +144,76 @@ class CustomTreeRenderer extends Component {
 						>
 							{handle}
 
-							<Link
-								to={
-									parentNode
-										? getSlug(`${parentNode.title}/${nodeTitle}`, { custom: ['/'] })
-										: nodeTitle
-								}
+							<div
+								className={classnames(
+									'rst__rowContents',
+									!canDrag && 'rst__rowContentsDragDisabled',
+								)}
 							>
-								<div
-									className={classnames(
-										'rst__rowContents',
-										!canDrag && 'rst__rowContentsDragDisabled',
-									)}
-								>
-									<div className="rst__rowLabel">
-										<span
-											className={classnames(
-												'rst__rowTitle',
-												node.subtitle && 'rst__rowTitleWithSubtitle',
-											)}
+								<div className="rst__rowLabel">
+									{isEditing ? (
+										<input
+											onChange={this.handleChange}
+											type="text"
+											value={this.state.textInputValue}
+										/>
+									) : (
+										<Link
+											to={
+												parentNode
+													? `/app/${getSlug(parentNode.title)}/${getSlug(nodeTitle)}`
+													: `/app/${getSlug(nodeTitle)}`
+											}
 										>
-											{typeof nodeTitle === 'function'
-												? nodeTitle({
-														node,
-														path,
-														treeIndex,
-												  })
-												: nodeTitle}
-										</span>
-
-										{nodeSubtitle && (
-											<span className="rst__rowSubtitle">
-												{typeof nodeSubtitle === 'function'
-													? nodeSubtitle({
+											<span
+												className={classnames(
+													'rst__rowTitle',
+													node.subtitle && 'rst__rowTitleWithSubtitle',
+												)}
+											>
+												{typeof nodeTitle === 'function'
+													? nodeTitle({
 															node,
 															path,
 															treeIndex,
 													  })
-													: nodeSubtitle}
+													: nodeTitle}
 											</span>
-										)}
-									</div>
+										</Link>
+									)}
 
-									<div className="rst__rowToolbar">
-										{buttons.map((btn, index) => (
-											<div
-												key={index} // eslint-disable-line react/no-array-index-key
-												className="rst__toolbarButton"
-											>
-												{btn}
-											</div>
-										))}
-									</div>
+									{nodeSubtitle && (
+										<span className="rst__rowSubtitle">
+											{typeof nodeSubtitle === 'function'
+												? nodeSubtitle({
+														node,
+														path,
+														treeIndex,
+												  })
+												: nodeSubtitle}
+										</span>
+									)}
 								</div>
-							</Link>
+
+								<div className="rst__rowToolbar">
+									{isEditing ? (
+										<button onClick={() => saveChanges(this.state.textInputValue, node, path)}>
+											save
+										</button>
+									) : (
+										<button onClick={() => enterEditMode(nodeTitle)}>edit</button>
+									)}
+
+									{buttons.map((btn, index) => (
+										<div
+											key={index} // eslint-disable-line react/no-array-index-key
+											className="rst__toolbarButton"
+										>
+											{btn}
+										</div>
+									))}
+								</div>
+							</div>
 						</div>,
 					)}
 				</div>
