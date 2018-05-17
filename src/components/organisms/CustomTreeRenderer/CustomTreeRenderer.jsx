@@ -61,7 +61,8 @@ class CustomTreeRenderer extends Component {
 			parentNode, // Needed for dndManager
 			// custom props
 			editMode,
-			enterEditMode,
+			toggleEditMode,
+			insertNodeUnderParent,
 			saveChanges,
 			...otherProps
 		} = this.props
@@ -215,8 +216,10 @@ class CustomTreeRenderer extends Component {
 											save
 										</button>
 									) : (
-										<button onClick={() => enterEditMode(nodeTitle)}>edit</button>
+										<button onClick={() => toggleEditMode(nodeTitle)}>edit</button>
 									)}
+
+									<button onClick={() => insertNodeUnderParent(path)}>+</button>
 
 									{buttons.map((btn, index) => (
 										<div
