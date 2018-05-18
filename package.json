@@ -6,7 +6,7 @@
 	"dependencies": {
 		"firebase": "^4.11.0",
 		"gatsby-link": "^1.6.30",
-		"lodash": "^4.17.5",
+		"lodash": "^4.17.10",
 		"prop-types": "^15.6.0",
 		"react-helmet": "^5.2.0",
 		"react-router-dom": "^4.2.2",

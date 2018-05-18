@@ -29,11 +29,18 @@ class CustomTreeRenderer extends Component {
 		}
 
 		this.handleChange = this.handleChange.bind(this)
+		this.handleKeyPress = this.handleKeyPress.bind(this)
 		this.handleSave = this.handleSave.bind(this)
 	}
 
 	handleChange(e) {
 		this.setState({ textInputValue: e.target.value })
+	}
+
+	handleKeyPress(e, node, parentNode, path) {
+		if (e.key === 'Enter') {
+			this.handleSave(node, parentNode, path)
+		}
 	}
 
 	handleSave(node, parentNode, path) {
@@ -50,30 +57,30 @@ class CustomTreeRenderer extends Component {
 
 	render() {
 		const {
-			currentUrl,
-			scaffoldBlockPxWidth,
-			toggleChildrenVisibility,
+			buttons,
+			canDrag,
+			canDrop,
+			className,
 			connectDragPreview,
 			connectDragSource,
-			isDragging,
-			canDrop,
-			canDrag,
-			node,
-			title,
-			subtitle,
-			draggedNode,
-			path,
-			treeIndex,
-			isSearchMatch,
-			isSearchFocus,
-			buttons,
-			className,
-			style,
+			currentUrl,
 			didDrop,
-			treeId,
+			draggedNode,
+			isDragging,
 			isOver, // Not needed, but preserved for other renderers
+			isSearchFocus,
+			isSearchMatch,
+			node,
 			parentNode, // Needed for dndManager
-			// custom props
+			path,
+			scaffoldBlockPxWidth,
+			style,
+			subtitle,
+			title,
+			toggleChildrenVisibility,
+			treeId,
+			treeIndex,
+			/* custom props */
 			editMode,
 			toggleEditMode,
 			insertNodeUnderParent,
@@ -117,12 +124,6 @@ class CustomTreeRenderer extends Component {
 		/* Custom variables */
 
 		const isEditing = editMode.isEditing && editMode.nodeTitle == nodeTitle
-
-		const handleKeyPress = e => {
-			if (e.key === 'Enter') {
-				saveChanges(this.state.textInputValue, node, path)
-			}
-		}
 
 		/* -----------------*/
 
@@ -183,7 +184,7 @@ class CustomTreeRenderer extends Component {
 										<input
 											autoFocus
 											onChange={this.handleChange}
-											onKeyPress={handleKeyPress}
+											onKeyPress={e => this.handleKeyPress(e, node, parentNode, path)}
 											type="text"
 											value={this.state.textInputValue}
 										/>

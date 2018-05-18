@@ -1,5 +1,5 @@
 import { navigateTo } from 'gatsby-link'
-import getSlug from 'speakingurl'
+import { db } from 'firebase-db'
 import React, { Component } from 'react'
 import SortableTree, {
 	addNodeUnderParent,
@@ -8,6 +8,7 @@ import SortableTree, {
 } from 'react-sortable-tree'
 import 'react-sortable-tree/style.css'
 import { toast } from 'react-toastify'
+import getSlug from 'speakingurl'
 
 import { CustomTreeRenderer } from 'components/organisms'
 
@@ -70,6 +71,37 @@ class Sidebar extends Component {
 	}
 
 	saveChanges(previousSlug, title, node, parentNode, path) {
+		// TODO erase old path
+		const isBrandNew = previousSlug.length === 0
+		const newSlug = parentNode ? `${getSlug(parentNode.title)}/${getSlug(title)}` : getSlug(title)
+		const newSlugRef = db.ref(newSlug)
+
+		console.log('isBrandNew', isBrandNew, previousSlug)
+		console.log('newSlug', newSlug)
+
+		if (!isBrandNew) {
+			const oldSlug = parentNode ? `${getSlug(parentNode.title)}/${previousSlug}` : previousSlug
+			const oldSlugRef = db.ref(oldSlug)
+
+			console.log('oldSlug', oldSlug)
+
+			oldSlugRef.once('value').then(snapshot => {
+				newSlugRef.set(snapshot.val(), err => {
+					if (!err) {
+						oldSlugRef.remove()
+					} else {
+						toast.error('Error moving note to new path', {
+							position: toast.POSITION.BOTTOM_RIGHT,
+						})
+
+						console.error(err)
+					}
+				})
+			})
+		} else {
+			newSlugRef.set('placeholder')
+		}
+
 		this.setState(
 			state => ({
 				editMode: { isEditing: false, nodeTitle: title },
@@ -85,11 +117,8 @@ class Sidebar extends Component {
 				console.log('previousslug', previousSlug)
 
 				if (previousSlug && this.props.url.includes(previousSlug)) {
-					console.log('includes')
-					const newUrl = parentNode
-						? `/app/${getSlug(parentNode.title)}/${getSlug(title)}`
-						: `/app/${getSlug(title)}`
-
+					// console.log('includes')
+					// const newUrl(`/app/${newSlug}`)
 					// navigateTo(newUrl) TODO
 				}
 			},
