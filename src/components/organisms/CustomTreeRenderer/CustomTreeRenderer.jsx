@@ -24,14 +24,28 @@ class CustomTreeRenderer extends Component {
 		const nodeTitle = props.title || props.node.title
 
 		this.state = {
+			previousSlug: getSlug(nodeTitle),
 			textInputValue: nodeTitle,
 		}
 
 		this.handleChange = this.handleChange.bind(this)
+		this.handleSave = this.handleSave.bind(this)
 	}
 
 	handleChange(e) {
 		this.setState({ textInputValue: e.target.value })
+	}
+
+	handleSave(node, parentNode, path) {
+		this.props.saveChanges(
+			this.state.previousSlug,
+			this.state.textInputValue,
+			node,
+			parentNode,
+			path,
+		)
+
+		this.setState({ previousSlug: getSlug(this.state.textInputValue) })
 	}
 
 	render() {
@@ -215,9 +229,7 @@ class CustomTreeRenderer extends Component {
 									{/* Custom Buttons  */}
 
 									{isEditing ? (
-										<button onClick={() => saveChanges(this.state.textInputValue, node, path)}>
-											save
-										</button>
+										<button onClick={() => this.handleSave(node, parentNode, path)}>save</button>
 									) : (
 										<button onClick={() => toggleEditMode(nodeTitle)}>edit</button>
 									)}

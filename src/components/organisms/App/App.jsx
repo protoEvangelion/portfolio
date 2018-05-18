@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { db } from 'firebase-db'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 import { Sidebar } from 'components/organisms'
 
 class App extends Component {
@@ -27,9 +30,11 @@ class App extends Component {
 	render() {
 		return (
 			<div style={{ height: '100%', display: 'flex' }}>
-				<Sidebar topic={this.props.match.params.topic} />
+				<Sidebar topic={this.props.match.params.topic} url={this.props.location.pathname} />
 
 				<div id="firepad" />
+
+				<ToastContainer />
 			</div>
 		)
 	}
