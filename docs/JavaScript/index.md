@@ -225,18 +225,20 @@ const primeNumbers = { 1000: x }
 * "Me first `i`" will print out first
 	* setTimeout is *almost like an api request* because it is speaking to the web browser
 	* It doesn't just willy nilly push the call to `printHello` onto the call stack
-		* It pushes it into the callback queue
+		* It pushes it into the **callback queue**
 
 #### Callback Queue
 
-* The callback queue **will not push anything onto the call stack until the call stack is empty**!
+* The callback queue **will not push anything onto the call stack until the call stack is TOTALLY empty**!
+	* There can't event be any executable code to run in the global context 
+	* The event loop checks for this
 * So even though you told your timer in the example above to take `0ms` it actually will take at least as long as it takes to get to the bottom of the call stack
 * **Lightbulb**: this sheds light on how Node.js api methods are async
 	* Because those methods transcend the JS language, they can provide the benefit of asynchronicity
 
 #### Event Loop
 
-* The event loop is a posh term that simply means it is checking if the call stack is totally empty
+* The event loop is a posh term that simply means it is **checking if the call stack is totally empty**
 * So above it keeps checking over and over to see if `blockFor1Second` has been popped off until it gives the green light for the function in the callback queue to be pushed onto the call stack
 
 #### Ways to NOT block our thread
