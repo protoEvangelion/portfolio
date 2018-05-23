@@ -237,9 +237,34 @@ LEFT JOIN Customer AS c
 
 * SELECT * is typically a bad idea because it can lead to duplicate columns like `id` which exists as a column usually in every table
 * So it is better to SELECT only the columns you want using aliasing
-* 
 
+##### Aggregate Functions
 
+* Allows you to performa a calculation an entire result set and arrive at a single value
+	* SUM
+	* COUNT
+	* MIN/MAX
+	* AVG
+* There are different aggregate functions from DB to DB
 
+###### Aggregate Functions and GROUP BY
+	* Instead of taking an entire table and squashing it into one table you can do calcs on a 
+		* These kinds of operations are great to do in the DB rather than on the frontend
+	* If you use GROUP BY you can add something to select if you are not using it in GROUP BY
+
+```
+SELECT c.id, c.name, sum(o.amount)
+FROM CustomerOrder AS o
+INNER JOIN Customer AS c
+	ON o.customerid = c.id
+GROUP BY c.id
+```
+
+<img src="aggregate-month.png" />
+<img src="aggregate-multiple.png" />
+
+* The solution for using a WHERE clause on grouped results is the HAVING clause
+
+<img src="having.png" />
 
 </article>
