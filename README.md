@@ -1,8 +1,7 @@
-# Open Source Live Edit Note Taking Webapp Fueled by Firepad
+Make sure to install Electric CLI
 
-Currently not ready for release.
+```javascript
+[sudo] npm i -g electric-cli
+```
 
-## Setup
-
-Add `appConfig.json` at root and run `npm run setup` and place the JSON of that output in the `appConfig.json` file
-
+Deploy with `el run`

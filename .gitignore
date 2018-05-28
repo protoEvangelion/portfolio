@@ -1,5 +1,10 @@
+.deploy
+dist
+.publish
+.temp
 node_modules
+temp
 npm-debug.log
-appConfig.json
-public
-.cache
+.vs-code
+stuff.json
+downloadFilesConfig.py

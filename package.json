@@ -1,57 +1,28 @@
 {
-	"name": "firenotes",
-	"description": "A blazingly fast live-edit note taking web app backed by firebase & firepad.",
-	"version": "0.0.1",
-	"author": "Ryan Garant",
-	"dependencies": {
-		"firebase": "^4.11.0",
-		"gatsby-link": "^1.6.30",
-		"lodash": "^4.17.10",
-		"prop-types": "^15.6.0",
-		"react-helmet": "^5.2.0",
-		"react-router-dom": "^4.2.2",
-		"react-sortable-tree": "^2.1.1",
-		"react-sortable-tree-theme-minimal": "0.0.13",
-		"react-toastify": "^4.0.1",
-		"speakingurl": "^14.0.1",
-		"styled-components": "^3.2.3",
-		"styled-theme": "^0.3.3",
-		"styled-tools": "^0.4.0"
-	},
+	"private": true,
+	"name": "notes",
+	"version": "0.0.0",
 	"devDependencies": {
-		"eslint": "^4.19.1",
-		"eslint-config-airbnb": "^16.1.0",
-		"eslint-config-prettier": "^2.9.0",
-		"eslint-plugin-import": "^2.11.0",
-		"eslint-plugin-jsx-a11y": "^6.0.3",
-		"eslint-plugin-prettier": "^2.6.0",
-		"eslint-plugin-react": "^7.8.1",
-		"gatsby": "^1.9.127",
-		"gatsby-plugin-react-helmet": "^1.0.8",
-		"gatsby-plugin-react-next": "^1.0.11",
-		"gatsby-plugin-resolve-src": "^1.0.0",
-		"gatsby-plugin-sass": "^1.0.26",
-		"gatsby-plugin-styled-components": "^2.0.9",
-		"prettier": "^1.8.2"
+		"electric-cli": "^2.2.4",
+		"electric-marble-components": "^2.0.0",
+		"eslint": "^4.9.0",
+		"eslint-config-prettier": "^2.6.0",
+		"eslint-plugin-prettier": "^2.3.1",
+		"husky": "^0.14.3",
+		"marble": "~2.7.0",
+		"metal-toggler": "^2.0.0",
+		"prettier": "^1.7.4",
+		"prettier-eslint-cli": "^4.4.0"
 	},
-	"keywords": [
-		"gatsby",
-		"firebase",
-		"live-edit",
-		"notes",
-		"firepad",
-		"react",
-		"styled-components",
-		"serverless"
-	],
-	"license": "MIT",
-	"main": "n/a",
 	"scripts": {
-		"dev": "gatsby develop",
-		"setup": "firebase setup:web",
-		"build": "gatsby build",
-		"format": "prettier-eslint --write \"src/**/*.js\"",
-		"deploy": "firebase deploy",
-		"deploy:hosting": "firebase deploy --only hosting"
+		"build": "electric build",
+		"start": "electric run",
+		"eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
+		"lint-staged": "lint-staged",
+		"test": "npm run build",
+		"format": "prettier-eslint --write \"*.j*\" \"src/**/*.js\" \"src/styles/*.scss\" --ignore \"dist\""
+	},
+	"lint-staged": {
+		"*.{js,json,css}": ["prettier --write", "git add"]
 	}
 }
