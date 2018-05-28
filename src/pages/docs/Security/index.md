@@ -3,7 +3,7 @@ title: "Security"
 description: "Web Security"
 layout: "guide"
 icon: "lock"
-weight: 5
+weight: 1
 ---
 
 ###### {$page.description}

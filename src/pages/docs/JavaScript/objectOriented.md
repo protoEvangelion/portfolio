@@ -2,7 +2,7 @@
 title: "OOP JavaScript"
 description: "Object Oriented Programming in JS"
 layout: "guide"
-weight: 2
+weight: 3
 ---
 
 <article id="1">

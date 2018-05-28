@@ -3,7 +3,7 @@ title: "Liferay"
 description: "DXP Updates"
 layout: "guide"
 icon: "code-file"
-weight: 3
+weight: 1
 ---
 
 ###### {$page.description}

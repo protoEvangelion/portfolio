@@ -2,7 +2,7 @@
 title: "Functional JS"
 description: ""
 layout: "guide"
-weight: 2
+weight: 4
 ---
 
 <article id="1">

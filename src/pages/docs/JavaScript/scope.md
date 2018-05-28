@@ -2,7 +2,7 @@
 title: "Scope"
 description: "Super important concept about what level declared variables can be accessed"
 layout: "guide"
-weight: 3
+weight: 2
 ---
 
 ###### {$page.description}

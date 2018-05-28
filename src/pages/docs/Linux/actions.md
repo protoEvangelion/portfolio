@@ -2,7 +2,7 @@
 title: "Actions"
 description: "Cool actions you can do in linux"
 layout: "guide"
-weight: 1
+weight: 2
 ---
 
 ###### {$page.description}

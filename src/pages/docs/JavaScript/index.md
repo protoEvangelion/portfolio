@@ -5,7 +5,7 @@ better work and become better at what you do. The code isn’t just
 your job anymore, it’s your craft. ~Jenn Lukas"
 layout: "guide"
 icon: "flash"
-weight: 2
+weight: 1
 ---
 
 ###### {$page.description}
@@ -195,86 +195,6 @@ const primeNumbers = { 1000: x }
 </article>
 
 <article id="4">
-
-## Asychronous JS
-
-* Asynchronous JS is the backbone of the modern web letting us build fast non-blocking applications
-
-* In order to understand async you have to understand:
-	1. Thread of execution
-	2. Memory/variable environment
-	3. Call stack
-	4. Web Browser APIs/Node background threads
-	5. Callback/Message/Task queue
-	6. Event Loop
-
-### Browser API
-
-#### setTimeout
-
-* `setTimeout` doesn't behave in the typical way a normal function does
-	* We spin this up in the background
-	* It is a built in way to create an async timer
-	* It speaks to our browser API
-		* So it is outside of the normal JS land that we are used to
-	* If we were to create a timer ourselves, it would be sync because JS is single threaded
-		* It wouldn't be able to execute anything else
-
-<p data-height="300" data-theme-id="31719" data-slug-hash="GdrryW" data-default-tab="js,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="setTimeout Async Example" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/GdrryW/">setTimeout Async Example</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-* "Me first `i`" will print out first
-	* setTimeout is *almost like an api request* because it is speaking to the web browser
-	* It doesn't just willy nilly push the call to `printHello` onto the call stack
-		* It pushes it into the **callback queue**
-
-#### Callback Queue
-
-* The callback queue **will not push anything onto the call stack until the call stack is TOTALLY empty**!
-	* There can't event be any executable code to run in the global context 
-	* The event loop checks for this
-* So even though you told your timer in the example above to take `0ms` it actually will take at least as long as it takes to get to the bottom of the call stack
-* **Lightbulb**: this sheds light on how Node.js api methods are async
-	* Because those methods transcend the JS language, they can provide the benefit of asynchronicity
-
-#### Event Loop
-
-* The event loop is a posh term that simply means it is **checking if the call stack is totally empty**
-* So above it keeps checking over and over to see if `blockFor1Second` has been popped off until it gives the green light for the function in the callback queue to be pushed onto the call stack
-
-#### Ways to NOT block our thread
-
-* There are many things where waiting would block our thread
-	* so we use Browser APIs instead
-
-1. A timer to finish running
-2. New info from a server (AJAX)
-3. Indication that a portion of the page has loaded
-4. User interaction (clicks, mouseovers, drags)
-5. Writing/Reading to File System (Node)
-6. Writing/reading db (Firebase)
-
-* For each of these we have a web browser feature that we can spin up in the background and only push onto the call stack when the main thread including global code is done running
-
-```javascript
-function display(data) {
-	console.log(data.post)
-}
-
-$.get('http://twitter.com/ryan/tweet/1', display)
-
-console.log('Me first!')
-```
-
-* The same thing happens in the code above as in the `printHello` example
-	* $.get makes an xmlHttpRequest (xhr) in Browser Api/Feature Land
-	* Sets up an async request
-	* Queues up the call to display once the data is ready in the callback queue
-	* Event loop gives the green light
-	* `display` is dequeued from the callback queue & pushed onto the call stack
-
-</article>
-
-<article id="5">
 
 ## The Module Pattern
 

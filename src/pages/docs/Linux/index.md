@@ -3,7 +3,7 @@ title: "Linux"
 description: "Intro to Linux"
 layout: "guide"
 icon: "cloud"
-weight: 4
+weight: 1
 ---
 
 ###### {$page.description}
