@@ -2,7 +2,7 @@
 title: "Pro Tips"
 description: "Golden nuggets on JS from the masters"
 layout: "guide"
-weight: 2
+weight: 6
 ---
 
 ###### {$page.description}

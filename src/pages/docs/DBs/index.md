@@ -6,8 +6,6 @@ icon: "hammer"
 weight: 1
 ---
 
-###### {$page.description}
-
 <article id="1">
 
 ## General Intro Knowledge
@@ -32,7 +30,6 @@ weight: 1
 		* graphQL
 	* Document Databases
 		* Mongo DB
-
 
 </article>
 
@@ -68,7 +65,11 @@ weight: 1
 	* Relational Calculus way (declarative)
 		* Get movieTitle and year for Movie so that there exists an Actor A who was in the movie and is Jeff Goldblum
 
-### Structured Query Language (SQL)
+</article>
+
+<article id="3">
+
+## Structured Query Language (SQL)
 
 * Direct extension from Codd's work
 * Declarative
@@ -76,7 +77,7 @@ weight: 1
 * Can be procedural as well like functions and control flow statements
 
 
-#### SQL Language Elements
+### SQL Language Elements
 
 1. SELECT clause `SELECT * FROM Employee`
 2. WHERE clause `WHERE id = 123 AND is_admin = 'true'`
@@ -86,22 +87,48 @@ weight: 1
 		* A Statement is a complete sentence
 		* Clauses are phrases of the sentence
 
-
-#### Command Line SQL
+### Command Line SQL
 
 * You can run sql queries from the command line
 * You can create dbs from cli
 * you can delete dbs from cli
 
-##### Simple SELECT Queries
+</article>
+
+
+<article id="4">
+
+## Quotes & Aliases
+
+### Quotes
+
+* Usually table names, column names and keywords are case insensitive
+* 'Single quotes' are used for string literals
+* "Double quotes" or `backticks` (MySQL only) for words that conflict with SQL keywords, or when case sensitivity is desired 
+* Quotes can have a drastic impact on what you receive
+
+### Aliases
+
+* The `AS` keyword can be used to give a table or column an alias
+* Only impacts the current query
+
+<img alt="Aliases" src="/images/db/alias.png">
+
+</article>
+
+
+<article id="5">
+
+## Simple SELECT Queries
 
 * Returns a result set
 * FROM allows one or more elements to be returned from a relation
 
-```
+```sql
 SELECT * FROM Employee
 ```
-<img src="./simple-select.png" />
+<img alt="Select Statement" src="/images/db/simple-select.png">
+
 * SELECT grabs all records from Employee table
 
 * Choosing elements
@@ -112,30 +139,23 @@ SELECT * FROM Employee
 		* less I/O
 		* Future schema changes will not affect results
 
-```
+```sql
 SELECT id, firstname, lastname FROM Employee
 ```
 
-##### Quotes in SQL
+</article>
 
-* Usually table names, column names and keywords are case insensitive
-* 'Single quotes' are used for string literals
-* "Double quotes" or `backticks` (MySQL only) for words that conflict with SQL keywords, or when case sensitivity is desired 
-* Quotes can have a drastic impact on what you receive
 
-##### Aliases
+<article id="6">
 
-* The `AS` keyword can be used to give a table or column an alias
-* Only impacts the current query
+## Logic & Control Flow
 
-<img src='./alias.png' />
-
-##### WHERE
+### WHERE
 
 * used to filter a result set with a condition
 * Make sure to use single quotes! unless you have a special use case or special characters
 
-##### Conditions
+### Conditions
 
 * >, <, >=, <=, =
 * Not equal: <> or !=
@@ -145,15 +165,19 @@ SELECT id, firstname, lastname FROM Employee
 * String includes: `summary LIKE '%siracha%'`
 * String length: `email LIKE '__'`
 
-##### AND, OR, NOT
+### AND, OR, NOT
 
 * Boolean logic operators
 * Parens for clarity
 
-<img src="./boolean.png" />
+<img alt="Boolean" src="/images/db/boolean.png">
+
+</article>
 
 
-##### Core Functions
+<article id="7">
+
+## Core Functions
 
 * Each db has a slightly different set of core functions
 * Some are the same like:
@@ -165,23 +189,30 @@ SELECT id, firstname, lastname FROM Employee
 * You can use them in comparisons
 	* `SELECT lower(title) AS name FROM Product`
 
-##### Debugging Conditions
+### Debugging Conditions
 
 * Conditions can be evaluated directly with a SELECT statement
-```
+
+```sql
 SELECT 'mike@example.com' LIKE '%@example.com'; -- TRUE
 SELECT 'mike@gmail.com' LIKE '%@example.com'; -- FALSE
 ```
 
-##### Sorting
+</article>
+
+
+<article id="8">
+
+## Sorting & Pagination
+
+### Sorting
 
 * `ORDER BY` clause declares the desired sorting of the result set
 * Sort Direction as `ASC` to `DESC`
 
-<img src="./sorting.png" />
+<img alt="Sorting" src="/images/db/sorting.png">
 
-
-##### Limiting
+### Limiting
 
 * Useful when dealing with large sets
 * Can have good performance benefits when it comes to sending less data over the wire
@@ -189,32 +220,41 @@ SELECT 'mike@gmail.com' LIKE '%@example.com'; -- FALSE
 * Performance gain could be huge if the DB doesn't have to sort the entire set
 * Limiting should be your last clause (order matters!)
 
-<img src="./limiting.png" />
+<img alt="Limiting" src="/images/db/limiting.png">
 
-##### Offsetting
+### Offsetting
 
 * Offset means to start with Nth result
 * Combining this with LIMIT gives us the ability to paginate
 
-<img src="./offsetting.png" />
+<img alt="Offsetting" src="/images/db/offsetting.png">
 
-##### Relationships
+</article>
+
+
+<article id="9">
+
+## Joining Tables
+
+### Relationships
 
 * Not where the term "relational" comes from
 * It actually comes from the the concept of relational algebra
 * EX: 1 customer can have MANY orders
 
-##### JOIN
+### JOIN
 
 * Assemble tables together
 * Joining can only be performed on a related column between two tables
 * Whatever comes after the `FROM` is the left table and whatever comes after `JOIN` is the right table
-```
+
+```sql
 SELECT *
 FROM CustomerOrder AS o
 LEFT JOIN Customer AS c
 	ON c.id = o.customerid
 ```
+
 * Four types of join:
 	1. INNER JOIN
 		* Will bring two tables together and will only give you things that exist in both tables
@@ -233,12 +273,17 @@ LEFT JOIN Customer AS c
 * LEFT, RIGHT & FULL JOIN are known as OUTER JOINs
 	* So OUTER JOINs allow for one or more rows to be partially empty because it doesn't have a corresponding match in anther table
 
-##### JOIN Selecting Columns
+#### JOIN Selecting Columns
 
 * SELECT * is typically a bad idea because it can lead to duplicate columns like `id` which exists as a column usually in every table
 * So it is better to SELECT only the columns you want using aliasing
 
-##### Aggregate Functions
+</article>
+
+
+<article id="10">
+
+## Aggregate Functions
 
 * Allows you to performa a calculation an entire result set and arrive at a single value
 	* SUM
@@ -247,12 +292,12 @@ LEFT JOIN Customer AS c
 	* AVG
 * There are different aggregate functions from DB to DB
 
-###### Aggregate Functions and GROUP BY
+### Aggregate Functions and GROUP BY
 	* Instead of taking an entire table and squashing it into one table you can do calcs on a 
 		* These kinds of operations are great to do in the DB rather than on the frontend
 	* If you use GROUP BY you can add something to select if you are not using it in GROUP BY
 
-```
+```sql
 SELECT c.id, c.name, sum(o.amount)
 FROM CustomerOrder AS o
 INNER JOIN Customer AS c
@@ -260,11 +305,10 @@ INNER JOIN Customer AS c
 GROUP BY c.id
 ```
 
-<img src="aggregate-month.png" />
-<img src="aggregate-multiple.png" />
+<img alt="Aggregate Month" src="/images/db/aggregate-month.png">
+<img alt="Aggregate Multiple" src="/images/db/aggregate-multiple.png">
 
 * The solution for using a WHERE clause on grouped results is the HAVING clause
 
-<img src="having.png" />
-
+<img alt="having" src="/images/db/having.png">
 </article>

@@ -7,6 +7,8 @@ weight: 5
 
 <article id="1">
 
+## Intro
+
 > Async is the backbone of modern web dev in JS
 
 * Since JS is sync we can't move onto the next line until the current line is finished executing
@@ -25,8 +27,8 @@ weight: 5
 	5. Callback/Message/Task queue
 	6. Event Loop
 
-
 </article>
+
 
 <article id="2">
 
@@ -143,13 +145,13 @@ console.log('Me first!')
 		1. Kick off a `Promise` in JS land
 		2. Call `xmlHttpRequest` in Web Browser land
 	* The `Promise` stores an initial object in memory:
-		* `futureData: { value: undefined,  onFulfillment: [] }`
+		* `futureData: $#123; value: undefined,  onFulfillment: [] &#125;`
 	* Then `futureData.then(display)` call does this
-		* `futureData: { value: undefined,  onFulfillment: [ DisplayFunctionDefinition ] }`
+		* `futureData: $#123; value: undefined,  onFulfillment: [ DisplayFunctionDefinition ] &#125;`
 	* Then we execute `console.log('Me first!')`
 	* In `x` ms Twitter servers return a tweet: `'hi'`
 	* Now that the data has come back, we assign that returned value to `futureData`
-		* `futureData: { value: 'hi',  onFulfillment: [ DisplayFunctionDefinition ] }`
+		* `futureData: $#123; value: 'hi',  onFulfillment: [ DisplayFunctionDefinition ] &#125;`
 	* Then we trigger running the `display` function with parameter `'hi'`
 	* Then `console.log('hi')`
 * This example achieves the 3 goals we listed earlier
@@ -185,12 +187,12 @@ console.log('Me first!')
 	* Call browser api `setTimeout` with argument of the function definition `printHello`
 	* Once the timer is finished after apprx 0ms it enqueues `printHello` to the callback queue
 		* Since `global()` is still on the call stack, the event loop will not tell the callback queue to push `printHello`
-	* Store `futureData` in global memory whose value is `{ value: undefined, onFulfillment: [] }`
+	* Store `futureData` in global memory whose value is `&#123; value: undefined, onFulfillment: [] &#125;`
 	* Set up XHR call in browser land
 		* Send request to Twitter servers
-	* Execute `futureData.then(display)` which stores this function definition on `futureData` as `{ value: undefined, onFulfillment: [display] }`
+	* Execute `futureData.then(display)` which stores this function definition on `futureData` as `&#123; value: undefined, onFulfillment: [display] &#125;`
 	* Execute `blockFor300ms`
-	* While we are inside `blockFor300ms` the fetch request resolves an returns the value `'hi'` and stores it on `futureData` as `{ value: 'hi', onFulfillment: [display] }`
+	* While we are inside `blockFor300ms` the fetch request resolves an returns the value `'hi'` and stores it on `futureData` as `&#123; value: 'h&#125; [display] &#125;`
 	* `blockFor300ms` finishes running
 	* Execute `console.log('Me first!')`
 	* QUESTION: Will `printHello` from `setTimeout` or `display` from `fetch` run first?
@@ -286,7 +288,7 @@ const element2 = returnNextElement.next()
 * Example above
 	* This example does almost exactly what we did manually in the previous example
 		* It returns an object with next function
-	* the call to `createFlow` does enter createFlow's execution context, it actually returns an object: `{ next: ƒ def }`
+	* the call to `createFlow` does enter createFlow's execution context, it actually returns an object: `&#123; next: ƒ def &#125;`
 	* the call to `returnNextElement.next()` will then enter `createFlow`'s execution context and returns 4
 	* then next call `returnNextElement.next()` returns 5
 * This allows us to dynamically set what data flows to us each time we turn on the "tap"
@@ -315,7 +317,7 @@ const element2 = returnNextElement.next(2) // 7
 * This is a paradigm shift on how we design our programs
 * The state of the generator is stored under the property `[[generator]]` property which includes:
 	* our backpack of persistent data
-		* `{ value: 10, done: false }`
+		* `&#123; value: 10, done: false &#125;`
 	* the current location/line in the thread of execution
 
 ```js
@@ -340,9 +342,9 @@ futureData.then(doWhenDataReceived)
 	* execute `createFlow` which does not enter its execution context yet
 	* Next line `returnNextElement.next()` will enter the generator function's execution context and hit the yield statement
 		* It's important to note that it does not assign whatever the return of `yield` to `data` until the next iteration
-		* `fetch` will return a promise `{ value: unfulfilled, onfulfillment: []}`
+		* `fetch` will return a promise `&#123; value: unfulfilled, onfulfillment: [] &#125;`
 		* `fetch` will also kick off an XHR
-		* So `futureData` = `{ value: unfulfilled, onfulfillment: []}`
+		* So `futureData` = `&#123; value: unfulfilled, onfulfillment: [] &#125;`
 	* `futureData.then(doWhenDataReceived)` will set add the `doWhenDataReceived` to `unfulfillment` array
 		* When the XHR data resolves, the response will get passed to `doWhenDataRecieved`
 		* Which will then get passed to the iterator with `returnNextElement.next(value)`
@@ -378,15 +380,15 @@ console.log('Me second')
 		* We don't have to trigger it like we did with generator functions `.next()` method
 	* `console.log('me first')`
 	* create a variable data in local mem with unfulfilled value
-	* `fetch` will return a Promise object: `{ value: undefined, unfulfillment: [] }`
+	* `fetch` will return a Promise object: `&#123; value: undefined, unfulfillment: [] &#125;`
 		* `await` says what ever gets resolved here throw it as my output which WON'T be stored in `data` but will be stored in `futureData`
-		* So currently `futureData` = `{ value: undefined, unfulfillment: [] }`
+		* So currently `futureData` = `&#123; value: undefined, unfulfillment: [] &#125;`
 	* `fetch` will also kick off XHR browser feature/api
 		* XHR gets a url, path, type
 			* Then XHR sends a http message to Twitter's servers
 	* `Console.log('me second')`
 	* Twitter responds with string `'hi'`
-	* XHR then adds `'hi'` to `futureData` so now it looks like `{ value: 'hi', unfulfillment: [] }`
+	* XHR then adds `'hi'` to `futureData` so now it looks like `&#123; value: 'hi', unfulfillment: [] &#125;`
 * This way we auto trigger the resumption of createFlow instead of using `.then`
 
 </article>

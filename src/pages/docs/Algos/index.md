@@ -6,7 +6,7 @@ icon: "hammer"
 weight: 1
 ---
 
-###### {$page.description}
+#{$page.description}
 
 <article id="1">
 
