@@ -1,6 +1,6 @@
 ---
 title: "OOP JavaScript"
-description: "Object Oriented Programming in JS"
+description: "Object Oriented Programming in JS notes adapted from [JS Hardparts](https://frontendmasters.com/courses/javascript-hard-parts) & [JS Foundations](https://frontendmasters.com/courses/javascript-foundations)"
 layout: "guide"
 weight: 3
 ---
@@ -41,8 +41,81 @@ weight: 3
 			* This is actually really useful
 			* Say you have a function that you want available on every user object but you don't want to duplicate it for every object
 				* You create instead link the function to your object so it is store one place in memory rather than being stored once for every single user object
+</article>
 
-### new Keyword
+<article id="2">
+
+## this Keyword
+
+* Every function (while executing) has a reference to its current execution context, called `this`	
+* The JS's version of **dynamic scope** is `this`
+
+<img src="/images/js/this-scope.png" alt="this keyword scope">
+
+* Example
+
+```javascript
+function foo() {
+	console.log(this.bar)
+}
+
+var bar = 'bar1'
+var obj = { bar: 'bar2' }
+var o2 = { bar: 'bar2', foo }
+var o3 = { bar: 'bar3', foo }
+
+foo() // 'bar1'
+foo.call(obj) // 'bar2'
+o2.foo() // 'bar2'
+o3.foo() // 'bar3'
+```
+
+* The 4 `this` rules from the example above:
+
+1. **Default Rule**: in *non strict mode* the this keyword points at the global object IE
+2. **Explicit Binding Rule**: `foo.call(obj)` calls foo but uses `obj` as its this context 
+3. **Implicit Binding Rule**: `o2.foo()` implicitly binds `this` to the `o2` object `bar`
+	* The danger of implicit binding is that you can't enforce `this` being bound to its calling context
+	* The work around for this is **hard binding**
+1. 
+
+### Hard Binding
+
+```javascript
+function foo(baz, bam) {
+	console.log(`${this.bar} ${baz} ${bam}`)
+} 
+
+var obj = { bar: 'bar' }
+foo = foo.bind(obj, 'baz')
+
+foo('bam') // 'bar baz bam'
+```
+
+* This solves the problem of not being able to control the value of `this` at the call site
+* You can pass a hard bound function so `this` will be consistent & **predictable**
+* The tradeoff is that you lose **flexibility**
+	* There is a tension between **flexibility** vs **predictability**
+	* The heuristic you can use is:
+		* Use **Lexical Scope**: If you need predictability the lexical system is better
+		* use **Dynamic Scope** (`this`): If you need flexibility
+		* IE
+			* Say you are using `this` and every once in a while you use a couple hard bindings then `this` is typically better
+			* If you are using `this` and having to hard bind a bunch then **lexical scope** would be better
+		* Use each system for what they are better at
+
+### Order of Precedence Rules In Determining What `this` Points To
+
+1. Is the function called by `new`?
+2. If not is the function called by `call()` or `apply()`? (bind uses apply)
+3. If not was the function called with a context object?
+4. If not default to the global object (except in strict mode)
+
+</article>
+
+<article id="3">
+
+## new Keyword
 
 * There are a couple things you need to understand about functions before understanding what's going on under the hood with the new Keyword
 	* Functions are actually just objects
@@ -50,6 +123,14 @@ weight: 3
 			* And if you log that out you will actually see `firstName` as a key on `myFunc`
 			* The **actual functionality of the function** when you call it with parens is under the `call` property of the function definition which is located within the `__proto__` property
 			* Note that this is not standard practice to use functions as an object, but good to know that in their essence they are actually an object
+	* AKA *constructor call* (it just a creates an object when placed in front of any function)
+
+* **The Four Things** That Happens When Putting the `new` Keyword in Front of a Function Call:
+
+1. It creates a brand new empty object
+2. The newly created object gets linked to another object
+3. The newly created object gets passed in as the `this` context to the function call
+4. If that function does not already return its own object, it will return `this`
 
 <p data-height="300" data-theme-id="31719" data-slug-hash="gzWpwQ" data-default-tab="js,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="JS Functions As Objects" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/gzWpwQ/">JS Functions As Objects</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 
@@ -61,7 +142,11 @@ weight: 3
 
 <p data-height="300" data-theme-id="31719" data-slug-hash="deWWjK" data-default-tab="js,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="JS New Keyword" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/deWWjK/">JS New Keyword</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 
-### The Class 'Syntactic Sugar'
+</article>
+
+<article id="4">
+
+## The Class 'Syntactic Sugar'
 
 * It is doing the same thing under the hood as the `new` keyword
 

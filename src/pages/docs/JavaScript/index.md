@@ -202,9 +202,30 @@ const primeNumbers = { 1000: x }
 * Closure makes the module pattern feasible
 
 * Main **benefit** is restricting access & protecting internal functions from being called
+	* Also helps with abstracting code so that it is more readable
 * Main **disadvantage** is if your testing methodology believes a unit test involves testing all private internals
 	* If you subscribe to Kyle Simpson's persuasion this is not a problem
 		* He believes a unit is not a function, it is a single indivisible piece of business logic
+
+```javascript
+var App = (function setupApp(){
+	var publicAPI = {
+		init: initUI,
+		addProject: addProject,
+		addWorkToProject: addWorkToProject
+	}
+
+	return publicAPI
+
+	function initUI() { ... }
+	function addProject() { ... }
+	function addWorkToProject() { ... }
+})()
+
+App.init()
+
+App.addProject('client features')
+```
 
 </article>
 
