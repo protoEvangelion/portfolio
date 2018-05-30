@@ -77,7 +77,6 @@ o3.foo() // 'bar3'
 3. **Implicit Binding Rule**: `o2.foo()` implicitly binds `this` to the `o2` object `bar`
 	* The danger of implicit binding is that you can't enforce `this` being bound to its calling context
 	* The work around for this is **hard binding**
-1. 
 
 ### Hard Binding
 
@@ -110,6 +109,15 @@ foo('bam') // 'bar baz bam'
 2. If not is the function called by `call()` or `apply()`? (bind uses apply)
 3. If not was the function called with a context object?
 4. If not default to the global object (except in strict mode)
+
+#### Quiz
+
+1. How do you “borrow” a function and implicitly set
+this?
+2. How do you explicitly set this for the function call?
+3. How can you lock a specific this to a function?
+Why do that? Why not?
+4. How do you create a new this for the function call?
 
 </article>
 
