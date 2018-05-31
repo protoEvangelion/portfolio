@@ -1,4 +1,17 @@
 $accent: #4285f4;
+// Dracula Palette
+$Background: #282a36;
+$Current: #44475a;
+$Selection: #44475a;
+$Foreground: #f8f8f2;
+$Comment: #6272a4;
+$Cyan: #8be9fd;
+$Green: #50fa7b;
+$Orange: #ffb86c;
+$Pink: #ff79c6;
+$Purple: #bd93f9;
+$Red: #ff5555;
+$Yellow: #f1fa8c;
 
 @import 'marble';
 
@@ -25,4 +38,90 @@ $accent: #4285f4;
 
 article {
 	margin-top: 100px;
+}
+
+body {
+	background: darken($Background, 5%);
+
+	.reading-progress,
+	.sidebar {
+		background: $Background;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+li,
+p {
+	color: $Foreground !important;
+}
+
+blockquote:after,
+blockquote:before {
+	color: darken($Foreground, 5%) !important;
+}
+
+input {
+	border: 1px solid $Pink !important;
+}
+
+.docs .contribute {
+	margin-top: 5rem;
+
+	.contribute-img,
+	.contribute-text {
+		background: lighten($Background, 5%);
+	}
+
+	span {
+		color: $Green;
+	}
+}
+
+.reading-progress {
+	a {
+		&:before {
+			background: lighten($Background, 5%);
+		}
+
+		&.reading {
+			&:before {
+				background: lighten($Background, 25%);
+				color: $Foreground !important;
+			}
+
+			svg {
+				stroke: $Pink;
+			}
+
+			.reading-title {
+				color: $Purple;
+			}
+		}
+	}
+
+	.reading-title,
+	.reading-subtitle {
+		color: $Foreground;
+	}
+}
+
+.sidebar {
+	span {
+		color: $Foreground !important;
+
+		&.input-inner-icon-helper {
+			color: $Pink;
+		}
+	}
+
+	.sidebar-link:hover span,
+	.sidebar-link-selected span {
+		color: $Green !important;
+	}
 }
