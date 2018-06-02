@@ -100,7 +100,7 @@ gulp deploy
 	* Other gulp tasks are available [here](https://github.com/liferay/liferay-theme-tasks)
 	* Then change to your theme by clicking configure like below
 
-<img src="/images/set-theme.png" alt="Set Theme">
+<img src="/images/liferay/set-theme.png" alt="Set Theme">
 
 </article>
 
@@ -341,7 +341,7 @@ ALWAYS_SEVEN = 8;
 
 * You can also add an image in that same folder that will show up on the platform (Example below)
 
-<img src="/images/custom-layout.png" alt="Layout" style="max-width: 400px;">
+<img src="/images/liferay/custom-layout.png" alt="Layout" style="max-width: 400px;">
 
 
 * Then in `liferay-look-and-feel.xml` do
@@ -382,7 +382,7 @@ ALWAYS_SEVEN = 8;
 
 #### This installs it on the same level as your theme
 
-<img src="/images/themelet.png" alt="Themelet">
+<img src="/images/liferay/themelet.png" alt="Themelet">
 
 * then cd into your new themelet directory and run:
 
@@ -396,7 +396,7 @@ npm link
 gulp extend
 ```
 
-<img src="/images/consume-themelet.png" alt="Themelet">
+<img src="/images/liferay/consume-themelet.png" alt="Themelet">
 
 * then `gulp-deploy`
 
@@ -415,7 +415,7 @@ Or you can do: `gulp extend` and search for a themelet on npm
 	* documents
 	* Really only beneficial if you want to package your theme for other people to reuse
 
-<img src="/images/resources-importer.png" alt="Resources Importer" style="max-width: 400px;">
+<img src="/images/liferay/resources-importer.png" alt="Resources Importer" style="max-width: 400px;">
 
 
 ### Embedding Apps
@@ -446,7 +446,7 @@ Or you can do: `gulp extend` and search for a themelet on npm
 
 * Based on Bootstrap
 
-<img src="/images/layout-generator.png" alt="Layout Generator">
+<img src="/images/liferay/layout-generator.png" alt="Layout Generator">
 
 
 #### Generates something like this

@@ -14,6 +14,6 @@ weight: 1
 
 > Never trust raw user data!
 
-<img src="/images/user-data.png" alt="XSS Defenses">
+<img src="/images/security/user-data.png" alt="XSS Defenses">
 
 </article>
