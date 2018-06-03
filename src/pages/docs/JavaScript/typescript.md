@@ -77,6 +77,21 @@ const login = (username: string, password: string): User => {
 }
 ```
 
+#### The Any Type
+
+* This is essentially the JS world with TS
+* allows for a value of any kind
+* useful to migrate code from JS to TS
+* The goal is to get to using actual types instead of any
+* Start with making all anys explicit, and then squash as many as possible
+
+#### Never Type
+
+* something that you would want in unreachable sections of code
+* compile time equivalent of a throw
+* it's for scenarios you are trying to avoid
+* `let hi: never = 'hello'` //error
+
 </article>
 
 <article id="2">
@@ -87,12 +102,31 @@ const login = (username: string, password: string): User => {
 let myCar: { make: string, model: string, year: number };
 
 myCar = {
-make: 'Honda',
-model: 'Accord',
-year: 1992
+	make: 'Honda',
+	model: 'Accord',
+	year: 1992
 };
 ```
 
+### Interfaces
+
+* Solve the problem of manually defining the shape of each new object which can get very verbose
+* Same as **Java Interfaces** & C abstract classes
+* They don't transpile to any JS they are for the TS compiler only
+* Only describe structure
+* DRY type definition allows for easy refactoring later
+* Can be **extended**
+
+```javascript
+interface Car {
+	make: string;
+	model: string;
+	year: number;
+};
+
+let myCar: Car = { make: 'Honda', model: 'Accord', year: 1992};
+let lisasCar: Car = { make: 'Ford', model: 'Monster Truck', year: 2016};
+```
 
 </article>
 
