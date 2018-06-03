@@ -157,6 +157,22 @@ foo('bam') // 'bar baz bam'
 
 <article id="5">
 
+## Prototypes
+
+> Objects are built by constructor calls
+
+* C++ & Java implements classes very differently than JS
+	* When a class inherits from another class it **copies** that class's methods
+	* If you alter the parent class's methods after the child inherits them, the inherited methods on the child are NOT changed
+	* *IE: If I break my leg and my son is a biological copy of me to a degree, you would not expect his leg to be broken*
+* JS on the other hand has "**Retroactive Inheritance**"
+	* If you alter the parent class's methods after the child inherits them, the inherited methods on the child ARE changed
+
+
+</article>
+
+<article id="6">
+
 ## Quiz
 
 1. How do you “borrow” a function and implicitly set this? 
