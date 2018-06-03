@@ -49,6 +49,8 @@ weight: 3
 
 * Every function (while executing) has a reference to its current execution context, called `this`	
 * The JS's version of **dynamic scope** is `this`
+* The arrow function with a this keyword behaves according to lexical rules
+	* It treats it as a normal variable and looks up the scope chain to find the variable this
 
 <img src="/images/js/this-scope.png" alt="this keyword scope">
 
@@ -110,15 +112,6 @@ foo('bam') // 'bar baz bam'
 3. If not was the function called with a context object?
 4. If not default to the global object (except in strict mode)
 
-#### Quiz
-
-1. How do you “borrow” a function and implicitly set
-this?
-2. How do you explicitly set this for the function call?
-3. How can you lock a specific this to a function?
-Why do that? Why not?
-4. How do you create a new this for the function call?
-
 </article>
 
 <article id="3">
@@ -126,12 +119,15 @@ Why do that? Why not?
 ## new Keyword
 
 * There are a couple things you need to understand about functions before understanding what's going on under the hood with the new Keyword
+	* AKA *constructor call* (it just a creates an object when placed in front of any function)
 	* Functions are actually just objects
 		* If you have a function stored in global memory under the label `myFunc` you can write `myFunc.firstName = 'Ryan'`
 			* And if you log that out you will actually see `firstName` as a key on `myFunc`
 			* The **actual functionality of the function** when you call it with parens is under the `call` property of the function definition which is located within the `__proto__` property
 			* Note that this is not standard practice to use functions as an object, but good to know that in their essence they are actually an object
-	* AKA *constructor call* (it just a creates an object when placed in front of any function)
+
+<p data-height="300" data-theme-id="31719" data-slug-hash="gzWpwQ" data-default-tab="js,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="JS Functions As Objects" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/gzWpwQ/">JS Functions As Objects</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+
 
 * **The Four Things** That Happens When Putting the `new` Keyword in Front of a Function Call:
 
@@ -139,9 +135,6 @@ Why do that? Why not?
 2. The newly created object gets linked to another object
 3. The newly created object gets passed in as the `this` context to the function call
 4. If that function does not already return its own object, it will return `this`
-
-<p data-height="300" data-theme-id="31719" data-slug-hash="gzWpwQ" data-default-tab="js,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="JS Functions As Objects" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/gzWpwQ/">JS Functions As Objects</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
 
 * When we call the constructor function with new in front we automate 2 things:
 	* Create a new user object: `this = Object.create(userCreator)`
@@ -159,5 +152,17 @@ Why do that? Why not?
 * It is doing the same thing under the hood as the `new` keyword
 
 <p data-height="300" data-theme-id="31719" data-slug-hash="RyVVmd" data-default-tab="js,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="JS Class Sugar For new Keyword" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/RyVVmd/">JS Class Sugar For new Keyword</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+
+</article>
+
+<article id="5">
+
+## Quiz
+
+1. How do you “borrow” a function and implicitly set this? 
+2. How do you explicitly set this for the function call? 
+3. How can you lock a specific this to a function? 
+	* Why do that? Why not? 
+4. How do you create a new this for the function call?
 
 </article>

@@ -10,8 +10,6 @@ weight: 1
 
 ###### {$page.description}
 
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-
 <article id="1">
 
 > I am not content, nor should you be, at stopping once something just works, and not really knowing why. I gently challenge you to journey down that bumpy "*road less traveled*" and embrace all that JavaScript is and can do. With that knowledge, no **technique**, no **framework**, no popular **buzzword** acronym of the week, will be beyond your understanding. ~Kyle Simpson

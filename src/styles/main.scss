@@ -42,11 +42,16 @@ article {
 
 body {
 	background: darken($Background, 5%);
+}
 
-	.reading-progress,
-	.sidebar {
-		background: $Background;
-	}
+code,
+.reading-progress,
+.sidebar {
+	background: $Background !important;
+}
+
+code {
+	color: $Green !important;
 }
 
 h1,
@@ -87,6 +92,21 @@ input {
 	a {
 		&:before {
 			background: lighten($Background, 5%);
+		}
+
+		&.read {
+			&:before {
+				background: $Green !important;
+				color: $Foreground !important;
+			}
+
+			.reading-subtitle {
+				color: darken($Foreground, 5%) !important;
+			}
+
+			.reading-title {
+				color: darken($Purple, 5%) !important;
+			}
 		}
 
 		&.reading {
