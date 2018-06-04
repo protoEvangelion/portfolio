@@ -161,4 +161,33 @@ x');
 * And the result of θ1​ and θ0​ tend to be around 0.12 and 250 respectively
 * Plotting those values on our graph to the right seems to put our point in the center of the inner most 'circle'
 
+#### Gradient Descent
+
+* An algo that helps minimize functions like the cost function
+* For cost function
+	* You have your hypothesis function and you can measure how well it fits into the data
+	* But now you need a way to estimate the **parameters** of the hypothesis function
+	* Process
+		* Keep changing them until you end up with a minimum
+		* So you start at one point (θ1 & θ2)
+		* look 360 degrees around and determine the baby step that will lead you down the hill faster
+		* Iterate until you get to the minimal location
+			* Red arrow in image below shows the minimal location
+
+<img alt="Gradient Descent" src="/images/ml/gradient-descent.png">
+
+* The formal algo
+	* Quick note on syntax
+		* `:=` means assignment to a variable just like `=` in JS
+		* `=` is a truth assertion
+		* `j=0,1` represents the feature index number
+		* The size of each step is determined by the parameter `α`
+			* AKA Learning Rate
+	* The direction in which the step is taken is determined by the partial derivative of `J(θ0,θ1)`
+	* Depending on where one starts on the graph, one could end up at different points
+	* You should update simultaneously
+
+<img alt="Gradient Algo" src="/images/ml/gradient-algo.png">
+<img alt="Gradient Simultaneous Update" src="/images/ml/gradient-update.png">
+
 </article>

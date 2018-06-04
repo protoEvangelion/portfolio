@@ -131,7 +131,7 @@ foo('bam') // 'bar baz bam'
 
 * **The Four Things** That Happens When Putting the `new` Keyword in Front of a Function Call:
 
-1. It creates a brand new empty object
+1. It creates a brand new empty objects
 2. The newly created object gets linked to another object
 3. The newly created object gets passed in as the `this` context to the function call
 4. If that function does not already return its own object, it will return `this`
@@ -159,8 +159,9 @@ foo('bam') // 'bar baz bam'
 
 ## Prototypes
 
-> Objects are built by constructor calls
+> Objects are built by constructor calls where a constructor makes an object linked to its own prototype
 
+* `Object.prototype` is the most important object in JS
 * C++ & Java implements classes very differently than JS
 	* When a class inherits from another class it **copies** that class's methods
 	* If you alter the parent class's methods after the child inherits them, the inherited methods on the child are NOT changed
@@ -168,6 +169,14 @@ foo('bam') // 'bar baz bam'
 * JS on the other hand has "**Retroactive Inheritance**"
 	* If you alter the parent class's methods after the child inherits them, the inherited methods on the child ARE changed
 
+
+<p data-height="300" data-theme-id="31719" data-slug-hash="ERVBqa" data-default-tab="js,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="JS Prototypes" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/ERVBqa/">JS Prototypes</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+
+* calling `child.constructor` tells you where the child came from, in this case the parent
+* `child.constructor.prototype` & `child.__proto__` give you the prototype of Parent
+
+
+<img src="/images/js/prototype.png" alt="prototype">
 
 </article>
 
