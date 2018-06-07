@@ -107,15 +107,18 @@ x');
 
 * Dataset is called a **training set**
 
-<img alt="Data Flow" src="/images/ml/data-flow.png">
-
 ### **Notation**
-	* m = number of training examples
-	* x's = **input** variable or features
-	* y's = **output** variable or target variable
-	* ϴi's = are **parameters**
-	* (x,y) = one training example
-	* (x <sup>(i)</sup>,y <sup>(i)</sup>) = ith training example which is just an index (1 indexed not 0) into the table
+
+```
+hϴ(x) = ϴ0 + ϴ1x
+```
+
+* m = number of training examples
+* x's = **input** variable or features
+* y's = **output** variable or target variable
+* ϴi's = are **parameters**
+* (x,y) = one training example
+* (x <sup>(i)</sup>,y <sup>(i)</sup>) = ith training example which is just an index (1 indexed not 0) into the table
 
 ### Model Representation
 
@@ -217,7 +220,7 @@ x');
 	* Depending on where one starts on the graph, one could end up at different points
 
 <img alt="Gradient Simultaneous Update" src="/images/ml/gradient-update.png">
-
+****
 * You should update simultaneously because `θ1​` uses `θ0`
 
 <img alt="Gradient Linear Cost" src="/images/ml/gradient-linear.png">
@@ -226,5 +229,44 @@ x');
 	* The linear function only has one global minimum not multiple local minimums
 		* So this makes it a great fit for the Gradient descent algo
 
+
+</article>
+
+<article id="3">
+
+## Linear algebra
+
+### Matrices & Vectors
+
+#### Matrix
+
+* It goes rows x columns (2x4)
+* ith rows
+* jth column
+* Usually use uppercase notation
+
+$$\begin{lb}bmatrix{rb} a & b & c \newline d & e & f \newline g & h & i \newline j & k & l\end{lb}bmatrix{rb}$$
+
+#### Vector
+
+* A matrix with one column
+* ith rows
+* sometimes vectors are 1 or 0 indexed
+* usually use lowercase notation
+
+$$\begin{lb}bmatrix{rb} w \newline x \newline y \newline z \end{lb}bmatrix{rb}$$
+
+* **Notation and terms**:
+
+AijA_{lb}ij{rb}Aij​ refers to the element in the ith row and jth lumn of matrix A.
+
+R\mathbb{lb}R{rb}R refers to the set of scalar real numbers
+Rn\mathbb{lb}R^n{rb}Rn refers to the set of n-dimensional vectors of real * numbers
+
+viv_ivi​ refers to the element in the ith row of the vector
+
+* A vector with 'n' rows is referred to as an 'n'-dimensional vector
+In general, all our vectors and matrices will be **1-indexed**
+* "Scalar" means that an object is a **single** value, not a vector or * trix
 
 </article>
