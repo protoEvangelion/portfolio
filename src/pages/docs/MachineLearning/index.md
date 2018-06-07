@@ -39,11 +39,13 @@ weight: 1
 
 * Example: playing checkers
 
+```
 E = the experience of playing many games of checkers
 
 T = the task of playing checkers.
 
 P = the probability that the program will win the next game.
+```
 
 In general, any machine learning problem can be assigned to one of two broad classifications:
 
@@ -105,6 +107,8 @@ x');
 
 * Dataset is called a **training set**
 
+<img alt="Data Flow" src="/images/ml/data-flow.png">
+
 ### **Notation**
 	* m = number of training examples
 	* x's = **input** variable or features
@@ -125,6 +129,11 @@ x');
 
 * Typically you have an **optimization** objective like minimizing or maximizing
 * AKA "Squared error function" or "Mean squared error"
+* A [cost function is a measure of **how wrong the model is**](https://towardsdatascience.com/machine-learning-fundamentals-via-linear-regression-41a5d11f5220) in terms of its ability to estimate the relationship between X and y
+	* The **objective** of a ML model, therefore, is to find parameters, weights or a structure that minimises the cost function
+	* models **learn by minimizing** a cost function
+	* *sum of the squared differences between **predicted** y and **actual** y*
+
 * Formal Definition:
 
 <img alt="Cost Func" src="/images/ml/cost-func.png">
@@ -166,6 +175,16 @@ x');
 * AKA "Batch" Gradient Descent
 	* We are looking at the entire batch of training examples to make decisions
 * Gradient descent can be **applied to many ML models** like the cost function
+* Is an [efficient optimization algorithm](https://towardsdatascience.com/machine-learning-fundamentals-via-linear-regression-41a5d11f5220) that attempts to find a **local or global minima of a function**
+	* enables a model to **learn the gradient or direction** that the model should take in order to **reduce errors**
+		* As the model iterates, it gradually converges towards a minimum where further tweaks to the parameters produce little or zero changes in the loss — also referred to as convergence
+		* enables the learning process to **make corrective updates** to the learned estimates that move the model toward an *optimal combination of parameters*
+		* We can now **use the learned values** of b0 and b1 stored in theta **to predict** values y for new values of X
+
+<img src="https://cdn-images-1.medium.com/max/800/1*UUHvSixG7rX2EfNFTtqBDA.gif" alt="Convergence">
+
+<img src="https://cdn-images-1.medium.com/max/600/1*imhEKEpzX24CC_LIIureBw.gif" alt="Gradient Descent Iterations">
+
 * For cost function
 	* You have your hypothesis function and you can measure how well it fits into the data
 	* But now you need a way to estimate the **parameters** of the hypothesis function
