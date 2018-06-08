@@ -189,5 +189,9 @@ foo('bam') // 'bar baz bam'
 3. How can you lock a specific this to a function? 
 	* Why do that? Why not? 
 4. How do you create a new this for the function call?
+5. What is a constructor call?
+6. What is [[Prototype]] where does it come from?
+7. How does [[Prototype]] affect the behavior of an object?
+8. What are 3 different ways to find out where an object's [[Prototype]] points to?
 
 </article>

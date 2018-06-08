@@ -83,8 +83,6 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
 
 		let slug = name === 'index' ? `/${base}/` : `/${base}-${name}/`
 
-		console.log(slug, dir, name)
-
 		createNodeField({ node, name: `slug`, value: slug })
 	} else if (node.internal.type === `MarkdownRemark` && typeof node.slug === `undefined`) {
 		const fileNode = getNode(node.parent)

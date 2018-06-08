@@ -52,7 +52,7 @@ weight: 3
 * The arrow function with a this keyword behaves according to lexical rules
 	* It treats it as a normal variable and looks up the scope chain to find the variable this
 
-<img src="/images/js/this-scope.png" alt="this keyword scope">
+<img src="images/this-scope.png" alt="this keyword scope">
 
 * Example
 
@@ -176,7 +176,7 @@ foo('bam') // 'bar baz bam'
 * `child.constructor.prototype` & `child.__proto__` give you the prototype of Parent
 
 
-<img src="/images/js/prototype.png" alt="prototype">
+<img src="images/prototype.png" alt="prototype">
 
 </article>
 

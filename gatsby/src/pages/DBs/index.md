@@ -112,7 +112,7 @@ weight: 1
 * The `AS` keyword can be used to give a table or column an alias
 * Only impacts the current query
 
-<img alt="Aliases" src="/images/db/alias.png">
+<img alt="Aliases" src="images/alias.png">
 
 </article>
 
@@ -127,7 +127,7 @@ weight: 1
 ```sql
 SELECT * FROM Employee
 ```
-<img alt="Select Statement" src="/images/db/simple-select.png">
+<img alt="Select Statement" src="images/simple-select.png">
 
 * SELECT grabs all records from Employee table
 
@@ -170,7 +170,7 @@ SELECT id, firstname, lastname FROM Employee
 * Boolean logic operators
 * Parens for clarity
 
-<img alt="Boolean" src="/images/db/boolean.png">
+<img alt="Boolean" src="images/boolean.png">
 
 </article>
 
@@ -210,7 +210,7 @@ SELECT 'mike@gmail.com' LIKE '%@example.com'; -- FALSE
 * `ORDER BY` clause declares the desired sorting of the result set
 * Sort Direction as `ASC` to `DESC`
 
-<img alt="Sorting" src="/images/db/sorting.png">
+<img alt="Sorting" src="images/sorting.png">
 
 ### Limiting
 
@@ -220,14 +220,14 @@ SELECT 'mike@gmail.com' LIKE '%@example.com'; -- FALSE
 * Performance gain could be huge if the DB doesn't have to sort the entire set
 * Limiting should be your last clause (order matters!)
 
-<img alt="Limiting" src="/images/db/limiting.png">
+<img alt="Limiting" src="images/limiting.png">
 
 ### Offsetting
 
 * Offset means to start with Nth result
 * Combining this with LIMIT gives us the ability to paginate
 
-<img alt="Offsetting" src="/images/db/offsetting.png">
+<img alt="Offsetting" src="images/offsetting.png">
 
 </article>
 
@@ -305,10 +305,10 @@ INNER JOIN Customer AS c
 GROUP BY c.id
 ```
 
-<img alt="Aggregate Month" src="/images/db/aggregate-month.png">
-<img alt="Aggregate Multiple" src="/images/db/aggregate-multiple.png">
+<img alt="Aggregate Month" src="images/aggregate-month.png">
+<img alt="Aggregate Multiple" src="images/aggregate-multiple.png">
 
 * The solution for using a WHERE clause on grouped results is the HAVING clause
 
-<img alt="having" src="/images/db/having.png">
+<img alt="having" src="images/having.png">
 </article>

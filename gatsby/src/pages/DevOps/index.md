@@ -79,6 +79,6 @@ III. The Third Way - patterns of organizational learning and safety culture that
 
 ## What is NoOps & is DevOps dead?
 
-<img src="/images/devops/noops.jpg">
+<img src="images/noops.jpg">
 
 </article>
