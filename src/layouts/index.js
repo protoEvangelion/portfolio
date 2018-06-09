@@ -6,7 +6,8 @@ import styles from '../styles'
 import 'typeface-space-mono'
 import 'typeface-spectral'
 
-require(`prismjs/themes/prism-solarizedlight.css`)
+require('../styles/dracula-prism.css')
+require('../styles/base.scss')
 
 class DefaultLayout extends React.Component {
 	render() {
