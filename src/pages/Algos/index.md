@@ -76,14 +76,14 @@ function bubbleSort(nums) {
 
 ```javascript
 function insertionSort(nums) {
-	for (let i = 1; i < nums.length; i++) {
-		for (let j = 0; j < i; j++) {
-			if (nums[i] < nums[j]) {
-				const spliced = nums.splice(i, 1)
-				nums.splice(j, 0, spliced[0])
-			}
-		}
-	}
+  for (let i = 1; i < nums.length; i++) {
+    for (let j = 0; j < i; j++) {
+      if (nums[i] < nums[j]) {
+        const spliced = nums.splice(i, 1)
+        nums.splice(j, 0, spliced[0])
+      }
+    }
+  }
 }
 ```
 
@@ -104,9 +104,9 @@ function insertionSort(nums) {
 
 ```javascript
 function basicRecursion(max, current) {
-	if (current > max) return
-	console.log(current)
-	basicRecursion(max, current + 1)
+  if (current > max) return
+  console.log(current)
+  basicRecursion(max, current + 1)
 }
 
 basicRecursion(1, 10)
@@ -121,9 +121,9 @@ basicRecursion(1, 10)
 
 ```javascript
 function fibonacci(n) {
-	if (n <= 2) return 1
+  if (n <= 2) return 1
 
-	return fibonacci(n - 1) + fibonacci(n - 2)
+  return fibonacci(n - 1) + fibonacci(n - 2)
 }
 ```
 
@@ -139,9 +139,9 @@ function fibonacci(n) {
 
 ```javascript
 function factorial(n) {
-	if (n < 2) return 1
+  if (n < 2) return 1
 
-	return n * factorial(n - 1)
+  return n * factorial(n - 1)
 }
 ```
 

@@ -21,9 +21,9 @@ weight: 2
 
 ```javascript
 set
-	.add(5)
-	.add(7)
-	.add(7)
+  .add(5)
+  .add(7)
+  .add(7)
 ```
 
 * Only 5 and 7 will be added once
@@ -31,8 +31,8 @@ set
 #### Features
 
     * No duplicates
-	* No guarantee of order
-	* ES6 has native sets along with weakSets
+  * No guarantee of order
+  * ES6 has native sets along with weakSets
 
 ### Maps
 
@@ -52,7 +52,7 @@ set
 
 * Most programming languages are based on a stack
 * LIFO: Arrays have a stack interface but they are not a pure stack _ Because with a pure stack you push on top and pop
-	from top _ You can't get to anything beneath the top node
+  from top _ You can't get to anything beneath the top node
 
 ### Queue
 
@@ -77,27 +77,27 @@ set
 ##### Primary lesson is to learn to make decisions based on the problem you are getting at
 
 * BIGO:
-	* Gets: O(1)
-		* You have to loop through the list until you find the right node
-	* Adds / Deletes: O(n)
+  * Gets: O(1)
+    * You have to loop through the list until you find the right node
+  * Adds / Deletes: O(n)
 
 * **Analytical Q's to ask yourself:**
-	* *Will this problem require a lot of gets?*
-	* *Will it require a lot of deletes?*
-		* For Array lists if you want to do **a lot of gets **this is a great solution
-		* But not so much for the case where you want to do **a lot of deletes**
+  * *Will this problem require a lot of gets?*
+  * *Will it require a lot of deletes?*
+    * For Array lists if you want to do **a lot of gets **this is a great solution
+    * But not so much for the case where you want to do **a lot of deletes**
 
 ![Array List](https://btholt.github.io/four-semesters-of-cs/img/array.png)
 
 * We are going to fake these in JS but really we are borrowing from Java
-	* These concepts are really important in non garbage collected languages like Java (or Jakarta ;)
+  * These concepts are really important in non garbage collected languages like Java (or Jakarta ;)
 * One annoying thing in ArrayLists is you have to collapse the array if you deleted an item
 * [a,b,c,d,e,f,g]
-	* -> delete index 3
-	* -> array is [a,b,c,(blank),e,f,g]
-	* -> shift elements 4,5,6 back one index
-	* -> array is [a,b,c,e,f,g]
-	* -> decrement length
+  * -> delete index 3
+  * -> array is [a,b,c,(blank),e,f,g]
+  * -> shift elements 4,5,6 back one index
+  * -> array is [a,b,c,e,f,g]
+  * -> decrement length
 
 * Tradeoff: This optimizes **gets** and deoptimizes **deletes** and **insertIntos**      
 
@@ -106,16 +106,16 @@ Exercise:
 <p data-height="300" data-theme-id="31719" data-slug-hash="wmYoJG" data-default-tab="js,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="Visualized Data Structures: Array List Exercise" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/wmYoJG/">Visualized Data Structures: Array List Exercise</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 
 * BIGO:
-	* Gets: 0(n)
-		* You have to loop through the list until you find the right node
-	* Adds / Deletes: 0(1)
+  * Gets: 0(n)
+    * You have to loop through the list until you find the right node
+  * Adds / Deletes: 0(1)
 
 ### Stacks
 
 ![stack](https://www.tutorialspoint.com/data_structures_algorithms/images/stack_representation.jpg)
 
 * **LIFO**: The **Last** item added **Into** the stack will be the **First** one taken **Out** of the stack \* The idea of
-	the "call stack" goes along with this concept
+  the "call stack" goes along with this concept
 
 ##### Constructor Function
 
@@ -133,20 +133,20 @@ size() //returns size of stack as an integer
 
 ```javascript
 const Stack = function() {
-	this.storage = ''
+  this.storage = ''
 }
 
 Stack.prototype.push = function(val) {
-	this.storage = `${this.storage},${val}`
+  this.storage = `${this.storage},${val}`
 }
 
 Stack.prototype.pop = function() {
-	const lastValIndex = this.storage.lastIndexOf(',')
-	this.storage = this.storage.substring(0, lastValIndex)
+  const lastValIndex = this.storage.lastIndexOf(',')
+  this.storage = this.storage.substring(0, lastValIndex)
 }
 
 Stack.prototype.size = function() {
-	console.log((this.storage.match(/,/g) || []).length)
+  console.log((this.storage.match(/,/g) || []).length)
 }
 
 const myWeeklyMenu = new Stack()

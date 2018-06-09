@@ -21,7 +21,7 @@ weight: 3
 ### Freemarker
 
 * **Tag libs** are baller
-	* Taglibs are a tool to create consistent, responsive, accessible UI
+  * Taglibs are a tool to create consistent, responsive, accessible UI
 components for use in development
 
 ```htmlmixed
@@ -35,20 +35,20 @@ components for use in development
 
 * You can drop a **web content** field on structure while in the UI
 * You can **inject Database information** (no longer need to use resource locator)
-	* New module called "**Context Contributors**" that allow you to access resources more securely than the resource locator
-		* Because to use the resource locator, you have to give unrestricted access
-		* Two Types of context contributors
-			* **TYPE_GLOBAL**: variables available globally
-			* **TYPE_THEME**: variables available only within themes
+  * New module called "**Context Contributors**" that allow you to access resources more securely than the resource locator
+    * Because to use the resource locator, you have to give unrestricted access
+    * Two Types of context contributors
+      * **TYPE_GLOBAL**: variables available globally
+      * **TYPE_THEME**: variables available only within themes
 
 * **Breaking Changes** in freemarker for DXP
-	* https://dev.liferay.com/develop/reference/-/knowledge_base/7-0/breaking-changes
+  * https://dev.liferay.com/develop/reference/-/knowledge_base/7-0/breaking-changes
 
 ### Clay components and elements
 
 * You can use [Clay components](https://claycss.com/) in your templates
-	* Gives you lego type functionality
-	* You can compose components
+  * Gives you lego type functionality
+  * You can compose components
 
 ### Generic Templates
 
@@ -74,27 +74,27 @@ components for use in development
 ```htmlmixed
 <#assign comments = taskComments!"">
     <!-- email body -->
-		<#assign journalArticleLocalService = serviceLocator.findService("com.liferay.journal.service.JournalArticleLocalService") />
+    <#assign journalArticleLocalService = serviceLocator.findService("com.liferay.journal.service.JournalArticleLocalService") />
 
-		<#assign article = journalArticleLocalService.getArticleByUrlTitle(36823, "header-web-content") />
+    <#assign article = journalArticleLocalService.getArticleByUrlTitle(36823, "header-web-content") />
 
-		<#if article??>
-			${article.getContent()?replace("]>", "")}
-		</#if>
+    <#if article??>
+      ${article.getContent()?replace("]>", "")}
+    </#if>
 
-		<p>
-			Your assignment, ${entryType}, has been graded by the instructor. 
-		<#if comments != "" >
-			<br />Here are the comments included: <strong>${comments}</strong>
-		</#if>
-		</p>
+    <p>
+      Your assignment, ${entryType}, has been graded by the instructor. 
+    <#if comments != "" >
+      <br />Here are the comments included: <strong>${comments}</strong>
+    </#if>
+    </p>
 
 <p>Sincerely,<br /><strong>S.P.A.C.E. Instructor</strong></p>
 ```
 
 * Note is that using journal service has to be set to unrestricted which brings up security vulnerabilities like accessing the db
-	* You can minimize this by following the **principle of least permissions**
-	* Or use a context contributor so you can inject web content without exposing the entire journal service
+  * You can minimize this by following the **principle of least permissions**
+  * Or use a context contributor so you can inject web content without exposing the entire journal service
 
 </article>
 

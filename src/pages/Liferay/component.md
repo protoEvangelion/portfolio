@@ -10,13 +10,13 @@ weight: 4
 ## Building out a component based design
 
 * So I have two ideas here on 
-	* This is a solution where components could be consumed at the **web content level** and at the **theme level**
-	* Definitely use **Lexicon/Clay** either route we go
-	1. Use **Freemarker macros** to encapsulate clay components
-	2. Use **Soy templates** to encapsulate clay components
-		* Soy templates can be called from within a freemarker template
-		* There is currently a [soy-metal-clay library available](https://github.com/metal/metal-clay-components) that is in development
-		* [Soy cheatsheet](https://github.com/liferay/soy-cheat-sheet#miscellaneous)
+  * This is a solution where components could be consumed at the **web content level** and at the **theme level**
+  * Definitely use **Lexicon/Clay** either route we go
+  1. Use **Freemarker macros** to encapsulate clay components
+  2. Use **Soy templates** to encapsulate clay components
+    * Soy templates can be called from within a freemarker template
+    * There is currently a [soy-metal-clay library available](https://github.com/metal/metal-clay-components) that is in development
+    * [Soy cheatsheet](https://github.com/liferay/soy-cheat-sheet#miscellaneous)
 
 ##### Here is an example of how Travis Cory calls soy templates by using a tag lib in web content and in the theme context
 

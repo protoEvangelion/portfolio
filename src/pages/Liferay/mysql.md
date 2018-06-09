@@ -12,7 +12,7 @@ weight: 5
 ## How To Import
 
 * If db name does not exist, create a blank one
-	* **login** to mysql
+  * **login** to mysql
 
 ```shell
 mysql -u root -p

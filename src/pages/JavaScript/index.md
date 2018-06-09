@@ -19,7 +19,7 @@ weight: 1
 ### Thread of execution
 * Definition: parsing and executing the code line after line
 * The thread never executes more than one line at a time
-	* Hence the name *"single threaded"
+  * Hence the name *"single threaded"
 * **The thread of execution** will never enter your function declaration until you call the function
 
 #### Execution Context Example
@@ -28,8 +28,8 @@ weight: 1
 const num = 3;
 
 function multiplyBy2(inputNumber) {
-	const result = inputNumber * 2
-	resturn result
+  const result = inputNumber * 2
+  resturn result
 }
 
 const output = multiplyBy2(4)
@@ -37,12 +37,12 @@ const newOutput = multiplyBy2(10)
 ```
 
 * Execution context:
-	* You have a **local** and a **global** execution context
-	* when you call multiplyBy2 the thread enters the function
-	* comprised of **local memory**
-	* assigns result to 8
-	* returns result and stored in `output` global memory
-	* The local execution context then goes away and the global execution context picks up at newOutput
+  * You have a **local** and a **global** execution context
+  * when you call multiplyBy2 the thread enters the function
+  * comprised of **local memory**
+  * assigns result to 8
+  * returns result and stored in `output` global memory
+  * The local execution context then goes away and the global execution context picks up at newOutput
 
 
 ### Call Stack
@@ -50,9 +50,9 @@ const newOutput = multiplyBy2(10)
 *How do you keep track of calling functions within functions?*
 * The way JS keeps track of the thread of execution in all its contexts is with the call stack
 * The call stack uses the **stack data structure**
-	* So the last thing that you **push** on the stack, is the first thing it gets out (**LIFO**)
+  * So the last thing that you **push** on the stack, is the first thing it gets out (**LIFO**)
 * Typically you have one call stack in your environment
-	* Sometimes you have multiple callstacks with things like web workers
+  * Sometimes you have multiple callstacks with things like web workers
 
 *How does it work (using the previous JS example)?*
 
@@ -71,11 +71,11 @@ const newOutput = multiplyBy2(10)
 
 ```javascript
 function copyArrayAndDivideBy2(array) {
-	let output = []
-	for (let i =0; i < array.length; i++) {
-		output.push(array[i]/2)
-	}
-	return output
+  let output = []
+  for (let i =0; i < array.length; i++) {
+    output.push(array[i]/2)
+  }
+  return output
 }
 
 const myArray = [1,2,3]
@@ -111,84 +111,84 @@ Line By Line:
 ### Key Questions:
 
 1. *What is closure?*
-	* A function that can reference it's outer enclosing scope EVEN when it is called OUTSIDE that scope
+  * A function that can reference it's outer enclosing scope EVEN when it is called OUTSIDE that scope
 
 2. *How is closure created?*
-	* Declare a function and within that function, reference a variable from it's outer scope
+  * Declare a function and within that function, reference a variable from it's outer scope
 
 3. *How long does scope stay around?*
-	* Until there are no references to it
+  * Until there are no references to it
 
 4. *How do you leverage the module pattern?*
-	* Use an outer enclosing function which runs once and returns a function that references its scope
+  * Use an outer enclosing function which runs once and returns a function that references its scope
 
 
 ### The power of closure:
 
 * Our functions get '**memories**'
-	* **once**
-		* You can "onceify" your function so that it can only be run once
-	* **memoize**
-		* Say you have an algo that requries lots of steps like getting the 1000th prime number
-		* You can save that value "memoize" in the function's backpack like
+  * **once**
+    * You can "onceify" your function so that it can only be run once
+  * **memoize**
+    * Say you have an algo that requries lots of steps like getting the 1000th prime number
+    * You can save that value "memoize" in the function's backpack like
 ```javascript
 const primeNumbers = { 1000: x }
 ```
-		* So next time you look for > than the 1000th prime number
+    * So next time you look for > than the 1000th prime number
 * The functions get live persistent memeory
 * We can implement the JS module pattern
 
 * When function is called a **live store** is created which includes:
-	* local memory
-	* variable environment (VE)
-	* state
+  * local memory
+  * variable environment (VE)
+  * state
 
 * When function is finished executing it **deletes local memory** automatically
-	* The exception is for returned value
-	* This is known as *garbage collection*
+  * The exception is for returned value
+  * This is known as *garbage collection*
 
 * "Closure is when a function '**remembers**' its lexical scope even when the function is executed outside that lexical scope" ~Kyle Simpson
-	* It's like seeing something that has always been there you just haven't been able to see it before
-	* Closure can save access to variables as many nested scopes as you want
-	* When you reference a **variable within your function in a scope outside your function**, it will preserve access to that variable for as long as the function is alive
-		* The practical lesson for this is that if you nest your functions uncessarily deep, you can create unintended closure
-			* The auto garbage collector will not garbage collect while that function is still alive
-			* Every time you create a new closure, you are taking up more memory
-				* To manually garbage collect a function with closure, you can just assign the function to null
-	* "Closure is a logical conclusion of lexical scope" ~Kyle Simpson
+  * It's like seeing something that has always been there you just haven't been able to see it before
+  * Closure can save access to variables as many nested scopes as you want
+  * When you reference a **variable within your function in a scope outside your function**, it will preserve access to that variable for as long as the function is alive
+    * The practical lesson for this is that if you nest your functions uncessarily deep, you can create unintended closure
+      * The auto garbage collector will not garbage collect while that function is still alive
+      * Every time you create a new closure, you are taking up more memory
+        * To manually garbage collect a function with closure, you can just assign the function to null
+  * "Closure is a logical conclusion of lexical scope" ~Kyle Simpson
 
 
 
 #### So why wouldn't you just use global memory?
 
 * Problems with that:
-	* Often times you want independent live stores associated with each function rather than one big global store
-	* When you write code at scale you do not want to pollute global memory
-		* If you are adding things to the global scope and you are working with hundreds of other engineers who try to use the same name, you will have name collisions
-	* You can't use the module pattern
-		* where you write code in such away that its data sticks around but is protected
-			* You also should try to make your functions easy to write to and easy to get data out of
+  * Often times you want independent live stores associated with each function rather than one big global store
+  * When you write code at scale you do not want to pollute global memory
+    * If you are adding things to the global scope and you are working with hundreds of other engineers who try to use the same name, you will have name collisions
+  * You can't use the module pattern
+    * where you write code in such away that its data sticks around but is protected
+      * You also should try to make your functions easy to write to and easy to get data out of
 
 ##### Line By Line example
 
 <p data-height="300" data-theme-id="31719" data-slug-hash="PeWzMQ" data-default-tab="js,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="JS Closure Example" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/PeWzMQ/">JS Closure Example</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 
 * Given everything we currently know, when you call `myNewFunction` you would not expect it to be able to find the variable `counter` because that has been garbage collected when we finished calling `outer()`
-	* **HUGE POINT**: However at the time of function declaration, it stores in its def the surrounding data
-		* In this case the `counter` var
+  * **HUGE POINT**: However at the time of function declaration, it stores in its def the surrounding data
+    * In this case the `counter` var
 
 * When we store the function definition of `incrementCounter` in the variable `myNewFunction` it carries on its back a **"backpack"** which is in this case the **live persistent variable** `counter`
-	* This is a beautiful concept because it provides a way to have **live persistent data between function calls**
-	* The **backpack** is also known as:
-		* **closure** (most colloquial but not very helpful)
-		* **lexical scope**
-			* This is what we mean when JS is statically or lexically scoped
-		* **closed over variable environment (COVE)**
-	* This backpack is stored behind the scenes in the function definition as `[[scope]]`
-		* So how can you access this data?
-			* It's only available from the call of this function
-			* And only the data that is referenced within `incrementCounter` is going to be stored in the backpack
-				* If there were other variables besides `counter` defined outside `incrementCounter` they would be garbage collected
+  * This is a beautiful concept because it provides a way to have **live persistent data between function calls**
+  * The **backpack** is also known as:
+    * **closure** (most colloquial but not very helpful)
+    * **lexical scope**
+      * This is what we mean when JS is statically or lexically scoped
+    * **closed over variable environment (COVE)**
+  * This backpack is stored behind the scenes in the function definition as `[[scope]]`
+    * So how can you access this data?
+      * It's only available from the call of this function
+      * And only the data that is referenced within `incrementCounter` is going to be stored in the backpack
+        * If there were other variables besides `counter` defined outside `incrementCounter` they would be garbage collected
  
 </article>
 
@@ -200,24 +200,24 @@ const primeNumbers = { 1000: x }
 * Closure makes the module pattern feasible
 
 * Main **benefit** is restricting access & protecting internal functions from being called
-	* Also helps with abstracting code so that it is more readable
+  * Also helps with abstracting code so that it is more readable
 * Main **disadvantage** is if your testing methodology believes a unit test involves testing all private internals
-	* If you subscribe to Kyle Simpson's persuasion this is not a problem
-		* He believes a unit is not a function, it is a single indivisible piece of business logic
+  * If you subscribe to Kyle Simpson's persuasion this is not a problem
+    * He believes a unit is not a function, it is a single indivisible piece of business logic
 
 ```javascript
 var App = (function setupApp(){
-	var publicAPI = {
-		init: initUI,
-		addProject: addProject,
-		addWorkToProject: addWorkToProject
-	}
+  var publicAPI = {
+    init: initUI,
+    addProject: addProject,
+    addWorkToProject: addWorkToProject
+  }
 
-	return publicAPI
+  return publicAPI
 
-	function initUI() { ... }
-	function addProject() { ... }
-	function addWorkToProject() { ... }
+  function initUI() { ... }
+  function addProject() { ... }
+  function addWorkToProject() { ... }
 })()
 
 App.init()

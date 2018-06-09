@@ -15,10 +15,10 @@ weight: 2
 
 * JS is at a minimum a "*2-pass*" system that involves **compilation** and **execution**
 * It's not necessary to be super familiar with compiler theory
-	* However there are a few things we need to understand
-		* What we care about is:
-			* **how variable buckets are created** and **how we get different color marbles in the buckets**
-			* Formal declarations
+  * However there are a few things we need to understand
+    * What we care about is:
+      * **how variable buckets are created** and **how we get different color marbles in the buckets**
+      * Formal declarations
 
 * Example to illustrate how the JS compiler works
 
@@ -26,23 +26,23 @@ weight: 2
 var foo = 'bar'
 
 function bar() {
-	var foo = 'baz'
+  var foo = 'baz'
 }
 
 function baz(foo) {
-	foo = 'bam'
-	bam = 'yay'
+  foo = 'bam'
+  bam = 'yay'
 }
 ```
 
 **1st Pass: Compiler**
 
 * The compiler knows that line one that `foo` is on the left hand side of the equals and is therefore the **target of an assignment**
-	* This is known as **LHS** (Left Hand Side)
+  * This is known as **LHS** (Left Hand Side)
 * It knows that `'bar'` is on the right hand side of the equals and is therefore the **source of an assignment**
-	* This is known as **RHS** (Right Hand Side)
+  * This is known as **RHS** (Right Hand Side)
 * The second declaration of the variable `foo` is called shadowing
-	* If you console logged in `bar` before the declaration `foo` it would print undefined
+  * If you console logged in `bar` before the declaration `foo` it would print undefined
 * The parameter `foo` in declaration `baz` is a formal declaration
 * We don't have a variable `foo` in the scope of `baz` so we store it in the "green" `baz` bucket
 * `bam` is not a formal declaration so we can't assume anything about it
@@ -50,32 +50,32 @@ function baz(foo) {
 **2nd Pass: JS Engine**
 
 * This is just like go fish
-	* There is two answers to the question:
-		* "Hey global scope I am looking for the `foo` variable ever heard of him?"
-			* Either yes or no "Go fish!"
+  * There is two answers to the question:
+    * "Hey global scope I am looking for the `foo` variable ever heard of him?"
+      * Either yes or no "Go fish!"
 * *Engine*: Hey scope of `baz` I have an LHS for `bam` ever heard of him?
-	* *Compiler*: "Go fish!"
-	* *Engine*: Hey global scope I have an LHS for `bam` ever heard of him?
-		* *Compiler*: "No but I will create one for you since I don't have one formally declared"
-			* This is an implicit declaration in global scope
-			* This is virtually always a mistake
-			* If you are doing this on purpose STOP! You should never do this
-			* However if you have `"use strict"` it will not allow you to do this!
-				* It will throw a referece error: `bam is not defined`
-					* This is not the same as an undefined variable
-					* It's actually saying `bame is not declared`
+  * *Compiler*: "Go fish!"
+  * *Engine*: Hey global scope I have an LHS for `bam` ever heard of him?
+    * *Compiler*: "No but I will create one for you since I don't have one formally declared"
+      * This is an implicit declaration in global scope
+      * This is virtually always a mistake
+      * If you are doing this on purpose STOP! You should never do this
+      * However if you have `"use strict"` it will not allow you to do this!
+        * It will throw a referece error: `bam is not defined`
+          * This is not the same as an undefined variable
+          * It's actually saying `bame is not declared`
 
 * Practical implication from this example is: USE STRICT MODE `'use strict'`
-	* Although it has the ring of an overbearing parent, it is more **like a loving father**
-		* By not following the specs laid out by strict mode, you are **making it harder** for JS:
-			* To compile your code
-			* Optimize your code
-			* Execute your code
-		* For instance, creating an *implicit global variable at runtime is slower than creating it it at compile time*
-			* Which will in turn slow down the execution of your code
-	* `'use strict'` is file based
-		* So even if a 3rd party library doesn't use it, you can use it
-		* **babel** adds it for you
+  * Although it has the ring of an overbearing parent, it is more **like a loving father**
+    * By not following the specs laid out by strict mode, you are **making it harder** for JS:
+      * To compile your code
+      * Optimize your code
+      * Execute your code
+    * For instance, creating an *implicit global variable at runtime is slower than creating it it at compile time*
+      * Which will in turn slow down the execution of your code
+  * `'use strict'` is file based
+    * So even if a 3rd party library doesn't use it, you can use it
+    * **babel** adds it for you
 </article>
 
 <article id="2">
@@ -189,22 +189,22 @@ console.log(foo) // 'foo'
 > This is a made up concept which doesn't exist...it's a convenient metaphor
 
 * This is simply a easy way to think about how lexical scope is working in the 2 pass system
-	* When assignments occur (which is executable code belonging to the 2nd pass) it doesn't get "hoisted" to the top of the scope
-		* *IE: function declarations are hoisted but function expressions are not*
-	* `let` and `const` are **not initialized** at the top of their scope but rather are intialized at the line where they are used
-		* This does not mean that they are not hoisted
-			* Hoisting involves adding the variable to the enclosing lexical scope
-			* Hoisting does not describe the **initialzation** step
-				* `var` is hoisted and initialized whereas `let` and `const`
+  * When assignments occur (which is executable code belonging to the 2nd pass) it doesn't get "hoisted" to the top of the scope
+    * *IE: function declarations are hoisted but function expressions are not*
+  * `let` and `const` are **not initialized** at the top of their scope but rather are intialized at the line where they are used
+    * This does not mean that they are not hoisted
+      * Hoisting involves adding the variable to the enclosing lexical scope
+      * Hoisting does not describe the **initialzation** step
+        * `var` is hoisted and initialized whereas `let` and `const`
 
 * One benefit of hoisting is by using **function declarations**
-	* You don't have to declare functions in order before they need to be consumed
-		* It takes longer to scroll down to the bottom of the file to figure out what the program is actually doing
-		* You can order your functions logically
-		* Or you can order them alphabetically
-	* You can do mutual recursion
-		* This is when one function recursively calls another function which calls another recursively
-		* Mutual recursion is impossible without function declarations
+  * You don't have to declare functions in order before they need to be consumed
+    * It takes longer to scroll down to the bottom of the file to figure out what the program is actually doing
+    * You can order your functions logically
+    * Or you can order them alphabetically
+  * You can do mutual recursion
+    * This is when one function recursively calls another function which calls another recursively
+    * Mutual recursion is impossible without function declarations
 
 </article>
 

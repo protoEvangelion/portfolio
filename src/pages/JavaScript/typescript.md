@@ -24,8 +24,8 @@ weight: 7
 ### Auto-Boxing
 
 * When primitives are wrapped in identically-named Objects
-	* `new Boolean(true)` actually creates an object
-	* auto boxing like this is almost always a mistake
+  * `new Boolean(true)` actually creates an object
+  * auto boxing like this is almost always a mistake
 
 ### Why Add Types
 
@@ -34,7 +34,7 @@ weight: 7
 * clever abstractions are safer to use
 * JS does some unintuitive things like converting primitive types
 * Modern JS runtimes are written in typed langs like C++
-	* As soon as you break types you get out of "Hot mode"
+  * As soon as you break types you get out of "Hot mode"
 
 </article>
 
@@ -102,9 +102,9 @@ const login = (username: string, password: string): User => {
 let myCar: { make: string, model: string, year: number };
 
 myCar = {
-	make: 'Honda',
-	model: 'Accord',
-	year: 1992
+  make: 'Honda',
+  model: 'Accord',
+  year: 1992
 };
 ```
 
@@ -119,9 +119,9 @@ myCar = {
 
 ```javascript
 interface Car {
-	make: string;
-	model: string;
-	year: number;
+  make: string;
+  model: string;
+  year: number;
 };
 
 let myCar: Car = { make: 'Honda', model: 'Accord', year: 1992};

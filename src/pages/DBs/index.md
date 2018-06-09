@@ -13,23 +13,23 @@ weight: 1
 > A DB is simply an organized set of data that typically persists
 
 * Different DBs serve different purposes and are better for particular use cases
-	* Relational Stores
-		* SQlite
-			* Operates off of a file like an Excel workbook
-		* Postgres
-		* MySql
-		* Google Spanner
-	* Key-Value Stores
-		* Redis
-		* Dynamo DB
-	* Column Stores
-		* Cassandra
-		* Apache HBASE
-	* Graph Databases
-		* neo4j
-		* graphQL
-	* Document Databases
-		* Mongo DB
+  * Relational Stores
+    * SQlite
+      * Operates off of a file like an Excel workbook
+    * Postgres
+    * MySql
+    * Google Spanner
+  * Key-Value Stores
+    * Redis
+    * Dynamo DB
+  * Column Stores
+    * Cassandra
+    * Apache HBASE
+  * Graph Databases
+    * neo4j
+    * graphQL
+  * Document Databases
+    * Mongo DB
 
 </article>
 
@@ -39,11 +39,11 @@ weight: 1
 ## Relational Algebra & Codds Relational Model
 
 * Edward Codd in 1969 developed "Codd's Relational Model"
-	* It is a way of organizing data like an Excel worksheet
-		* A relation (table) is a set of tuples (rows)
-		* Each element (cell value) in a tuple is a member of a data domain (set of allowed values)
-		* These elements are called attribute values and are associated with an attribute (column name + type)
-	* The important idea that comes from this is "schemas"
+  * It is a way of organizing data like an Excel worksheet
+    * A relation (table) is a set of tuples (rows)
+    * Each element (cell value) in a tuple is a member of a data domain (set of allowed values)
+    * These elements are called attribute values and are associated with an attribute (column name + type)
+  * The important idea that comes from this is "schemas"
 
 ### Schemas
 
@@ -58,12 +58,12 @@ weight: 1
 * Codd's theorum states that for every relational calculus we can come up with, there exists a relational algebra way of getting there
 
 * To find the moves that Jeff Goldblum is in the:
-	* Relational algebra way (imperative)
-		* Join Movie and Actor over actorId
-		* Filter the results to include those that include Jeff Goldblum
-		* Select the movieTitle and year columns
-	* Relational Calculus way (declarative)
-		* Get movieTitle and year for Movie so that there exists an Actor A who was in the movie and is Jeff Goldblum
+  * Relational algebra way (imperative)
+    * Join Movie and Actor over actorId
+    * Filter the results to include those that include Jeff Goldblum
+    * Select the movieTitle and year columns
+  * Relational Calculus way (declarative)
+    * Get movieTitle and year for Movie so that there exists an Actor A who was in the movie and is Jeff Goldblum
 
 </article>
 
@@ -81,11 +81,11 @@ weight: 1
 
 1. SELECT clause `SELECT * FROM Employee`
 2. WHERE clause `WHERE id = 123 AND is_admin = 'true'`
-	* All the code after `WHERE` is called the Predicate
-	* the `'true'` piece is known as the Expression
-	* Both of these come together to form the Statement
-		* A Statement is a complete sentence
-		* Clauses are phrases of the sentence
+  * All the code after `WHERE` is called the Predicate
+  * the `'true'` piece is known as the Expression
+  * Both of these come together to form the Statement
+    * A Statement is a complete sentence
+    * Clauses are phrases of the sentence
 
 ### Command Line SQL
 
@@ -132,12 +132,12 @@ SELECT * FROM Employee
 * SELECT grabs all records from Employee table
 
 * Choosing elements
-	* elements are returned in the order that you ask for them
-	* It's good to be explicit so that:
-		* You minimize the amount of data that you are sending over the wire
-		* developer intent is clear
-		* less I/O
-		* Future schema changes will not affect results
+  * elements are returned in the order that you ask for them
+  * It's good to be explicit so that:
+    * You minimize the amount of data that you are sending over the wire
+    * developer intent is clear
+    * less I/O
+    * Future schema changes will not affect results
 
 ```sql
 SELECT id, firstname, lastname FROM Employee
@@ -181,13 +181,13 @@ SELECT id, firstname, lastname FROM Employee
 
 * Each db has a slightly different set of core functions
 * Some are the same like:
-	* lower
-	* max
-	* min
-	* count
-	* substr
+  * lower
+  * max
+  * min
+  * count
+  * substr
 * You can use them in comparisons
-	* `SELECT lower(title) AS name FROM Product`
+  * `SELECT lower(title) AS name FROM Product`
 
 ### Debugging Conditions
 
@@ -252,26 +252,26 @@ SELECT 'mike@gmail.com' LIKE '%@example.com'; -- FALSE
 SELECT *
 FROM CustomerOrder AS o
 LEFT JOIN Customer AS c
-	ON c.id = o.customerid
+  ON c.id = o.customerid
 ```
 
 * Four types of join:
-	1. INNER JOIN
-		* Will bring two tables together and will only give you things that exist in both tables
-		* Will exclude non matches from left and right tables
-		* Like if a customer exists in the customers table but doesn't have an order yet you wanna handle that case
-	2. LEFT JOIN
-		* Will ensure everything from the left table will be included but exclude non matches from the right table
-		* Say you have Orders table on left and you want to add customername which is in the Customers table
-			* LEFT JOIN would probably be the best fit because you want to include an order even if there is not a customer name match
-	3. RIGHT JOIN
-		* The opposite of LEFT JOIN
-		* Some DBs don't support this like SQlite
-	4. FULL JOIN
-		* Will include non matches in both tables
+  1. INNER JOIN
+    * Will bring two tables together and will only give you things that exist in both tables
+    * Will exclude non matches from left and right tables
+    * Like if a customer exists in the customers table but doesn't have an order yet you wanna handle that case
+  2. LEFT JOIN
+    * Will ensure everything from the left table will be included but exclude non matches from the right table
+    * Say you have Orders table on left and you want to add customername which is in the Customers table
+      * LEFT JOIN would probably be the best fit because you want to include an order even if there is not a customer name match
+  3. RIGHT JOIN
+    * The opposite of LEFT JOIN
+    * Some DBs don't support this like SQlite
+  4. FULL JOIN
+    * Will include non matches in both tables
 
 * LEFT, RIGHT & FULL JOIN are known as OUTER JOINs
-	* So OUTER JOINs allow for one or more rows to be partially empty because it doesn't have a corresponding match in anther table
+  * So OUTER JOINs allow for one or more rows to be partially empty because it doesn't have a corresponding match in anther table
 
 #### JOIN Selecting Columns
 
@@ -286,22 +286,22 @@ LEFT JOIN Customer AS c
 ## Aggregate Functions
 
 * Allows you to performa a calculation an entire result set and arrive at a single value
-	* SUM
-	* COUNT
-	* MIN/MAX
-	* AVG
+  * SUM
+  * COUNT
+  * MIN/MAX
+  * AVG
 * There are different aggregate functions from DB to DB
 
 ### Aggregate Functions and GROUP BY
-	* Instead of taking an entire table and squashing it into one table you can do calcs on a 
-		* These kinds of operations are great to do in the DB rather than on the frontend
-	* If you use GROUP BY you can add something to select if you are not using it in GROUP BY
+  * Instead of taking an entire table and squashing it into one table you can do calcs on a 
+    * These kinds of operations are great to do in the DB rather than on the frontend
+  * If you use GROUP BY you can add something to select if you are not using it in GROUP BY
 
 ```sql
 SELECT c.id, c.name, sum(o.amount)
 FROM CustomerOrder AS o
 INNER JOIN Customer AS c
-	ON o.customerid = c.id
+  ON o.customerid = c.id
 GROUP BY c.id
 ```
 

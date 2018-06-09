@@ -144,13 +144,13 @@ Let's do something crazy and add a list with another code example:
 
   ```css{10,13}
   .clearfix:after {
-  	visibility: hidden;
-  	display: block;
-  	font-size: 0;
-  	content: " ";
-  	clear: both;
-  	height: 0;
-  	}
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+    }
   .clearfix { display: inline-table; }
   /* Hides from IE-mac \*/
   * html .clearfix { height: 1%; }
