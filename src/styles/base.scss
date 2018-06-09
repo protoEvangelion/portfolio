@@ -16,25 +16,25 @@ $Yellow: #f1fa8c;
 
 body,
 input {
-	background: $Background;
-	color: $Foreground;
+  background: $Background;
+  color: $Foreground;
 }
 
 .gatsby-highlight,
 .gatsby-highlight pre[class*='language-'],
 .gatsby-highlight pre[class*='language-'] code {
-	background: darken($Background, 2.5%) !important;
+  background: darken($Background, 2.5%) !important;
 }
 
 .tab-dropdown-wrapper {
-	background: $Comment;
-	color: $Foreground;
+  background: $Comment;
+  color: $Foreground;
 }
 
 .card-menu-item:hover,
 .command-suggestion:hover,
 .context-menu button:hover {
-	background: darken($Comment, 10%);
+  background: darken($Comment, 10%);
 }
 
 /* --- Colors Only --- */
@@ -45,38 +45,38 @@ h3,
 h4,
 h5,
 h6 {
-	color: $Cyan;
+  color: $Cyan;
 }
 
 a {
-	color: $Purple;
+  color: $Purple;
 
-	&:hover {
-		color: lighten($Purple, 10%);
-	}
+  &:hover {
+    color: lighten($Purple, 10%);
+  }
 }
 
 /* --- Fills Only --- */
 
 .anchor svg {
-	fill: $Green;
+  fill: $Green;
 }
 
 /* --- Misc --- */
 
 button {
-	background: $Pink;
+  background: $Pink;
 }
 
 input {
-	border: 1px solid $Pink;
+  border: 1px solid $Pink;
 
-	&[type='text']:focus {
-		box-shadow: 0 0 5px $Green;
-		border: 1px solid $Green;
-	}
+  &[type='text']:focus {
+    box-shadow: 0 0 5px $Green;
+    border: 1px solid $Green;
+  }
 }
 
 .gatsby-highlight {
-	border-radius: 7px;
+  border-radius: 7px;
 }
