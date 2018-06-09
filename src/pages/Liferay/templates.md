@@ -11,18 +11,18 @@ weight: 3
 
 ### Application Display Templates (ADTs)
 
-* **Assets** like web content and Dynamic Data Lists (DDLs)
-* **Applications** like Asset Publisher or custom Navigation
-* **Custom Applications** developed in Java
-* **Email Notifications**
+- **Assets** like web content and Dynamic Data Lists (DDLs)
+- **Applications** like Asset Publisher or custom Navigation
+- **Custom Applications** developed in Java
+- **Email Notifications**
 
-* You can also use Soy Templates and JSX templates
+- You can also use Soy Templates and JSX templates
 
 ### Freemarker
 
-* **Tag libs** are baller
-  * Taglibs are a tool to create consistent, responsive, accessible UI
-components for use in development
+- **Tag libs** are baller
+  - Taglibs are a tool to create consistent, responsive, accessible UI
+    components for use in development
 
 ```htmlmixed
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -33,26 +33,27 @@ components for use in development
 <PREFIX:{tag-name} [TAG-ATTRIBUTES] />
 ```
 
-* You can drop a **web content** field on structure while in the UI
-* You can **inject Database information** (no longer need to use resource locator)
-  * New module called "**Context Contributors**" that allow you to access resources more securely than the resource locator
-    * Because to use the resource locator, you have to give unrestricted access
-    * Two Types of context contributors
-      * **TYPE_GLOBAL**: variables available globally
-      * **TYPE_THEME**: variables available only within themes
+- You can drop a **web content** field on structure while in the UI
+- You can **inject Database information** (no longer need to use resource locator)
 
-* **Breaking Changes** in freemarker for DXP
-  * https://dev.liferay.com/develop/reference/-/knowledge_base/7-0/breaking-changes
+  - New module called "**Context Contributors**" that allow you to access resources more securely than the resource locator
+    - Because to use the resource locator, you have to give unrestricted access
+    - Two Types of context contributors
+      - **TYPE_GLOBAL**: variables available globally
+      - **TYPE_THEME**: variables available only within themes
+
+- **Breaking Changes** in freemarker for DXP
+  - https://dev.liferay.com/develop/reference/-/knowledge_base/7-0/breaking-changes
 
 ### Clay components and elements
 
-* You can use [Clay components](https://claycss.com/) in your templates
-  * Gives you lego type functionality
-  * You can compose components
+- You can use [Clay components](https://claycss.com/) in your templates
+  - Gives you lego type functionality
+  - You can compose components
 
 ### Generic Templates
 
-* **Standalone** templates not associated to a structure that can be imported into other templates 
+- **Standalone** templates not associated to a structure that can be imported into other templates
 
 ```htmlmixed
 <#include "${full_templates_path}/navigation.ftl" />
@@ -60,16 +61,15 @@ components for use in development
 
 ### Embeddable Apps
 
-* You can **embed portlets** in freemarker
+- You can **embed portlets** in freemarker
 
 </article>
-
 
 <article id="2">
 
 ## Workflow notifications
 
-* If backend developers create a Kaleo workflow for content manangement front end devs can provide **notification templates**
+- If backend developers create a Kaleo workflow for content manangement front end devs can provide **notification templates**
 
 ```htmlmixed
 <#assign comments = taskComments!"">
@@ -83,7 +83,7 @@ components for use in development
     </#if>
 
     <p>
-      Your assignment, ${entryType}, has been graded by the instructor. 
+      Your assignment, ${entryType}, has been graded by the instructor.
     <#if comments != "" >
       <br />Here are the comments included: <strong>${comments}</strong>
     </#if>
@@ -92,19 +92,16 @@ components for use in development
 <p>Sincerely,<br /><strong>S.P.A.C.E. Instructor</strong></p>
 ```
 
-* Note is that using journal service has to be set to unrestricted which brings up security vulnerabilities like accessing the db
-  * You can minimize this by following the **principle of least permissions**
-  * Or use a context contributor so you can inject web content without exposing the entire journal service
+- Note is that using journal service has to be set to unrestricted which brings up security vulnerabilities like accessing the db
+  - You can minimize this by following the **principle of least permissions**
+  - Or use a context contributor so you can inject web content without exposing the entire journal service
 
 </article>
-
 
 <article id="3">
 
 ## Application Display Templates
 
 > Main difference from normal templates is using the **asset renderer**
-
-
 
 </article>

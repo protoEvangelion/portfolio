@@ -5,14 +5,12 @@ author: Jay Gatsby
 weight: 5
 ---
 
-
-
 <article id="1">
 
 ## How To Import
 
-* If db name does not exist, create a blank one
-  * **login** to mysql
+- If db name does not exist, create a blank one
+  - **login** to mysql
 
 ```shell
 mysql -u root -p
@@ -26,13 +24,13 @@ CREATE DATABASE db-name;
 exit
 ```
 
-* Once you have exited the shell, run 
+- Once you have exited the shell, run
 
 ```shell
 mysql -u root -p database_name < file.sql
 ```
 
-* Then in your `bundles/tomcat-7.0.62/webapps/ROOT/WEB-INF/classes/portal-ext.properties` adjust this section:
+- Then in your `bundles/tomcat-7.0.62/webapps/ROOT/WEB-INF/classes/portal-ext.properties` adjust this section:
 
 ```
 jdbc.default.driverClassName=com.mysql.jdbc.Driver

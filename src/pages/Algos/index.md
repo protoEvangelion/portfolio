@@ -16,7 +16,7 @@ weight: 1
 
 [![array_Big_O.png](https://s20.postimg.org/w2mzc7app/array_Big_O.png)](https://postimg.org/image/hjfuashkp/)
 
-* [Big O Cheatsheet](http://bigocheatsheet.com/)
+- [Big O Cheatsheet](http://bigocheatsheet.com/)
 
 #### TODO: [Read this](https://web.njit.edu/~wl256/download/cs610/Introduction-to-algorithm-3rdEdition.pdf)
 
@@ -24,19 +24,19 @@ weight: 1
 
 ### O(1)
 
-* When you have no loops and are just doing something and exiting/returning
+- When you have no loops and are just doing something and exiting/returning
 
 ### O(n)
 
-* When you are doing the same amount of work that is going into a function
+- When you are doing the same amount of work that is going into a function
 
 ### O(n^2)
 
-* Trick here is to look for double `for` or `while` loops
+- Trick here is to look for double `for` or `while` loops
 
 ### O(log n)
 
-* Where code employs **divide and conquer** strategies that use _recursion_ like merge and quick sorts
+- Where code employs **divide and conquer** strategies that use _recursion_ like merge and quick sorts
 
 </article>
 
@@ -65,14 +65,14 @@ function bubbleSort(nums) {
 }
 ```
 
-* You probably will never use a do loop or bubble sort in production code
+- You probably will never use a do loop or bubble sort in production code
 
 ### Insertion Sort
 
 `bigO = n ^ 2`
 
-* Has more favorable coefficients than bubble sort
-* Better for things that are **near sorted** \* merge sort and quick sort are pretty much faster in all other cases
+- Has more favorable coefficients than bubble sort
+- Better for things that are **near sorted** \* merge sort and quick sort are pretty much faster in all other cases
 
 ```javascript
 function insertionSort(nums) {
@@ -97,10 +97,10 @@ function insertionSort(nums) {
 
 ### Recipe for recursion:
 
-1. Identify base case(s)
-2. Identify recursive case(s)
-3. return where appropriate
-4. write procecdures for each case that bring you closer to the base case(s)
+1.  Identify base case(s)
+2.  Identify recursive case(s)
+3.  return where appropriate
+4.  write procecdures for each case that bring you closer to the base case(s)
 
 ```javascript
 function basicRecursion(max, current) {
@@ -116,8 +116,8 @@ basicRecursion(1, 10)
 
 `1, 1, 2, 3, 5, 10`
 
-* Fibonacci sequences lends itself well to recursion because they are themselves defined **recursively**
-  * You need to know the **first two preceeding** terms to get the nth number of the sequence
+- Fibonacci sequences lends itself well to recursion because they are themselves defined **recursively**
+  - You need to know the **first two preceeding** terms to get the nth number of the sequence
 
 ```javascript
 function fibonacci(n) {
@@ -127,7 +127,7 @@ function fibonacci(n) {
 }
 ```
 
-* Notice how we are returning the recursive function
+- Notice how we are returning the recursive function
   _ It is a common mistake to not return the recursive function
   _ What will happen is it will return `undefined` instead of preserving the value you are seeking
 
@@ -135,7 +135,7 @@ function fibonacci(n) {
 
 `!4 = 4 * 3 * 2 * 1`
 
-* Factorials are defined recursively by **multiplying itself** by the previous number until you get to 1
+- Factorials are defined recursively by **multiplying itself** by the previous number until you get to 1
 
 ```javascript
 function factorial(n) {
@@ -149,7 +149,7 @@ function factorial(n) {
 
 `bigO = O(n log n)`
 
-* Recursive algo that is very **stable**
-  * However when sorting numbers stability doesn't matter because you don't care what order two 4's for instance are given to you
+- Recursive algo that is very **stable**
+  - However when sorting numbers stability doesn't matter because you don't care what order two 4's for instance are given to you
 
 </article>

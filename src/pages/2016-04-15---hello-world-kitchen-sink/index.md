@@ -128,7 +128,7 @@ In this example, leading and trailing spaces are shown with with dots: ⋅
 
 1.  First ordered list item
 2.  Another item
-    * Unordered sub-list.
+    - Unordered sub-list.
 3.  Actual numbers don't matter, just that it's a number
     1.  Ordered sub-list
 4.  And another item.
@@ -141,11 +141,11 @@ To have a line break without a paragraph, you will need to use two trailing
 spaces.\
  Note that this line is separate, but within the same paragraph.
 
-* Unordered list can use asterisks
+- Unordered list can use asterisks
 
-- Or minuses
+* Or minuses
 
-* Or pluses
+- Or pluses
 
 <a name="links"></a>
 
@@ -218,11 +218,11 @@ Reference-style:
 Here's our logo (hover to see the title text):
 
 Inline-style:
-![alt text](https://pbs.twimg.com/profile_images/875556871427375106/Xuq8DypK_bigger.jpg "Logo Title Text 1")
+![alt text](https://pbs.twimg.com/profile_images/875556871427375106/Xuq8DypK_bigger.jpg 'Logo Title Text 1')
 
 Reference-style: ![alt text][logo]
 
-[logo]: https://pbs.twimg.com/profile_images/875556871427375106/Xuq8DypK_bigger.jpg "Logo Title Text 2"
+[logo]: https://pbs.twimg.com/profile_images/875556871427375106/Xuq8DypK_bigger.jpg 'Logo Title Text 2'
 
 <a name="tables"></a>
 
