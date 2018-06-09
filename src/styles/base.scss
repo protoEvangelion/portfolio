@@ -22,7 +22,8 @@ input {
 
 .gatsby-highlight,
 .gatsby-highlight pre[class*='language-'],
-.gatsby-highlight pre[class*='language-'] code {
+.gatsby-highlight pre[class*='language-'] code,
+code {
   background: darken($Background, 2.5%) !important;
 }
 
@@ -49,11 +50,16 @@ h6 {
 }
 
 a {
-  color: $Purple;
+	color: $Purple;
+	text-shadow: none !important;
 
   &:hover {
     color: lighten($Purple, 10%);
   }
+}
+
+p {
+	color: $Foreground !important;
 }
 
 /* --- Fills Only --- */

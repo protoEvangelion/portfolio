@@ -52,12 +52,14 @@
     "dev": "gatsby develop",
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
     "build": "gatsby build",
-    "format":
-      "prettier-eslint --write \"**/*.md\" \"*.js\" \"src/**/*.js\" \"src/styles/*css\" --ignore \"public\" \"node_modules\"",
+    "format": "prettier-eslint --write \"**/*.md\" \"*.js\" \"src/**/*.js\" \"src/styles/*css\" --ignore \"public\" \"node_modules\"",
     "lint-staged": "lint-staged",
     "serve": "gatsby serve"
   },
   "lint-staged": {
-    "*.{js,json,css}": ["prettier --write", "git add"]
+    "*.{js,json,css}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
