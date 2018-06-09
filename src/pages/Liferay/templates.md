@@ -1,7 +1,7 @@
 ---
 title: "DXP Templating"
 description: "Describes the 3 options when it comes to templates"
-author: Jay Gatsby
+ author: Ryan Garant
 weight: 3
 ---
 

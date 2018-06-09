@@ -1,7 +1,7 @@
 ---
 title: "OOP JavaScript"
 description: "Object Oriented Programming in JS notes adapted from [JS Hardparts](https://frontendmasters.com/courses/javascript-hard-parts) & [JS Foundations](https://frontendmasters.com/courses/javascript-foundations)"
-author: Jay Gatsby
+ author: Ryan Garant
 weight: 3
 ---
 

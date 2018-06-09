@@ -1,7 +1,7 @@
 ---
 title: "Liferay"
 description: "DXP Updates"
-author: Jay Gatsby
+ author: Ryan Garant
 icon: "code-file"
 weight: 1
 ---

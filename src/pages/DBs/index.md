@@ -1,7 +1,7 @@
 ---
 title: "DBs"
 description: "Fundamentals of SQL DBs like SQLite, Postgres & MySQL"
-author: Jay Gatsby
+ author: Ryan Garant
 icon: "hammer"
 weight: 1
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Asynchronous JS"
 description: "Deep dive into how js deals with async tasks"
-author: Jay Gatsby
+ author: Ryan Garant
 weight: 5
 ---
 

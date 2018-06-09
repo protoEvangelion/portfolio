@@ -1,7 +1,7 @@
 ---
 title: "DXP Front End Golden Nuggets"
 description: "Gleanings from the DXP Front End Training Course"
-author: Jay Gatsby
+ author: Ryan Garant
 weight: 2
 ---
 

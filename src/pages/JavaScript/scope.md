@@ -1,7 +1,7 @@
 ---
 title: "Scope"
 description: "Super important concept about what level declared variables can be accessed"
-author: Jay Gatsby
+ author: Ryan Garant
 weight: 2
 ---
 

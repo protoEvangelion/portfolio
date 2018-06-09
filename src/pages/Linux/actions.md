@@ -1,7 +1,7 @@
 ---
 title: "Actions"
 description: "Cool actions you can do in linux"
-author: Jay Gatsby
+ author: Ryan Garant
 weight: 2
 ---
 

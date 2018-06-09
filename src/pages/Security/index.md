@@ -1,7 +1,7 @@
 ---
 title: "Security"
 description: "Web Security"
-author: Jay Gatsby
+ author: Ryan Garant
 icon: "lock"
 weight: 1
 ---

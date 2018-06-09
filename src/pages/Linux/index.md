@@ -1,7 +1,7 @@
 ---
 title: "Linux"
 description: "Intro to Linux"
-author: Jay Gatsby
+ author: Ryan Garant
 icon: "cloud"
 weight: 1
 ---

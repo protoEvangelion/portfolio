@@ -1,7 +1,7 @@
 ---
 title: "DevOps"
 description: "Intro to DevOps (based on https://courses.edx.org/courses/course-v1:LinuxFoundationX+LFS161x+1T2018)"
-author: Jay Gatsby
+ author: Ryan Garant
 icon: "hammer"
 weight: 1
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Machine Learning"
-description: "Intro to Machine Learning (based on https://www.coursera.org/learn/machine-learning)"
+description: "Intro to Machine Learning (primarily based on https://www.coursera.org/learn/machine-learning)"
 author: "Jay Gatsby"
 icon: "hammer"
 weight: 1
@@ -77,7 +77,7 @@ In general, any machine learning problem can be assigned to one of two broad cla
   * Predict if breast cancer tumor is malignant or benign
     * Discrete value of output (0 or 1)
 
-<img alt="Supervised Learning" src="images/supervised.png">
+![](images/supervised.png) _Provided by [Andrew Ng](http://www.andrewng.org/about/)_
 
 #### Unsupervised Learning (Machine figures it out the right answers)
 
@@ -101,7 +101,7 @@ x');
 
 * Different areas of practical use:
 
-<img alt="Unsupervised Learning" src="images/unsupervised.png">
+![](images/unsupervised.png) _Provided by [Andrew Ng](http://www.andrewng.org/about/)_
 
 </article>
 
@@ -126,7 +126,7 @@ hϴ(x) = ϴ0 + ϴ1x
 
 ### Model Representation
 
-<img alt="Linear function model" src="images/linear-model.png">
+![](images/linear-model.png) _Provided by [Andrew Ng](http://www.andrewng.org/about/)_
 
 * `h` is the the function which is knows as the **hypothesis**
 * Our goal is, given a training set, to learn a `function h : X → Y` so that `h(x)` is a “good” predictor for the corresponding value of y
@@ -143,17 +143,17 @@ hϴ(x) = ϴ0 + ϴ1x
 
 * Formal Definition:
 
-<img alt="Cost Func" src="images/cost-func.png">
+![](images/cost-func.png) _Provided by [Andrew Ng](http://www.andrewng.org/about/)_
 
 * `hθ​(xi​)−yi​` is the difference between the predicted value and the actual value
 * Why use square?
   * It's a convenience in helping compute the slope because it cancels out the `1/2`
 
-<img alt="Slope" src="images/slope.png">
+![](images/slope.png) _Provided by [Andrew Ng](http://www.andrewng.org/about/)_
 
 #### Relationship between the cost function and the hypothesis function
 
-<img alt="Cost to Hypothesis Relationship" src="images/cost-to-hypothesis.png">
+![](images/cost-to-hypothesis.png) _Provided by [Andrew Ng](http://www.andrewng.org/about/)_
 
 * On left actual data is the red x's
 * Our goal is to minimize `J(θ1)`
@@ -163,13 +163,13 @@ hϴ(x) = ϴ0 + ϴ1x
   * **So intuitively our goal is to minimize the sum of the squared errors**
     * In ML we want an efficient algo to automatically find this minimum point
 
-<img alt="3d Graph" src="images/3d-cost.png">
+![](images/3d-cost.png) _Provided by [Andrew Ng](http://www.andrewng.org/about/)_
 
 * 3d graph above should help you intuitively see what the cost function looks like
 
 #### Contour Graph
 
-<img alt="Contour Graph" src="images/contour.png">
+![](images/contour.png) _Provided by [Andrew Ng](http://www.andrewng.org/about/)_
 
 * A contour plot is a graph that contains many contour lines
 * The **closer you get to the center** the **less errors you will have** between the hypothesis line and the actual data
@@ -182,15 +182,15 @@ hϴ(x) = ϴ0 + ϴ1x
 * AKA "Batch" Gradient Descent
   * We are looking at the entire batch of training examples to make decisions
 * Gradient descent can be **applied to many ML models** like the cost function
-* Is an [efficient optimization algorithm](https://towardsdatascience.com/machine-learning-fundamentals-via-linear-regression-41a5d11f5220) that attempts to find a **local or global minima of a function**
+* Is an [efficient optimization algorithm][1] that attempts to find a **local or global minima of a function**
   * enables a model to **learn the gradient or direction** that the model should take in order to **reduce errors**
     * As the model iterates, it gradually converges towards a minimum where further tweaks to the parameters produce little or zero changes in the loss — also referred to as convergence
     * enables the learning process to **make corrective updates** to the learned estimates that move the model toward an _optimal combination of parameters_
     * We can now **use the learned values** of b0 and b1 stored in theta **to predict** values y for new values of X
 
-<img src="https://cdn-images-1.medium.com/max/800/1*UUHvSixG7rX2EfNFTtqBDA.gif" alt="Convergence">
+![](https://cdn-images-1.medium.com/max/800/1*UUHvSixG7rX2EfNFTtqBDA.gif) _Provided by [conrmcdonald](https://towardsdatascience.com/@conrmcdonald)_
 
-<img src="https://cdn-images-1.medium.com/max/600/1*imhEKEpzX24CC_LIIureBw.gif" alt="Gradient Descent Iterations">
+![](https://cdn-images-1.medium.com/max/600/1*imhEKEpzX24CC_LIIureBw.gif) _Provided by [conrmcdonald](https://towardsdatascience.com/@conrmcdonald)_
 
 * For cost function
   * You have your hypothesis function and you can measure how well it fits into the data
@@ -203,9 +203,8 @@ hϴ(x) = ϴ0 + ϴ1x
       * Red arrow in image below shows the minimal location
   * **The point of all this is that if we start with a guess for our hypothesis and then repeatedly apply these gradient descent equations, our hypothesis will become more and more accurate**
 
-<img alt="Gradient Descent" src="images/gradient-descent.png">
-
-<img alt="Gradient Algo" src="images/gradient-algo.png">
+![](images/gradient-descent.png) _Provided by [Andrew Ng](http://www.andrewng.org/about/)_
+![](images/gradient-algo.png) _Provided by [Andrew Ng](http://www.andrewng.org/about/)_
 
 * The formal algo
   * Quick note on syntax
@@ -223,11 +222,11 @@ hϴ(x) = ϴ0 + ϴ1x
       * So as we approach the **local minimum gradient descent will automatically take smaller steps**
   * Depending on where one starts on the graph, one could end up at different points
 
-<img alt="Gradient Simultaneous Update" src="images/gradient-update.png">
+![](images/gradient-update.png) _Provided by [Andrew Ng](http://www.andrewng.org/about/)_
 
 * You should update simultaneously because `θ1​` uses `θ0`
 
-<img alt="Gradient Linear Cost" src="images/gradient-linear.png">
+![](images/gradient-linear.png) _Provided by [Andrew Ng](http://www.andrewng.org/about/)_
 
 * This is the new equation when you plug in the linear algebra quadratic function
   * The linear function only has one global minimum not multiple local minimums
@@ -279,3 +278,6 @@ $$
 * "Scalar" means that an object is a **single** value, not a vector or \* trix
   ers to the set of scalar real numbers.
   </article>
+
+[1]: https://towardsdatascience.com/machine-learning-fundamentals-via-linear-regression-41a5d11f5220
+[2]: https://www.coursera.org/learn/machine-learning
