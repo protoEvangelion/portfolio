@@ -22,6 +22,7 @@ class HTML extends React.Component {
 		return (
 			<html lang="en">
 				<head>
+					<script async src="https://static.codepen.io/assets/embed/ei.js" />
 					<link rel="preload" href={`/static/spectral-latin-400.bc2de9de.woff2`} as="font" crossOrigin />
 					<link rel="preload" href={`/static/spectral-latin-800.53eca5bf.woff2`} as="font" crossOrigin />
 					<link rel="prefetch" href={`/static/spectral-latin-400italic.b0c97eb5.woff2`} />
