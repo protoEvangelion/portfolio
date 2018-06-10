@@ -1,6 +1,7 @@
 language: node_js
 node_js:
 - 8.11.1
+before_deploy: "npm run build"
 deploy:
   provider: firebase
   project: proto-notes

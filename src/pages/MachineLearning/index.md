@@ -367,17 +367,17 @@ $$
 -1 ≤ x_(i) ≤ 1
 $$
 
-* The techniques are known as:
-  * **Feature Scaling**
-    * dividing the input values by the range (max val * min val) of the input variable
-  * **Mean normalization**
-    * Subtracting the average val for an input var from the values for that input var
-    * Results in an average of `0`
+- The techniques are known as:
+  - **Feature Scaling**
+    - dividing the input values by the range (max val - min val) of the input variable
+  - **Mean normalization**
+    - Subtracting the average val for an input var from the values for that input var
+    - Results in an average of `0`
 
 - Use this formula to adjust vals:
   - $μi$ is the average of all the values for feature (i)
   - $si$ is the range of values (max - min)
-    - Is the standard deviation
+    - Or you can use the standard deviation
 
 $$
 x_i := \dfrac{x_i - \mu_i}{s_i}
