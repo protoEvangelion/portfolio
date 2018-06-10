@@ -1,8 +1,8 @@
 ---
 title: "DXP Front End Golden Nuggets"
 description: "Gleanings from the DXP Front End Training Course"
-author: Ryan Garant
-weight: 2
+author: "Ryan Garant"
+
 ---
 
 <article id="1">

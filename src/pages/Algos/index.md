@@ -1,9 +1,9 @@
 ---
 title: "Algos"
 description: "Fundamentals: algorithms, computing, 1's & 0's"
-author: Ryan Garant
-icon: "hammer"
-weight: 1
+author: "Ryan Garant"
+
+
 ---
 
 #{$page.description}

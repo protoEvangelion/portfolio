@@ -1,9 +1,9 @@
 ---
 title: "DevOps"
 description: "Intro to DevOps (based on https://courses.edx.org/courses/course-v1:LinuxFoundationX+LFS161x+1T2018)"
-author: Ryan Garant
-icon: "hammer"
-weight: 1
+author: "Ryan Garant"
+
+
 ---
 
 <article id="1">

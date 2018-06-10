@@ -1,8 +1,8 @@
 ---
 title: "Data Structures"
 description: "Computer science data structure interfaces"
-author: Ryan Garant
-weight: 2
+author: "Ryan Garant"
+
 ---
 
 <article id="1">

@@ -2,8 +2,6 @@
 title: "Machine Learning"
 description: "Intro to Machine Learning (primarily based on https://www.coursera.org/learn/machine-learning)"
 author: "Ryan Garant"
-icon: "hammer"
-weight: 1
 ---
 
 <article id="1">
@@ -207,7 +205,6 @@ hϴ(x) = ϴ0 + ϴ1x
 _Provided by [Andrew Ng](http://www.andrewng.org/about/)_
 
 ![](images/gradient-algo.png)
-_Provided by [Andrew Ng](http://www.andrewng.org/about/)_
 
 - The formal algo
   - Quick note on syntax
@@ -294,7 +291,7 @@ $$
 
 ![](images/multiply-matrix.png) _Provided by [Andrew Ng](http://www.andrewng.org/about/)_
 
-![](images/multiply-prediction.jpg) _Provided by [Andrew Ng](http://www.andrewng.org/about/) Matrix Prediction_
+![](images/matrix-prediction.jpg) _Provided by [Andrew Ng](http://www.andrewng.org/about/) Matrix Prediction_
 
 - Multiply Matrix by Matrix
   - The # of columns in the 1st matrix must match the # of rows in the 2nd matrix
@@ -325,6 +322,76 @@ $$
   - rotate $90^0$
   - flip it
   - $A\scriptscriptstyle ij$ = $B\scriptscriptstyle ij$
+
+</article>
+
+<article id="4">
+
+## Multiple Features
+
+- AKA: "multivariate linear regression"
+- Notation for equations with `n` # of input vars:
+
+$$
+\begin{aligned}x_j^{(i)} &= \text{value of feature } j \text{ in the }i^{th}\text{ training example} \\ x^{(i)}& = \text{the input (features) of the }i^{th}\text{ training example} \\ m &= \text{the number of training examples} \\ n &= \text{the number of features} \end{aligned}
+$$
+
+- So $x^i$ refers to the row while the subscript j refers to the feature
+
+* Hypothesis function
+
+$$
+hθ(x) = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \theta_3 x_3 + \cdots + \theta_n x_n
+$$
+
+- Combining with matrix multiplication we get:
+
+$$
+\begin{aligned}h\_\theta(x) =\begin{bmatrix}\theta_0 \hspace{2em} \theta_1 \hspace{2em} ... \hspace{2em} \theta_n\end{bmatrix}\begin{bmatrix}x_0 \\ x_1 \\ \vdots \\ x_n\end{bmatrix}= \theta^T x\end{aligned}
+$$
+
+### Gradient Descent for Multiple Variables
+
+$$
+\begin{aligned} & \text{repeat until convergence:} \; \lbrace \\ \; & \theta_0 := \theta_0 - \alpha \frac{1}{m} \sum\limits_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)}) \cdot x_0^{(i)}\\ \; & \theta_1 := \theta_1 - \alpha \frac{1}{m} \sum\limits_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)}) \cdot x_1^{(i)} \\ \; & \theta_2 := \theta_2 - \alpha \frac{1}{m} \sum\limits_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)}) \cdot x_2^{(i)} \\ & \cdots \\ \rbrace \end{aligned}
+$$
+
+#### Feature Scaling
+
+- When some features have significantly higher # of input values you may run into some serious **speed issues**
+  - The solution is to modify the ranges of input values so they are about the same
+  - Practically this makes the **path to convergence much faster**
+  - The goal is around this range (doesn't have to be perfect):
+
+$$
+-1 ≤ x_(i) ≤ 1
+$$
+
+* The techniques are known as:
+  * **Feature Scaling**
+    * dividing the input values by the range (max val * min val) of the input variable
+  * **Mean normalization**
+    * Subtracting the average val for an input var from the values for that input var
+    * Results in an average of `0`
+
+- Use this formula to adjust vals:
+  - $μi$ is the average of all the values for feature (i)
+  - $si$ is the range of values (max - min)
+    - Is the standard deviation
+
+$$
+x_i := \dfrac{x_i - \mu_i}{s_i}
+$$
+
+- $x_i$​ represents housing prices with a **range** of 100 to 2000 and a **mean** value of 1000, then:
+
+$$
+x_i := \dfrac{price-1000}{1900}
+$$
+
+#### Learning Rate
+
+### Features & Polynomial Regression
 
 </article>
 

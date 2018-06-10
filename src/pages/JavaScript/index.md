@@ -3,9 +3,9 @@ title: "JavaScript"
 description: "When you strive to comprehend your code, you create
 better work and become better at what you do. The code isn’t just
 your job anymore, it’s your craft. ~Jenn Lukas"
-author: Ryan Garant
-icon: "flash"
-weight: 1
+author: "Ryan Garant"
+
+
 ---
 
 <article id="1">

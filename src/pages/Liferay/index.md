@@ -1,9 +1,9 @@
 ---
 title: "Liferay"
 description: "DXP Updates"
-author: Ryan Garant
-icon: "code-file"
-weight: 1
+author: "Ryan Garant"
+
+
 ---
 
 <article id="1">

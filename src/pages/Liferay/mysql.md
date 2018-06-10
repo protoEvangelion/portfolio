@@ -1,8 +1,8 @@
 ---
 title: "MySql"
 description: "Importing mysql db to Liferay"
-author: Ryan Garant
-weight: 5
+author: "Ryan Garant"
+
 ---
 
 <article id="1">

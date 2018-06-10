@@ -1,8 +1,8 @@
 ---
 title: "Pro Tips"
 description: "Golden nuggets on JS from the masters"
-author: Ryan Garant
-weight: 6
+author: "Ryan Garant"
+
 ---
 
 <article id="1">

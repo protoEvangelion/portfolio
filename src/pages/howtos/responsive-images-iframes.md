@@ -2,7 +2,7 @@
 title: "Responsive Images and iFrames"
 date: "2017-01-02"
 draft: false
-author: Ryan Garant
+author: "Ryan Garant"
 tags:
   - remark
   - Images

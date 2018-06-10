@@ -1,8 +1,8 @@
 ---
 title: "Functional JS"
 description: ""
-author: Ryan Garant
-weight: 4
+author: "Ryan Garant"
+
 ---
 
 <article id="1">

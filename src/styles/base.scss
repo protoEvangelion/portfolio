@@ -23,6 +23,7 @@ input {
 .gatsby-highlight,
 .gatsby-highlight pre[class*='language-'],
 .gatsby-highlight pre[class*='language-'] code,
+.katex-display,
 code {
   background: darken($Background, 2.5%) !important;
 }
@@ -50,16 +51,19 @@ h6 {
 }
 
 a {
-	color: $Purple;
-	text-shadow: none !important;
+  color: $Purple;
+  text-shadow: none !important;
 
   &:hover {
     color: lighten($Purple, 10%);
   }
 }
 
+div,
+small,
+span,
 p {
-	color: $Foreground !important;
+  color: $Foreground !important;
 }
 
 /* --- Fills Only --- */
@@ -75,12 +79,12 @@ button {
 }
 
 em {
-	display: block;
-	padding-top: .3rem;
+  display: block;
+  padding-top: 0.3rem;
 }
 
 img {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 input {
@@ -94,4 +98,8 @@ input {
 
 .gatsby-highlight {
   border-radius: 7px;
+}
+
+.katex-display {
+  padding: 1rem;
 }

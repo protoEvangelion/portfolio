@@ -1,8 +1,8 @@
 ---
 title: "Asynchronous JS"
 description: "Deep dive into how js deals with async tasks"
-author: Ryan Garant
-weight: 5
+author: "Ryan Garant"
+
 ---
 
 <article id="1">

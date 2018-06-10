@@ -1,9 +1,9 @@
 ---
 title: "Linux"
 description: "Intro to Linux"
-author: Ryan Garant
-icon: "cloud"
-weight: 1
+author: "Ryan Garant"
+
+
 ---
 
 <article id="1">

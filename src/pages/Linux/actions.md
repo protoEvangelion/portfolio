@@ -1,8 +1,8 @@
 ---
 title: "Actions"
 description: "Cool actions you can do in linux"
-author: Ryan Garant
-weight: 2
+author: "Ryan Garant"
+
 ---
 
 <article id="1">

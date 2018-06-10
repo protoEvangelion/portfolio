@@ -1,9 +1,9 @@
 ---
 title: "Security"
 description: "Web Security"
-author: Ryan Garant
-icon: "lock"
-weight: 1
+author: "Ryan Garant"
+
+
 ---
 
 <article id="1">

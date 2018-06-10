@@ -1,8 +1,8 @@
 ---
 title: "DXP Templating"
 description: "Describes the 3 options when it comes to templates"
-author: Ryan Garant
-weight: 3
+author: "Ryan Garant"
+
 ---
 
 <article id="1">

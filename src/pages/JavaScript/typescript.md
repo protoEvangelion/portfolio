@@ -1,8 +1,8 @@
 ---
 title: "Typescript"
 description: "Typescript Fundamentals based on https://github.com/mike-works/typescript-fundamentals"
-author: Ryan Garant
-weight: 7
+author: "Ryan Garant"
+
 ---
 
 <article id="1">
