@@ -1,7 +1,7 @@
 ---
 title: "Security"
 description: "Web Security"
- author: Ryan Garant
+author: Ryan Garant
 icon: "lock"
 weight: 1
 ---

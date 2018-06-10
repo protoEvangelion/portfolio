@@ -3,7 +3,7 @@ title: "JavaScript"
 description: "When you strive to comprehend your code, you create
 better work and become better at what you do. The code isn’t just
 your job anymore, it’s your craft. ~Jenn Lukas"
-author: Jay Gatsby
+author: Ryan Garant
 icon: "flash"
 weight: 1
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Pro Tips"
 description: "Golden nuggets on JS from the masters"
- author: Ryan Garant
+author: Ryan Garant
 weight: 6
 ---
 

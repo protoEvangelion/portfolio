@@ -1,7 +1,7 @@
 ---
 title: "Component Architecture"
 description: "How we can leverage a reusable Atomic Design component model"
- author: Ryan Garant
+author: Ryan Garant
 weight: 4
 ---
 

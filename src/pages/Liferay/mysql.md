@@ -1,7 +1,7 @@
 ---
 title: "MySql"
 description: "Importing mysql db to Liferay"
-author: Jay Gatsby
+author: Ryan Garant
 weight: 5
 ---
 

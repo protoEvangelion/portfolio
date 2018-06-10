@@ -1,7 +1,7 @@
 ---
 title: "Functional JS"
 description: ""
-author: Jay Gatsby
+author: Ryan Garant
 weight: 4
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Data Structures"
 description: "Computer science data structure interfaces"
-author: Jay Gatsby
+author: Ryan Garant
 weight: 2
 ---
 

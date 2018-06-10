@@ -2,7 +2,7 @@
 title: "Using Excerpts"
 date: "2017-11-14"
 draft: false
- author: Ryan Garant
+author: Ryan Garant
 tags:
   - remark
   - excerpts

@@ -2,7 +2,7 @@
 title: "Custom components"
 date: "2018-01-27"
 draft: false
- author: Ryan Garant
+author: Ryan Garant
 tags:
   - remark
   - React
