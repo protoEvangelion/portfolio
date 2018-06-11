@@ -391,7 +391,102 @@ $$
 
 #### Learning Rate
 
+- **Debugging gradient descent**
+  - Make a plot with number of iterations on the x-axis
+  - Now plot the cost function, J(θ) over the number of iterations of gradient descent
+  - If J(θ) ever increases, then you probably need to decrease α.
+
+- **Automatic convergence test**
+  - Declare convergence if J(θ) decreases by less than E in one iteration
+    - E is some small value such as $10^{-3}$
+  - However in practice it's difficult to choose this *threshold value* ($10^{-3}$)
+
+- It has been proven that if learning rate α is sufficiently small, then J(θ) will decrease on every iteration
+- If α is *too small* you have **slow convergence**
+- If α is too large: ￼may not decrease on every iteration and thus **may not converge**
+
+> Pro tip: Try setting α to .001, .003, .01, .03, .1, .3, 1 to figure out which is best
+
+![](images/debug-gd.jpg)
+_Provided by [Andrew Ng](http://www.andrewng.org/about/)_
+
+
 ### Features & Polynomial Regression
+
+- Our hypothesis **doesn't have to be a linear straight line** if it doesn't fit the data well
+- The **downside** is that if you go this route then feature scaling becomes more essential
+  - eg. if $x_1$​ has range *1 - 1000*
+    - then range of $x_1^2$ becomes *1 - 1000000*
+    - and that of $x_1^3$ becomes *1 - 1000000000*
+
+- **hypothesis function**:
+$$
+h_\theta(x) = \theta_0 + \theta_1 x_1
+$$
+
+- then we can create additional features based on $x_1$ to get the **quadratic function**:
+$$
+h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 x_1^2
+$$
+
+- or the **cubic function**
+$$
+h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 x_1^2 + \theta_3 x_1^3
+$$
+
+- In the cubic version, we have created new features $x_2$​ and $x_3$​ where $x_2 = x_1^2$ and $x_3 = x_1^3$
+
+- To make it a **square root function**, we could do:
+$$
+h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 \sqrt{x_1}
+$$
+
+</article>
+
+<article id="5">
+
+## Computing Parameters Analytically
+
+### Normal equation
+
+- **Gradient descent** gives one way of minimizing $J$ **Normal equation** is another
+- This time we will perform the minimization explicitly
+  - **Not an iterative algorithm**
+- Minimize $J$ by explicitly taking its derivatives with respect to the $θj$ ’s, and setting them to zero
+- Results in the **optimum theta** without iteration
+- No need to do feature scaling
+- Computing the inversion has **complexity**: $\mathcal{O}(n^3)$
+- Very large number of features (like > **10,000**), the normal equation will be slow
+  - When n > 10,000 it might be a good time to go from a normal solution to an iterative process
+- Formula:
+
+$$
+\theta = (X^T X)^{-1}X^T y
+$$
+
+![](images/normal-equation.jpg)
+_Provided by [Andrew Ng](http://www.andrewng.org/about/)_
+
+
+#### Advantages & Disadvantages:
+
+| Gradient Descent           | Normal Equation                                |
+| -------------------------- | :--------------------------------------------: |
+| Need to choose alpha       | No need to choose alpha                        |
+| Needs many iterations      | No need to iterate                             |
+| $O (kn^2)$                 | $O (n^3)$, need to calculate inverse of $X^TX$ |
+| Works well when n is large | Slow if n is very large                        |
+
+
+### Normal Equation Noninvertibility
+
+- AKA "singular/degenerate"
+  - Matrices that do not have an inverse
+- In octave we want to use the `pinv` function rather than `inv`
+  - The `pinv` function will give you a value of $\theta$ even if $X^TX$ is not invertible
+- **Solutions** to noninvertibility are:
+  - deleting a feature that is linearly dependent with another
+  - deleting one or more features when there are too many features
 
 </article>
 
