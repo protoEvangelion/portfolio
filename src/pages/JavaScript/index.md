@@ -4,15 +4,13 @@ description: "When you strive to comprehend your code, you create
 better work and become better at what you do. The code isn’t just
 your job anymore, it’s your craft. ~Jenn Lukas"
 author: "Ryan Garant"
-
-
 ---
 
 <article id="1">
 
 > I am not content, nor should you be, at stopping once something just works, and not really knowing why. I gently challenge you to journey down that bumpy "_road less traveled_" and embrace all that JavaScript is and can do. With that knowledge, no **technique**, no **framework**, no popular **buzzword** acronym of the week, will be beyond your understanding. ~Kyle Simpson
 
-## Principles of JS
+## Core Principles of JS
 
 ### Thread of execution
 

@@ -179,6 +179,61 @@ foo('bam') // 'bar baz bam'
 
 <article id="6">
 
+## Object ES6/ES6 Enhancements
+
+## Enhanced Object Literal
+
+![](images/enhanced-object-literal.png)
+_Provided by [Mike.Works](https://mike.works/)_
+
+### Destructured Assignment
+
+- A cleaner way to pluck one or more deep properties off of an object
+
+```js
+let person = {
+  name: {
+    first: 'Mike',
+    last: 'North',
+  },
+  languages: {
+    backend: {
+      elixir: {
+        experience: '3 years',
+      },
+    },
+  },
+}
+
+let {
+  name: { first },
+  languages: { backend: serverSkills },
+} = person
+
+console.log(`${first} - ${Object.keys(serverSkills)}`) // Mike - elixir
+```
+
+### Object - Rest & Spread Properties
+
+- **Rest** - sugar for "and the rest go here" when destructuring
+
+```js
+let data = { x: 34, y: 21, z: 0.1 }
+let { x, ...others } = data
+console.log(others) // { y: 21, z: 0.1 }
+```
+
+- **Spread** - sugar for, "and all the properties on this object" when defining a `{}`
+
+```js
+let values = { ...others, a: 99, b: 77 }
+console.log(values) // { y: 21, z: 0.1, a: 99, b:77 }
+```
+
+</article>
+
+<article id="7">
+
 ## Quiz
 
 1.  How do you “borrow” a function and implicitly set this?

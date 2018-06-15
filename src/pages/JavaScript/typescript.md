@@ -2,7 +2,6 @@
 title: "Typescript"
 description: "Typescript Fundamentals based on https://github.com/mike-works/typescript-fundamentals"
 author: "Ryan Garant"
-
 ---
 
 <article id="1">
@@ -123,5 +122,9 @@ interface Car {
 let myCar: Car = { make: 'Honda', model: 'Accord', year: 1992 }
 let lisasCar: Car = { make: 'Ford', model: 'Monster Truck', year: 2016 }
 ```
+
+### Tuples
+
+- Array of fixed length
 
 </article>

@@ -59,11 +59,12 @@ a {
   }
 }
 
+code,
 div,
 small,
 span,
 p {
-  color: $Foreground !important;
+  color: $Foreground;
 }
 
 /* --- Fills Only --- */
