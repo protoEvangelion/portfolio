@@ -181,7 +181,7 @@ foo('bam') // 'bar baz bam'
 
 ## Object ES6/ES6 Enhancements
 
-## Enhanced Object Literal
+### Enhanced Object Literal
 
 ![](images/enhanced-object-literal.png)
 _Provided by [Mike.Works](https://mike.works/)_
@@ -228,6 +228,31 @@ console.log(others) // { y: 21, z: 0.1 }
 ```js
 let values = { ...others, a: 99, b: 77 }
 console.log(values) // { y: 21, z: 0.1, a: 99, b:77 }
+```
+
+### Getters & Setters
+
+- **Getters** are methods that return the value of a property
+- **Setters** are methods that handle the setting of a property
+- From the outside world, we treat it like any other "value based" property
+
+```javascript
+let name = {
+  first: 'Michael',
+  last: 'North',
+  get full() {
+    return `${this.first} ${this.last}`
+  },
+  set full(newVal) {
+    let [a, b] = newVal.split(/\s+/g)
+    this.first = a
+    this.last = b
+  },
+}
+
+console.log(name.first, name.last)
+name.full = 'Mike North'
+console.log(name.first, name.last)
 ```
 
 </article>

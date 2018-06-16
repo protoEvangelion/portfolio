@@ -128,3 +128,70 @@ let lisasCar: Car = { make: 'Ford', model: 'Monster Truck', year: 2016 }
 - Array of fixed length
 
 </article>
+
+<article id="3">
+
+## Functions
+
+### Function Types
+
+- This is useful if you want to resuse a function's argument signature
+
+![](images/function-types.jpg)
+_Provided by [Mike.Works](https://mike.works/)_
+
+- You can accomplish the same thing with interfaces
+- This will ensure that your functions are called with the correct types
+
+```javascript
+interface ClickListener {
+  (this: Window, e: MouseEvent): void
+}
+
+const myListener: ClickListener = e => {
+  console.log('mouse clicked!', e);
+}
+
+addEventListener('click', myListener); // Good
+
+myListener(new MouseEvent('click')); // Error
+```
+
+### Required Params
+
+- TypeScript assumes required unless you specify otherwise
+
+```javascript
+function createTwitterPost(body: string, username: string, imageUrl: URL) {
+  //...
+}
+```
+
+### Optional Params
+
+```javascript
+function createTwitterPost(body: string, username: string, imageUrl?: URL) {
+  //...
+}
+```
+
+### Default Param Values
+
+```javascript
+function createTwitterPost(body: string, username: string = 'Ryan Garant', imageUrl?: URL) {
+  //...
+}
+```
+
+### Rest Params
+
+```javascript
+function orderSandwich(bread: string, name: string, ...toppings: string[]) {
+  // ...
+}
+
+orderSandwich('Bagel', 'Ham & Cheese')
+orderSandwich('Wheat', 'Turkey Club', 'Mustard', 'Sprouts')
+```
+
+</article>
