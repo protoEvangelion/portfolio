@@ -2,7 +2,6 @@
 title: "Asynchronous JS"
 description: "Deep dive into how js deals with async tasks"
 author: "Ryan Garant"
-
 ---
 
 <article id="1">
@@ -214,6 +213,8 @@ console.log('Me first!')
 
 ## Iterators
 
+- Iterators allow **access one item from a collection** at a time, keeping track of current position
+- The `next()` method is what's used to get the next item in the sequence
 - We regularly have lists or collections or data where we want to go through each item and do something to each element
 - The classic way to do this is with for loops
 
@@ -253,15 +254,89 @@ returnNextElement()
 returnNextElement()
 ```
 
+```js
+function fibonacci() {
+  let lastLast = 1;
+  let last = 0;
+  return {
+    next() {
+      let val = last + lastLast;
+      if (val > 10) { !/ Termination
+        return { done: true };
+      }
+      lastLast = last;
+      last = val;
+      return { value: val, done: false };
+    }
+  };
+}
+```
+
+### Iterables
+
+- You can create your own iterables
+  - It's good to know these so you can build cooler things on top of them
+  - It helps with understanding generator functions as well
+- Support iteration within a `for..of` loop
+- Requires **implementation** of the `Symbol.iterator` method
+- Array and Map already support this!
+
+```js
+let arr = ['a', 'b', 'c']
+let it = arr[Symbol.iterator]()
+console.log(it.next())
+console.log(it.next())
+console.log(it.next())
+console.log(it.next())
+
+// { value: 'a', done: false }
+// { value: 'b', done: false }
+// { value: 'c', done: false }
+// { value: undefined, done: true }
+```
+
+### Defining your own iterable
+
+- This is much cleaner with generators
+
+```js
+let ryan = {
+  name: 'Ryan',
+  [Symbol.iterator]() {
+    let i = 0
+    let str = this.name
+    return {
+      next() {
+        if (i < str.length) {
+          return { done: false, value: str[i++] }
+        }
+        return { done: true }
+      },
+    }
+  },
+}
+
+for (let m of mike) {
+  console.log(m)
+}
+```
+
 </article>
 
 <article id="7">
 
 ## Generators
 
-- Very similar to closure:
+> The ability to pass values IN while iterating is important, and serves as the foundation for any great JavaScript patterns ~ Mike North
+
+- **Very similar to closure**:
   - We have a persistent backpack of data
-  - But we also track the position of execution after each `yield` statement
+  - But we also **track the position of execution** after each `yield` statement
+- Define their own iterative algo & yield each item in the sequence
+- Use the `function*()` syntax
+- Returns an **iterator**
+- State of the closure is preserved between .next() calls
+  - EXECUTION IS PAUSED
 - Generators are not a new concept in the world of programming
   - They are included in languages like Python
 
@@ -347,6 +422,52 @@ futureData.then(doWhenDataReceived)
     - Which will then get passed to the iterator with `returnNextElement.next(value)`
     - which will then console.log(data)
 - This is **async await** built from scratch!!!!!!
+
+### Define your Own Iterable
+
+```js
+let mike = {
+  [Symbol.iterator]: function*() {
+    yield 'M'
+    yield 'i'
+    yield 'k'
+    yield 'e'
+  },
+}
+for (let m of mike) {
+  console.log(m)
+}
+```
+
+#### Using Yield\*
+
+- In generator functions, the `yield*` keyword will yield each value of an iterable, one by one
+
+```js
+let mike = {
+  [Symbol.iterator]: function*() {
+    yield* 'Mike'
+  },
+}
+for (let m of mike) {
+  console.log(m)
+}
+```
+
+#### Using Iterables - Destructured Assignment
+
+- Destructured assignment works with any iterable, not just arrays
+
+```js
+let nums = {
+  [Symbol.iterator]: function*() {
+    yield* [1, 2, 3]
+    yield 4
+    yield* [5, 6]
+  },
+}
+console.log([...nums])
+```
 
 </article>
 
