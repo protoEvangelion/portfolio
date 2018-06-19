@@ -87,7 +87,7 @@ author: "Ryan Garant"
 
 - For each of these we have a web browser feature that we can spin up in the background and only push onto the call stack when the main thread including global code is done running
 
-```javascript
+```js
 function display(data) {
   console.log(data.post)
 }

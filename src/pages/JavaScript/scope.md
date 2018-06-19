@@ -21,7 +21,7 @@ author: "Ryan Garant"
 
 - Example to illustrate how the JS compiler works
 
-```javascript
+```js
 var foo = 'bar'
 
 function bar() {
@@ -92,7 +92,7 @@ function baz(foo) {
   - means it never is _reassigned_
   - the problem of using const is that it confuses readers because a lot of people still think that a "constant" doesn't change
 
-```javascript
+```js
 function diff(x, y) {
   if (x > y) {
     let tmp = x
@@ -111,7 +111,7 @@ function diff(x, y) {
 - `let` is always better used in a `for loop`
 - `let` cannot be redeclared but `var` can be redeclared
 
-```javascript
+```js
 function repeat(fn, n) {
   var result
 
@@ -125,7 +125,7 @@ function repeat(fn, n) {
 
 - `var` is better used when you want to stylistically signal to the reader that `result` in this case is going to be used throughout the function
 
-```javascript
+```js
 function lookupRecord(searchStr) {
   try {
     var id = getRecord(searchStr)
@@ -145,7 +145,7 @@ function lookupRecord(searchStr) {
 
 ## Function Scoping
 
-```javascript
+```js
 var foo = 'foo'
 
 function bob(0 {
@@ -167,7 +167,7 @@ console.log(foo) // 'foo' phew!
 
 - This is similar to **block scoping**
 
-```javascript
+```js
 var foo = 'foo'(function IIFE(bar) {
   var foo = 'foo2'
   console.log(foo) // 'foo2'

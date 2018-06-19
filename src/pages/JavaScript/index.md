@@ -21,7 +21,7 @@ author: "Ryan Garant"
 
 #### Execution Context Example
 
-```javascript
+```js
 const num = 3;
 
 function multiplyBy2(inputNumber) {
@@ -66,7 +66,7 @@ _How does it work (using the previous JS example)?_
 
 ### Example of reading code line by line
 
-```javascript
+```js
 function copyArrayAndDivideBy2(array) {
   let output = []
   for (let i = 0; i < array.length; i++) {
@@ -131,7 +131,7 @@ Line By Line:
     - Say you have an algo that requries lots of steps like getting the 1000th prime number
     - You can save that value "memoize" in the function's backpack like
 
-```javascript
+```js
 const primeNumbers = { 1000: x }
 ```
 
@@ -208,7 +208,7 @@ const primeNumbers = { 1000: x }
   - If you subscribe to Kyle Simpson's persuasion this is not a problem
     - He believes a unit is not a function, it is a single indivisible piece of business logic
 
-```javascript
+```js
 var App = (function setupApp(){
   var publicAPI = {
     init: initUI,

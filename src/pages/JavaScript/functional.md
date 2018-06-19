@@ -41,7 +41,7 @@ author: "Ryan Garant"
 
 Refactoring the previous example to be more DRY & General:
 
-```javascript
+```js
 function copyArrayAndManipulate(array, instructions) {
   let output = []
   for (let i = 0; i < array.length; i++) {
@@ -70,7 +70,7 @@ let result = copyArrayAndManipulate([1, 2, 3], multiplyBy2)
 
 ##### Line By Line example
 
-```javascript
+```js
 function instructionGenerator() {
   function mulitplyBy2(num) {
     return num * 2

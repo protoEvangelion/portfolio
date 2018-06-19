@@ -45,7 +45,7 @@ author: "Ryan Garant"
 
 - Typescript is good at guessing
 
-```javascript
+```js
 let teacherAge = 43
 teacherAge = '5' // Error
 ```
@@ -54,19 +54,19 @@ teacherAge = '5' // Error
 
 #### Annotations
 
-```javascript
+```js
 let teacherAge: number = 34
 ```
 
 #### Casting
 
-```javascript
+```js
 let input = document.querySelector('input#name_field') as HTMLInputElement;
 ```
 
 #### Function Params & Return
 
-```javascript
+```js
 function login(username: string, password: string): User {}
 
 const login = (username: string, password: string): User => {}
@@ -93,7 +93,7 @@ const login = (username: string, password: string): User => {}
 
 ## Object Shapes
 
-```javascript
+```js
 let myCar: { make: string, model: string, year: number }
 
 myCar = {
@@ -112,7 +112,7 @@ myCar = {
 - DRY type definition allows for easy refactoring later
 - Can be **extended**
 
-```javascript
+```js
 interface Car {
   make: string;
   model: string;
@@ -143,7 +143,7 @@ _Provided by [Mike.Works](https://mike.works/)_
 - You can accomplish the same thing with interfaces
 - This will ensure that your functions are called with the correct types
 
-```javascript
+```js
 interface ClickListener {
   (this: Window, e: MouseEvent): void
 }
@@ -161,7 +161,7 @@ myListener(new MouseEvent('click')); // Error
 
 - TypeScript assumes required unless you specify otherwise
 
-```javascript
+```js
 function createTwitterPost(body: string, username: string, imageUrl: URL) {
   //...
 }
@@ -169,7 +169,7 @@ function createTwitterPost(body: string, username: string, imageUrl: URL) {
 
 ### Optional Params
 
-```javascript
+```js
 function createTwitterPost(body: string, username: string, imageUrl?: URL) {
   //...
 }
@@ -177,7 +177,7 @@ function createTwitterPost(body: string, username: string, imageUrl?: URL) {
 
 ### Default Param Values
 
-```javascript
+```js
 function createTwitterPost(body: string, username: string = 'Ryan Garant', imageUrl?: URL) {
   //...
 }
@@ -185,7 +185,7 @@ function createTwitterPost(body: string, username: string = 'Ryan Garant', image
 
 ### Rest Params
 
-```javascript
+```js
 function orderSandwich(bread: string, name: string, ...toppings: string[]) {
   // ...
 }

@@ -55,7 +55,7 @@ author: "Ryan Garant"
 
 - Example
 
-```javascript
+```js
 function foo() {
   console.log(this.bar)
 }
@@ -82,7 +82,7 @@ o3.foo() // 'bar3'
 
 ### Hard Binding
 
-```javascript
+```js
 function foo(baz, bam) {
   console.log(`${this.bar} ${baz} ${bam}`)
 }
@@ -236,7 +236,7 @@ console.log(values) // { y: 21, z: 0.1, a: 99, b:77 }
 - **Setters** are methods that handle the setting of a property
 - From the outside world, we treat it like any other "value based" property
 
-```javascript
+```js
 let name = {
   first: 'Michael',
   last: 'North',
