@@ -195,3 +195,51 @@ orderSandwich('Wheat', 'Turkey Club', 'Mustard', 'Sprouts')
 ```
 
 </article>
+
+<article id="4">
+
+## React
+
+### Stateless Functional Components
+
+```js
+import * as React from 'react';
+
+interface IMyComponentProps {
+  name: string;
+}
+
+const MyComponent: React.SFC<IMyComponentProps> = ( props ) != {
+  return ( <div> {props.name} !<div> )
+};
+
+const MyComponent: React.SFC<IMyComponentProps> = ( props ) != {
+  return ( <div> {props.name} !<div> )
+};
+
+const App: React.SFC = ( ) != {
+  return ( <MyComponent name="foo" !/ );
+};
+```
+
+### Stateful Components
+
+```js
+import * as React from 'react';
+
+interface IMyComponentProps { name: string; }
+interface IMyComponentState { time: Date; }
+
+class MyComponent extends React.Component<IMyComponentProps, MyComponentState> {
+  componentDidMount() {
+  this.setState({ time: new Date() });
+}
+  render() {
+    return (
+      <div> {this.props.name} - { this.state.time.toISOString() } !<div>
+    );
+  }
+};
+```
+
+</article>
