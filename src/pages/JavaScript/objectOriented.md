@@ -148,9 +148,23 @@ foo('bam') // 'bar baz bam'
 
 ## The Class 'Syntactic Sugar'
 
+> It is still prototypes underneath the covers ~ Kyle Simpson
+
 - It is doing the same thing under the hood as the `new` keyword
+- The syntax is indeed nicer but it is mostly sugar
+  - But it is just like lipstick on a pig
+- `super` only has to be called first in the `constructor` function
 
 <p data-height="300" data-theme-id="31719" data-slug-hash="RyVVmd" data-default-tab="js,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="JS Class Sugar For new Keyword" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/RyVVmd/">JS Class Sugar For new Keyword</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+
+### Cautions
+
+- You cannot extend an object
+- If you try to do anything **remotely dynamic**, things will start to fall apart
+  - The lesson is **don't color outside the lines** with this class pattern
+- You are not allowed to use them like a function but ONLY with the `new` keyword
+- When you try to do `.bind` or `.call` or `.apply` it only rebinds the `this` keyword however the `super` keyword is static
+  - It means that if you bind to a new context, `super` will still refer to the parent it extended from
 
 </article>
 
@@ -257,7 +271,19 @@ console.log(name.first, name.last)
 
 </article>
 
-<article id="7">
+<article id="">
+
+## Design Pattern: OOLO
+
+- AKA Objects Linked as Other Objects
+  - **Benefits**:
+    - Reduces complexity
+    - Easier to reason about
+    - Thus more likely to be less buggy
+
+</article>
+
+<article id="quiz">
 
 ## Quiz
 
