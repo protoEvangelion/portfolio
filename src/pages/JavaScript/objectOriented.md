@@ -273,13 +273,62 @@ console.log(name.first, name.last)
 
 <article id="">
 
-## Design Pattern: OOLO
+## Design Pattern: OOLO (Delegation-Oriented Design)
 
 - AKA Objects Linked as Other Objects
   - **Benefits**:
     - Reduces complexity
     - Easier to reason about
     - Thus more likely to be less buggy
+
+![](images/old-prototype-mental-model.jpg)
+_Provided by [Kyle Simpson](https://frontendmasters.com/courses/javascript-foundations/)_
+
+![](images/new-prototype-mental-model.jpg)
+_Provided by [Kyle Simpson](https://frontendmasters.com/courses/javascript-foundations/)_
+
+### Delegation Oriented Design
+
+- Rather than a parent-child relationship here we do **peer-to-peer**
+
+  - Objects don't inherit from one another
+  - They instead share contexts at the call site (AKA virtual composition)
+
+- **Caution**
+  - most of the time the module pattern is sufficient
+    - but once you hit an area of circular references, delegation can be a good choice
+
+#### Example
+
+- The sharing of contexts occurs at `this.authenticate()`
+
+```js
+var AuthController = {
+  authenticate() {
+    server.authenticate([this.username, this.password], this.handleResponse.bind(this))
+  },
+  handleResponse(resp) {
+    if (!resp.ok) this.displayError(resp.msg)
+  },
+}
+
+var LoginController = Object.assign(Object.create(AuthController), {
+  onSubmit() {
+    this.username = this.$username.val()
+    this.password = this.$password.val()
+    this.authenticate()
+  },
+  displayError(msg) {
+    alert(msg)
+  },
+})
+```
+
+- **Benefits**:
+  - simpler
+  - Objects are much more easily tested
+    - this is because the objects are independent
+  - You can implement classes with a delegation system but you cannot implement delegation in a class system
 
 </article>
 
@@ -289,10 +338,11 @@ console.log(name.first, name.last)
 
 1.  How do you “borrow” a function and implicitly set this?
 2.  How do you explicitly set this for the function call?
-3.  How can you lock a specific this to a function?
-
-- Why do that? Why not?
-
+3.  How can you lock a specific this to a function? Why do that? Why not?
 4.  How do you create a new this for the function call?
+5.  How is JavaScript’s [[Prototype]] chain not like traditional/classical inheritance?
+6.  Instead of copying down you have live links up the prototype chain
+7.  What does [[Prototype]] “delegation” mean and how does it describe object linking in JS?
+8.  What are the benefits of the “behavior delegation” design pattern? What are the tradeoffs of using [[Prototype]]?
 
 </article>

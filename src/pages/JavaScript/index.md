@@ -229,3 +229,39 @@ App.addProject('client features')
 ```
 
 </article>
+
+<article id="5">
+
+## Types
+
+- JS is not an untyped language!
+  - Rather than its types referring to the variable like statically typed languages, its types refer to the value itself
+
+* undefined
+* string
+* number
+* boolean
+* object
+* symbol
+* null
+* function (not a 1st class primitive type - it's a callable object)
+
+<p data-height="300" data-theme-id="31719" data-slug-hash="LBRyXM" data-default-tab="js,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="JS Types" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/LBRyXM/">JS Types</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+
+- Note that `typeof` always returns a string value
+  - Don't get `'undefined'` mixed up with `undefined`
+
+### Null exception
+
+`typeof null` returns 'object' which according to Brandon Eich is actually a bug from when JS was created
+
+- The reason it hasn't been fixed is because of peoples' fears of breaking the web
+
+### undefined
+
+- This one is a bit confusing because the JS spec conflates the two ideas of undefined and undeclared
+- `undefined` is actually a value
+  - However if you have `foo` without assigning it to anything, at that point it is undeclared
+  - So at the moment it has no value
+
+i</article>
