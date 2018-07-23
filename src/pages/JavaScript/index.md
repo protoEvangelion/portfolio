@@ -264,4 +264,32 @@ App.addProject('client features')
   - However if you have `foo` without assigning it to anything, at that point it is undeclared
   - So at the moment it has no value
 
-i</article>
+### NaN
+
+- Since JS didn't have a try/catch until 4 years later they needed a value to show that a number operation failed
+- `NaN` with anything else will produce `NaN`
+- `typeof NaN` produces "number"
+- `NaN` is the only value in computing science that doesn not have the identity **property** (is never equal to itself)
+  - So JS includes a builtin called `isNaN`
+    - `isNaN('foo')` // produces true
+      - if you pass something that is not a number to NaN it will try to convert it to a number first
+      - then it checks if it is a number
+  - However this function has a bug which has never been fixed
+  - `Number.isNaN()` is now included in the language which does not have this flaw
+
+> If you would like to compare `-0` or `NaN` use `Object.is()`
+
+### Natives
+
+- `new Object()` as a constructor or `Object()` to coerce types
+
+- **Takeaways**
+  - It's almost always never a good idea to use natives as a constructor
+    - ie `new Object()`
+    - Dates are an exception because there is no Date literal
+    - never do `new Array(10)` with only one value because it will just create an empty array with a length of the first number passed in, in this case 10
+      - no perf benefits because it does not actually preallocate memory
+  - Using natives to **coerce types** can be a good idea though
+    - ie `Object('hi')`
+
+</article>
