@@ -1,8 +1,0 @@
-.cache
-.DS_Store
-.env
-*.log
-dist
-node_modules
-public
-
