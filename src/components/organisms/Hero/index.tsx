@@ -17,8 +17,8 @@ import * as React from 'react'
 //   }
 // `
 
-export const Hero = ({ resolutions }) => (
+export const Hero = ({ fixed }) => (
   <div>
-    <Avatar resolutions={resolutions} />
+    <Avatar fixed={fixed} />
   </div>
 )

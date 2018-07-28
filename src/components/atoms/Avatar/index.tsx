@@ -1,5 +1,4 @@
 import Img from 'gatsby-image'
-import * as React from 'react'
 import { styled } from 'styled'
 
 export const Avatar = styled(Img)`

@@ -1,11 +1,10 @@
 module.exports = {
   siteMetadata: {
-    title: "Ryan's Personal Portfolio",
+    title: `Ryan's Personal Portfolio`,
     description: 'Personal Portfolio that includes projects',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-react-next',
     'gatsby-plugin-resolve-src',
     'gatsby-plugin-sharp',
     'gatsby-plugin-typescript',
@@ -15,6 +14,12 @@ module.exports = {
       options: {
         name: 'images',
         path: `${__dirname}/src/images/`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-styled-components',
+      options: {
+        displayName: true,
       },
     },
   ],

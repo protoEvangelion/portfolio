@@ -1,9 +1,0 @@
-.deploy
-.cache
-.publish
-.temp
-dist
-node_modules
-npm-debug.log
-public
-temp

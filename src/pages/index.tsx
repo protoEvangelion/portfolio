@@ -1,5 +1,5 @@
 import { Hero } from 'components/organisms'
-
+import { graphql } from 'gatsby'
 import * as React from 'react'
 // import { Button } from 'semantic-ui-react'
 
@@ -8,11 +8,16 @@ import * as React from 'react'
 // import weatherImg from '@images/weather.png'
 // import gameOfLifeImg from '@images/gameOfLife.png'
 
-const Index: React.SFC = ({ data }) => (
-  <div>
-    <Hero resolutions={data.headshot.resolutions} />
-  </div>
-)
+const Index: React.SFC = ({ data }) => {
+  console.log('data', data)
+  return (
+    <div>
+      <Hero fixed={data.headshot.childImageSharp.fixed} />
+    </div>
+  )
+}
+
+// const Index = () => <div>hello</div>
 
 export default Index
 
@@ -51,10 +56,12 @@ export default Index
 // )
 
 export const query = graphql`
-  query TracedSVGQuery {
-    headshot: imageSharp(id: { regex: "/headshot/" }) {
-      resolutions(width: 75) {
-        ...GatsbyImageSharpResolutions_tracedSVG
+  {
+    headshot: file(relativePath: { regex: "/headshot/" }) {
+      childImageSharp {
+        fixed(width: 75) {
+          ...GatsbyImageSharpFixed_tracedSVG
+        }
       }
     }
   }

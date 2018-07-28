@@ -3,18 +3,17 @@ try {
   require.resolve(`babel-plugin-styled-components`)
 } catch (e) {
   throw new Error(
-    `'babel-plugin-styled-components' is not installed which is needed by plugin 'gatsby-plugin-styled-components'`,
+    `'babel-plugin-styled-components' is not installed which is needed by plugin 'gatsby-plugin-styled-components'`
   )
 }
 
 exports.onCreateBabelConfig = ({ stage, actions }, pluginOptions) => {
   actions.setBabelPlugin({
-    name: 'babel-plugin-styled-components',
+    name: `babel-plugin-styled-components`,
     stage,
     options: {
       ...pluginOptions,
-      displayName: true,
-      ssr: stage === 'build-html',
+      ssr: stage === `build-html`,
     },
   })
 }
