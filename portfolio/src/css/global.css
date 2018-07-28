@@ -1,0 +1,14 @@
+/*helps footer stick to bottom of page gracefully*/
+* {
+  box-sizing: border-box;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  background: #282a36;
+  margin: 0;
+}
