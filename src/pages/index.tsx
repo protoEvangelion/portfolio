@@ -1,7 +1,7 @@
 // import { Hero } from 'components/organisms'
 import { graphql } from 'gatsby'
 import * as React from 'react'
-import { Layout } from '../components/templates'
+import Layout from '../components/templates/MainLayout'
 // import { Button } from 'semantic-ui-react'
 
 // import { forceImg } from '@images/force.png'

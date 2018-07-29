@@ -1,12 +1,7 @@
-import { Navbar } from 'components/organisms'
+// import { Navbar } from 'components/organisms'
 import * as React from 'react'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
-
-import '../../../css/global.css'
-import '../../../css/ihover.css'
-import '../../../css/responsive.css'
-import '../../../css/semantic.min.css'
 
 interface ILayoutProps {
   data: {
@@ -47,8 +42,8 @@ const Layout: React.SFC<ILayoutProps> = ({ children }) => (
             },
           ]}
         />
-
-        <Navbar />
+        <h1>{data.site.siteMetadata.title}</h1>
+        {/* <Navbar /> */}
 
         {children}
 
