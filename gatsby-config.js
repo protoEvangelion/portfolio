@@ -1,5 +1,6 @@
 module.exports = {
   siteMetadata: {
+    author: 'Ryan Garant',
     title: `Ryan's Personal Portfolio`,
     description: 'Personal Portfolio that includes projects',
   },
@@ -21,7 +22,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'notes',
-        path: `${__dirname}/src/notes/`,
+        path: `${__dirname}/src/notes`,
       },
     },
     {

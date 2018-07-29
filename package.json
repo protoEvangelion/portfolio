@@ -23,7 +23,7 @@
     "@types/react-router": "^4.0.14",
     "@types/react-router-dom": "^4.0.8",
     "babel-plugin-styled-components": "^1.5.1",
-    "gatsby": "^2.0.0-beta.28",
+    "gatsby": "next",
     "gatsby-plugin-react-helmet": "next",
     "gatsby-plugin-resolve-src": "next",
     "gatsby-plugin-sharp": "next",
