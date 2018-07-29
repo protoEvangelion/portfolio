@@ -7,20 +7,31 @@ https://www.gatsbyjs.org/docs/ssr-apis/
 import * as React from 'react'
 import { renderToString } from 'react-dom/server'
 import { Provider } from 'react-redux'
-import { ServerStyleSheet, StyleSheetManager } from 'styled-components'
+import { ServerStyleSheet, ThemeProvider } from 'styled-components'
 
 import store from './src/store'
 import theme from './src/theme'
 
+/*
+* Replace the default server renderer.
+This is useful for integration with Redux, css-in-js libraries, etc. that need custom setups for server rendering.
+*/
 exports.replaceRenderer = ({ bodyComponent, replaceBodyHTMLString, setHeadComponents }) => {
-  const sheet = new ServerStyleSheet()
-  const store = createStore()
-
-  const app = () => (
+  const ConnectedBody = () => (
     <Provider store={store}>
-      <StyleSheetManager sheet={sheet.instance}>{bodyComponent}</StyleSheetManager>
+      <ThemeProvider theme={theme}> {bodyComponent} </ThemeProvider>
     </Provider>
   )
-  replaceBodyHTMLString(renderToString(<app />))
-  setHeadComponents([sheet.getStyleElement()])
+
+  // Add styled-components SSR
+  const sheet = new ServerStyleSheet()
+  const bodyHTML = renderToString(sheet.collectStyles(<ConnectedBody />))
+  const styleElement = sheet.getStyleElement()
+
+  // Call this with the HTML string you render.
+  // ! WARNING if multiple plugins implement this API it’s the last plugin that “wins”
+  replaceBodyHTMLString(bodyHTML)
+
+  // Takes an array of components as its first argument which are added to the headComponents array which is passed to the html.js component.
+  setHeadComponents(styleElement)
 }

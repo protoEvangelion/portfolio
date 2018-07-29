@@ -8,12 +8,20 @@ module.exports = {
     'gatsby-plugin-resolve-src',
     'gatsby-plugin-sharp',
     'gatsby-plugin-typescript',
+    'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
         path: `${__dirname}/src/images/`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'notes',
+        path: `${__dirname}/src/notes/`,
       },
     },
     {

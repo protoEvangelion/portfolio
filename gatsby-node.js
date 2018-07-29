@@ -1,19 +1,50 @@
-// Add Babel plugin
-try {
-  require.resolve(`babel-plugin-styled-components`)
-} catch (e) {
-  throw new Error(
-    `'babel-plugin-styled-components' is not installed which is needed by plugin 'gatsby-plugin-styled-components'`
-  )
-}
+const path = require(`path`)
+const { createFilePath } = require(`gatsby-source-filesystem`)
 
-exports.onCreateBabelConfig = ({ stage, actions }, pluginOptions) => {
-  actions.setBabelPlugin({
-    name: `babel-plugin-styled-components`,
-    stage,
-    options: {
-      ...pluginOptions,
-      ssr: stage === `build-html`,
-    },
-  })
-}
+// exports.onCreateNode = ({ node, getNode, actions }) => {
+//   const { createNodeField } = actions
+
+//   if (node.internal.type === 'MarkdownRemark') {
+//     console.log('markdown ====>')
+//     const slug = createFilePath({ node, getNode, basePath: 'src/bla' })
+
+//     createNodeField({
+//       node,
+//       name: 'slug',
+//       value: slug,
+//     })
+//   }
+// }
+
+// exports.createPages = ({ graphql, actions }) => {
+//   const { createPage } = actions
+
+//   return new Promise(resolve => {
+//     graphql(`
+//       {
+//         allMarkdownRemark {
+//           edges {
+//             node {
+//               fields {
+//                 slug
+//               }
+//             }
+//           }
+//         }
+//       }
+//     `).then(result => {
+//       result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+//         createPage({
+//           path: node.fields.slug,
+//           component: path.resolve('./src/components/templates/NotesLayout/index.tsx'),
+//           context: {
+//             // Data passed to context is available
+//             // in page queries as GraphQL variables.
+//             slug: node.fields.slug,
+//           },
+//         })
+//       })
+//       resolve()
+//     })
+//   })
+// }

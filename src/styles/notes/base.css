@@ -1,0 +1,101 @@
+/* --- Backgrounds & Colors
+$Background: #282a36;
+$Current: #44475a;
+$Selection: #44475a;
+$Foreground: #f8f8f2;
+$Comment: #6272a4;
+$Cyan: #8be9fd;
+$Green: #50fa7b;
+$Grey: #b6b2b2;
+$Orange: #ffb86c;
+$Pink: #ff79c6;
+$Purple: #bd93f9;
+$Red: #ff5555;
+$Yellow: #f1fa8c;
+--- */
+
+body,
+input {
+  background: #282a36;
+  color: #f8f8f2;
+}
+
+.gatsby-highlight,
+.gatsby-highlight pre[class*='language-'],
+.gatsby-highlight pre[class*='language-'] code,
+.katex-display,
+code {
+  background: #23242f !important;
+}
+
+.tab-dropdown-wrapper {
+  background: #6272a4;
+  color: #f8f8f2;
+}
+
+.card-menu-item:hover,
+.command-suggestion:hover,
+.context-menu button:hover {
+  background: #4d5b86;
+}
+
+/* --- Colors Only --- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #8be9fd;
+}
+
+a {
+  color: #bd93f9;
+  text-shadow: none !important;
+}
+a:hover {
+  color: #dbc3fc;
+}
+
+code,
+div,
+small,
+span,
+p {
+  color: #f8f8f2;
+}
+
+/* --- Fills Only --- */
+.anchor svg {
+  fill: #50fa7b;
+}
+
+/* --- Misc --- */
+button {
+  background: #ff79c6;
+}
+
+em {
+  display: block;
+  padding-top: 0.3rem;
+}
+
+img {
+  margin-bottom: 0;
+}
+
+input {
+  border: 1px solid #ff79c6;
+}
+input[type='text']:focus {
+  box-shadow: 0 0 5px #50fa7b;
+  border: 1px solid #50fa7b;
+}
+
+.gatsby-highlight {
+  border-radius: 7px;
+}
+
+.katex-display {
+  padding: 1rem;
+}

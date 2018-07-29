@@ -1,6 +1,7 @@
-import { Hero } from 'components/organisms'
+// import { Hero } from 'components/organisms'
 import { graphql } from 'gatsby'
 import * as React from 'react'
+import { Layout } from '../components/templates'
 // import { Button } from 'semantic-ui-react'
 
 // import { forceImg } from '@images/force.png'
@@ -11,9 +12,10 @@ import * as React from 'react'
 const Index: React.SFC = ({ data }) => {
   console.log('data', data)
   return (
-    <div>
-      <Hero fixed={data.headshot.childImageSharp.fixed} />
-    </div>
+    <Layout>
+      <div>hi</div>
+      {/* <Hero fixed={data.headshot.childImageSharp.fixed} /> */}
+    </Layout>
   )
 }
 
@@ -56,7 +58,7 @@ export default Index
 // )
 
 export const query = graphql`
-  {
+  query Images {
     headshot: file(relativePath: { regex: "/headshot/" }) {
       childImageSharp {
         fixed(width: 75) {
