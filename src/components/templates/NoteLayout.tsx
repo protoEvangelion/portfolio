@@ -1,13 +1,14 @@
+// Used to dyanmically generate note pages
+
 import * as React from 'react'
 import { Link, graphql } from 'gatsby'
 import { Box } from 'components/atoms'
-// import { Sidebar } from 'components/organisms'
-
-import '../../styles/notes/dracula-prism.css'
-import '../../styles/notes/base.css'
 import { Sidebar } from 'semantic-ui-react'
+import { INoteLayoutProps } from 'interfaces'
+import 'styles/notes/dracula-prism.css'
+import 'styles/notes/base.css'
 
-const NoteLayout: React.SFC = ({ data }) => {
+const NoteLayout: React.SFC<INoteLayoutProps> = ({ data }) => {
   return (
     <div style={{ height: '100%' }}>
       <Sidebar visible width="wide">

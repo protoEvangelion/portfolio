@@ -10,7 +10,8 @@
     "clean": "git clean -xfd .cache public/ && rm -rf .cache public",
     "deploy": "firebase deploy",
     "story": "start-storybook -p 9001 -c private/storybook",
-    "test": "cross-env NODE_ENV=test jest"
+    "test": "cross-env NODE_ENV=test jest",
+    "types": "gql-gen --schema http://localhost:8000/___graphql --template typescript --out ./src/graphql.d.ts"
   },
   "devDependencies": {
     "@types/history": "^4.6.2",
@@ -32,6 +33,9 @@
     "gatsby-source-filesystem": "next",
     "gatsby-transformer-remark": "next",
     "gatsby-transformer-sharp": "next",
+    "graphql": "^0.13.2",
+    "graphql-code-generator": "^0.10.5",
+    "graphql-codegen-typescript-template": "^0.10.5",
     "husky": "^0.14.3",
     "lint-staged": "^4.3.0",
     "prettier": "^1.12.1",

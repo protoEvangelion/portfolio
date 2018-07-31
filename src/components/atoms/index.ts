@@ -1,5 +1,4 @@
 export { Avatar } from './Avatar'
-export { Button } from './Button'
 export { Box } from './Box'
 export { Flex } from './Flex'
 // export { Hide } from './Hide'

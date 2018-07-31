@@ -1,8 +1,8 @@
-// import { Hero } from 'components/organisms'
+import { Hero } from 'components/organisms'
 import { graphql } from 'gatsby'
 import * as React from 'react'
-import Layout from '../components/templates/MainLayout'
-
+import Layout from 'components/templates/MainLayout'
+import { IIndexPageProps } from 'interfaces'
 import 'styles/semantic.min.css'
 import 'styles/global.css'
 
@@ -13,12 +13,12 @@ import 'styles/global.css'
 // import weatherImg from '@images/weather.png'
 // import gameOfLifeImg from '@images/gameOfLife.png'
 
-const Index: React.SFC = ({ data }) => {
+const Index: React.SFC<IIndexPageProps> = ({ data }) => {
   console.log('data', data)
   return (
     <Layout>
       <div>hi</div>
-      {/* <Hero fixed={data.headshot.childImageSharp.fixed} /> */}
+      <Hero fixed={data.headshot.childImageSharp.fixed} />
     </Layout>
   )
 }
@@ -62,7 +62,7 @@ export default Index
 // )
 
 export const query = graphql`
-  query Images {
+  {
     headshot: file(relativePath: { regex: "/headshot/" }) {
       childImageSharp {
         fixed(width: 75) {

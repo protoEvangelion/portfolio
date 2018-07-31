@@ -17,7 +17,7 @@ import * as React from 'react'
 //   }
 // `
 
-export const Hero = ({ fixed }) => (
+export const Hero: React.SFC<{ fixed: { tracedSVG: string } }> = ({ fixed }) => (
   <div>
     <Avatar fixed={fixed} />
   </div>

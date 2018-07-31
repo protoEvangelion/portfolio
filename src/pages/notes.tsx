@@ -1,9 +1,9 @@
 import * as React from 'react'
-// import { MainLayout } from 'components/templates'
-import MainLayout from '../components/templates/MainLayout'
+import MainLayout from 'components/templates/MainLayout'
 import { Link, graphql } from 'gatsby'
+import { INotesPageProps } from 'interfaces'
 
-const Notes: React.SFC = ({ data }) => (
+const Notes: React.SFC<INotesPageProps> = ({ data }) => (
   <MainLayout>
     {data.allMarkdownRemark.edges.map(({ node }) => (
       <Link key={node.id} to={node.fields.slug}>

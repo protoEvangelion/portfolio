@@ -3,4 +3,5 @@ declare module '*/package.json' {
   export const author: string
 }
 
-declare const graphql: (query: TemplateStringsArray) => void
+declare module 'styled-system'
+declare module 'styled-tools'

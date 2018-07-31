@@ -3,19 +3,7 @@ import * as React from 'react'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
-interface ILayoutProps {
-  data: {
-    site: {
-      siteMetadata: {
-        title: string
-        description: string
-      }
-    }
-  }
-  children: any
-}
-
-const Layout: React.SFC<ILayoutProps> = ({ children }) => (
+const Layout: React.SFC<{ children: any }> = ({ children }) => (
   <StaticQuery
     query={graphql`
       {
