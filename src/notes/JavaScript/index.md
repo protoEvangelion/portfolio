@@ -293,3 +293,87 @@ App.addProject('client features')
     - ie `Object('hi')`
 
 </article>
+
+<article id="6">
+
+## Coercion
+
+> All of JS woes related to coercion can be traced back to the decision to coerce an empty string to 0
+
+### Falsy & Truthy
+
+- Not language of the spec but a helpful way to think of it
+- These rules only apply if `ToBoolean` is legitimately invoked
+
+- **Falsy**
+  - If coerced to `ToBoolean` it returns false
+  - **Exhaustive list of falsy values**:
+    - 0, +0, -0
+    - null
+    - NaN
+    - false
+    - undefined
+- **Truthy**
+  - Everything not on the falsy list
+  - ie
+    - "foo"
+    - 23
+    - true
+    - function(){}
+
+### Explicit Coercion
+
+> Kyle Simpson argues to favor the more explicit way to coerce even if it leads to more characters
+
+- He goes on the argue that "code that you cannot understand is code that you cannot trust"
+
+#### Coercion Grid
+
+- http://getify.github.io/coercions-grid/
+- This tool is designed to help visualize JS's value coercion corner cases, specifically the ones that are WTFs, and to see what effect fixing some or all of them can have on the landscape of values
+
+#### From String to Number
+
+- As a note, `parseInt` is a distinctly different mechanism than coercing a string to a number
+
+  - Don't use `parseInt` for coercion or visa versa
+  - `parseInt(123px)` will stop at p and return 123
+  - where as coercion `Number('123px')` is an all or nothing operation that will return NaN
+    - `+'123px'` will return the same thing
+
+- Example of explicit vs implicit
+  - using `123.toString()` versus `String(123)`
+    - the latter is more explicit
+
+#### From value to boolean
+
+- `Boolean('234')` or `!!'123'`
+
+  - Although `Boolean` is used less, it is more explicit and should be favored
+
+- Explicitly implicit
+  - `'123' ? true : false`
+  - This is the Java way to coercing a value to a Boolean
+  - It is implicity because when you do `'123' ?` JS will attempt to coerce it at that point
+    - therefore there is no need to use ternary in this case though it has it's place in Java
+
+### Implicit Coercion
+
+> Using a declarative coding style is an exaltation of Implicitness
+
+- Happens as a side effect of some other operation
+- Just because you are familiar with something doesn't mean it is explicit
+  - ie
+    - `456 + "" // "456"`
+    - This is a very commen way to coerce but it is not explicit it is implicit
+
+#### Boolean
+
+- If you do not give an if operator a boolean, it will implicitly coerce it
+- Note that `==` does a number coercion not a boolean coercion
+
+### Double Equals
+
+> Most important take away is that the double equals algo prefers to compare numbers
+
+</article>

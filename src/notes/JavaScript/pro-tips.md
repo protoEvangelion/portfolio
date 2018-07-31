@@ -13,6 +13,8 @@ author: "Ryan Garant"
 
 **Stability** is something you want to keep in mind when picking an algo
 
+- If there is a bug in your code, think of where you are lacking in understanding because the root of bugs is where your brain diverges from how the computer actually works ~ Kyle Simpson
+
 ### Algos are all about **tradeoffs**
 
 > **Pro Tip** If you cannot see the variable on the same page, "redeclare it" so the reader knows exactly what scope it belongs to
