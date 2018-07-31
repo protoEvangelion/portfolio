@@ -2,6 +2,10 @@
 import { graphql } from 'gatsby'
 import * as React from 'react'
 import Layout from '../components/templates/MainLayout'
+
+import 'styles/semantic.min.css'
+import 'styles/global.css'
+
 // import { Button } from 'semantic-ui-react'
 
 // import { forceImg } from '@images/force.png'

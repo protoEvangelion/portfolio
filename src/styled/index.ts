@@ -1,9 +1,4 @@
-import styled, {
-  css,
-  injectGlobal,
-  keyframes,
-  ThemeProvider,
-} from 'styled-components'
+import styled, { css, injectGlobal, keyframes, ThemeProvider } from 'styled-components'
 import styledTypes from 'styled-components-ts'
 import {
   alignItems,

@@ -11,7 +11,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     createNodeField({
       node,
       name: 'slug',
-      value: slug,
+      value: `/notes${slug}`,
     })
   }
 }
@@ -41,8 +41,8 @@ exports.createPages = async ({ graphql, actions }) => {
     throw Error(allMarkdown.errors)
   }
 
-  allMarkdown.data.allMarkdownRemark.edges.forEach(edge => {
-    const slug = edge.node.fields.slug
+  allMarkdown.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    const slug = node.fields.slug
 
     createPage({
       path: slug,

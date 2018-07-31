@@ -12,3 +12,7 @@ body {
   background: #282a36;
   margin: 0;
 }
+
+#___gatsby {
+  height: 100%;
+}

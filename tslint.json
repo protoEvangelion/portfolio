@@ -1,21 +1,18 @@
 {
   "rulesDirectory": ["tslint-plugin-prettier"],
-  "extends": [
-    "tslint-eslint-rules",
-    "tslint-config-blvd/react",
-    "tslint-config-prettier"
-  ],
+  "extends": ["tslint-eslint-rules", "tslint-config-blvd/react", "tslint-config-prettier"],
   "rules": {
     "prettier": [
       true,
       {
         "arrowParens": "avoid",
         "bracketSpacing": true,
-        "printWidth": 80,
+        "printWidth": 100,
+        "proseWrap": "preserve",
         "semi": false,
         "singleQuote": true,
         "tabWidth": 2,
-        "trailingComma": "all",
+        "trailingComma": "es5",
         "useTabs": false
       }
     ]
