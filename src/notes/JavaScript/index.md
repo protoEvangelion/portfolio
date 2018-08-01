@@ -376,4 +376,32 @@ App.addProject('client features')
 
 > Most important take away is that the double equals algo prefers to compare numbers
 
+- When comparing using a `==` avoid using it if:
+  - either value is `true` or `false`
+  - either value is `[]`, `""`, `0`
+
+### Triple Equals
+
+> Main difference between `==` & `===` is the former allows coercion while the latter does not
+
+- So the question to ask yourself is "Would coercion be helpful in this case"?
+  - If so use `==`
+    - But beware of the above rules
+  - If not use `===`
+- According to the spec, if the types are identical, the `==` uses the exact same algo as `===`
+
+### Boxing
+
+- Boxing occurs where you have a primitive like `var foo = 'hi'` and then do `console.log(foo.length)`
+
+  - Boxing will convert the primitive into its native object counterpart so you can acces the length property and other methods
+    - This is a good thing so you don't have to cast the primitive yourself to its object counter part
+
+- Unboxing will implicitly happen in a scenario like this:
+
+```js
+var foo = new String('yo ')
+var baz = foo + 'hi'
+```
+
 </article>
