@@ -2,7 +2,6 @@
 title: "Scope"
 description: "Super important concept about what level declared variables can be accessed"
 author: "Ryan Garant"
-
 ---
 
 <article id="1">
