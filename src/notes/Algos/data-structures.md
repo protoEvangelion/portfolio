@@ -2,7 +2,6 @@
 title: "Data Structures"
 description: "Computer science data structure interfaces"
 author: "Ryan Garant"
-
 ---
 
 <article id="1">
@@ -60,6 +59,21 @@ set
 - **FIFO**
 - All stacks need to have the methods enqueue (add/push) and dequeue (remove/pop)
 - There are priority queues like for streaming video \* Items that have a higher priority get queued or dequeued first
+
+### Linked List
+
+- Interactive linked list: https://visualgo.net/en/list
+
+- Comes up often in interview question
+- each node has a next property that points to the next item in the list
+  - This is where pointers come up
+  - You can only look at the value or the next value
+
+#### Big O
+
+- Constant if you have a reference
+- slower if you need to search
+-
 
 </article>
 

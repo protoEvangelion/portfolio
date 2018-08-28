@@ -24,6 +24,10 @@ author: "Ryan Garant"
 
 - As is relates to FP es6 was a push to give us more declarative tools to write our code so we can think about the bigger picture! ~ Kyle Simpson
 
+- The best code is the code that is most readable in the future because it strikes exactly the right balance between what it can/should be (idealism) and what it must be (pragmatism) [1]
+
+- Reminder, any extensibility point that’s never used isn’t just wasted effort, it’s likely to also get in your way as well [2]
+
 ### Algos are all about **tradeoffs**
 
 > **Pro Tip** If you cannot see the variable on the same page, "redeclare it" so the reader knows exactly what scope it belongs to
@@ -56,3 +60,6 @@ author: "Ryan Garant"
 - Pair programming solves the hard learning dilema
 
 </article>
+
+[1]: https://github.com/getify/Functional-Light-JS/blob/master/manuscript/ch1.md/#chapter-1-why-functional-programming
+[2]: https://twitter.com/jeremydmiller/status/568797862441586688
