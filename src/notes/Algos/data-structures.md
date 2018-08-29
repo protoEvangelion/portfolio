@@ -10,47 +10,23 @@ author: "Ryan Garant"
 
 > Interfaces deal with the outside of the black box--the buttons on it
 
-### Sets
-
-> Good use case is for adding users
-
-- A set is like an amorphous cloud that does: 1. Adds 2. Removes 3. Contains
-
-```javascript
-set
-  .add(5)
-  .add(7)
-  .add(7)
-```
-
-- Only 5 and 7 will be added once
-
-#### Features
-
-    * No duplicates
-
-- No guarantee of order
-- ES6 has native sets along with weakSets
-
-### Maps
-
-#### Features
-
-- Similar to JS objects (key value sets)
-- they don't have prototypes, inheritance or methods
-- No concept of order
-- No dupe keys but you can have dupe values
-- ES6 has native maps along with weakMaps
-
 ### Stacks
 
 > Programming itself is a stack--think recursion
 
 ![stack](https://btholt.github.io/four-semesters-of-cs/img/stack.png)
 
+![stack](https://www.tutorialspoint.com/data_structures_algorithms/images/stack_representation.jpg)
+
+- **LIFO**: The **Last** item added **Into** the stack will be the **First** one taken **Out** of the stack \* The idea of
+  the "call stack" goes along with this concept
 - Most programming languages are based on a stack
-- LIFO: Arrays have a stack interface but they are not a pure stack _ Because with a pure stack you push on top and pop
-  from top _ You can't get to anything beneath the top node
+- Arrays have a stack interface but they are not a pure stack
+  - Because with a pure stack you push on top and pop
+  from top
+  - You can't get to anything beneath the top node
+
+<p data-height="300" data-theme-id="31719" data-slug-hash="KxgNYb" data-default-tab="js" data-user="RyanGarant" data-pen-title="Naive JS Stack Data Structure" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/KxgNYb/">Naive JS Stack Data Structure</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 
 ### Queue
 
@@ -65,15 +41,69 @@ set
 - Interactive linked list: https://visualgo.net/en/list
 
 - Comes up often in interview question
-- each node has a next property that points to the next item in the list
-  - This is where pointers come up
+- each node has a next property that points to the **next** item in the list
+  - This is where **pointers** come up
   - You can only look at the value or the next value
+- Is a type of **graph**
+- Good for creating a **cache**
+- A doubly linked list has a previous pointer as well
 
-#### Big O
+### Hash Table
 
-- Constant if you have a reference
-- slower if you need to search
--
+> Bad at sorting, amazing at lookups
+
+- Organizes data for quick look up on values for a given key
+
+| Pros          | Cons                       |
+| ------------- | -------------------------- |
+| Fast lookups  | Slow worst-case lookups    |
+| Flexible keys | Unordered                  |
+|               | Single directional lookups |
+
+- Implementation in JS is a map with keys that can be functions
+- We need a way to translate keys into a memory address
+- For the same string you want to get the same result every time
+- We interact with a hash table the same way we do with an object
+
+#### es6 Sets & Maps
+
+- keys can be a number, or string, or function
+- **insertion** and **retrieval** are all constant time
+- Under the hood they are implemented with **hash tables**
+
+##### Sets
+
+> Good use case is for adding users
+
+- A set is like an amorphous cloud that does: 1. Adds 2. Removes 3. Contains
+
+```javascript
+set
+  .add(5)
+  .add(7)
+  .add(7)
+```
+
+- Only 5 and 7 will be added once
+
+- No duplicates
+- No guarantee of order
+- ES6 has native sets along with weakSets
+
+##### Maps
+
+- Similar to JS objects (key value sets)
+- they don't have prototypes, inheritance or methods
+- No concept of order
+- No dupe keys but you can have dupe values
+- ES6 has native maps along with weakMaps
+
+##### Array
+
+| Pros         | Cons         |
+| ------------ | ------------ |
+| Fast Lookups | Slow Inserts |
+| Fast appends | Slow deletes |
 
 </article>
 
@@ -125,12 +155,7 @@ Exercise:
     - You have to loop through the list until you find the right node
   - Adds / Deletes: 0(1)
 
-### Stacks
 
-![stack](https://www.tutorialspoint.com/data_structures_algorithms/images/stack_representation.jpg)
-
-- **LIFO**: The **Last** item added **Into** the stack will be the **First** one taken **Out** of the stack \* The idea of
-  the "call stack" goes along with this concept
 
 ##### Constructor Function
 
