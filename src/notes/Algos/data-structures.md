@@ -36,6 +36,8 @@ author: "Ryan Garant"
 - All stacks need to have the methods enqueue (add/push) and dequeue (remove/pop)
 - There are priority queues like for streaming video \* Items that have a higher priority get queued or dequeued first
 
+<p data-height="300" data-theme-id="31719" data-slug-hash="PdbbzN" data-default-tab="js" data-user="RyanGarant" data-pen-title="Naive es6 Queue" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/PdbbzN/">Naive es6 Queue</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+
 ### Linked List
 
 - Interactive linked list: https://visualgo.net/en/list
