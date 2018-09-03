@@ -19,7 +19,7 @@ This is useful for integration with Redux, css-in-js libraries, etc. that need c
 export const replaceRenderer = ({ bodyComponent, replaceBodyHTMLString, setHeadComponents }) => {
   const ConnectedBody = () => (
     <Provider store={store}>
-      <ThemeProvider theme={theme}> {bodyComponent} </ThemeProvider>
+      <ThemeProvider theme={theme}>{bodyComponent}</ThemeProvider>
     </Provider>
   )
 
