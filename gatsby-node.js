@@ -1,7 +1,7 @@
-import * as path from 'path'
-import { createFilePath } from 'gatsby-source-filesyste'
+const path = require('path')
+const { createFilePath } = require('gatsby-source-filesystem')
 
-export const onCreateNode = ({ node, getNode, actions }) => {
+exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === 'MarkdownRemark') {
@@ -15,7 +15,7 @@ export const onCreateNode = ({ node, getNode, actions }) => {
   }
 }
 
-export const createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const allMarkdown = await graphql(

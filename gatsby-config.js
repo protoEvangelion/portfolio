@@ -25,11 +25,5 @@ module.exports = {
         path: `${__dirname}/src/notes`,
       },
     },
-    {
-      resolve: 'gatsby-plugin-styled-components',
-      options: {
-        displayName: true,
-      },
-    },
   ],
 }
