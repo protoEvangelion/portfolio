@@ -1,5 +1,5 @@
 import * as React from 'react'
-import MainLayout from 'components/templates/MainLayout'
+import { MainLayout } from 'components/templates'
 import { Link, graphql } from 'gatsby'
 import { INotesPageProps } from 'interfaces'
 

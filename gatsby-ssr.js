@@ -16,7 +16,7 @@ import theme from './src/theme'
 * Replace the default server renderer.
 This is useful for integration with Redux, css-in-js libraries, etc. that need custom setups for server rendering.
 */
-exports.replaceRenderer = ({ bodyComponent, replaceBodyHTMLString, setHeadComponents }) => {
+export const replaceRenderer = ({ bodyComponent, replaceBodyHTMLString, setHeadComponents }) => {
   const ConnectedBody = () => (
     <Provider store={store}>
       <ThemeProvider theme={theme}> {bodyComponent} </ThemeProvider>

@@ -1,8 +1,9 @@
 import { Hero } from 'components/organisms'
 import { graphql } from 'gatsby'
 import * as React from 'react'
-import Layout from 'components/templates/MainLayout'
+import { MainLayout } from 'components/templates'
 import { IIndexPageProps } from 'interfaces'
+
 import 'styles/semantic.min.css'
 import 'styles/global.css'
 
@@ -16,10 +17,10 @@ import 'styles/global.css'
 const Index: React.SFC<IIndexPageProps> = ({ data }) => {
   console.log('data', data)
   return (
-    <Layout>
+    <MainLayout>
       <div>hi</div>
       <Hero fixed={data.headshot.childImageSharp.fixed} />
-    </Layout>
+    </MainLayout>
   )
 }
 
