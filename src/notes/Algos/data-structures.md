@@ -50,6 +50,16 @@ author: "Ryan Garant"
 - Good for creating a **cache**
 - A doubly linked list has a previous pointer as well
 
+#### Big O
+
+- Beats arrays when **adding to or removing from head**
+  - O(1) whereas `array.unshift` or `array.shift` is O(n)
+- **Finding** an Item in both arrays & linked lists
+  - O(n)
+- **Deleting** an Item in both arrays & linked lists
+  - O(n)
+
+
 ### Hash Table
 
 > Bad at sorting, amazing at lookups
@@ -66,6 +76,45 @@ author: "Ryan Garant"
 - We need a way to translate keys into a memory address
 - For the same string you want to get the same result every time
 - We interact with a hash table the same way we do with an object
+- For a Hash Table to be efficient it has to have a *good hashing function* that doesn't produce a lot of **collisions**
+  - collisions happen when the hashing function returns the same integer for two different inputs
+
+#### Separate Chaining
+
+- For collisions, we use a technique called separate chaining
+- We store collisions in a list
+
+```js
+  set(x, y) {
+    let i = hash(x)
+
+    if (!this.list[i]) {
+      this.list[i] = []
+    }
+
+    this.list[i].push([x, y])
+  }
+```
+
+#### Open Addressing
+
+- Another technique to deal with collisions
+
+- **process** [1]:
+  - at each index of our list we store one and one only key-value pair
+  - when trying to store a pair at index x, if there’s already a key-value pair, try to store our new pair at x + 1
+  - if x + 1 is taken, try x + 2 and so on…
+  - when **retrieving** an element, hash the key and see if the element at that position (x) matches our key
+  - if not, try to access the element at position x + 1
+  - rinse and repeat until you get to the end of the list, or when you find an empty index — that means our element is not in the hash table
+
+
+#### Benefits
+
+- Lookups are O(1) in best case & average case scenarios
+- O(n) in worst case scenarios
+  - this is for hashing functions that return a lot of collisions
+  - it there are a lot of collisions it will tend towards O(n)
 
 #### es6 Sets & Maps
 
@@ -210,3 +259,6 @@ console.log(myWeeklyMenu.storage)
 
 <p data-height="300" data-theme-id="31719" data-slug-hash="wPEyRg" data-default-tab="js" data-user="RyanGarant" data-embed-version="2" data-pen-title="Queue Data Structure" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/wPEyRg/">Queue Data Structure</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 </article>
+
+[1]: https://odino.org/this-is-how-a-dumb-hashtable-works/
+
