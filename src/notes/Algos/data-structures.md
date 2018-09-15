@@ -78,6 +78,17 @@ author: "Ryan Garant"
 - We interact with a hash table the same way we do with an object
 - For a Hash Table to be efficient it has to have a *good hashing function* that doesn't produce a lot of **collisions**
   - collisions happen when the hashing function returns the same integer for two different inputs
+- Make sure to **initialize** the size of your hash table to something that is reasonable for the expected size of your data set
+  - otherwise you are going to have to **resize** the table which is not a big deal unless you have to do it a lot
+
+Example of initializing size of hash table
+
+```ts
+class HashTable {
+  public storage = []
+  private tableSize = 25
+}
+```
 
 #### Separate Chaining
 
