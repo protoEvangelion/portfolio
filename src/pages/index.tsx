@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import * as React from 'react'
 import { MainLayout } from 'components/templates'
 import { IIndexPageProps } from 'interfaces'
-import { styled } from 'styled'
+import { styled } from 'style'
 import 'styles/semantic.min.css'
 import 'styles/global.css'
 

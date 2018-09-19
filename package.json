@@ -68,6 +68,7 @@
     "react-helmet": "^5.0.1",
     "react-modal": "^3.5.1",
     "react-redux": "^5.0.6",
+    "react-styled-flexboxgrid": "^2.6.0",
     "react-svg": "^4.0.17",
     "redux": "^3.6.0",
     "semantic-ui-react": "^0.82.1",

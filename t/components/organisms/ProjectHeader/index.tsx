@@ -1,5 +1,5 @@
 import { Heading, Link } from 'components/atoms'
-import { color, space } from 'styled'
+import { color, space } from 'style'
 import PropTypes from 'prop-types'
 import * as React from 'react'
 import styled from 'styled-components'

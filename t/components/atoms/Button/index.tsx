@@ -1,4 +1,4 @@
-import { color, space } from 'styled'
+import { color, space } from 'style'
 import { colors, fontSizes, radii, radius } from 'theme'
 import { shade } from 'utils'
 import PropTypes from 'prop-types'

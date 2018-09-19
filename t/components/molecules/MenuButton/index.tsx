@@ -1,4 +1,4 @@
-import { media } from 'styled'
+import { media } from 'style'
 import PropTypes from 'prop-types'
 import * as React from 'react'
 import styled from 'styled-components'

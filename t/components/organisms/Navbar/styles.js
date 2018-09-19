@@ -1,6 +1,6 @@
 import { Block } from 'components/atoms'
 import { IconButton } from 'components/molecules'
-import { media } from 'styled'
+import { media } from 'style'
 import { colors } from 'theme'
 import styled, { css } from 'styled-components'
 

@@ -1,4 +1,4 @@
-import { width } from 'styled'
+import { width } from 'style'
 import { breakpoints } from 'theme'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'

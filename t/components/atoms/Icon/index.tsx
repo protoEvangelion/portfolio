@@ -1,4 +1,4 @@
-import { space } from 'styled'
+import { space } from 'style'
 import { colors } from 'theme'
 import icons from 'theme/icons.json'
 import PropTypes from 'prop-types'

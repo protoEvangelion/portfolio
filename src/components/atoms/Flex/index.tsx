@@ -10,7 +10,7 @@ import {
   styled,
   styledTypes,
   width,
-} from 'styled'
+} from 'style'
 
 export const Flex = styledTypes<IFlexProps>(styled.div)`
   display: flex;

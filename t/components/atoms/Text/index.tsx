@@ -1,4 +1,4 @@
-import { color, fontSize, responsiveStyle, space } from 'styled'
+import { color, fontSize, responsiveStyle, space } from 'style'
 import { bold as b, regular as reg } from 'theme'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
