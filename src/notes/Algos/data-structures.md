@@ -167,6 +167,28 @@ set
 | Fast Lookups | Slow Inserts |
 | Fast appends | Slow deletes |
 
+### Trees
+
+> Great for when you have ordered data and need super fast lookups (log n)
+
+![](images/bst.jpg)
+_Provided by [Brian Holt](http://btholt.github.io/four-semesters-of-cs/)_
+
+- smaller nodes on left, larger nodes on right
+- A node has 0, 1, or 2 subtrees
+- for `add` you compare the node in hand to the node you want to add and say
+  - is my node I want to add greater than the node in hand?
+    - yes => go left
+    - no => go right
+  - Once you get to a null node, stick your node there
+- BSTs don't perform well if you add a sorted list to it
+
+<p data-height="300" data-theme-id="31719" data-slug-hash="LJXXee" data-default-tab="js,result" data-user="RyanGarant" data-pen-title="Visualized Data Structure: Binary Tree Exercise" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/LJXXee/">Visualized Data Structure: Binary Tree Exercise</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+
+#### Binary Search Trees
+
+#### AVL Tree
+
 </article>
 
 <article id="2">

@@ -11,8 +11,10 @@ html {
 body {
   background: #282a36;
   margin: 0;
+  height: 100%;
 }
 
-#___gatsby {
+#___gatsby,
+#___gatsby > div {
   height: 100%;
 }

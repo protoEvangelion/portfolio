@@ -5,7 +5,7 @@
   "repository": "https://github.com/protoEvangelion/portfolio",
   "version": "2.0.0",
   "scripts": {
-    "dev": "gatsby develop",
+    "dev": "gatsby develop --port 7777",
     "build": "gatsby build",
     "clean": "git clean -xfd .cache public/ && rm -rf .cache public",
     "deploy": "firebase deploy",
@@ -28,7 +28,7 @@
     "gatsby": "next",
     "gatsby-plugin-react-helmet": "next",
     "gatsby-plugin-resolve-src": "next",
-    "gatsby-plugin-sass": "^1.0.26",
+    "gatsby-plugin-sass": "^2.0.1",
     "gatsby-plugin-sharp": "next",
     "gatsby-plugin-typescript": "next",
     "gatsby-source-filesystem": "next",
@@ -56,6 +56,7 @@
     "typescript-styled-plugin": "^0.10.0"
   },
   "dependencies": {
+    "@rebass/grid": "^6.0.0-3",
     "axios": "^0.15.3",
     "gatsby-image": "next",
     "lodash": "^4.17.4",

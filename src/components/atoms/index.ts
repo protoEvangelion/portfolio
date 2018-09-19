@@ -1,6 +1,8 @@
 export { Avatar } from './Avatar'
 export { Box } from './Box'
 export { Flex } from './Flex'
+export { Logo } from './Logo'
+
 // export { Hide } from './Hide'
 
 // export { Badge } from './Badge'
