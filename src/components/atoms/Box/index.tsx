@@ -1,6 +1,5 @@
 import { IBoxProps } from 'interfaces'
 import { color, responsiveStyle, space, styled, styledTypes, width } from 'style'
-import theme from 'theme'
 
 const align = responsiveStyle('text-align', 'align')
 
@@ -9,7 +8,3 @@ export const Box = styledTypes<IBoxProps>(styled.div)`
 `
 
 Box.displayName = 'Box'
-
-Box.defaultProps = {
-  theme,
-}

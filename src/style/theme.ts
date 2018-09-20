@@ -88,7 +88,7 @@ export const colors = {
   primary: 'rgb(23, 195, 169)',
   secondary: 'rgb(0, 125, 125)',
   twitter: 'rgb(85, 172, 238)',
-  white: 'rgb(255, 255, 255)',
+  white: 'white',
 }
 
 const flexboxgrid = {

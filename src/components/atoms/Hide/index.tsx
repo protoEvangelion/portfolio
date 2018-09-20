@@ -1,7 +1,7 @@
 import { Box } from 'components/atoms'
 import { IBoxProps } from 'interfaces'
 import { styled, styledTypes } from 'style'
-import theme from 'theme'
+import theme from 'style/theme'
 
 const getMaxWidth = em => em - 0.01
 

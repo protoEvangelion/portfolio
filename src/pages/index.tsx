@@ -5,7 +5,7 @@ import { MainLayout } from 'components/templates'
 import { IIndexPageProps } from 'interfaces'
 import { styled } from 'style'
 
-import 'styles/global.css'
+import 'style/global.css'
 
 const FirstFrame = styled.div``
 

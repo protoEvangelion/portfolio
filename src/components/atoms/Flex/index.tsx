@@ -1,5 +1,5 @@
 import { IFlexProps } from 'interfaces'
-import theme from 'theme'
+
 import {
   alignItems,
   color,
@@ -17,9 +17,5 @@ export const Flex = styledTypes<IFlexProps>(styled.div)`
   height: ${props => props.height};
   ${space} ${width} ${color} ${alignItems} ${justifyContent} ${flexWrap} ${flexDirection};
 `
-
-Flex.defaultProps = {
-  theme,
-}
 
 Flex.displayName = 'Flex'

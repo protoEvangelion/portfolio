@@ -1,6 +1,5 @@
-import { Box, Flex, Logo } from 'components/atoms'
+import { Box, Flex, Logo, Link } from 'components/atoms'
 // import { MenuButton } from 'components/molecules'
-import Link from 'gatsby-link'
 import * as React from 'react'
 import { Col, Row } from 'style'
 
