@@ -1,13 +1,19 @@
 import * as React from 'react'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
-import styled from 'styled-components'
+import { Grid, styled } from 'style'
+import { Flex, Box } from 'components/atoms'
+import { Navbar } from 'components/organisms'
 
-const Layout = styled.main`
+const Layout = styled(Box)`
   background: radial-gradient(440.99px at 44.47% 51.81%, #011627 0%, rgba(255, 255, 255, 0) 100%),
     #000000;
   position: relative;
   width: 100%;
+  height: 100%;
+`
+
+const StyledGrid = styled(Grid)`
   height: 100%;
 `
 
@@ -24,7 +30,7 @@ export const MainLayout: React.SFC<{ children: any }> = ({ children }) => (
       }
     `}
     render={data => (
-      <Layout className="main-layout">
+      <Layout className="main-layout" py={['2rem', '4rem', '8rem']}>
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
@@ -38,12 +44,14 @@ export const MainLayout: React.SFC<{ children: any }> = ({ children }) => (
             },
           ]}
         />
-        <h1>{data.site.siteMetadata.title}</h1>
-        {/* <Navbar /> */}
 
-        {children}
+        <StyledGrid className="grid">
+          <Flex flexDirection="column" justify="space-between" height="100%">
+            <Navbar />
 
-        {/* <Footer /> */}
+            {children}
+          </Flex>
+        </StyledGrid>
       </Layout>
     )}
   />

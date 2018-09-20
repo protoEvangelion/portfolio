@@ -1,7 +1,13 @@
 import * as React from 'react'
 
 export const Logo = () => (
-  <svg width="99" height="88" viewBox="0 0 99 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    width="100%"
+    height="100%"
+    viewBox="0 0 99 88"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path
       d="M78.5115 87.1828L98.9564 28.2875L53.7715 12.4856L53.9024 31.3853L76.3203 39.2223L61.7173 81.3269L78.5115 87.1828ZM0 60.1468L20.4416 1.24805L37.2357 7.10395L22.6327 49.1682L45.1815 57.0893V75.9453L0 60.1468Z"
       fill="#F9F9F9"
@@ -11,14 +17,14 @@ export const Logo = () => (
       fill="white"
     />
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M51.2381 51.7075L31.0515 44.0858L46.386 0L47.0706 35.65L67.1296 42.8816L52.5702 88L51.2381 51.7075Z"
       fill="#F5941C"
     />
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M67.1296 42.8816L47.0706 35.65L46.386 0L31.0515 44.0858L51.2381 51.7075V51.7513C56.0196 51.0617 60.6569 50.1704 65.1532 49.0806L67.1296 42.8816Z"
       fill="#FAAE17"
     />

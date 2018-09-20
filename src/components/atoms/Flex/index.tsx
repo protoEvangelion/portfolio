@@ -14,6 +14,7 @@ import {
 
 export const Flex = styledTypes<IFlexProps>(styled.div)`
   display: flex;
+  height: ${props => props.height};
   ${space} ${width} ${color} ${alignItems} ${justifyContent} ${flexWrap} ${flexDirection};
 `
 

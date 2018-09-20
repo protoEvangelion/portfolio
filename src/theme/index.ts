@@ -94,8 +94,8 @@ export const colors = {
 const flexboxgrid = {
   // Defaults
   gridSize: 12, // columns
-  gutterWidth: 1, // rem
-  outerMargin: 2, // rem
+  gutterWidth: 1.5, // rem
+  outerMargin: 0.75, // rem
   mediaQuery: 'only screen',
   container: {
     sm: 46, // rem
