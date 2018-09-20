@@ -1,4 +1,4 @@
-import { Box, Logo } from 'components/atoms'
+import { Box, Logo, H1 } from 'components/atoms'
 import { graphql } from 'gatsby'
 import * as React from 'react'
 import { MainLayout } from 'components/templates'
@@ -6,6 +6,7 @@ import { IIndexPageProps } from 'interfaces'
 import { styled } from 'style'
 
 import 'style/global.css'
+import 'style/typography.scss'
 
 const FirstFrame = styled.div``
 
@@ -16,7 +17,7 @@ const Index: React.SFC<IIndexPageProps> = ({ data }) => {
         <Box ml="6.33%" />
       </FirstFrame>
 
-      <h1>Ryan Garant</h1>
+      <H1 m={0}>RYAN GARANT</H1>
 
       {/* <Hero fixed={data.headshot.childImageSharp.fixed} /> */}
     </MainLayout>

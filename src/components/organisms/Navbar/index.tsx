@@ -13,7 +13,7 @@ const LocationIcon = () => (
 export const Navbar: React.SFC<{ isOpen: boolean }> = ({ isOpen }) => {
   return (
     <Row middle="xs">
-      <Col xsOffset={1} xs={1}>
+      <Col xs={1}>
         <Link to="/">
           <Logo />
         </Link>

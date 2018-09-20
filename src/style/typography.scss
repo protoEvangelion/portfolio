@@ -1,4 +1,19 @@
 @import '~modularscale-sass/stylesheets/modularscale';
+@import url('https://fonts.googleapis.com/css?family=Gugi|Roboto');
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: Gugi, Verdana, Geneva, sans-serif;
+}
+
+p,
+a,
+span {
+  font-family: Roboto, TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, serif;
+}
 
 $modularscale: (
   base: 20px,

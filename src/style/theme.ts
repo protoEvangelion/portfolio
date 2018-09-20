@@ -95,7 +95,7 @@ const flexboxgrid = {
   // Defaults
   gridSize: 12, // columns
   gutterWidth: 1.5, // rem
-  outerMargin: 0.75, // rem
+  outerMargin: 8.25, // rem
   mediaQuery: 'only screen',
   container: {
     sm: 46, // rem

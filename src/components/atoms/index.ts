@@ -3,7 +3,7 @@ export { Box } from './Box'
 export { Flex } from './Flex'
 export { Link } from './Link'
 export { Logo } from './Logo'
-
+export { H1 } from './H1'
 // export { Hide } from './Hide'
 
 // export { Badge } from './Badge'
