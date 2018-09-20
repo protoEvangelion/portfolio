@@ -65,6 +65,8 @@ author: "Ryan Garant"
 > Bad at sorting, amazing at lookups
 
 - Organizes data for quick look up on values for a given key
+- Must be **idempotent**
+  - Does not change state no matter if called a billion times with the same input (more on that here: [2])
 
 | Pros          | Cons                       |
 | ------------- | -------------------------- |
@@ -72,8 +74,23 @@ author: "Ryan Garant"
 | Flexible keys | Unordered                  |
 |               | Single directional lookups |
 
+#### Used by:
+  - JS
+  - Databases
+  - Caches
+
+#### Great when:
+  - If we have the key, we know where to look in memory
+  - Constant time looksups, adds, deletes on average
+
+#### Tradeoff:
+  - Memory footprint (need a sufficiently large amount of space for the hashing algo)
+  - If you are using a hashing algo like `sha256` you are defeating the purpose of a hash table which is high perf
+
+#### Implementation
+
 - Implementation in JS is a map with keys that can be functions
-- We need a way to translate keys into a memory address
+- We need a way to translate keys into a memory address (that's where a hashing algo comes in)
 - For the same string you want to get the same result every time
 - We interact with a hash table the same way we do with an object
 - For a Hash Table to be efficient it has to have a *good hashing function* that doesn't produce a lot of **collisions**
@@ -90,9 +107,9 @@ class HashTable {
 }
 ```
 
-#### Separate Chaining
+##### Separate Chaining
 
-- For collisions, we use a technique called separate chaining
+- For **collisions**, we use a technique called separate chaining
 - We store collisions in a list
 
 ```js
@@ -107,9 +124,9 @@ class HashTable {
   }
 ```
 
-#### Open Addressing
+##### Open Addressing
 
-- Another technique to deal with collisions
+- Another technique to deal with **collisions**
 
 - **process** [1]:
   - at each index of our list we store one and one only key-value pair
@@ -203,6 +220,8 @@ _Provided by [Brian Holt](http://btholt.github.io/four-semesters-of-cs/)_
 - Fix the unbalance of a normal BST
 - Unbalance increases space/time complexity
 - The whole point of an AVL tree is to mitigate the worst case scenario of a binary search tree
+
+<p data-height="300" data-theme-id="31719" data-slug-hash="rxLOOp" data-default-tab="js,result" data-user="btholt" data-pen-title="Visualized Data Structure: AVL Tree" class="codepen">See the Pen <a href="https://codepen.io/btholt/pen/rxLOOp/">Visualized Data Structure: AVL Tree</a> by Brian Holt (<a href="https://codepen.io/btholt">@btholt</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 
 </article>
 
@@ -311,4 +330,4 @@ console.log(myWeeklyMenu.storage)
 
 
 [1]: https://odino.org/this-is-how-a-dumb-hashtable-works/
-
+[2]: https://github.com/getify/Functional-Light-JS/blob/13a3bdafb4edb83207db76212312472aab20d06a/manuscript/ch5.md#once-is-enough-thanks
