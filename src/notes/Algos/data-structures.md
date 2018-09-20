@@ -171,10 +171,13 @@ set
 
 > Great for when you have ordered data and need super fast lookups (log n)
 
+#### Binary Search Trees
+
 ![](images/bst.jpg)
 _Provided by [Brian Holt](http://btholt.github.io/four-semesters-of-cs/)_
 
 - smaller nodes on left, larger nodes on right
+- Nodes that have no children are **leaves**
 - A node has 0, 1, or 2 subtrees
 - for `add` you compare the node in hand to the node you want to add and say
   - is my node I want to add greater than the node in hand?
@@ -185,9 +188,21 @@ _Provided by [Brian Holt](http://btholt.github.io/four-semesters-of-cs/)_
 
 <p data-height="300" data-theme-id="31719" data-slug-hash="LJXXee" data-default-tab="js,result" data-user="RyanGarant" data-pen-title="Visualized Data Structure: Binary Tree Exercise" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/LJXXee/">Visualized Data Structure: Binary Tree Exercise</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 
-#### Binary Search Trees
-
 #### AVL Tree
+
+> AVL search trees help maintain fast lookups which is the main strength of BSTs
+
+- Are **specialty BSTs**
+- The logic of going left & right is the same as in BSTs
+- The difference is when you come out of recursion, you check if the tree is in balance
+  - If the difference in **heights of sibling trees is > 1** the tree is out of balance
+- Worst case is `O(log n)`
+
+##### Problem it solves
+
+- Fix the unbalance of a normal BST
+- Unbalance increases space/time complexity
+- The whole point of an AVL tree is to mitigate the worst case scenario of a binary search tree
 
 </article>
 
@@ -291,7 +306,9 @@ console.log(myWeeklyMenu.storage)
 ![](images/queues.png)
 
 <p data-height="300" data-theme-id="31719" data-slug-hash="wPEyRg" data-default-tab="js" data-user="RyanGarant" data-embed-version="2" data-pen-title="Queue Data Structure" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/wPEyRg/">Queue Data Structure</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+
 </article>
+
 
 [1]: https://odino.org/this-is-how-a-dumb-hashtable-works/
 
