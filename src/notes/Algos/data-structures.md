@@ -223,6 +223,50 @@ _Provided by [Brian Holt](http://btholt.github.io/four-semesters-of-cs/)_
 
 <p data-height="300" data-theme-id="31719" data-slug-hash="rxLOOp" data-default-tab="js,result" data-user="btholt" data-pen-title="Visualized Data Structure: AVL Tree" class="codepen">See the Pen <a href="https://codepen.io/btholt/pen/rxLOOp/">Visualized Data Structure: AVL Tree</a> by Brian Holt (<a href="https://codepen.io/btholt">@btholt</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 
+### Bloom Filters
+
+- Is a **collection** data structure
+- It **tells you if something is NOT in a set**
+  - Very fast
+- However it cannot tell you definitely if something is in a set (false positive)
+  - To reduce false positives you have to increase the collection size at the cost of > mem footprint
+- The hashing algos they use are not crypto functions because it is designed to be ultra fast
+
+#### Use case
+
+- Medium uses Bloom Filters for their recommendation engine: https://blog.medium.com/what-are-bloom-filters-1ec2a50c68ff
+- Bitcoin uses Bloom filters to speed up wallet sync [3]
+- Chrome used to use a Bloom filter to identify malicious URLs [3]
+
+#### How it works
+
+- Essentially is an array of 0's
+- Uses a couple different hashing functions
+- Each hashing function returns an index
+- Then we take that index and flip the 0 to a 1 signifying that whatever we passed to the hashing function lives in our collection
+- If there is a collision you have to accept the tradeoff of the false positive
+- In Medium's case, if their bloom filter gives them a false positive, they will just not show that article
+
+<p data-height="300" data-theme-id="31719" data-slug-hash="rZRQGg" data-default-tab="js,result" data-user="RyanGarant" data-pen-title="Bloom Filter es6" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/rZRQGg/">Bloom Filter es6</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+
+
+### Tree Taversal
+
+- The way that you access nodes on a tree data structure
+
+#### Depth First
+
+You have 3 options of how you want to process the nodes
+
+1. **preorder**
+   - Most intuitive
+2. **inorder**
+   - Allows you to get a sorted list
+3. **postorder**
+   - Process left tree then right tree then itself
+
+#### Breadth First
+
 </article>
 
 <article id="2">
@@ -331,3 +375,4 @@ console.log(myWeeklyMenu.storage)
 
 [1]: https://odino.org/this-is-how-a-dumb-hashtable-works/
 [2]: https://github.com/getify/Functional-Light-JS/blob/13a3bdafb4edb83207db76212312472aab20d06a/manuscript/ch5.md#once-is-enough-thanks
+[3]: https://en.wikipedia.org/wiki/Bloom_filter#Examples
