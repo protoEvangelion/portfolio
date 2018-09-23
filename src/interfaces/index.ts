@@ -36,6 +36,8 @@ export interface IWidthProps {
   w?: number | string[]
 }
 
+export interface IColorSpaceProps extends ISpaceProps, IColorProps {}
+
 /* --- GraphQL --- */
 
 export interface IAllMarkdownRemark {

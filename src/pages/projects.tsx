@@ -1,3 +1,5 @@
+import * as React from 'react'
+
 const ProjectsPage = () => <h2>Projects</h2>
 
 export default ProjectsPage

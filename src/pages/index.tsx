@@ -1,27 +1,129 @@
-import { Box, Logo, H1 } from 'components/atoms'
 import { graphql } from 'gatsby'
 import * as React from 'react'
+import { throttle } from 'lodash'
+
+import { H1, Box, Flex, Logo } from 'components/atoms'
+import { Navbar } from 'components/organisms'
 import { MainLayout } from 'components/templates'
 import { IIndexPageProps } from 'interfaces'
-import { styled } from 'style'
+import { Grid as FlexGrid, styled, styledTypes, injectGlobal } from 'style'
+import flashlightImg from 'images/flashlight-night.png'
+import { setupWheelListener } from 'helpers/addWheelListener'
 
 import 'style/global.css'
 import 'style/typography.scss'
 
-const FirstFrame = styled.div``
+const Grid = styled(FlexGrid)`
+  height: 100%;
+`
 
-const Index: React.SFC<IIndexPageProps> = ({ data }) => {
-  return (
-    <MainLayout>
-      <FirstFrame>
-        <Box ml="6.33%" />
-      </FirstFrame>
+injectGlobal`
+  body {
+    overflow: hidden;
+  }
+`
 
-      <H1 m={0}>RYAN GARANT</H1>
+const BG1 = styled.div`
+  background: radial-gradient(440.99px at 44.47% 51.81%, #011627 0%, rgba(255, 255, 255, 0) 100%),
+    #000000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+`
 
-      {/* <Hero fixed={data.headshot.childImageSharp.fixed} /> */}
-    </MainLayout>
+const BG2 = styled.div`
+  background: url(${props => props.url});
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+`
+
+const Layout = styled(Box)`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: ${props => props.top || '0'};
+  left: ${props => props.left || '0'};
+`
+
+class Index extends React.Component<IIndexPageProps> {
+  public state = { currentFrame: 1, totalFrames: 3, initialized: false }
+
+  private handleScroll = throttle(
+    e => {
+      e.preventDefault()
+
+      const isScrollingUp = e.deltaY < 0
+      const currentFrame = this.state.currentFrame
+
+      if (isScrollingUp && currentFrame !== 1) {
+        this.setState({ currentFrame: currentFrame - 1 })
+        console.log('scrolling up')
+      } else if (!isScrollingUp && currentFrame !== this.state.totalFrames) {
+        console.log('scrolling down')
+        this.setState({ currentFrame: currentFrame + 1 })
+      }
+    },
+    500,
+    { trailing: false }
   )
+
+  public componentDidMount() {
+    setupWheelListener()
+    window.addWheelListener(window, this.handleScroll)
+
+    this.setState({ initialized: true })
+  }
+
+  public componentWillUnmount() {
+    window.removeEventListener('wheel', this.handleScroll)
+  }
+
+  private calcTop(frame: number) {
+    return `${(frame - this.state.currentFrame) * window.innerHeight}px`
+  }
+
+  public render() {
+    return (
+      <MainLayout>
+        <Layout
+          className="layout"
+          py={['2rem', '4rem', '8rem']}
+          top={this.state.initialized ? this.calcTop(1) : '0'}
+        >
+          <Box width={1} height="100%">
+            <BG1 />
+          </Box>
+
+          <Grid className="grid">
+            <Flex flexDirection="column" justify="space-between" height="100%">
+              <Navbar />
+
+              <H1 my={0}>RYAN GARANT</H1>
+            </Flex>
+          </Grid>
+        </Layout>
+
+        <Layout
+          className="layout"
+          py={['2rem', '4rem', '8rem']}
+          top={this.state.initialized ? this.calcTop(2) : '0'}
+        >
+          <Box width={1} height="100%">
+            <BG2 alt="Man with flashlight aimed at a starry night" url={flashlightImg} />
+          </Box>
+        </Layout>
+
+        {/* <Hero fixed={data.headshot.childImageSharp.fixed} /> */}
+      </MainLayout>
+    )
+  }
 }
 
 export default Index
