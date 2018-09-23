@@ -48,8 +48,11 @@ const Layout = styled(Box)`
   width: 100%;
   height: 100%;
   position: absolute;
-  top: ${props => props.top || '0'};
-  left: ${props => props.left || '0'};
+  top: ${props =>
+    props.initialized ? `${(props.frameNumber - props.currentFrame) * window.innerHeight}px` : '0'};
+  left: 0;
+  transform: ${props => (props.currentFrame !== props.frameNumber ? 'scale(0.8)' : 'scale(1)')};
+  transition: top 1s ease, transform 1s ease;
 `
 
 class Index extends React.Component<IIndexPageProps> {
@@ -85,17 +88,15 @@ class Index extends React.Component<IIndexPageProps> {
     window.removeEventListener('wheel', this.handleScroll)
   }
 
-  private calcTop(frame: number) {
-    return `${(frame - this.state.currentFrame) * window.innerHeight}px`
-  }
-
   public render() {
     return (
       <MainLayout>
         <Layout
           className="layout"
+          currentFrame={this.state.currentFrame}
+          frameNumber={1}
+          initialized={this.state.initialized}
           py={['2rem', '4rem', '8rem']}
-          top={this.state.initialized ? this.calcTop(1) : '0'}
         >
           <Box width={1} height="100%">
             <BG1 />
@@ -112,8 +113,10 @@ class Index extends React.Component<IIndexPageProps> {
 
         <Layout
           className="layout"
+          currentFrame={this.state.currentFrame}
+          frameNumber={2}
+          initialized={this.state.initialized}
           py={['2rem', '4rem', '8rem']}
-          top={this.state.initialized ? this.calcTop(2) : '0'}
         >
           <Box width={1} height="100%">
             <BG2 alt="Man with flashlight aimed at a starry night" url={flashlightImg} />
