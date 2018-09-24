@@ -1,15 +1,6 @@
-export interface IBoxProps extends IColorProps, ISpaceProps, IWidthProps {}
-
 export interface IColorProps {
   color?: string
   bg?: string
-}
-
-export interface IFlexProps extends IColorProps, ISpaceProps, IWidthProps {
-  align?: string | string[]
-  justify?: string | string[]
-  flexDirection?: string | string[]
-  flexWrap?: string | string[]
 }
 
 export interface ISpaceProps {
@@ -55,6 +46,18 @@ export interface IAllMarkdownRemark {
 }
 
 /* --- Component Props --- */
+
+export interface IBoxProps extends IColorProps, ISpaceProps, IWidthProps {
+  height?: string
+}
+
+export interface IFlexProps extends IColorProps, ISpaceProps, IWidthProps {
+  align?: string | string[]
+  justify?: string | string[]
+  flexDirection?: string | string[]
+  flexWrap?: string | string[]
+  height?: string
+}
 
 export interface IIndexPageProps {
   data: {

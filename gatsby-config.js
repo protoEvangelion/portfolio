@@ -9,7 +9,6 @@ module.exports = {
     'gatsby-plugin-resolve-src',
     'gatsby-plugin-sass',
     'gatsby-plugin-sharp',
-    'gatsby-plugin-typescript',
     'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
     {

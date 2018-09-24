@@ -1,10 +1,13 @@
 import { IBoxProps } from 'interfaces'
-import { color, responsiveStyle, space, styled, styledTypes, width } from 'style'
+import { color, responsiveStyle, space, styled, width } from 'style'
 
 const align = responsiveStyle('text-align', 'align')
 
-export const Box = styledTypes<IBoxProps>(styled.div)`
-  ${space} ${width} ${color} ${align};
+export const Box = styled<IBoxProps, 'div'>('div')`
+  ${align};
+  ${color};
+  ${space};
+  ${width};
 `
 
 Box.displayName = 'Box'

@@ -6,7 +6,8 @@ import { H1, Box, Flex, Logo } from 'components/atoms'
 import { Navbar } from 'components/organisms'
 import { MainLayout } from 'components/templates'
 import { IIndexPageProps } from 'interfaces'
-import { Grid as FlexGrid, styled, styledTypes, injectGlobal } from 'style'
+import { Grid as FlexGrid, styled } from 'style'
+
 import flashlightImg from 'images/flashlight-night.png'
 import { setupWheelListener } from 'helpers/addWheelListener'
 
@@ -15,12 +16,6 @@ import 'style/typography.scss'
 
 const Grid = styled(FlexGrid)`
   height: 100%;
-`
-
-injectGlobal`
-  body {
-    overflow: hidden;
-  }
 `
 
 const BG1 = styled.div`
@@ -34,7 +29,7 @@ const BG1 = styled.div`
   z-index: -1;
 `
 
-const BG2 = styled.div`
+const BG2 = styled<{ url: string }, 'div'>('div')`
   background: url(${props => props.url});
   position: absolute;
   top: 0;
@@ -43,6 +38,12 @@ const BG2 = styled.div`
   bottom: 0;
   z-index: -1;
 `
+
+interface ILayoutProps {
+  currentFrame: number
+  frameNumber: number
+  initialized: boolean
+}
 
 const Layout = styled(Box)`
   width: 100%;
@@ -67,9 +68,7 @@ class Index extends React.Component<IIndexPageProps> {
 
       if (isScrollingUp && currentFrame !== 1) {
         this.setState({ currentFrame: currentFrame - 1 })
-        console.log('scrolling up')
       } else if (!isScrollingUp && currentFrame !== this.state.totalFrames) {
-        console.log('scrolling down')
         this.setState({ currentFrame: currentFrame + 1 })
       }
     },
@@ -102,7 +101,7 @@ class Index extends React.Component<IIndexPageProps> {
             <BG1 />
           </Box>
 
-          <Grid className="grid">
+          <Grid>
             <Flex flexDirection="column" justify="space-between" height="100%">
               <Navbar />
 

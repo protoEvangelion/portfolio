@@ -10,7 +10,7 @@ const LocationIcon = () => (
   </svg>
 )
 
-export const Navbar: React.SFC<{ isOpen: boolean }> = ({ isOpen }) => {
+export const Navbar: React.SFC<{}> = () => {
   return (
     <Row middle="xs">
       <Col xs={1}>
@@ -21,9 +21,9 @@ export const Navbar: React.SFC<{ isOpen: boolean }> = ({ isOpen }) => {
 
       <Col lg={6} lgOffset={1} md={false}>
         <Flex justify="space-around">
-          <Link to="/">Home</Link>
-          <Link to="/projects">Projects</Link>
-          <Link to="/contact">Contact</Link>
+          <Link to="/">HOME</Link>
+          <Link to="/projects">PROJECTS</Link>
+          <Link to="/contact">CONTACT</Link>
         </Flex>
       </Col>
     </Row>

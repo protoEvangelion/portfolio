@@ -1,12 +1,18 @@
 import * as React from 'react'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
-import { ThemeProvider } from 'style'
+import { ThemeProvider, createGlobalStyle } from 'style'
 import theme from 'style/theme'
 
 interface IMainLayout {
-  children: JSX.Element
+  children: any
 }
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    overflow: hidden;
+  }
+`
 
 export const MainLayout: React.SFC<IMainLayout> = ({ children }) => (
   <StaticQuery
@@ -36,6 +42,8 @@ export const MainLayout: React.SFC<IMainLayout> = ({ children }) => (
               },
             ]}
           />
+
+          <GlobalStyle />
 
           {children}
         </>

@@ -1,7 +1,7 @@
 // This theme file is based on the styled-components styled system
 // https://github.com/jxnblk/styled-system
 
-interface IThemeInterface {
+export interface IThemeInterface {
   bold: number
   breakpoints: number[]
   colors: {
@@ -19,8 +19,6 @@ interface IThemeInterface {
   regular: number
   space: number[]
 }
-
-let theme: IThemeInterface
 
 export const breakpoints = [32, 48, 64, 80]
 
@@ -110,7 +108,7 @@ const flexboxgrid = {
   },
 }
 
-theme = {
+const theme = {
   bold,
   breakpoints,
   colors,

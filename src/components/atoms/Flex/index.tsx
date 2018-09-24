@@ -8,14 +8,20 @@ import {
   justifyContent,
   space,
   styled,
-  styledTypes,
   width,
 } from 'style'
 
-export const Flex = styledTypes<IFlexProps>(styled.div)`
+export const Flex = styled<IFlexProps, 'div'>('div')`
   display: flex;
   height: ${props => props.height};
-  ${space} ${width} ${color} ${alignItems} ${justifyContent} ${flexWrap} ${flexDirection};
+
+  ${alignItems};
+  ${color};
+  ${flexDirection};
+  ${flexWrap};
+  ${justifyContent};
+  ${space};
+  ${width};
 `
 
 Flex.displayName = 'Flex'

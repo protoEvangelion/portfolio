@@ -1,8 +1,29 @@
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 
+exports.resolvableExtensions = () => [`.ts`, `.tsx`]
+
+exports.onCreateWebpackConfig = ({ actions, loaders }) => {
+  const jsLoader = loaders.js()
+
+  if (!jsLoader) {
+    return
+  }
+
+  actions.setWebpackConfig({
+    module: {
+      rules: [
+        {
+          test: /\.tsx?$/,
+          use: jsLoader,
+        },
+      ],
+    },
+  })
+}
+
 try {
-  require.resolve(`babel-plugin-styled-components`)
+  require.resolve('babel-plugin-styled-components')
 } catch (e) {
   throw new Error(
     `'babel-plugin-styled-components' is not installed which is needed by plugin 'gatsby-plugin-styled-components'`
@@ -10,12 +31,16 @@ try {
 }
 
 exports.onCreateBabelConfig = ({ stage, actions }, pluginOptions) => {
-  const ssr = stage === `build-html` || stage === `build-javascript`
+  const ssr = stage === 'build-html' || stage === 'build-javascript'
 
   actions.setBabelPlugin({
-    name: `babel-plugin-styled-components`,
+    name: 'babel-plugin-styled-components',
     stage,
-    options: { ...pluginOptions, ssr },
+    options: { displayName: true, ssr },
+  })
+
+  actions.setBabelPreset({
+    name: '@babel/preset-typescript',
   })
 }
 

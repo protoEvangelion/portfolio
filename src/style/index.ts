@@ -1,8 +1,6 @@
 // I import & export all my styled component related libraries for easy clean importing
 
 import { Grid, Col, Row } from 'react-styled-flexboxgrid'
-import styled, { css, injectGlobal, keyframes, ThemeProvider } from 'styled-components'
-import styledTypes from 'styled-components-ts'
 import {
   alignItems,
   color,
@@ -13,7 +11,19 @@ import {
   space,
   width,
 } from 'styled-system'
+
 import { ifProp, prop, switchProp } from 'styled-tools'
+import { IThemeInterface } from './theme'
+import * as styledComponents from 'styled-components'
+import { ThemedStyledComponentsModule } from 'styled-components'
+
+const {
+  default: styled,
+  createGlobalStyle,
+  css,
+  keyframes,
+  ThemeProvider,
+} = styledComponents as ThemedStyledComponentsModule<IThemeInterface>
 
 export {
   /* Grid */
@@ -22,12 +32,10 @@ export {
   Row,
   /* Styled Components */
   styled,
+  createGlobalStyle,
   css,
-  injectGlobal,
   keyframes,
   ThemeProvider,
-  /* Typescript Support */
-  styledTypes,
   /* Styled System */
   alignItems,
   color,
