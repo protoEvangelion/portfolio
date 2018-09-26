@@ -4,6 +4,10 @@ export { Flex } from './Flex'
 export { Link } from './Link'
 export { Logo } from './Logo'
 export { H1 } from './H1'
+export { H2 } from './H2'
+export { Span } from './Span'
+export { P } from './P'
+
 // export { Hide } from './Hide'
 
 // export { Badge } from './Badge'

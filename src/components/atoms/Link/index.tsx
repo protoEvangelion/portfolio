@@ -6,8 +6,9 @@ interface ILinkProps {
   to: string
 }
 
-const StyledLink = styled.a`
+const StyledLink = styled(GatsbyLink)`
   text-decoration: none;
+  font-weight: 100;
 
   ${color};
 `

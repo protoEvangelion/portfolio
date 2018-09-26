@@ -1,4 +1,4 @@
-import { Box, Flex, Logo, Link } from 'components/atoms'
+import { Flex, Logo, Link } from 'components/atoms'
 // import { MenuButton } from 'components/molecules'
 import * as React from 'react'
 import { Col, Row } from 'style'
@@ -10,17 +10,17 @@ const LocationIcon = () => (
   </svg>
 )
 
-export const Navbar: React.SFC<{}> = () => {
+export const Navbar: React.SFC<{ hideText: boolean }> = ({ dark, hideText }) => {
   return (
-    <Row middle="xs">
+    <Row middle="xs" pb={4}>
       <Col xs={1}>
         <Link to="/">
-          <Logo />
+          <Logo dark={dark} />
         </Link>
       </Col>
 
       <Col lg={6} lgOffset={1} md={false}>
-        <Flex justify="space-around">
+        <Flex justify="space-around" hide={hideText}>
           <Link to="/">HOME</Link>
           <Link to="/projects">PROJECTS</Link>
           <Link to="/contact">CONTACT</Link>

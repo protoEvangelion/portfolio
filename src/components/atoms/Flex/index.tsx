@@ -12,7 +12,7 @@ import {
 } from 'style'
 
 export const Flex = styled<IFlexProps, 'div'>('div')`
-  display: flex;
+  display: ${props => (props.hide ? 'none' : 'flex')};
   height: ${props => props.height};
 
   ${alignItems};
@@ -25,3 +25,7 @@ export const Flex = styled<IFlexProps, 'div'>('div')`
 `
 
 Flex.displayName = 'Flex'
+
+Flex.defaultProps = {
+  hide: false,
+}

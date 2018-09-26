@@ -1,8 +1,9 @@
 // I import & export all my styled component related libraries for easy clean importing
 
-import { Grid, Col, Row } from 'react-styled-flexboxgrid'
+import { Grid, Col, Row as GridRow } from 'react-styled-flexboxgrid'
 import {
   alignItems,
+  borderRadius,
   color,
   flexDirection,
   flexWrap,
@@ -25,6 +26,10 @@ const {
   ThemeProvider,
 } = styledComponents as ThemedStyledComponentsModule<IThemeInterface>
 
+const Row = styled(GridRow)`
+  ${space};
+`
+
 export {
   /* Grid */
   Grid,
@@ -38,6 +43,7 @@ export {
   ThemeProvider,
   /* Styled System */
   alignItems,
+  borderRadius,
   color,
   flexDirection,
   flexWrap,

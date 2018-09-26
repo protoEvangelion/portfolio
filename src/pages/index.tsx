@@ -2,13 +2,14 @@ import { graphql } from 'gatsby'
 import * as React from 'react'
 import { throttle } from 'lodash'
 
-import { H1, Box, Flex, Logo } from 'components/atoms'
-import { Navbar } from 'components/organisms'
+import { H1, H2, Span, P, Box, Flex, Link } from 'components/atoms'
+import { Navbar, Sidebar } from 'components/organisms'
 import { MainLayout } from 'components/templates'
 import { IIndexPageProps } from 'interfaces'
-import { Grid as FlexGrid, styled } from 'style'
+import { Grid as FlexGrid, Row, Col, styled } from 'style'
 
 import flashlightImg from 'images/flashlight-night.png'
+import milkyWayImg from 'images/milky-way.jpg'
 import { setupWheelListener } from 'helpers/addWheelListener'
 
 import 'style/global.css'
@@ -18,9 +19,7 @@ const Grid = styled(FlexGrid)`
   height: 100%;
 `
 
-const BG1 = styled.div`
-  background: radial-gradient(440.99px at 44.47% 51.81%, #011627 0%, rgba(255, 255, 255, 0) 100%),
-    #000000;
+const BaseBG = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -29,14 +28,19 @@ const BG1 = styled.div`
   z-index: -1;
 `
 
-const BG2 = styled<{ url: string }, 'div'>('div')`
-  background: url(${props => props.url});
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
+const BG1 = styled(BaseBG)`
+  background: radial-gradient(440.99px at 44.47% 51.81%, #011627 0%, rgba(255, 255, 255, 0) 100%),
+    #000000;
+`
+
+const BG2 = styled(BaseBG)`
+  background: right center / contain no-repeat url(${flashlightImg});
+`
+
+const BG3 = styled(BaseBG)`
+  background: right center / cover no-repeat url(${milkyWayImg});
+  filter: ${props => (props.illuminate ? 'saturate(150%)' : 'saturate(60%)')};
+  transition: filter 2s;
 `
 
 interface ILayoutProps {
@@ -57,7 +61,13 @@ const Layout = styled(Box)`
 `
 
 class Index extends React.Component<IIndexPageProps> {
-  public state = { currentFrame: 1, totalFrames: 3, initialized: false }
+  public state = {
+    currentFrame: 1,
+    totalFrames: 3,
+    initialized: false,
+    isCTAHovered: false,
+    isSidebarActive: false,
+  }
 
   private handleScroll = throttle(
     e => {
@@ -87,6 +97,24 @@ class Index extends React.Component<IIndexPageProps> {
     window.removeEventListener('wheel', this.handleScroll)
   }
 
+  private toggleCTAHover = () => {
+    this.setState(prevState => ({ isCTAHovered: !prevState.isCTAHovered }))
+  }
+
+  private handleSidebarMouseEnter = () => {
+    console.log('sidebar mouse enter')
+    this.setState({ isSidebarActive: true })
+  }
+
+  private handleSidebarMouseLeave = () => {
+    console.log('sidebar mouse leave')
+    this.setState({ isSidebarActive: false })
+  }
+
+  private updateCoordinates = coordinates => {
+    console.log('coordinates', coordinates)
+  }
+
   public render() {
     return (
       <MainLayout>
@@ -105,7 +133,13 @@ class Index extends React.Component<IIndexPageProps> {
             <Flex flexDirection="column" justify="space-between" height="100%">
               <Navbar />
 
-              <H1 my={0}>RYAN GARANT</H1>
+              <div>
+                <H1 color="white">RYAN GARANT</H1>
+
+                <H1 color="white" my={0} underline>
+                  REACT WEB DEVELOPER
+                </H1>
+              </div>
             </Flex>
           </Grid>
         </Layout>
@@ -117,11 +151,99 @@ class Index extends React.Component<IIndexPageProps> {
           initialized={this.state.initialized}
           py={['2rem', '4rem', '8rem']}
         >
-          <Box width={1} height="100%">
-            <BG2 alt="Man with flashlight aimed at a starry night" url={flashlightImg} />
-          </Box>
+          <Grid>
+            <Navbar dark hideText />
+
+            <Row>
+              <Col xs={1}>
+                <Span>02</Span>
+              </Col>
+              <Col xs={3}>
+                <Span>My Story</Span>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={5} xsOffset={1}>
+                <H2>Blessed is the man who doesn't walk in the</H2>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={5} xsOffset={1}>
+                <P>
+                  Blessed is the man who doesn't walk in the counsel of the wicked, nor stand in the
+                  way of sinners, nor sit in the seat of scoffers; but his delight is in Yahweh's
+                  law. On his law he meditates day and night. He will be like a tree planted by the
+                  streams of water, that brings forth its fruit in its season, whose leaf also does
+                  not wither. Whatever he does shall prosper.
+                </P>
+              </Col>
+            </Row>
+            <Box width={1} height="100%">
+              <BG2 alt="Man with flashlight aimed at a starry night" />
+            </Box>
+          </Grid>
         </Layout>
 
+        <Layout
+          className="layout"
+          currentFrame={this.state.currentFrame}
+          frameNumber={3}
+          initialized={this.state.initialized}
+          py={['2rem', '4rem', '8rem']}
+        >
+          <Grid>
+            <Navbar hideText />
+
+            <Row>
+              <Col xs={1}>
+                <Span>03</Span>
+              </Col>
+              <Col xs={3} xsOffset={2}>
+                <Span>Learn More</Span>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={5} xsOffset={2}>
+                <Link to="/projects">
+                  <H2
+                    onMouseEnter={this.toggleCTAHover}
+                    onMouseLeave={this.toggleCTAHover}
+                    color="white"
+                    underline
+                  >
+                    Projects
+                  </H2>
+                </Link>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={5} xsOffset={2}>
+                <Link to="/contact">
+                  <H2
+                    onMouseEnter={this.toggleCTAHover}
+                    onMouseLeave={this.toggleCTAHover}
+                    color="white"
+                    underline
+                  >
+                    Contact
+                  </H2>
+                </Link>
+              </Col>
+            </Row>
+            <Box width={1} height="100%">
+              <BG3 alt="Man looking up at Milky Way" illuminate={this.state.isCTAHovered} />
+            </Box>
+          </Grid>
+        </Layout>
+
+        <Sidebar
+          currentFrame={this.state.currentFrame}
+          handleSidebarMouseEnter={this.handleSidebarMouseEnter}
+          handleSidebarMouseLeave={this.handleSidebarMouseLeave}
+          totalFrames={3}
+          isSidebarActive={this.state.isSidebarActive}
+          updateCoordinates={this.updateCoordinates}
+        />
         {/* <Hero fixed={data.headshot.childImageSharp.fixed} /> */}
       </MainLayout>
     )

@@ -8,7 +8,6 @@
     "dev": "gatsby develop --port 7777",
     "build": "gatsby build",
     "clean": "git clean -xfd .cache public/ && rm -rf .cache public",
-    "deploy": "firebase deploy",
     "story": "start-storybook -p 9001 -c private/storybook",
     "test": "cross-env NODE_ENV=test jest"
   },

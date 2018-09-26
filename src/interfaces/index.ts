@@ -48,6 +48,8 @@ export interface IAllMarkdownRemark {
 /* --- Component Props --- */
 
 export interface IBoxProps extends IColorProps, ISpaceProps, IWidthProps {
+  borderRadius?: string
+  opacity?: number
   height?: string
 }
 
@@ -57,6 +59,7 @@ export interface IFlexProps extends IColorProps, ISpaceProps, IWidthProps {
   flexDirection?: string | string[]
   flexWrap?: string | string[]
   height?: string
+  hide?: boolean
 }
 
 export interface IIndexPageProps {
@@ -69,6 +72,10 @@ export interface IIndexPageProps {
       }
     }
   }
+}
+
+export interface IH1 extends IColorSpaceProps {
+  underline?: boolean
 }
 
 export interface INotesPageProps {
