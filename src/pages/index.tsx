@@ -34,7 +34,7 @@ const BG1 = styled(BaseBG)`
 `
 
 const BG2 = styled(BaseBG)`
-  background: right center / contain no-repeat url(${flashlightImg});
+  background: right center / contain no-repeat url(${flashlightImg}) #fff;
 `
 
 const BG3 = styled(BaseBG)`
@@ -56,13 +56,31 @@ const Layout = styled(Box)`
   top: ${props =>
     props.initialized ? `${(props.frameNumber - props.currentFrame) * window.innerHeight}px` : '0'};
   left: 0;
-  transform: ${props => (props.currentFrame !== props.frameNumber ? 'scale(0.8)' : 'scale(1)')};
+  transform: ${props => {
+    if (props.sidebarActive) {
+      return 'scale(0.7)'
+    } else if (props.currentFrame !== props.frameNumber) {
+      return 'scale(0.8)'
+    }
+    return 'scale(1)'
+  }};
   transition: top 1s ease, transform 1s ease;
+`
+
+const HoverRectangle = styled(Box)`
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 47px;
+  transition: opacity 0.4s, top 0.4s;
+  opacity: ${props => (props.isSidebarActive ? 0.1 : 0)};
+  top: ${props => (props.yCoordinate ? `${props.yCoordinate}px` : '50%')};
 `
 
 class Index extends React.Component<IIndexPageProps> {
   public state = {
     currentFrame: 1,
+    hoverRectangleY: null,
     totalFrames: 3,
     initialized: false,
     isCTAHovered: false,
@@ -111,24 +129,31 @@ class Index extends React.Component<IIndexPageProps> {
     this.setState({ isSidebarActive: false })
   }
 
-  private updateCoordinates = coordinates => {
-    console.log('coordinates', coordinates)
+  private moveToFrame = frameNumber => {
+    this.setState({ currentFrame: frameNumber })
+  }
+
+  private updateCoordinates = yCoordinate => {
+    this.setState({ hoverRectangleY: yCoordinate })
   }
 
   public render() {
     return (
       <MainLayout>
+        <HoverRectangle
+          bg="gray"
+          isSidebarActive={this.state.isSidebarActive}
+          yCoordinate={this.state.hoverRectangleY}
+        />
+
         <Layout
           className="layout"
           currentFrame={this.state.currentFrame}
           frameNumber={1}
           initialized={this.state.initialized}
+          sidebarActive={this.state.isSidebarActive}
           py={['2rem', '4rem', '8rem']}
         >
-          <Box width={1} height="100%">
-            <BG1 />
-          </Box>
-
           <Grid>
             <Flex flexDirection="column" justify="space-between" height="100%">
               <Navbar />
@@ -141,6 +166,10 @@ class Index extends React.Component<IIndexPageProps> {
                 </H1>
               </div>
             </Flex>
+
+            <Box width={1} height="100%">
+              <BG1 />
+            </Box>
           </Grid>
         </Layout>
 
@@ -149,6 +178,7 @@ class Index extends React.Component<IIndexPageProps> {
           currentFrame={this.state.currentFrame}
           frameNumber={2}
           initialized={this.state.initialized}
+          sidebarActive={this.state.isSidebarActive}
           py={['2rem', '4rem', '8rem']}
         >
           <Grid>
@@ -190,6 +220,7 @@ class Index extends React.Component<IIndexPageProps> {
           frameNumber={3}
           initialized={this.state.initialized}
           py={['2rem', '4rem', '8rem']}
+          sidebarActive={this.state.isSidebarActive}
         >
           <Grid>
             <Navbar hideText />
@@ -243,7 +274,9 @@ class Index extends React.Component<IIndexPageProps> {
           totalFrames={3}
           isSidebarActive={this.state.isSidebarActive}
           updateCoordinates={this.updateCoordinates}
+          moveToFrame={this.moveToFrame}
         />
+
         {/* <Hero fixed={data.headshot.childImageSharp.fixed} /> */}
       </MainLayout>
     )

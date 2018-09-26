@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { styled } from 'style'
 import { Box, Flex, Span } from 'components/atoms'
+import { ISidebarProps } from 'interfaces'
 
 const SidebarWrapper = styled.div`
   display: flex;
@@ -38,7 +39,7 @@ const StyledSpan = styled(Span)`
   left: 70%;
   opacity: ${props => (props.visible ? '1' : '0')};
   visibility: ${props => (props.visible ? 'visble' : 'hidden')};
-  transition: opacity 0.3s, visibility 0.3s;
+  transition: color 0.3s, opacity 0.3s, visibility 0.3s;
 `
 
 const StyledFlex = styled(Flex)`
@@ -65,6 +66,7 @@ class CircleNavItem extends React.Component {
         align="center"
         justify="center"
         width={1}
+        onClick={() => this.props.handleClick(this.props.frame)}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
         p={2}
@@ -81,6 +83,7 @@ class CircleNavItem extends React.Component {
           }
           width={['0.5rem']}
           height="0.5rem"
+          transition="opacity 0.3s"
         />
 
         <StyledSpan
@@ -94,44 +97,55 @@ class CircleNavItem extends React.Component {
   }
 }
 
-export const CircleNavItemsWrapper: React.SFC = ({
+export const Sidebar: React.SFC<ISidebarProps> = ({
   currentFrame,
   handleSidebarMouseEnter,
   handleSidebarMouseLeave,
   totalFrames,
   updateCoordinates,
+  moveToFrame,
   isSidebarActive,
 }) => (
-  <Flex
-    justify="space-between"
-    flexDirection="column"
-    height="15%"
-    width={1}
-    onMouseEnter={handleSidebarMouseEnter}
-    onMouseLeave={handleSidebarMouseLeave}
-  >
-    {Array.from({ length: totalFrames }).map((__, i) => (
-      <CircleNavItem
-        currentFrame={currentFrame}
-        key={i}
-        frame={i + 1}
-        isSidebarActive={isSidebarActive}
-        updateCoordinates={updateCoordinates}
-      />
-    ))}
-  </Flex>
-)
-
-export const Sidebar: React.SFC = props => (
   <SidebarWrapper>
     <TopLine />
 
-    <CircleNavItemsWrapper {...props} />
+    <Flex
+      justify="space-between"
+      flexDirection="column"
+      height="15%"
+      width={1}
+      onMouseEnter={handleSidebarMouseEnter}
+      onMouseLeave={handleSidebarMouseLeave}
+    >
+      {Array.from({ length: totalFrames }).map((__, i) => (
+        <CircleNavItem
+          currentFrame={currentFrame}
+          key={i}
+          frame={i + 1}
+          isSidebarActive={isSidebarActive}
+          updateCoordinates={updateCoordinates}
+          handleClick={moveToFrame}
+        />
+      ))}
+    </Flex>
 
     <BottomLine1 />
 
-    <Box width={['25px']} height="25px" borderRadius="50%" bg="cyan">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <Box
+      cursor="pointer"
+      width={['25px']}
+      height="25px"
+      borderRadius="50%"
+      bg="cyan"
+      onClick={() => moveToFrame(2)}
+    >
+      <svg
+        fill="#fff"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+      >
         <path d="M7 10l5 5 5-5z" />
         <path d="M0 0h24v24H0z" fill="none" />
       </svg>

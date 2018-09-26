@@ -48,9 +48,11 @@ export interface IAllMarkdownRemark {
 /* --- Component Props --- */
 
 export interface IBoxProps extends IColorProps, ISpaceProps, IWidthProps {
+  cursor?: string
   borderRadius?: string
   opacity?: number
   height?: string
+  transition?: string
 }
 
 export interface IFlexProps extends IColorProps, ISpaceProps, IWidthProps {
@@ -94,4 +96,14 @@ export interface INoteLayoutProps {
       }
     }
   }
+}
+
+export interface ISidebarProps {
+  currentFrame: number
+  handleSidebarMouseEnter: () => {}
+  handleSidebarMouseLeave: () => {}
+  totalFrames: number
+  updateCoordinates: () => {}
+  isSidebarActive: boolean
+  moveToFrame: (hi: number) => {}
 }

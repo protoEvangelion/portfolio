@@ -3,15 +3,19 @@ import { borderRadius, color, responsiveStyle, space, styled, width } from 'styl
 
 const align = responsiveStyle('text-align', 'align')
 
-export const Box = styled<IBoxProps, 'div'>('div')`
-  height: ${props => (props.height ? props.height : 'auto')};
-  ${props => props.opacity && `opacity: ${props.opacity};`};
+// TODO: blacklist props like opacity, height, width, transition
 
-  ${align};
-  ${borderRadius};
-  ${color};
-  ${space};
-  ${width};
+export const Box = styled<IBoxProps, 'div'>('div')`
+  ${props => props.cursor && `cursor: ${props.cursor};`}
+  ${props => props.height && `height: ${props.height};`}
+  ${props => props.opacity && `opacity: ${props.opacity};`}
+  ${props => props.transition && `transition: ${props.transition};`}
+
+  ${align}
+  ${borderRadius}
+  ${color}
+  ${space}
+  ${width}
 `
 
 Box.displayName = 'Box'
