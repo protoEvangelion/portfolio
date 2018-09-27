@@ -271,10 +271,10 @@ class Index extends React.Component<IIndexPageProps> {
           currentFrame={this.state.currentFrame}
           handleSidebarMouseEnter={this.handleSidebarMouseEnter}
           handleSidebarMouseLeave={this.handleSidebarMouseLeave}
-          totalFrames={3}
           isSidebarActive={this.state.isSidebarActive}
-          updateCoordinates={this.updateCoordinates}
           moveToFrame={this.moveToFrame}
+          totalFrames={3}
+          updateCoordinates={this.updateCoordinates}
         />
 
         {/* <Hero fixed={data.headshot.childImageSharp.fixed} /> */}

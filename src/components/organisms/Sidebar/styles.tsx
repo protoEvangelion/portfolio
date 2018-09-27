@@ -1,0 +1,77 @@
+import { styled, keyframes } from 'style'
+
+const fadeOutFadeIn = keyframes`
+o% { opacity: 1; }
+10% { opacity: 0; }
+50% { opacity: 0; }
+100% { opacity: 1; }
+`
+
+const fadeOutFadeIn2 = keyframes`
+o% { opacity: 1; }
+10% { opacity: 0; }
+51% { opacity: 0; }
+100% { opacity: 1; }
+`
+
+const fadeIn = keyframes`
+from { opacity: 0; }
+to { opacity: 0; }
+`
+
+export const SidebarWrapper = styled.div`
+  align-items: center;
+  animation: ${props => (props.currentFrame % 2 === 0 ? fadeOutFadeIn : fadeOutFadeIn2)} 1.3s linear;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 20%;
+
+  .line {
+    background: rgb(253, 255, 252);
+    opacity: 0.5;
+    position: absolute;
+    transition: height 1s, opacity 1s, visibility 1s;
+    visibility: visible;
+    width: 1px;
+  }
+
+  .top-line {
+    height: ${props => (props.currentFrame === 1 ? '25%' : '27%')};
+    top: 0;
+  }
+
+  .nav-item-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: ${props => (props.currentFrame === 1 ? '15%' : '25%')};
+    position: absolute;
+    top: ${props => (props.currentFrame === 1 ? '40%' : '50%')};
+    ${props => props.currentFrame !== 1 && 'transform: translateY(-50%)'};
+    transition: height 0.75s ease 0.75s, top 0s ease 0.5s, transform 0s ease 0.5s;
+    width: 100%;
+  }
+
+  .center-line {
+    height: 5%;
+    top: 70%;
+  }
+
+  .next-frame-button {
+    background: cyan;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    top: 81%;
+  }
+
+  .bottom-line {
+    bottom: 0;
+    height: ${props => (props.currentFrame === 1 ? '10%' : '27%')};
+  }
+`

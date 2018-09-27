@@ -102,10 +102,10 @@ export interface ISidebarProps {
   currentFrame: number
   handleSidebarMouseEnter: () => {}
   handleSidebarMouseLeave: () => {}
-  totalFrames: number
-  updateCoordinates: () => {}
   isSidebarActive: boolean
   moveToFrame: (hi: number) => {}
+  totalFrames: number
+  updateCoordinates: () => {}
 }
 
 export interface ITransitionProps {

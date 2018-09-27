@@ -1,5 +1,5 @@
 import * as React from 'react'
-import CssTransition from 'react-transition-group/Transition'
+import ReactTransition from 'react-transition-group/Transition'
 import { ITransitionProps } from 'interfaces'
 
 export const Transition: React.SFC<ITransitionProps> = ({
@@ -10,26 +10,25 @@ export const Transition: React.SFC<ITransitionProps> = ({
   show,
 }) => {
   const defaultStyle = {
-    transition: `opacity ${duration}ms ease-in-out, height ${duration}ms ease-in-out`,
+    transition: `opacity ${duration}ms ease-in-out`,
     opacity: 0,
   }
 
   const transitionStyles = {
     entering: { opacity: 0 },
     entered: { opacity },
-    exiting: { opacity },
-    exited: { opacity: 0, height: 0 },
+    exiting: { opacity: 0 },
   }
 
   return (
-    <CssTransition in={show} timeout={duration}>
+    <ReactTransition in={show} timeout={duration} unmountOnExit>
       {state =>
         children({
           ...defaultStyle,
           ...transitionStyles[state],
         })
       }
-    </CssTransition>
+    </ReactTransition>
   )
 }
 
