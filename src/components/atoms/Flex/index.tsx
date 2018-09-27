@@ -1,31 +1,15 @@
 import { IFlexProps } from 'interfaces'
+import { Box } from '../Box'
 
-import {
-  alignItems,
-  color,
-  flexDirection,
-  flexWrap,
-  justifyContent,
-  space,
-  styled,
-  width,
-} from 'style'
+import { alignItems, flexDirection, flexWrap, justifyContent, styled } from 'style'
 
-export const Flex = styled<IFlexProps, 'div'>('div')`
-  display: ${props => (props.hide ? 'none' : 'flex')};
-  height: ${props => props.height};
+export const Flex = styled(Box)`
+  display: flex;
 
   ${alignItems};
-  ${color};
   ${flexDirection};
   ${flexWrap};
   ${justifyContent};
-  ${space};
-  ${width};
 `
 
 Flex.displayName = 'Flex'
-
-Flex.defaultProps = {
-  hide: false,
-}

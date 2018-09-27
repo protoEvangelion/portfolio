@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { styled } from 'style'
 import { Box, Flex, Span } from 'components/atoms'
+import { Transition } from 'components/molecules'
 import { ISidebarProps } from 'interfaces'
 
 const SidebarWrapper = styled.div`
@@ -17,13 +18,14 @@ const SidebarWrapper = styled.div`
 
 const Line = styled.div`
   width: 1px;
-  background: rgba(253, 255, 252, 0.5);
-  transition: height 1s background 1s visibility 1s;
+  background: rgb(253, 255, 252);
+  transition: height 1s, opacity 1s, visibility 1s;
+  opacity: 0.5;
   visibility: visible;
 `
 
 const TopLine = styled(Line)`
-  height: 25%;
+  height: ${props => (props.currentFrame === 1 ? '25%' : '27%')};
 `
 
 const BottomLine1 = styled(Line)`
@@ -31,7 +33,7 @@ const BottomLine1 = styled(Line)`
 `
 
 const BottomLine2 = styled(Line)`
-  height: 10%;
+  height: ${props => (props.currentFrame === 1 ? '10%' : '27%')};
 `
 
 const StyledSpan = styled(Span)`
@@ -107,15 +109,16 @@ export const Sidebar: React.SFC<ISidebarProps> = ({
   isSidebarActive,
 }) => (
   <SidebarWrapper>
-    <TopLine />
+    <TopLine currentFrame={currentFrame} />
 
     <Flex
       justify="space-between"
       flexDirection="column"
-      height="15%"
+      height={currentFrame === 1 ? '15%' : '25%'}
       width={1}
       onMouseEnter={handleSidebarMouseEnter}
       onMouseLeave={handleSidebarMouseLeave}
+      transition="height 0.3s"
     >
       {Array.from({ length: totalFrames }).map((__, i) => (
         <CircleNavItem
@@ -129,28 +132,35 @@ export const Sidebar: React.SFC<ISidebarProps> = ({
       ))}
     </Flex>
 
-    <BottomLine1 />
+    <Transition show={currentFrame === 1} opacity={0.5}>
+      {styles => <BottomLine1 style={styles} />}
+    </Transition>
 
-    <Box
-      cursor="pointer"
-      width={['25px']}
-      height="25px"
-      borderRadius="50%"
-      bg="cyan"
-      onClick={() => moveToFrame(2)}
-    >
-      <svg
-        fill="#fff"
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-      >
-        <path d="M7 10l5 5 5-5z" />
-        <path d="M0 0h24v24H0z" fill="none" />
-      </svg>
-    </Box>
+    <Transition show={currentFrame === 1}>
+      {styles => (
+        <Box
+          cursor="pointer"
+          width={['25px']}
+          height="25px"
+          borderRadius="50%"
+          bg="cyan"
+          onClick={() => moveToFrame(2)}
+          style={styles}
+        >
+          <svg
+            fill="#fff"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path d="M7 10l5 5 5-5z" />
+            <path d="M0 0h24v24H0z" fill="none" />
+          </svg>
+        </Box>
+      )}
+    </Transition>
 
-    <BottomLine2 />
+    <BottomLine2 currentFrame={currentFrame} />
   </SidebarWrapper>
 )

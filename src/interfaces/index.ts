@@ -48,6 +48,7 @@ export interface IAllMarkdownRemark {
 /* --- Component Props --- */
 
 export interface IBoxProps extends IColorProps, ISpaceProps, IWidthProps {
+  center?: 'y' | 'x' | true
   cursor?: string
   borderRadius?: string
   opacity?: number
@@ -55,12 +56,11 @@ export interface IBoxProps extends IColorProps, ISpaceProps, IWidthProps {
   transition?: string
 }
 
-export interface IFlexProps extends IColorProps, ISpaceProps, IWidthProps {
+export interface IFlexProps extends IBoxProps {
   align?: string | string[]
   justify?: string | string[]
   flexDirection?: string | string[]
   flexWrap?: string | string[]
-  height?: string
   hide?: boolean
 }
 
@@ -106,4 +106,12 @@ export interface ISidebarProps {
   updateCoordinates: () => {}
   isSidebarActive: boolean
   moveToFrame: (hi: number) => {}
+}
+
+export interface ITransitionProps {
+  children: (styles: object) => {}
+  type?: 'fade'
+  duration?: number
+  show: boolean
+  opacity?: number
 }
