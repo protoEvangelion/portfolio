@@ -10,7 +10,7 @@ import { renderToString } from 'react-dom/server'
 import { ServerStyleSheet, ThemeProvider } from 'styled-components'
 
 // import store from './src/store'
-import theme from './src/style/theme.ts'
+import theme from './src/style/theme.js'
 
 /*
 * Replace the default server renderer.

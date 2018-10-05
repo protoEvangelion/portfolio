@@ -1,14 +1,15 @@
+// @flow
+import * as React from 'react'
 import { Flex } from 'components/atoms'
-import { IFlexProps } from 'interfaces'
+import { type IFlexProps } from 'interfaces'
+import { styled } from 'style'
 // import { media } from 'styled-system'
-import { styledTypes } from 'style'
 
-interface IWrapperProps extends IFlexProps {
-  isOpen: boolean
+type IWrapperProps = IFlexProps & {
+  isOpen: boolean,
 }
 
-// export const Wrapper = styled<>(Flex)`
-export const Wrapper = styledTypes<IWrapperProps>(Flex.extend)`
+export const Wrapper: React.ComponentType<IWrapperProps> = styled(Flex)`
   opacity: ${({ isOpen }) => (isOpen ? 1 : 0.9)};
   height: ${({ isOpen }) => (isOpen ? '100vh' : 'auto')};
   & > :not(:first-child) {

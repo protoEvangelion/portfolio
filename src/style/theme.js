@@ -1,24 +1,24 @@
 // This theme file is based on the styled-components styled system
 // https://github.com/jxnblk/styled-system
 
-export interface IThemeInterface {
-  bold: number
-  breakpoints: number[]
-  colors: {
-    [key: string]: string
-  }
-  flexboxgrid: object
-  font: string
-  fontSizes: number[]
-  fontWeights: {
-    [key: string]: number
-  }
-  monospace: string
-  radii: number[]
-  radius: string
-  regular: number
-  space: number[]
-}
+// export interface IThemeInterface {
+//   bold: number
+//   breakpoints: number[]
+//   colors: {
+//     [key: string]: string
+//   }
+//   flexboxgrid: object
+//   font: string
+//   fontSizes: number[]
+//   fontWeights: {
+//     [key: string]: number
+//   }
+//   monospace: string
+//   radii: number[]
+//   radius: string
+//   regular: number
+//   space: number[]
+// }
 
 export const breakpoints = [32, 48, 64, 80]
 

@@ -14,17 +14,10 @@ import {
 } from 'styled-system'
 
 import { ifProp, prop, switchProp } from 'styled-tools'
-import { IThemeInterface } from './theme'
+// import { IThemeInterface } from './theme'
 import * as styledComponents from 'styled-components'
-import { ThemedStyledComponentsModule } from 'styled-components'
 
-const {
-  default: styled,
-  createGlobalStyle,
-  css,
-  keyframes,
-  ThemeProvider,
-} = styledComponents as ThemedStyledComponentsModule<IThemeInterface>
+const { default: styled, createGlobalStyle, css, keyframes, ThemeProvider } = styledComponents
 
 const Row = styled(GridRow)`
   ${space};

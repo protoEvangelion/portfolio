@@ -67,7 +67,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     createPage({
       path: slug,
-      component: path.resolve(__dirname, './src/components/templates/NoteLayout/index.tsx'),
+      component: path.resolve(__dirname, './src/components/templates/NoteLayout/index.jsx'),
       context: {
         // Data passed to context is available in page queries as GraphQL variables.
         slug,
