@@ -15,6 +15,14 @@
   "devDependencies": {
     "@babel/preset-flow": "^7.0.0",
     "babel-plugin-styled-components": "^1.7.1",
+    "eslint": "^5.6.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-flow-header": "^0.2.0",
+    "eslint-plugin-flowtype": "^2.50.3",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
     "flow-bin": "^0.82.0",
     "gatsby": "^2.0.6",
     "gatsby-plugin-react-helmet": "^3.0.0",
@@ -32,7 +40,6 @@
     "redux-devtools-extension": "^2.13.2"
   },
   "dependencies": {
-    "@rebass/grid": "^6.0.0-3",
     "axios": "^0.15.3",
     "gatsby-image": "next",
     "lodash": "^4.17.4",
@@ -47,6 +54,18 @@
     "styled-components": "^4.0.0-beta.8",
     "styled-system": "^1.0.8",
     "styled-tools": "^0.2.2"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier --write",
+      "eslint",
+      "flow focus-check",
+      "git add"
+    ],
+    "*.{png,jpeg,jpg,gif,svg}": [
+      "imagemin-lint-staged",
+      "git add"
+    ]
   },
   "stylelint": {
     "extends": "stylelint-config-standard"

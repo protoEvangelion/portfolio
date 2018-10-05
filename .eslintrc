@@ -1,0 +1,16 @@
+{
+  "extends": ["airbnb", "plugin:flowtype/recommended", "prettier", "prettier/react"],
+  "parser": "babel-eslint",
+  "plugins": ["flowtype", "flow-header"],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "globals": {
+    "graphql": true
+  },
+  "rules": {
+    "flow-header/flow-header": 2,
+    "react/require-default-props": 0
+  }
+}
