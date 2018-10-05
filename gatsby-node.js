@@ -1,27 +1,6 @@
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 
-exports.resolvableExtensions = () => [`.ts`, `.tsx`]
-
-exports.onCreateWebpackConfig = ({ actions, loaders }) => {
-  const jsLoader = loaders.js()
-
-  if (!jsLoader) {
-    return
-  }
-
-  actions.setWebpackConfig({
-    module: {
-      rules: [
-        {
-          test: /\.tsx?$/,
-          use: jsLoader,
-        },
-      ],
-    },
-  })
-}
-
 try {
   require.resolve('babel-plugin-styled-components')
 } catch (e) {
@@ -40,7 +19,7 @@ exports.onCreateBabelConfig = ({ stage, actions }, pluginOptions) => {
   })
 
   actions.setBabelPreset({
-    name: '@babel/preset-typescript',
+    name: `@babel/preset-flow`,
   })
 }
 
