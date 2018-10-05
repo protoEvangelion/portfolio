@@ -1,9 +1,10 @@
+// @flow
 import * as React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import { color, styled } from 'style'
 
-interface ILinkProps {
-  to: string
+type ILinkProps = {
+  to: string,
 }
 
 const StyledLink = styled(GatsbyLink)`
@@ -13,8 +14,8 @@ const StyledLink = styled(GatsbyLink)`
   ${color};
 `
 
-export const Link: React.SFC<ILinkProps> = ({ children, to }) => (
-  <StyledLink color="white" to={to}>
-    {children}
+export const Link = (props: ILinkProps) => (
+  <StyledLink color="white" to={props.to}>
+    {props.children}
   </StyledLink>
 )

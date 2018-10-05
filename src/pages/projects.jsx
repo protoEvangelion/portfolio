@@ -1,3 +1,4 @@
+// @flow
 import * as React from 'react'
 
 const ProjectsPage = () => <h2>Projects</h2>

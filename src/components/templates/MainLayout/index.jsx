@@ -1,3 +1,4 @@
+// @flow
 import * as React from 'react'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
@@ -5,7 +6,7 @@ import { ThemeProvider, createGlobalStyle } from 'style'
 import theme from 'style/theme'
 
 interface IMainLayout {
-  children: any
+  children: any;
 }
 
 const GlobalStyle = createGlobalStyle`
@@ -14,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-export const MainLayout: React.SFC<IMainLayout> = ({ children }) => (
+export const MainLayout = (props: IMainLayout) => (
   <StaticQuery
     query={graphql`
       {
@@ -45,7 +46,7 @@ export const MainLayout: React.SFC<IMainLayout> = ({ children }) => (
 
           <GlobalStyle />
 
-          {children}
+          {props.children}
         </>
       </ThemeProvider>
     )}

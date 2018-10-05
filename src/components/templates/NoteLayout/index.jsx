@@ -1,4 +1,4 @@
-// Used to dyanmically generate note pages
+// @flow
 
 import * as React from 'react'
 import { Link, graphql } from 'gatsby'
@@ -7,7 +7,8 @@ import { INoteLayoutProps } from 'interfaces'
 
 import { Layout } from './styles'
 
-export const NoteLayout: React.SFC<INoteLayoutProps> = ({ data }) => {
+export const NoteLayout = (props: INoteLayoutProps) => {
+  const { data } = props
   return (
     <Layout>
       {data.allMarkdownRemark.edges.map(({ node }) => (

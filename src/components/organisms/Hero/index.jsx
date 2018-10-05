@@ -1,3 +1,4 @@
+// @flow
 // import { Avatar, Block, Text as Paragraph } from 'components'
 // import { SocialBtns } from 'components'
 import { Avatar } from 'components/atoms'
@@ -17,8 +18,8 @@ import * as React from 'react'
 //   }
 // `
 
-export const Hero: React.SFC<{ fixed: { tracedSVG: string } }> = ({ fixed }) => (
+export const Hero = (props: { fixed: { tracedSVG: string } }) => (
   <div>
-    <Avatar fixed={fixed} />
+    <Avatar fixed={props.fixed} />
   </div>
 )

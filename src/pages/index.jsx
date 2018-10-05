@@ -1,3 +1,4 @@
+// @flow
 import { graphql } from 'gatsby'
 import * as React from 'react'
 import { throttle } from 'lodash'
@@ -43,13 +44,13 @@ const BG3 = styled(BaseBG)`
   transition: filter 2s;
 `
 
-interface ILayoutProps {
-  currentFrame: number
-  frameNumber: number
-  initialized: boolean
+type ILayoutProps = {
+  currentFrame: number,
+  frameNumber: number,
+  initialized: boolean,
 }
 
-const Layout = styled(Box)`
+const Layout: React.ComponentType<ILayoutProps> = styled(Box)`
   width: 100%;
   height: 100%;
   position: absolute;
@@ -59,7 +60,8 @@ const Layout = styled(Box)`
   transform: ${props => {
     if (props.sidebarActive) {
       return 'scale(0.7)'
-    } else if (props.currentFrame !== props.frameNumber) {
+    }
+    if (props.currentFrame !== props.frameNumber) {
       return 'scale(0.8)'
     }
     return 'scale(1)'
@@ -77,8 +79,17 @@ const HoverRectangle = styled(Box)`
   top: ${props => (props.yCoordinate ? `${props.yCoordinate}px` : '50%')};
 `
 
-class Index extends React.Component<IIndexPageProps> {
-  public state = {
+type IState = {
+  currentFrame: number,
+  hoverRectangleY: null,
+  totalFrames: number,
+  initialized: boolean,
+  isCTAHovered: boolean,
+  isSidebarActive: boolean,
+}
+
+class Index extends React.Component<IIndexPageProps, IState> {
+  state = {
     currentFrame: 1,
     hoverRectangleY: null,
     totalFrames: 3,
@@ -87,16 +98,16 @@ class Index extends React.Component<IIndexPageProps> {
     isSidebarActive: false,
   }
 
-  private handleScroll = throttle(
+  handleScroll = throttle(
     e => {
       e.preventDefault()
 
       const isScrollingUp = e.deltaY < 0
-      const currentFrame = this.state.currentFrame
+      const { currentFrame, totalFrames } = this.state
 
       if (isScrollingUp && currentFrame !== 1) {
         this.setState({ currentFrame: currentFrame - 1 })
-      } else if (!isScrollingUp && currentFrame !== this.state.totalFrames) {
+      } else if (!isScrollingUp && currentFrame !== totalFrames) {
         this.setState({ currentFrame: currentFrame + 1 })
       }
     },
@@ -104,54 +115,52 @@ class Index extends React.Component<IIndexPageProps> {
     { trailing: false }
   )
 
-  public componentDidMount() {
+  componentDidMount() {
     setupWheelListener()
     window.addWheelListener(window, this.handleScroll)
 
     this.setState({ initialized: true })
   }
 
-  public componentWillUnmount() {
+  componentWillUnmount() {
     window.removeEventListener('wheel', this.handleScroll)
   }
 
-  private toggleCTAHover = () => {
+  toggleCTAHover = () => {
     this.setState(prevState => ({ isCTAHovered: !prevState.isCTAHovered }))
   }
 
-  private handleSidebarMouseEnter = () => {
+  handleSidebarMouseEnter = () => {
     console.log('sidebar mouse enter')
     this.setState({ isSidebarActive: true })
   }
 
-  private handleSidebarMouseLeave = () => {
+  handleSidebarMouseLeave = () => {
     console.log('sidebar mouse leave')
     this.setState({ isSidebarActive: false })
   }
 
-  private moveToFrame = frameNumber => {
-    this.setState({ currentFrame: frameNumber })
+  moveToFrame = (frame: number) => {
+    this.setState({ currentFrame: frame })
   }
 
-  private updateCoordinates = yCoordinate => {
+  updateCoordinates = yCoordinate => {
     this.setState({ hoverRectangleY: yCoordinate })
   }
 
-  public render() {
+  render() {
+    const { isCTAHovered, isSidebarActive, hoverRectangleY, currentFrame, initialized } = this.state
+
     return (
       <MainLayout>
-        <HoverRectangle
-          bg="gray"
-          isSidebarActive={this.state.isSidebarActive}
-          yCoordinate={this.state.hoverRectangleY}
-        />
+        <HoverRectangle bg="gray" isSidebarActive={isSidebarActive} yCoordinate={hoverRectangleY} />
 
         <Layout
           className="layout"
-          currentFrame={this.state.currentFrame}
+          currentFrame={currentFrame}
           frameNumber={1}
-          initialized={this.state.initialized}
-          sidebarActive={this.state.isSidebarActive}
+          initialized={initialized}
+          sidebarActive={isSidebarActive}
           py={['2rem', '4rem', '8rem']}
         >
           <Grid>
@@ -175,10 +184,10 @@ class Index extends React.Component<IIndexPageProps> {
 
         <Layout
           className="layout"
-          currentFrame={this.state.currentFrame}
+          currentFrame={currentFrame}
           frameNumber={2}
-          initialized={this.state.initialized}
-          sidebarActive={this.state.isSidebarActive}
+          initialized={initialized}
+          sidebarActive={isSidebarActive}
           py={['2rem', '4rem', '8rem']}
         >
           <Grid>
@@ -194,14 +203,14 @@ class Index extends React.Component<IIndexPageProps> {
             </Row>
             <Row>
               <Col xs={5} xsOffset={1}>
-                <H2>Blessed is the man who doesn't walk in the</H2>
+                <H2>Blessed is the man who doesnt walk in the</H2>
               </Col>
             </Row>
             <Row>
               <Col xs={5} xsOffset={1}>
                 <P>
-                  Blessed is the man who doesn't walk in the counsel of the wicked, nor stand in the
-                  way of sinners, nor sit in the seat of scoffers; but his delight is in Yahweh's
+                  Blessed is the man who doesnt walk in the counsel of the wicked, nor stand in the
+                  way of sinners, nor sit in the seat of scoffers; but his delight is in Yahwehs
                   law. On his law he meditates day and night. He will be like a tree planted by the
                   streams of water, that brings forth its fruit in its season, whose leaf also does
                   not wither. Whatever he does shall prosper.
@@ -216,11 +225,11 @@ class Index extends React.Component<IIndexPageProps> {
 
         <Layout
           className="layout"
-          currentFrame={this.state.currentFrame}
+          currentFrame={currentFrame}
           frameNumber={3}
-          initialized={this.state.initialized}
+          initialized={initialized}
           py={['2rem', '4rem', '8rem']}
-          sidebarActive={this.state.isSidebarActive}
+          sidebarActive={isSidebarActive}
         >
           <Grid>
             <Navbar hideText />
@@ -262,16 +271,16 @@ class Index extends React.Component<IIndexPageProps> {
               </Col>
             </Row>
             <Box width={1} height="100%">
-              <BG3 alt="Man looking up at Milky Way" illuminate={this.state.isCTAHovered} />
+              <BG3 alt="Man looking up at Milky Way" illuminate={isCTAHovered} />
             </Box>
           </Grid>
         </Layout>
 
         <Sidebar
-          currentFrame={this.state.currentFrame}
+          currentFrame={currentFrame}
           handleSidebarMouseEnter={this.handleSidebarMouseEnter}
           handleSidebarMouseLeave={this.handleSidebarMouseLeave}
-          isSidebarActive={this.state.isSidebarActive}
+          isSidebarActive={isSidebarActive}
           moveToFrame={this.moveToFrame}
           totalFrames={3}
           updateCoordinates={this.updateCoordinates}

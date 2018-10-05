@@ -1,3 +1,4 @@
+// @flow
 import { styled } from 'style'
 
 export const Layout = styled.div`

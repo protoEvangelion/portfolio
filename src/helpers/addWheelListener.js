@@ -1,10 +1,15 @@
+// @flow
 // From https://developer.mozilla.org/en-US/docs/Web/Events/wheel
 // creates a global "addWheelListener" method
 // example: addWheelListener( elem, function( e ) { console.log( e.deltaY ); e.preventDefault(); } );
 export function setupWheelListener() {
-  var prefix = '',
-    _addEventListener,
-    support
+  let prefix = '';
+
+    
+let _addEventListener;
+
+    
+let support
 
   // detect event model
   if (window.addEventListener) {
@@ -36,20 +41,20 @@ export function setupWheelListener() {
       prefix + eventName,
       support === 'wheel'
         ? callback
-        : function(originalEvent) {
+        : (originalEvent) => {
             !originalEvent && (originalEvent = window.event)
 
             // create a normalized event object
-            var event = {
+            const event = {
               // keep a ref to the original event object
-              originalEvent: originalEvent,
+              originalEvent,
               target: originalEvent.target || originalEvent.srcElement,
               type: 'wheel',
               deltaMode: originalEvent.type === 'MozMousePixelScroll' ? 0 : 1,
               deltaX: 0,
               deltaY: 0,
               deltaZ: 0,
-              preventDefault: function() {
+              preventDefault() {
                 originalEvent.preventDefault
                   ? originalEvent.preventDefault()
                   : (originalEvent.returnValue = false)

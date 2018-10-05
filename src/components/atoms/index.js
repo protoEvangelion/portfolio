@@ -1,3 +1,4 @@
+// @flow
 export { Avatar } from './Avatar'
 export { Box } from './Box'
 export { Flex } from './Flex'

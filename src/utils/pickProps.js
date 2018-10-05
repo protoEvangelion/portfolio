@@ -1,7 +1,7 @@
+// @flow
 import { pick } from 'lodash'
 
-const pickProps = props => {
-  return pick(props, [
+const pickProps = props => pick(props, [
     'm',
     'mt',
     'mr',
@@ -17,6 +17,5 @@ const pickProps = props => {
     'px',
     'py',
   ])
-}
 
 export default pickProps

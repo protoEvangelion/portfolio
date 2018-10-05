@@ -1,29 +1,24 @@
+// @flow
 import * as React from 'react'
 import ReactTransition from 'react-transition-group/Transition'
 import { ITransitionProps } from 'interfaces'
 
-export const Transition: React.SFC<ITransitionProps> = ({
-  children,
-  type,
-  opacity,
-  duration,
-  show,
-}) => {
+export const Transition = (props: ITransitionProps) => {
   const defaultStyle = {
-    transition: `opacity ${duration}ms ease-in-out`,
+    transition: `opacity ${props.duration}ms ease-in-out`,
     opacity: 0,
   }
 
   const transitionStyles = {
     entering: { opacity: 0 },
-    entered: { opacity },
+    entered: { opacity: props.opacity },
     exiting: { opacity: 0 },
   }
 
   return (
-    <ReactTransition in={show} timeout={duration} unmountOnExit>
+    <ReactTransition in={props.show} timeout={props.duration} unmountOnExit>
       {state =>
-        children({
+        props.children({
           ...defaultStyle,
           ...transitionStyles[state],
         })

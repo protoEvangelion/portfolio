@@ -1,3 +1,4 @@
+// @flow
 import { Flex, Logo, Link } from 'components/atoms'
 // import { MenuButton } from 'components/molecules'
 import * as React from 'react'
@@ -10,17 +11,17 @@ const LocationIcon = () => (
   </svg>
 )
 
-export const Navbar: React.SFC<{ hideText: boolean }> = ({ dark, hideText }) => {
+export const Navbar = (props: { dark: boolean, hideText: boolean }) => {
   return (
     <Row middle="xs" pb={4}>
       <Col xs={1}>
         <Link to="/">
-          <Logo dark={dark} />
+          <Logo dark={props.dark} />
         </Link>
       </Col>
 
       <Col lg={6} lgOffset={1} md={false}>
-        <Flex justify="space-around" hide={hideText}>
+        <Flex justify="space-around" hide={props.hideText}>
           <Link to="/">HOME</Link>
           <Link to="/projects">PROJECTS</Link>
           <Link to="/contact">CONTACT</Link>

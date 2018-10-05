@@ -33,9 +33,7 @@ const StyledH2 = styled.h2`
   ${space};
 `
 
-export const H2: React.SFC<IH1> = ({ children, ...props }) => (
-  <StyledH2 {...props}>{children}</StyledH2>
-)
+export const H2 = ({ children, ...props }) => <StyledH2 {...props}>{children}</StyledH2>
 
 H2.defaultProps = {
   color: 'black',

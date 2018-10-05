@@ -1,3 +1,4 @@
+// @flow
 // export { AppList } from './AppList'
 // export { FeatureList } from './FeatureList'
 // export { Footer } from './Footer'

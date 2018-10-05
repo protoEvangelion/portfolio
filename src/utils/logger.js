@@ -1,3 +1,4 @@
+// @flow
 import * as chalk from 'chalk'
 
 const logger = (label, data) =>
