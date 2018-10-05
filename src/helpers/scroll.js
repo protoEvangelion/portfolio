@@ -1,4 +1,5 @@
-// @flow
+/* eslint-disable */
+
 export default function smoothScroll(target) {
   let scrollContainer = target
   do {
@@ -18,7 +19,7 @@ export default function smoothScroll(target) {
   scroll = function(c, a, b, i) {
     i++
     if (i > 30) return
-    c.scrollTop = a + (b - a) / 30 * i
+    c.scrollTop = a + ((b - a) / 30) * i
     setTimeout(() => {
       scroll(c, a, b, i)
     }, 20)

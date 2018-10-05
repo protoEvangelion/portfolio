@@ -6,7 +6,7 @@ import { throttle } from 'lodash'
 import { H1, H2, Span, P, Box, Flex, Link } from 'components/atoms'
 import { Navbar, Sidebar } from 'components/organisms'
 import { MainLayout } from 'components/templates'
-import { IIndexPageProps } from 'interfaces'
+import { type IIndexPageProps } from 'interfaces'
 import { Grid as FlexGrid, Row, Col, styled } from 'style'
 
 import flashlightImg from 'images/flashlight-night.png'

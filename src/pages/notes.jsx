@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { MainLayout } from 'components/templates'
 import { Link, graphql } from 'gatsby'
-import { INotesPageProps } from 'interfaces'
+import { type INotesPageProps } from 'interfaces'
 
 const Notes = (props: INotesPageProps) => (
   <MainLayout>

@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react'
 import { Transition } from 'components/molecules'
-import { ISidebarProps } from 'interfaces'
+import { type ISidebarProps } from 'interfaces'
 import { SidebarNavItem } from './SidebarNavItem'
 import { SidebarWrapper } from './styles'
 

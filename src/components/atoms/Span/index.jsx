@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react'
 import { color, space, styled } from 'style'
-import { IColorSpaceProps } from 'interfaces'
+// import { type IColorSpaceProps } from 'interfaces'
 
 const StyledSpan = styled.span`
   ${color};

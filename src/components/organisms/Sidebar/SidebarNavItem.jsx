@@ -17,18 +17,18 @@ const StyledFlex = styled(Flex)`
 `
 
 export class SidebarNavItem extends React.Component {
-  public state = { isHovered: false }
+  state = { isHovered: false }
 
-  private handleMouseEnter = e => {
+  handleMouseEnter = e => {
     this.props.updateCoordinates(e.currentTarget.getBoundingClientRect().top)
     this.setState({ isHovered: true })
   }
 
-  private handleMouseLeave = () => {
+  handleMouseLeave = () => {
     this.setState({ isHovered: false })
   }
 
-  public render() {
+  render() {
     return (
       <StyledFlex
         align="center"

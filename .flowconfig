@@ -7,5 +7,10 @@
 [lints]
 
 [options]
+module.name_mapper='^components' ->'<PROJECT_ROOT>/src/components'
+module.name_mapper='^style' ->'<PROJECT_ROOT>/src/style'
+module.name_mapper='^interfaces' ->'<PROJECT_ROOT>/src/interfaces'
+module.name_mapper='^images' ->'<PROJECT_ROOT>/src/images'
+module.name_mapper='^helpers' ->'<PROJECT_ROOT>/src/helpers'
 
 [strict]

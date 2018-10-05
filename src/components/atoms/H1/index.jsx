@@ -1,19 +1,18 @@
 // @flow
 import * as React from 'react'
 import { color, space, styled } from 'style'
-import { IH1 } from 'interfaces'
+// import { type IH1 } from 'interfaces'
 
 const StyledH1 = styled.h1`
-  ${props => {
-    return (
-      props.underline &&
-      `
+  ${props =>
+    props.underline &&
+    `
       border-bottom: 1px solid currentColor
       display: inline-block;
       padding-bottom: 0.7rem;
-    `
-    )
-  }} ${color};
+    `};
+
+  ${color};
   ${space};
 `
 

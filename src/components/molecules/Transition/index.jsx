@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react'
 import ReactTransition from 'react-transition-group/Transition'
-import { ITransitionProps } from 'interfaces'
+import { type ITransitionProps } from 'interfaces'
 
 export const Transition = (props: ITransitionProps) => {
   const defaultStyle = {
