@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react'
-import { Transition } from 'components/molecules'
 import { type ISidebarProps } from 'interfaces'
+import { Transition } from '../../molecules'
 import { SidebarNavItem } from './SidebarNavItem'
 import { SidebarWrapper } from './styles'
 
@@ -15,6 +15,11 @@ export const Sidebar = (props: ISidebarProps) => {
     totalFrames,
     updateCoordinates,
   } = props
+
+  function handleEnterKeypress(e) {
+    console.log('e', e)
+  }
+
   return (
     <SidebarWrapper currentFrame={currentFrame}>
       <div className="top-line line" />

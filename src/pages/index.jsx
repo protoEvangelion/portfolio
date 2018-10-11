@@ -18,6 +18,7 @@ import 'style/typography.scss'
 
 const Grid = styled(FlexGrid)`
   height: 100%;
+  z-index: -1;
 `
 
 const BaseBG = styled.div`
@@ -51,6 +52,13 @@ type ILayoutProps = {
 }
 
 const Layout: React.ComponentType<ILayoutProps> = styled(Box)`
+  background: ${props => {
+    if (props.frameNumber === 1) {
+      return 'radial-gradient(440.99px at 44.47% 51.81%, #011627 0%, rgba(255, 255, 255, 0) 100%), #000000'
+    }
+
+    return ''
+  }};
   width: 100%;
   height: 100%;
   position: absolute;
@@ -175,10 +183,6 @@ class Index extends React.Component<IIndexPageProps, IState> {
                 </H1>
               </div>
             </Flex>
-
-            <Box width={1} height="100%">
-              <BG1 />
-            </Box>
           </Grid>
         </Layout>
 

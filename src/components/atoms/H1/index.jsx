@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react'
 import { color, space, styled } from 'style'
-// import { type IH1 } from 'interfaces'
+import { type IH1 } from 'interfaces'
 
 const StyledH1 = styled.h1`
   ${props =>
@@ -16,8 +16,11 @@ const StyledH1 = styled.h1`
   ${space};
 `
 
-export const H1 = ({ children, ...props }) => <StyledH1 {...props}>{children}</StyledH1>
+export const H1: React.ComponentType<IH1> = ({ children, ...props }) => (
+  <StyledH1 {...props}>{children}</StyledH1>
+)
 
+// $flow-disable-line
 H1.defaultProps = {
   color: 'black',
 }

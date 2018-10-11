@@ -4,6 +4,7 @@ import { Link as GatsbyLink } from 'gatsby'
 import { color, styled } from 'style'
 
 type ILinkProps = {
+  children: React.Node,
   to: string,
 }
 

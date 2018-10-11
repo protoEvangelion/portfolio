@@ -1,4 +1,6 @@
 // @flow
+import * as React from 'react'
+
 export type IColorProps = {
   color?: string,
   bg?: string,
@@ -80,7 +82,12 @@ export type IIndexPageProps = {
 }
 
 export type IH1 = IColorSpaceProps & {
+  children: React.Node,
   underline?: boolean,
+}
+
+export type IText = IColorSpaceProps & {
+  children: React.Node,
 }
 
 export type INotesPageProps = {
@@ -109,11 +116,4 @@ export type ISidebarProps = {
   moveToFrame: (hi: number) => {},
   totalFrames: number,
   updateCoordinates: () => {},
-}
-
-export type ITransitionProps = {
-  type?: 'fade',
-  duration?: number,
-  show: boolean,
-  opacity?: number,
 }

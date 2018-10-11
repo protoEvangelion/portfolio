@@ -54,7 +54,8 @@
     "redux": "^3.6.0",
     "styled-components": "^4.0.0-beta.8",
     "styled-system": "^1.0.8",
-    "styled-tools": "^0.2.2"
+    "styled-tools": "^0.2.2",
+    "prop-types": "latest"
   },
   "lint-staged": {
     "*.{js,jsx}": [

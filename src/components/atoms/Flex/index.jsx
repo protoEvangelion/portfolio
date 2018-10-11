@@ -1,9 +1,11 @@
-import { IFlexProps } from 'interfaces'
-import { Box } from '../Box'
-
+// @flow
+import * as React from 'react'
+import { type IFlexProps } from 'interfaces'
 import { alignItems, flexDirection, flexWrap, justifyContent, styled } from 'style'
 
-export const Flex = styled(Box)`
+import { Box } from '../Box'
+
+export const Flex: React.ComponentType<IFlexProps> = styled(Box)`
   display: flex;
 
   ${alignItems};

@@ -1,3 +1,4 @@
+// @flow
 import * as React from 'react'
 import { styled } from 'style'
 import { Box, Flex, Span } from 'components/atoms'
@@ -16,6 +17,25 @@ const StyledFlex = styled(Flex)`
   position: relative;
 `
 
+const Circle = styled(Box)`
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  height: 0.5rem;
+  width: 0.5rem;
+  transition: opacity 0.3s;
+
+  opacity: ${props => {
+    if (
+      (props.isSidebarActive && props.isHovered) ||
+      (!props.isSidebarActive && props.currentFrame === props.frame)
+    ) {
+      return 1
+    }
+    return 0.5
+  }};
+`
+
 export class SidebarNavItem extends React.Component {
   state = { isHovered: false }
 
@@ -31,27 +51,18 @@ export class SidebarNavItem extends React.Component {
   render() {
     return (
       <StyledFlex
-        align="center"
-        justify="center"
-        width={1}
         onClick={() => this.props.handleClick(this.props.frame)}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
+        width={1}
         p={2}
       >
-        <Box
-          borderRadius="50%"
+        <Circle
           bg="white"
-          opacity={
-            this.props.isSidebarActive && this.state.isHovered
-              ? 1
-              : !this.props.isSidebarActive && this.props.currentFrame === this.props.frame
-                ? 1
-                : 0.5
-          }
-          width={['0.5rem']}
-          height="0.5rem"
-          transition="opacity 0.3s"
+          currentFrame={this.props.currentFrame}
+          frame={this.props.frame}
+          isHovered={this.state.isHovered}
+          isSidebarActive={this.props.isSidebarActive}
         />
 
         <StyledSpan

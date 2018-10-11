@@ -1,4 +1,5 @@
 import { styled, keyframes } from 'style'
+import styles from './styles'
 
 const fadeOutFadeIn = keyframes`
 o% { opacity: 1; }

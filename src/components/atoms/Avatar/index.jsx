@@ -1,3 +1,4 @@
+// @flow
 import Img from 'gatsby-image'
 import { styled } from 'style'
 

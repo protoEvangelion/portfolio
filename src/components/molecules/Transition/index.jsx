@@ -1,10 +1,18 @@
 // @flow
 import * as React from 'react'
 import ReactTransition from 'react-transition-group/Transition'
-import { type ITransitionProps } from 'interfaces'
+
+type ITransitionProps = {
+  children: ({ state: {} }) => React.Node,
+  type: 'fade',
+  duration?: number,
+  show: boolean,
+  opacity: number,
+}
 
 export const Transition = (props: ITransitionProps) => {
   const defaultStyle = {
+    // $flow-disable-line
     transition: `opacity ${props.duration}ms ease-in-out`,
     opacity: 0,
   }

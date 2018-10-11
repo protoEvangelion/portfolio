@@ -1,12 +1,12 @@
+// @flow
 import * as React from 'react'
 import { color, space, styled } from 'style'
-import { IH1 } from 'interfaces'
+import { type IH1 } from 'interfaces'
 
 const StyledH2 = styled.h2`
-  ${props => {
-    return (
-      props.underline &&
-      `
+  ${props =>
+    props.underline &&
+    `
       padding-bottom: 0.5rem;
       position: relative;
 
@@ -25,16 +25,17 @@ const StyledH2 = styled.h2`
         transition: width 0.3s;
         width: 100%;
       }
-    `
-    )
-  }};
+    `};
 
   ${color};
   ${space};
 `
 
-export const H2 = ({ children, ...props }) => <StyledH2 {...props}>{children}</StyledH2>
+export const H2: React.ComponentType<IH1> = ({ children, ...props }) => (
+  <StyledH2 {...props}>{children}</StyledH2>
+)
 
+// $flow-disable-line
 H2.defaultProps = {
   color: 'black',
 }
