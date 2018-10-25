@@ -42,8 +42,9 @@
   "dependencies": {
     "axios": "^0.15.3",
     "gatsby": "^2.0.6",
-    "gatsby-image": "next",
+    "gatsby-image": "^2.0.0-rc.4",
     "lodash": "^4.17.4",
+    "prop-types": "latest",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-helmet": "^5.0.1",
@@ -54,8 +55,7 @@
     "redux": "^3.6.0",
     "styled-components": "^4.0.0-beta.8",
     "styled-system": "^1.0.8",
-    "styled-tools": "^0.2.2",
-    "prop-types": "latest"
+    "styled-tools": "^0.2.2"
   },
   "lint-staged": {
     "*.{js,jsx}": [

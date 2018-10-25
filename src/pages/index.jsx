@@ -1,14 +1,15 @@
 // @flow
 import { graphql } from 'gatsby'
 import * as React from 'react'
-import { throttle } from 'lodash'
+import { debounce } from 'lodash'
 
-import { H1, H2, Span, P, Box, Flex, Link } from 'components/atoms'
+import { H1, H2, Span, P, Box, Flex } from 'components/atoms'
 import { Navbar, Sidebar } from 'components/organisms'
 import { MainLayout } from 'components/templates'
 import { type IIndexPageProps } from 'interfaces'
 import { Grid as FlexGrid, Row, Col, styled } from 'style'
 
+// import { Grid, BG2, BG3, Layout, HoverRectangle } from './IndexStyles'
 import flashlightImg from 'images/flashlight-night.png'
 import milkyWayImg from 'images/milky-way.jpg'
 import { setupWheelListener } from 'helpers/addWheelListener'
@@ -30,10 +31,10 @@ const BaseBG = styled.div`
   z-index: -1;
 `
 
-const BG1 = styled(BaseBG)`
-  background: radial-gradient(440.99px at 44.47% 51.81%, #011627 0%, rgba(255, 255, 255, 0) 100%),
-    #000000;
-`
+// const BG1 = styled(BaseBG)`
+//   background: radial-gradient(440.99px at 44.47% 51.81%, #011627 0%, rgba(255, 255, 255, 0) 100%),
+//     #000000;
+// `
 
 const BG2 = styled(BaseBG)`
   background: right center / contain no-repeat url(${flashlightImg}) #fff;
@@ -106,7 +107,7 @@ class Index extends React.Component<IIndexPageProps, IState> {
     isSidebarActive: false,
   }
 
-  handleScroll = throttle(
+  handleScroll = debounce(
     e => {
       e.preventDefault()
 
@@ -119,8 +120,8 @@ class Index extends React.Component<IIndexPageProps, IState> {
         this.setState({ currentFrame: currentFrame + 1 })
       }
     },
-    500,
-    { trailing: false }
+    60,
+    { leading: true, trailing: false, maxWait: 1250 }
   )
 
   componentDidMount() {
@@ -139,12 +140,10 @@ class Index extends React.Component<IIndexPageProps, IState> {
   }
 
   handleSidebarMouseEnter = () => {
-    console.log('sidebar mouse enter')
     this.setState({ isSidebarActive: true })
   }
 
   handleSidebarMouseLeave = () => {
-    console.log('sidebar mouse leave')
     this.setState({ isSidebarActive: false })
   }
 
@@ -248,30 +247,26 @@ class Index extends React.Component<IIndexPageProps, IState> {
             </Row>
             <Row>
               <Col xs={5} xsOffset={2}>
-                <Link to="/projects">
-                  <H2
-                    onMouseEnter={this.toggleCTAHover}
-                    onMouseLeave={this.toggleCTAHover}
-                    color="white"
-                    underline
-                  >
-                    Projects
-                  </H2>
-                </Link>
+                <H2
+                  onMouseEnter={this.toggleCTAHover}
+                  onMouseLeave={this.toggleCTAHover}
+                  color="white"
+                  underline
+                >
+                  Projects
+                </H2>
               </Col>
             </Row>
             <Row>
               <Col xs={5} xsOffset={2}>
-                <Link to="/contact">
-                  <H2
-                    onMouseEnter={this.toggleCTAHover}
-                    onMouseLeave={this.toggleCTAHover}
-                    color="white"
-                    underline
-                  >
-                    Contact
-                  </H2>
-                </Link>
+                <H2
+                  onMouseEnter={this.toggleCTAHover}
+                  onMouseLeave={this.toggleCTAHover}
+                  color="white"
+                  underline
+                >
+                  Contact
+                </H2>
               </Col>
             </Row>
             <Box width={1} height="100%">

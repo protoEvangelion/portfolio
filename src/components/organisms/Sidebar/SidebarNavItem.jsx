@@ -56,6 +56,7 @@ export class SidebarNavItem extends React.Component {
         onMouseLeave={this.handleMouseLeave}
         width={1}
         p={2}
+        justify="center"
       >
         <Circle
           bg="white"
