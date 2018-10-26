@@ -3,7 +3,7 @@ import * as React from 'react'
 import { type ISidebarProps } from 'interfaces'
 import { Transition } from '../../molecules'
 import { SidebarNavItem } from './SidebarNavItem'
-import { SidebarWrapper } from './styles'
+import { SidebarWrapper } from './SidebarStyles'
 
 export const Sidebar = (props: ISidebarProps) => {
   const {
@@ -16,8 +16,10 @@ export const Sidebar = (props: ISidebarProps) => {
     updateCoordinates,
   } = props
 
-  function handleEnterKeypress(e) {
-    console.log('e', e)
+  function moveToNextFrame(e) {
+    if (e.type === 'click' || e.key === 'Enter') {
+      moveToFrame(2)
+    }
   }
 
   return (
@@ -47,7 +49,13 @@ export const Sidebar = (props: ISidebarProps) => {
 
       <Transition show={currentFrame === 1}>
         {styles => (
-          <div className="next-frame-button" onClick={() => moveToFrame(2)} style={styles}>
+          <div
+            className="next-frame-button"
+            onKeyPress={moveToNextFrame}
+            onClick={moveToNextFrame}
+            style={styles}
+            tabIndex="0"
+          >
             <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d="M7 10l5 5 5-5z" />
               <path d="M0 0h24v24H0z" fill="none" />

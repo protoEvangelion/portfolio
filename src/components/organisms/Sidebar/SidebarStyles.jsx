@@ -1,23 +1,18 @@
+// @flow
 import { styled, keyframes } from 'style'
-import styles from './styles'
 
 const fadeOutFadeIn = keyframes`
-o% { opacity: 1; }
-10% { opacity: 0; }
-50% { opacity: 0; }
-100% { opacity: 1; }
+  o% { opacity: 1; }
+  10% { opacity: 0; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
 `
 
 const fadeOutFadeIn2 = keyframes`
-o% { opacity: 1; }
-10% { opacity: 0; }
-51% { opacity: 0; }
-100% { opacity: 1; }
-`
-
-const fadeIn = keyframes`
-from { opacity: 0; }
-to { opacity: 0; }
+  o% { opacity: 1; }
+  10% { opacity: 0; }
+  51% { opacity: 0; }
+  100% { opacity: 1; }
 `
 
 export const SidebarWrapper = styled.div`
@@ -30,6 +25,7 @@ export const SidebarWrapper = styled.div`
   right: 0;
   top: 0;
   width: 20%;
+  z-index: 1;
 
   .line {
     background: rgb(253, 255, 252);
@@ -47,6 +43,7 @@ export const SidebarWrapper = styled.div`
 
   .nav-item-wrapper {
     display: flex;
+    align-items: center;
     flex-direction: column;
     height: ${props => (props.currentFrame === 1 ? '15%' : '25%')};
     position: absolute;

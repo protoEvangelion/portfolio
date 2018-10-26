@@ -50,25 +50,6 @@ export type IAllMarkdownRemark = {
 
 /* --- Component Props --- */
 
-export type IBoxProps = IColorProps &
-  ISpaceProps &
-  IWidthProps & {
-    center?: 'y' | 'x' | true,
-    cursor?: string,
-    borderRadius?: string,
-    opacity?: number,
-    height?: string,
-    transition?: string,
-  }
-
-export type IFlexProps = IBoxProps & {
-  align?: string | string[],
-  justify?: string | string[],
-  flexDirection?: string | string[],
-  flexWrap?: string | string[],
-  hide?: boolean,
-}
-
 export type IIndexPageProps = {
   data: {
     headshot: {

@@ -10,22 +10,31 @@ import { Col, Row } from 'style'
 //   </svg>
 // )
 
-export const Navbar: React.ComponentType<{ dark?: boolean, hideText?: boolean }> = ({
-  dark,
-  hideText,
-}) => (
+type INavbarProps = {
+  dark?: boolean,
+  hideText?: boolean,
+  tabIndex?: number,
+}
+
+export const Navbar: React.ComponentType<INavbarProps> = ({ dark, hideText, tabIndex = 0 }) => (
   <Row middle="xs" pb={4}>
     <Col xs={1}>
-      <Link to="/">
+      <Link to="/" tabIndex={tabIndex}>
         <Logo dark={dark || false} />
       </Link>
     </Col>
 
     <Col lg={6} lgOffset={1} md={false}>
       <Flex justify="space-around" hide={hideText}>
-        <Link to="/">HOME</Link>
-        <Link to="/projects">PROJECTS</Link>
-        <Link to="/contact">CONTACT</Link>
+        <Link tabIndex={tabIndex} to="/">
+          HOME
+        </Link>
+        <Link tabIndex={tabIndex} to="/projects">
+          PROJECTS
+        </Link>
+        <Link tabIndex={tabIndex} to="/contact">
+          CONTACT
+        </Link>
       </Flex>
     </Col>
   </Row>

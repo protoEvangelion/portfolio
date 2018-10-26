@@ -40,7 +40,7 @@ export class SidebarNavItem extends React.Component {
   state = { isHovered: false }
 
   handleMouseEnter = e => {
-    this.props.updateCoordinates(e.currentTarget.getBoundingClientRect().top)
+    this.props.updateCoordinates(e.currentTarget.getBoundingClientRect())
     this.setState({ isHovered: true })
   }
 
@@ -54,9 +54,11 @@ export class SidebarNavItem extends React.Component {
         onClick={() => this.props.handleClick(this.props.frame)}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
-        width={1}
+        width={0.99}
         p={2}
+        align="center"
         justify="center"
+        tabIndex="0"
       >
         <Circle
           bg="white"

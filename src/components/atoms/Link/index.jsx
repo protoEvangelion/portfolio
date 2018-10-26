@@ -5,6 +5,7 @@ import { color, styled } from 'style'
 
 type ILinkProps = {
   children: React.Node,
+  tabIndex: number,
   to: string,
 }
 
@@ -16,7 +17,7 @@ const StyledLink = styled(GatsbyLink)`
 `
 
 export const Link = (props: ILinkProps) => (
-  <StyledLink color="white" to={props.to}>
+  <StyledLink color="white" tabIndex={props.tabIndex} to={props.to}>
     {props.children}
   </StyledLink>
 )

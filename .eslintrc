@@ -12,6 +12,7 @@
   "rules": {
     "no-else-return": ["error", { "allowElseIf": true }],
     "default-case": 0,
+    "react/no-array-index-key": 0,
     "react/default-props-match-prop-types": 0,
     "flow-header/flow-header": 2,
     "import/no-unresolved": 0,
