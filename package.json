@@ -7,7 +7,6 @@
   "scripts": {
     "dev": "gatsby develop --port 7777",
     "build": "gatsby build",
-    "fix": "eslint --fix ./src/**/*.jsx",
     "clean": "git clean -xfd .cache public/ && rm -rf .cache public",
     "story": "start-storybook -p 9001 -c private/storybook",
     "test": "cross-env NODE_ENV=test jest"
@@ -57,7 +56,6 @@
     "gatsby": "^2.0.6",
     "gatsby-image": "^2.0.0-rc.4",
     "lodash": "^4.17.4",
-    "prop-types": "latest",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-helmet": "^5.0.1",
@@ -66,14 +64,14 @@
     "react-styled-flexboxgrid": "^2.6.0",
     "react-transition-group": "^2.5.0",
     "redux": "^3.6.0",
-    "styled-components": "^4.0.0-beta.8",
+    "styled-components": "^4.0.2",
     "styled-system": "^1.0.8",
     "styled-tools": "^0.2.2"
   },
   "lint-staged": {
-    "*.{js,jsx}": [
+    "*.{ts,tsx}": [
       "prettier --write",
-      "eslint",
+      "tslint",
       "git add"
     ],
     "*.{png,jpeg,jpg,gif,svg}": [

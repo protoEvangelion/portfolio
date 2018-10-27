@@ -1,7 +1,7 @@
 import { color, space } from 'style'
 import { colors, fontSizes, radii, radius } from 'theme'
 import { shade } from 'utils'
-import PropTypes from 'prop-types'
+
 import styled from 'styled-components'
 
 export const Button = styled.button`

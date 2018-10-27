@@ -1,4 +1,4 @@
-// @flow
+
 import { colors } from 'style'
 
 export default function shade(color, percent) {

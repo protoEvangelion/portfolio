@@ -1,14 +1,14 @@
-// @flow
+
 // From https://developer.mozilla.org/en-US/docs/Web/Events/wheel
 // creates a global "addWheelListener" method
 // example: addWheelListener( elem, function( e ) { console.log( e.deltaY ); e.preventDefault(); } );
 export function setupWheelListener() {
   let prefix = '';
 
-    
+
 let _addEventListener;
 
-    
+
 let support
 
   // detect event model

@@ -1,4 +1,4 @@
-// @flow
+
 import { pick } from 'lodash'
 
 const pickProps = props => pick(props, [

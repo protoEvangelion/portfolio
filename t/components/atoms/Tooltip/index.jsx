@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+
 import * as React from 'react'
 import styled, { css } from 'styled-components'
 import { font } from 'styled-theme'

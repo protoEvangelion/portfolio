@@ -1,4 +1,4 @@
-// @flow
+
 import { cloneDeep, omit } from 'lodash'
 
 // Omit space prevents the spacing props from margin and padding

@@ -1,0 +1,75 @@
+import { Grid as FlexGrid, styled } from 'style'
+import { Box } from 'components/atoms'
+import flashlightImg from 'images/flashlight-night.png'
+import milkyWayImg from 'images/milky-way.jpg'
+
+export const Grid = styled(FlexGrid)`
+  height: 100%;
+  z-index: -1;
+`
+
+export const BaseBG = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+`
+
+// const BG1 = styled(BaseBG)`
+//   background: radial-gradient(440.99px at 44.47% 51.81%, #011627 0%, rgba(255, 255, 255, 0) 100%),
+//     #000000;
+// `
+
+export const BG2 = styled(BaseBG)`
+  background: right center / contain no-repeat url(${flashlightImg}) #fff;
+`
+
+export const BG3 = styled(BaseBG)`
+  background: right center / cover no-repeat url(${milkyWayImg});
+  filter: ${props => (props.illuminate ? 'saturate(150%)' : 'saturate(60%)')};
+  transition: filter 2s;
+`
+
+type ILayoutProps = {
+  currentFrame: number
+  frameNumber: number
+  initialized: boolean
+}
+
+export const Layout: React.ComponentType<ILayoutProps> = styled(Box)`
+  background: ${props => {
+    if (props.frameNumber === 1) {
+      return 'radial-gradient(440.99px at 44.47% 51.81%, #011627 0%, rgba(255, 255, 255, 0) 100%), #000000'
+    }
+
+    return ''
+  }};
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: ${props =>
+    props.initialized ? `${(props.frameNumber - props.currentFrame) * window.innerHeight}px` : '0'};
+  left: 0;
+  transform: ${props => {
+    if (props.sidebarActive) {
+      return 'scale(0.7)'
+    }
+    if (props.currentFrame !== props.frameNumber) {
+      return 'scale(0.8)'
+    }
+    return 'scale(1)'
+  }};
+  transition: top 1s ease, transform 1s ease;
+`
+
+export const HoverRectangle = styled(Box)`
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 47px;
+  transition: opacity 0.4s, top 0.4s;
+  opacity: ${props => (props.isSidebarActive ? 0.1 : 0)};
+  top: ${props => (props.yCoordinate ? `${props.yCoordinate}px` : '50%')};
+`

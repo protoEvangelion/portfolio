@@ -1,0 +1,40 @@
+import { Flex, Logo, Link } from 'components/atoms'
+import * as React from 'react'
+import { Col, Row } from 'style'
+
+// const LocationIcon = () => (
+//   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+//     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+//     <path d="M0 0h24v24H0z" fill="none" />
+//   </svg>
+// )
+
+interface INavbarProps {
+  dark?: boolean
+  hideText?: boolean
+  tabIndex?: number
+}
+
+export const Navbar: React.ComponentType<INavbarProps> = ({ dark, hideText, tabIndex = 0 }) => (
+  <Row middle="xs" pb={4}>
+    <Col xs={1}>
+      <Link to="/" tabIndex={tabIndex}>
+        <Logo dark={dark || false} />
+      </Link>
+    </Col>
+
+    <Col lg={6} lgOffset={1} md={false}>
+      <Flex justify="space-around" hide={hideText}>
+        <Link tabIndex={tabIndex} to="/">
+          HOME
+        </Link>
+        <Link tabIndex={tabIndex} to="/projects">
+          PROJECTS
+        </Link>
+        <Link tabIndex={tabIndex} to="/contact">
+          CONTACT
+        </Link>
+      </Flex>
+    </Col>
+  </Row>
+)

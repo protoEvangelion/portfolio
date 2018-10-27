@@ -1,5 +1,5 @@
 import { color, space, width } from 'style'
-import PropTypes from 'prop-types'
+
 import styled from 'styled-components'
 
 export const Fixed = styled.div`

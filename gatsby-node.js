@@ -1,28 +1,6 @@
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 
-try {
-  require.resolve('babel-plugin-styled-components')
-} catch (e) {
-  throw new Error(
-    `'babel-plugin-styled-components' is not installed which is needed by plugin 'gatsby-plugin-styled-components'`
-  )
-}
-
-exports.onCreateBabelConfig = ({ stage, actions }, pluginOptions) => {
-  const ssr = stage === 'build-html' || stage === 'build-javascript'
-
-  actions.setBabelPlugin({
-    name: 'babel-plugin-styled-components',
-    stage,
-    options: { displayName: true, ssr },
-  })
-
-  actions.setBabelPreset({
-    name: `@babel/preset-flow`,
-  })
-}
-
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
 
@@ -67,7 +45,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     createPage({
       path: slug,
-      component: path.resolve(__dirname, './src/components/templates/NoteLayout/index.jsx'),
+      component: path.resolve(__dirname, './src/components/templates/NoteLayout/index.tsx'),
       context: {
         // Data passed to context is available in page queries as GraphQL variables.
         slug,
