@@ -5,6 +5,8 @@ module.exports = {
     description: 'Personal Portfolio that includes projects',
   },
   plugins: [
+    'gatsby-plugin-typescript',
+    'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-resolve-src',
     'gatsby-plugin-sass',

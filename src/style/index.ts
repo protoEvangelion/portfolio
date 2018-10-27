@@ -44,7 +44,7 @@ export {
   responsiveStyle,
   space,
   width,
-  /* Styled System */
+  /* Styled Tools */
   ifProp,
   prop,
   switchProp,

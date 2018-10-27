@@ -1,0 +1,21 @@
+{
+  "rulesDirectory": ["tslint-plugin-prettier"],
+  "extends": ["tslint-react-a11y", "tslint-eslint-rules", "tslint-react", "tslint-config-prettier"],
+  "rules": {
+    "member-ordering": false,
+    "prettier": [
+      true,
+      {
+        "arrowParens": "avoid",
+        "bracketSpacing": true,
+        "printWidth": 100,
+        "proseWrap": "preserve",
+        "semi": false,
+        "singleQuote": true,
+        "tabWidth": 2,
+        "trailingComma": "es5",
+        "useTabs": false
+      }
+    ]
+  }
+}
