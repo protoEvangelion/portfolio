@@ -15,8 +15,8 @@ const StyledLink = styled(GatsbyLink)`
   ${color};
 `
 
-export const Link: React.SFC<ILinkProps> = props => (
-  <StyledLink color="white" tabIndex={props.tabIndex} to={props.to}>
-    {props.children}
+export const Link: React.SFC<ILinkProps> = ({ children, to, tabIndex, ...rest }) => (
+  <StyledLink color="white" tabIndex={tabIndex} to={to} {...rest}>
+    {children}
   </StyledLink>
 )

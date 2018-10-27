@@ -1,5 +1,5 @@
-import { Grid as FlexGrid, styled } from 'style'
-import { Box } from 'components/atoms'
+import { Grid as FlexGrid, styled, space } from 'style'
+import { Box, Flex } from 'components/atoms'
 import flashlightImg from 'images/flashlight-night.png'
 import milkyWayImg from 'images/milky-way.jpg'
 
@@ -38,14 +38,11 @@ type ILayoutProps = {
   initialized: boolean
 }
 
-export const Layout: React.ComponentType<ILayoutProps> = styled(Box)`
-  background: ${props => {
-    if (props.frameNumber === 1) {
-      return 'radial-gradient(440.99px at 44.47% 51.81%, #011627 0%, rgba(255, 255, 255, 0) 100%), #000000'
-    }
-
-    return ''
-  }};
+export const Layout: React.ComponentType<ILayoutProps> = styled(Flex)`
+  background: ${props =>
+    props.frameNumber === 1
+      ? 'radial-gradient(440.99px at 44.47% 51.81%, #011627 0%, rgba(255, 255, 255, 0) 100%), #000000'
+      : ''};
   width: 100%;
   height: 100%;
   position: absolute;
@@ -62,6 +59,9 @@ export const Layout: React.ComponentType<ILayoutProps> = styled(Box)`
     return 'scale(1)'
   }};
   transition: top 1s ease, transform 1s ease;
+  width: 100%;
+
+  ${space};
 `
 
 export const HoverRectangle = styled(Box)`

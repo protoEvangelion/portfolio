@@ -6,8 +6,8 @@ interface ILogoProps {
 
 export const Logo: React.SFC<ILogoProps> = props => (
   <svg
-    width="100%"
-    height="100%"
+    width="4rem"
+    height="4rem"
     viewBox="0 0 99 88"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

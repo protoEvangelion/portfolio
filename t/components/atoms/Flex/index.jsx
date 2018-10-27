@@ -1,14 +1,9 @@
-import { responsiveStyle, width } from 'style'
+import { width } from 'style'
 
 import styled from 'styled-components'
 import { borderRadius } from 'styled-system'
 
 import Box from '../Box'
-
-const align = responsiveStyle('align-items', 'align')
-const direction = responsiveStyle('flex-direction', 'direction')
-const justify = responsiveStyle('justify-content', 'justify')
-const wrap = responsiveStyle('flex-wrap', 'wrap', 'wrap')
 
 export const Flex = styled(Box)`
   display: flex;

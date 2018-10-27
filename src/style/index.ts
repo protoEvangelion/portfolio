@@ -3,18 +3,26 @@
 import { Grid, Col, Row as GridRow } from 'react-styled-flexboxgrid'
 import {
   alignItems,
+  alignSelf,
   borderRadius,
+  bottom,
   color,
+  flex,
   flexDirection,
   flexWrap,
   justifyContent,
-  responsiveStyle,
+  justifySelf,
+  left,
+  position,
+  right,
   space,
+  style,
+  top,
   width,
+  zIndex,
 } from 'styled-system'
 
 import { ifProp, prop, switchProp } from 'styled-tools'
-// import { IThemeInterface } from './theme'
 import * as styledComponents from 'styled-components'
 import { ThemedStyledComponentsModule } from 'styled-components'
 
@@ -46,14 +54,23 @@ export {
   ThemeProvider,
   /* Styled System */
   alignItems,
+  alignSelf,
   borderRadius,
+  bottom,
   color,
+  flex,
   flexDirection,
   flexWrap,
   justifyContent,
-  responsiveStyle,
+  left,
+  position,
+  right,
   space,
+  style,
+  top,
   width,
+  zIndex,
+  justifySelf,
   /* Styled Tools */
   ifProp,
   prop,

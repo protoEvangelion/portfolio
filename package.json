@@ -65,7 +65,7 @@
     "react-transition-group": "^2.5.0",
     "redux": "^3.6.0",
     "styled-components": "^4.0.2",
-    "styled-system": "^1.0.8",
+    "styled-system": "^3.1.11",
     "styled-tools": "^0.2.2"
   },
   "lint-staged": {

@@ -1,4 +1,4 @@
-import { color, fontSize, responsiveStyle, space } from 'style'
+import { color, fontSize, space } from 'style'
 import { bold as b, regular as reg } from 'theme'
 
 import styled from 'styled-components'
@@ -16,15 +16,17 @@ export const bold = props => (props.bold ? { fontWeight: b } : null)
 
 export const italic = props => (props.italic ? { fontStyle: 'italic' } : null)
 
-const align = responsiveStyle('text-align', 'align')
-
 export const Text = styled.div`
-  ${italic} ${fontSize} ${space} ${color} ${caps} ${regular} ${bold} ${align};
+  ${italic} ${fontSize} ${space} ${color} ${caps} ${regular} ${bold};
 `
 
 Text.displayName = 'Text'
 
-const numberStringOrArray = PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array])
+const numberStringOrArray = PropTypes.oneOfType([
+  PropTypes.number,
+  PropTypes.string,
+  PropTypes.array,
+])
 
 Text.defaultProps = {
   color: 'foreground',

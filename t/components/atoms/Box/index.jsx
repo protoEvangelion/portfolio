@@ -1,15 +1,17 @@
-
 import styled from 'styled-components'
-import { color, responsiveStyle, space, width } from 'styled-system'
+import { color, space, width } from 'styled-system'
 
-const align = responsiveStyle('text-align', 'align')
 export const Box = styled.div`
-  ${space} ${width} ${color} ${align};
+  ${space} ${width} ${color};
 `
 
 Box.displayName = 'Box'
 
-const numberStringOrArray = PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array])
+const numberStringOrArray = PropTypes.oneOfType([
+  PropTypes.number,
+  PropTypes.string,
+  PropTypes.array,
+])
 
 Box.propTypes = {
   color: PropTypes.string,

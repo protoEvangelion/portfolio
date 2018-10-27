@@ -20,16 +20,7 @@ export interface IThemeInterface {
   space: number[]
 }
 
-export const breakpoints = [32, 48, 64, 80]
-
-const units = 'em'
-
-export const queries = {
-  large: breakpoints[3] + units,
-  medium: breakpoints[2] + units,
-  small: breakpoints[1] + units,
-  tiny: breakpoints[0] + units,
-}
+// export const breakpoints = ['576px', '767px', '979', '1280']
 
 export const space = [0, 4, 8, 16, 32, 64, 128]
 
@@ -110,9 +101,8 @@ const flexboxgrid = {
 
 const theme = {
   bold,
-  breakpoints,
   colors,
-  flexboxgrid,
+  // flexboxgrid,
   font,
   fontSizes,
   fontWeights,

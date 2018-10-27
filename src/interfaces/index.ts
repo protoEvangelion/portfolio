@@ -1,15 +1,21 @@
-export interface IBoxProps extends IColorProps, ISpaceProps, IWidthProps {
+import { alignSelf } from 'style'
+
+export interface IBoxProps extends IColorProps, ISpaceProps, IPositionProps, IWidthProps {
   center?: 'y' | 'x' | true
   cursor?: string
   borderRadius?: string
   opacity?: number
   height?: string
   transition?: string
+  zIndex?: number
+  justifySelf?: string
+  alignSelf?: string
+  flex?: string
 }
 
 export interface IFlexProps extends IBoxProps {
-  align?: string | string[]
-  justify?: string | string[]
+  alignItems?: string | string[]
+  justifyContent?: string | string[]
   flexDirection?: string | string[]
   flexWrap?: string | string[]
   hide?: boolean
@@ -18,6 +24,14 @@ export interface IFlexProps extends IBoxProps {
 export interface IColorProps {
   color?: string
   bg?: string
+}
+
+export interface IPositionProps {
+  position?: 'absolute' | 'fixed' | 'relative'
+  top?: number
+  left?: number
+  right?: number
+  bottom?: number
 }
 
 export interface ISpaceProps {

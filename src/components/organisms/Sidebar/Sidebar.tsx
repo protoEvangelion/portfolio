@@ -4,20 +4,20 @@ import { Transition } from '../../molecules'
 import { SidebarNavItem } from './SidebarNavItem'
 import { SidebarWrapper } from './SidebarStyles'
 
-export const Sidebar = (props: ISidebarProps) => {
-  const {
-    currentFrame,
-    handleSidebarMouseEnter,
-    handleSidebarMouseLeave,
-    isSidebarActive,
-    moveToFrame,
-    totalFrames,
-    updateCoordinates,
-  } = props
-
+export const Sidebar: React.SFC<ISidebarProps> = ({
+  logoOneRef,
+  currentFrame,
+  handleSidebarMouseEnter,
+  handleSidebarMouseLeave,
+  isSidebarActive,
+  moveToFrame,
+  totalFrames,
+  updateCoordinates,
+}) => {
   function moveToNextFrame(e) {
     if (e.type === 'click' || e.key === 'Enter') {
       moveToFrame(2)
+      console.log('as;ldkfjasldjf', logoOneRef.current.focus())
     }
   }
 
@@ -53,7 +53,7 @@ export const Sidebar = (props: ISidebarProps) => {
             onKeyPress={moveToNextFrame}
             onClick={moveToNextFrame}
             style={styles}
-            tabIndex="0"
+            tabIndex="1"
           >
             <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d="M7 10l5 5 5-5z" />

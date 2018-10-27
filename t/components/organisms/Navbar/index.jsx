@@ -16,7 +16,7 @@ const BaseNavbar = props => {
       </Link>
 
       <Hide small width="100%">
-        <Flex justify="space-around" width="100%">
+        <Flex justifyContent="space-around" width="100%">
           <Link m={0} href="/stack">
             Stack
           </Link>

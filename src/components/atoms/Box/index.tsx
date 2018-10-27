@@ -1,8 +1,22 @@
 import * as React from 'react'
 import { IBoxProps, IColorProps, ISpaceProps, IWidthProps } from 'interfaces'
-import { borderRadius, color, responsiveStyle, space, styled, width } from 'style'
-
-const align = responsiveStyle('text-align', 'align')
+import {
+  alignSelf,
+  borderRadius,
+  bottom,
+  color,
+  flex,
+  justifySelf,
+  left,
+  position,
+  right,
+  space,
+  style,
+  styled,
+  top,
+  width,
+  zIndex,
+} from 'style'
 
 // TODO: blacklist props like opacity, height, width, transition
 export const Box = styled<IBoxProps, 'div'>('div')`
@@ -21,11 +35,19 @@ export const Box = styled<IBoxProps, 'div'>('div')`
     }
   }}
 
-  ${align}
+  ${alignSelf}
   ${borderRadius}
+  ${bottom}
   ${color}
+  ${flex}
+  ${justifySelf}
+  ${left}
+  ${position}
+  ${right}
   ${space}
+  ${top}
   ${width}
+  ${zIndex}
 `
 
 Box.displayName = 'Box'

@@ -12,7 +12,7 @@ import { setupWheelListener } from 'helpers/addWheelListener'
 import 'style/global.css'
 import 'style/typography.scss'
 
-import { Grid, BG2, BG3, Layout, HoverRectangle } from './IndexStyles'
+import { BG2, BG3, Grid, Layout, HoverRectangle } from './IndexStyles'
 
 interface IState {
   currentFrame: number
@@ -24,6 +24,8 @@ interface IState {
 }
 
 class Index extends React.Component<IIndexPageProps, IState> {
+  logoOneRef = React.createRef()
+
   state = {
     currentFrame: 1,
     hoverRectangleY: null,
@@ -53,7 +55,7 @@ class Index extends React.Component<IIndexPageProps, IState> {
   componentDidMount() {
     setupWheelListener()
     window.addWheelListener(window, this.handleScroll)
-
+    console.log('this.logoOneRef', this.logoOneRef)
     this.setState({ initialized: true })
   }
 
@@ -84,45 +86,44 @@ class Index extends React.Component<IIndexPageProps, IState> {
 
   render() {
     const { isCTAHovered, isSidebarActive, hoverRectangleY, currentFrame, initialized } = this.state
+    const layoutProps = {
+      className: 'layout',
+      currentFrame: currentFrame,
+      initialized: initialized,
+      sidebarActive: isSidebarActive,
+      py: ['2rem', '4rem', '8rem'],
+      px: ['1rem', '4rem', '8rem'],
+    }
 
     return (
       <MainLayout>
         <HoverRectangle bg="gray" isSidebarActive={isSidebarActive} yCoordinate={hoverRectangleY} />
 
-        <Layout
-          className="layout"
+        <Navbar dark={this.state.currentFrame === 2} hideText={this.state.currentFrame !== 1} />
+
+        <Sidebar
+          logoOneRef={this.logoOneRef}
           currentFrame={currentFrame}
-          frameNumber={1}
-          initialized={initialized}
-          sidebarActive={isSidebarActive}
-          py={['2rem', '4rem', '8rem']}
-        >
-          <Grid>
-            <Flex flexDirection="column" justify="space-between" height="100%">
-              <Navbar />
+          handleSidebarMouseEnter={this.handleSidebarMouseEnter}
+          handleSidebarMouseLeave={this.handleSidebarMouseLeave}
+          isSidebarActive={isSidebarActive}
+          moveToFrame={this.moveToFrame}
+          totalFrames={3}
+          updateCoordinates={this.updateCoordinates}
+        />
 
-              <div>
-                <H1 color="white">RYAN GARANT</H1>
+        <Layout frameNumber={1} {...layoutProps}>
+          <Box alignSelf="flex-end">
+            <H1 color="white">RYAN GARANT</H1>
 
-                <H1 color="white" my={0} underline>
-                  REACT WEB DEVELOPER
-                </H1>
-              </div>
-            </Flex>
-          </Grid>
+            <H1 color="white" my={0} underline>
+              REACT WEB DEVELOPER
+            </H1>
+          </Box>
         </Layout>
 
-        <Layout
-          className="layout"
-          currentFrame={currentFrame}
-          frameNumber={2}
-          initialized={initialized}
-          sidebarActive={isSidebarActive}
-          py={['2rem', '4rem', '8rem']}
-        >
+        <Layout frameNumber={2} {...layoutProps}>
           <Grid>
-            <Navbar dark hideText tabIndex={-1} />
-
             <Row>
               <Col xs={1}>
                 <Span>02</Span>
@@ -153,17 +154,8 @@ class Index extends React.Component<IIndexPageProps, IState> {
           </Grid>
         </Layout>
 
-        <Layout
-          className="layout"
-          currentFrame={currentFrame}
-          frameNumber={3}
-          initialized={initialized}
-          py={['2rem', '4rem', '8rem']}
-          sidebarActive={isSidebarActive}
-        >
+        <Layout frameNumber={3} {...layoutProps}>
           <Grid>
-            <Navbar hideText tabIndex={-1} />
-
             <Row>
               <Col xs={1}>
                 <Span>03</Span>
@@ -201,16 +193,6 @@ class Index extends React.Component<IIndexPageProps, IState> {
             </Box>
           </Grid>
         </Layout>
-
-        <Sidebar
-          currentFrame={currentFrame}
-          handleSidebarMouseEnter={this.handleSidebarMouseEnter}
-          handleSidebarMouseLeave={this.handleSidebarMouseLeave}
-          isSidebarActive={isSidebarActive}
-          moveToFrame={this.moveToFrame}
-          totalFrames={3}
-          updateCoordinates={this.updateCoordinates}
-        />
 
         {/* <Hero fixed={data.headshot.childImageSharp.fixed} /> */}
       </MainLayout>

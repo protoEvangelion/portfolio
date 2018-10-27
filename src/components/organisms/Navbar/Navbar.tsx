@@ -1,6 +1,6 @@
-import { Flex, Logo, Link } from 'components/atoms'
+import { Box, Flex, Logo, Link } from 'components/atoms'
 import * as React from 'react'
-import { Col, Row } from 'style'
+import { styled } from 'style'
 
 // const LocationIcon = () => (
 //   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -15,26 +15,50 @@ interface INavbarProps {
   tabIndex?: number
 }
 
-export const Navbar: React.ComponentType<INavbarProps> = ({ dark, hideText, tabIndex = 0 }) => (
-  <Row middle="xs" pb={4}>
-    <Col xs={1}>
-      <Link to="/" tabIndex={tabIndex}>
-        <Logo dark={dark || false} />
-      </Link>
-    </Col>
+const StyledLink = styled(Link)`
+  /* justify-self: flex-start; */
+  position: absolute;
+  left: 0;
+`
 
-    <Col lg={6} lgOffset={1} md={false}>
-      <Flex justify="space-around" hide={hideText}>
-        <Link tabIndex={tabIndex} to="/">
-          HOME
-        </Link>
-        <Link tabIndex={tabIndex} to="/projects">
-          PROJECTS
-        </Link>
-        <Link tabIndex={tabIndex} to="/contact">
-          CONTACT
-        </Link>
+const LinkWrapper = styled(Flex)`
+  align-items: center;
+  padding: 1rem 1rem 1rem 0;
+
+  > a {
+    padding: 0 2rem;
+  }
+`
+
+export class Navbar extends React.Component<INavbarProps> {
+  render() {
+    const { dark, hideText, tabIndex } = this.props
+
+    return (
+      <Flex
+        position="fixed"
+        top={['2rem', '4rem', '8rem']}
+        left={['1rem', '4rem', '8rem']}
+        right={['1rem', '4rem', '8rem']}
+        zIndex="1"
+        justifyContent="center"
+      >
+        <StyledLink to="/" tabIndex={0}>
+          <Logo dark={dark || false} />
+        </StyledLink>
+
+        <LinkWrapper hide={hideText}>
+          <Link tabIndex={0} to="/">
+            HOME
+          </Link>
+          <Link tabIndex={0} to="/projects">
+            PROJECTS
+          </Link>
+          <Link tabIndex={0} to="/contact">
+            CONTACT
+          </Link>
+        </LinkWrapper>
       </Flex>
-    </Col>
-  </Row>
-)
+    )
+  }
+}
