@@ -99,7 +99,11 @@ class Index extends React.Component<IIndexPageProps, IState> {
       <MainLayout>
         <HoverRectangle bg="gray" isSidebarActive={isSidebarActive} yCoordinate={hoverRectangleY} />
 
-        <Navbar dark={this.state.currentFrame === 2} hideText={this.state.currentFrame !== 1} />
+        <Navbar
+          currentFrame={currentFrame}
+          dark={this.state.currentFrame === 2}
+          hideText={this.state.currentFrame !== 1}
+        />
 
         <Sidebar
           logoOneRef={this.logoOneRef}
@@ -113,7 +117,7 @@ class Index extends React.Component<IIndexPageProps, IState> {
         />
 
         <Layout frameNumber={1} {...layoutProps}>
-          <Box alignSelf="flex-end">
+          <Box mt="auto">
             <H1 color="white">RYAN GARANT</H1>
 
             <H1 color="white" my={0} underline>
@@ -123,35 +127,23 @@ class Index extends React.Component<IIndexPageProps, IState> {
         </Layout>
 
         <Layout frameNumber={2} {...layoutProps}>
-          <Grid>
-            <Row>
-              <Col xs={1}>
-                <Span>02</Span>
-              </Col>
-              <Col xs={3}>
-                <Span>My Story</Span>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={5} xsOffset={1}>
-                <H2>Blessed is the man who doesnt walk in the</H2>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={5} xsOffset={1}>
-                <P>
-                  Blessed is the man who doesnt walk in the counsel of the wicked, nor stand in the
-                  way of sinners, nor sit in the seat of scoffers; but his delight is in Yahwehs
-                  law. On his law he meditates day and night. He will be like a tree planted by the
-                  streams of water, that brings forth its fruit in its season, whose leaf also does
-                  not wither. Whatever he does shall prosper.
-                </P>
-              </Col>
-            </Row>
-            <Box width={1} height="100%">
-              <BG2 alt="Man with flashlight aimed at a starry night" />
-            </Box>
-          </Grid>
+          <div className="content-header">
+            <Span className="frame-number">02</Span>
+            <Span className="frame-title">My Story</Span>
+          </div>
+          <div className="content-text">
+            <H2>Blessed is the man who doesnt walk in the</H2>
+            <P>
+              Blessed is the man who doesnt walk in the counsel of the wicked, nor stand in the way
+              of sinners, nor sit in the seat of scoffers; but his delight is in Yahwehs law. On his
+              law he meditates day and night. He will be like a tree planted by the streams of
+              water, that brings forth its fruit in its season, whose leaf also does not wither.
+              Whatever he does shall prosper.
+            </P>
+          </div>
+          <Box width={1} height="100%">
+            <BG2 alt="Man with flashlight aimed at a starry night" />
+          </Box>
         </Layout>
 
         <Layout frameNumber={3} {...layoutProps}>

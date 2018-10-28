@@ -43,6 +43,7 @@ export const Layout: React.ComponentType<ILayoutProps> = styled(Flex)`
     props.frameNumber === 1
       ? 'radial-gradient(440.99px at 44.47% 51.81%, #011627 0%, rgba(255, 255, 255, 0) 100%), #000000'
       : ''};
+  flex-direction: column;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -62,6 +63,37 @@ export const Layout: React.ComponentType<ILayoutProps> = styled(Flex)`
   width: 100%;
 
   ${space};
+
+  .content-header {
+    padding-top: 5rem;
+    position: relative;
+
+    .frame-number {
+      position: absolute;
+      left: 0;
+    }
+  }
+
+  @media screen and (min-width: 40em) {
+    .content-header {
+      padding-top: 8rem;
+    }
+
+    .content-header,
+    .content-text .frame-title {
+      padding-left: 7.75rem;
+    }
+
+    .content-header .frame-number {
+      position: static;
+    }
+  }
+
+  @media screen and (min-width: 64em) {
+    .content-header {
+      padding-top: 5rem;
+    }
+  }
 `
 
 export const HoverRectangle = styled(Box)`

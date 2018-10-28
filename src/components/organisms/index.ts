@@ -3,5 +3,6 @@
 // export { Footer } from './Footer'
 export { Hero } from './Hero'
 export { Navbar } from './Navbar/Navbar'
+export { MobileMenu } from './MobileMenu/MobileMenu'
 export { Sidebar } from './Sidebar/Sidebar'
 // export { ProjectHeader } from './ProjectHeader'

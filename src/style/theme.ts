@@ -39,6 +39,10 @@ export const radius = '5px'
 export const font = '-apple-system, BlinkMacSystemFont, sans-serif'
 export const monospace = '"SF Mono", "Roboto Mono", Menlo, monospace'
 
+// @media screen and (min-width: 40em) 640px
+// @media screen and (min-width: 52em) 832px
+// @media screen and (min-width: 64em) 1024px
+
 const draculaTheme = {
   background: '#282a36',
   comment: '#6272a4',
