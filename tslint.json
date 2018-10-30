@@ -1,21 +1,8 @@
 {
-  "rulesDirectory": ["tslint-plugin-prettier"],
-  "extends": ["tslint-react-a11y", "tslint-eslint-rules", "tslint-react", "tslint-config-prettier"],
+  "extends": ["tslint-react-a11y", "tslint-react"],
   "rules": {
     "member-ordering": false,
-    "prettier": [
-      true,
-      {
-        "arrowParens": "avoid",
-        "bracketSpacing": true,
-        "printWidth": 100,
-        "proseWrap": "preserve",
-        "semi": false,
-        "singleQuote": true,
-        "tabWidth": 2,
-        "trailingComma": "es5",
-        "useTabs": false
-      }
-    ]
+    "jsx-no-multiline-js": false,
+    "jsx-boolean-value": false
   }
 }

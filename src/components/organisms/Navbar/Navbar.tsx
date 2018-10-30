@@ -1,7 +1,8 @@
-import { Box, Flex, Logo, Link } from 'components/atoms'
-import * as React from 'react'
+import { Logo, Link } from 'components/atoms'
+import React, { useState, useEffect } from 'react'
 import { styled, keyframes } from 'style'
 import * as R from 'ramda'
+import { cold } from 'react-hot-loader'
 
 // const LocationIcon = () => (
 //   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -87,39 +88,33 @@ const Nav = styled.nav`
   }
 `
 
-export class Navbar extends React.Component<INavbarProps> {
-  navItems = ['HOME', 'PROJECTS', 'CONTACT']
+const useMedia = query => {
+  const [matches, setMatches] = useState(false)
 
-  handleKeyPress = ({ key, target }) => {
+  useEffect(
+    () => {
+      const media = window.matchMedia(query)
+      const listener = () => setMatches(media.matches)
+      media.addListener(listener)
+      listener()
+      return () => media.removeListener(listener)
+    },
+    [query]
+  )
+
+  return matches
+}
+
+export const Navbar: React.SFC<INavbarProps> = cold(({ currentFrame, dark }) => {
+  const navItems = ['HOME', 'PROJECTS', 'CONTACT']
+  const small = useMedia('(max-width: 600px)')
+
+  const handleKeyPress = ({ key, target }) => {
     const navItemNodes = target.parentNode.parentNode.childNodes
     const firstNavItem = navItemNodes[0].firstChild
     const lastNavItem = navItemNodes[navItemNodes.length - 1].firstChild
     const prevNavItem = target.parentNode.previousSibling
     const nextNavItem = target.parentNode.nextSibling
-
-    // switch (key) {
-    //   case 'ArrowLeft':
-    //     prevNavItem ? prevNavItem.firstChild.focus() : lastNavItem.focus()
-    //     return
-    //   case 'ArrowRight':
-    //     nextNavItem ? nextNavItem.firstChild.focus() : firstNavItem.focus()
-    //     return
-    //   case 'End':
-    //     lastNavItem.focus()
-    //     return
-    //   case 'Home':
-    //     firstNavItem.focus()
-    //     return
-    //   default:
-    //     const matchNode = R.find(R.curry(firstLetterMatches)(key))
-    //     const matchedNode = matchNode(navItemNodes)
-
-    //     if (matchedNode) {
-    //       matchedNode.firstChild.focus()
-    //     }
-    // }
-
-    const arrowLeft = R.and(R.equals('ArrowLeft'))
 
     const nodeToFocus = R.cond([
       [R.equals('ArrowLeft'), () => (prevNavItem ? prevNavItem.firstChild : lastNavItem)],
@@ -141,18 +136,28 @@ export class Navbar extends React.Component<INavbarProps> {
     }
 
     nodeToFocus && nodeToFocus.focus()
-
-    console.log('nodeToFocus', nodeToFocus)
   }
 
-  render() {
-    const { currentFrame, dark } = this.props
-    return (
-      <Nav aria-label="Site Navigation" currentFrame={currentFrame}>
-        <Link className="logo-link" to="/" tabIndex={0}>
-          <Logo dark={dark || false} />
-        </Link>
+  return (
+    <Nav aria-label="Site Navigation" currentFrame={currentFrame}>
+      <Link className="logo-link" to="/" tabIndex={0}>
+        <Logo dark={dark || false} />
+      </Link>
 
+      {small ? (
+        <>
+          <button id="menubutton" aria-haspopup="true" aria-controls="menu2">
+            WAI-ARIA Quick Links
+          </button>
+          <ul id="menu2" role="menu" aria-labelledby="menubutton">
+            <li role="none">
+              <a role="menuitem" href="https://www.w3.org/">
+                W3C Home Page
+              </a>
+            </li>
+          </ul>
+        </>
+      ) : (
         <ul
           aria-label="Site Navigation"
           className="nav-items"
@@ -160,12 +165,12 @@ export class Navbar extends React.Component<INavbarProps> {
           role="menubar"
           aria-haspopup="false"
         >
-          {this.navItems.map(item => (
+          {navItems.map(item => (
             <li key={item}>
               <Link
-                onKeyUp={this.handleKeyPress}
+                onKeyUp={handleKeyPress}
                 tabIndex={0}
-                to={item == 'HOME' ? '/' : `/${item.toLowerCase()}`}
+                to={item === 'HOME' ? '/' : `/${item.toLowerCase()}`}
                 role="menuitem"
               >
                 {item}
@@ -173,7 +178,7 @@ export class Navbar extends React.Component<INavbarProps> {
             </li>
           ))}
         </ul>
-      </Nav>
-    )
-  }
-}
+      )}
+    </Nav>
+  )
+})

@@ -1,0 +1,25 @@
+{
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "parser": "typescript-eslint-parser",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "globals": {
+    "graphql": true
+  },
+  "rules": {
+    "no-else-return": ["error", { "allowElseIf": true }],
+    "no-use-before-define": 0,
+    "no-unused-expressions": ["error", { "allowShortCircuit": true }],
+    "default-case": 0,
+    "react/default-props-match-prop-types": 0,
+    "import/no-unresolved": 0,
+    "import/prefer-default-export": 0,
+    "react/destructuring-assignment": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "react/require-default-props": 0,
+    "react/no-unused-prop-types": 0,
+    "react/prop-types": 0
+  }
+}

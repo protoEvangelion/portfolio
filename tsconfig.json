@@ -2,6 +2,7 @@
   "include": ["./src/**/*"],
   "exclude": ["node_modules"],
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "target": "esnext",
     "module": "commonjs",
     "lib": ["es2015", "es2017", "dom"],

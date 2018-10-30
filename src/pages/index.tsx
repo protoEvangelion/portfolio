@@ -2,7 +2,7 @@ import { graphql } from 'gatsby'
 import * as React from 'react'
 import { debounce } from 'lodash'
 
-import { H1, H2, Span, P, Box, Flex } from 'components/atoms'
+import { H1, H2, Span, P, Box } from 'components/atoms'
 import { Navbar, Sidebar } from 'components/organisms'
 import { MainLayout } from 'components/templates'
 import { IIndexPageProps } from 'interfaces'
@@ -12,7 +12,7 @@ import { setupWheelListener } from 'helpers/addWheelListener'
 import 'style/global.css'
 import 'style/typography.scss'
 
-import { BG2, BG3, Grid, Layout, HoverRectangle } from './IndexStyles'
+import { BG2, BG3, Grid, Layout, HoverRectangle } from '../style/pages/IndexStyles'
 
 interface IState {
   currentFrame: number
@@ -24,8 +24,6 @@ interface IState {
 }
 
 class Index extends React.Component<IIndexPageProps, IState> {
-  logoOneRef = React.createRef()
-
   state = {
     currentFrame: 1,
     hoverRectangleY: null,
@@ -55,7 +53,6 @@ class Index extends React.Component<IIndexPageProps, IState> {
   componentDidMount() {
     setupWheelListener()
     window.addWheelListener(window, this.handleScroll)
-    console.log('this.logoOneRef', this.logoOneRef)
     this.setState({ initialized: true })
   }
 
@@ -88,8 +85,8 @@ class Index extends React.Component<IIndexPageProps, IState> {
     const { isCTAHovered, isSidebarActive, hoverRectangleY, currentFrame, initialized } = this.state
     const layoutProps = {
       className: 'layout',
-      currentFrame: currentFrame,
-      initialized: initialized,
+      currentFrame,
+      initialized,
       sidebarActive: isSidebarActive,
       py: ['2rem', '4rem', '8rem'],
       px: ['1rem', '4rem', '8rem'],
@@ -106,7 +103,6 @@ class Index extends React.Component<IIndexPageProps, IState> {
         />
 
         <Sidebar
-          logoOneRef={this.logoOneRef}
           currentFrame={currentFrame}
           handleSidebarMouseEnter={this.handleSidebarMouseEnter}
           handleSidebarMouseLeave={this.handleSidebarMouseLeave}
