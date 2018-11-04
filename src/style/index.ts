@@ -26,20 +26,41 @@ import { ifProp, prop, switchProp } from 'styled-tools'
 import * as styledComponents from 'styled-components'
 import { ThemedStyledComponentsModule } from 'styled-components'
 
-import ThemeInterface from './theme'
+import { IThemeInterface } from './theme'
 
 const {
   default: styled,
   css,
   createGlobalStyle,
-  injectGlobal,
   keyframes,
   ThemeProvider,
-} = styledComponents as ThemedStyledComponentsModule<ThemeInterface>
+} = styledComponents as ThemedStyledComponentsModule<IThemeInterface>
 
 const Row = styled(GridRow)`
   ${space};
 `
+
+// @media screen and (min-width: 40em) 640px
+// @media screen and (min-width: 52em) 832px
+// @media screen and (min-width: 64em) 1024px
+
+const media = {
+  giant: (...args) => css`
+    @media (min-width: 64em) {
+      ${css(...args)};
+    }
+  `,
+  desktop: (...args) => css`
+    @media (min-width: 52em) {
+      ${css(...args)};
+    }
+  `,
+  tablet: (...args) => css`
+    @media (min-width: 40em) {
+      ${css(...args)};
+    }
+  `,
+}
 
 export {
   /* Grid */
@@ -75,4 +96,6 @@ export {
   ifProp,
   prop,
   switchProp,
+  /* custom */
+  media,
 }

@@ -2,15 +2,15 @@ import * as React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import { color, styled } from 'style'
 
-interface ILinkProps {
-  children: React.Node
+interface ILinkProps extends React.HTMLAttributes<Element> {
   tabIndex: number
   to: string
 }
 
 const StyledLink = styled(GatsbyLink)`
   text-decoration: none;
-  font-weight: 100;
+  font-weight: light;
+  z-index: 2;
 
   ${color};
 `

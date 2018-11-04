@@ -1,1 +1,2 @@
-export { Transition } from './Transition'
+export { Transition } from './Transition/Transition'
+export { Menu } from './Menu/Menu'

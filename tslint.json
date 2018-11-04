@@ -3,6 +3,7 @@
   "rules": {
     "member-ordering": false,
     "jsx-no-multiline-js": false,
-    "jsx-boolean-value": false
+    "jsx-boolean-value": false,
+    "jsx-no-lambda": false
   }
 }

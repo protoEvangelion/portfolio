@@ -1,5 +1,6 @@
 {
   "extends": ["airbnb", "prettier", "prettier/react"],
+  "plugins": ["react-hooks"],
   "parser": "typescript-eslint-parser",
   "env": {
     "browser": true,
@@ -9,6 +10,7 @@
     "graphql": true
   },
   "rules": {
+    "no-undef": 0,
     "no-else-return": ["error", { "allowElseIf": true }],
     "no-use-before-define": 0,
     "no-unused-expressions": ["error", { "allowShortCircuit": true }],
@@ -17,9 +19,10 @@
     "import/no-unresolved": 0,
     "import/prefer-default-export": 0,
     "react/destructuring-assignment": 0,
-    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],
     "react/require-default-props": 0,
     "react/no-unused-prop-types": 0,
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "react-hooks/rules-of-hooks": "error"
   }
 }

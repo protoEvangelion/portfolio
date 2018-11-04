@@ -9,6 +9,10 @@ import { IIndexPageProps } from 'interfaces'
 import { Row, Col } from 'style'
 import { setupWheelListener } from 'helpers/addWheelListener'
 
+import LogRocket from 'logrocket'
+
+LogRocket.init('myyjeg/portfolio')
+
 import 'style/global.css'
 import 'style/typography.scss'
 

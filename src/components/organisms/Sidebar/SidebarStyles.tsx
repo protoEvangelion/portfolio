@@ -1,4 +1,4 @@
-import { styled, keyframes } from 'style'
+import { styled, keyframes, media } from 'style'
 
 const fadeOutFadeIn = keyframes`
   o% { opacity: 1; }
@@ -18,13 +18,17 @@ export const SidebarWrapper = styled.div`
   align-items: center;
   animation: ${props => (props.currentFrame % 2 === 0 ? fadeOutFadeIn : fadeOutFadeIn2)} 1.3s linear;
   bottom: 0;
-  display: flex;
+  display: none;
   flex-direction: column;
   position: fixed;
   right: 0;
   top: 0;
   width: 20%;
   z-index: 1;
+
+  ${media.tablet`
+    display: flex;
+  `};
 
   .line {
     background: rgb(253, 255, 252);
