@@ -1,22 +1,14 @@
 import { styled, keyframes, media } from 'style'
+import { InterpolationValue } from 'styled-components'
 
-const fadeOutFadeIn = keyframes`
-  o% { opacity: 1; }
-  10% { opacity: 0; }
-  50% { opacity: 0; }
+const fadeIn = keyframes`
+  o% { opacity: 0; }
   100% { opacity: 1; }
 `
 
-const fadeOutFadeIn2 = keyframes`
-  o% { opacity: 1; }
-  10% { opacity: 0; }
-  51% { opacity: 0; }
-  100% { opacity: 1; }
-`
-
-export const Nav = styled<{ currentFrame: number }, 'nav'>('nav')`
+export const Nav = styled<{ animation?: InterpolationValue[] }, 'nav'>('nav')`
   align-items: center;
-  animation: ${props => (props.currentFrame % 2 === 0 ? fadeOutFadeIn : fadeOutFadeIn2)} 1.3s linear;
+  animation: ${props => (props.animation ? props.animation : `${fadeIn} 0.5s linear`)};
   display: flex;
   position: fixed;
   justify-content: space-between;
@@ -24,6 +16,7 @@ export const Nav = styled<{ currentFrame: number }, 'nav'>('nav')`
   top: 2rem;
   left: 1rem;
   right: 1rem;
+  height: 3rem;
 
   ${media.tablet`
     justify-content: center;

@@ -1,6 +1,11 @@
 import { styled, media } from 'style'
 
-export const List = styled<{ menuOpen: boolean }, 'ul'>('ul')`
+interface IMenuStyles {
+  hideDesktopText?: boolean
+  menuOpen?: boolean
+}
+
+export const List = styled<IMenuStyles, 'ul'>('ul')`
   display: flex;
   list-style: none;
   position: relative;
@@ -31,18 +36,21 @@ export const List = styled<{ menuOpen: boolean }, 'ul'>('ul')`
 
   ${media.tablet`
     align-items: center;
+    background: transparent;
+    flex-direction: row;
     opacity: 0;
     visibility: hidden;
     padding: 1rem;
+    position: static;
     transition: opacity 0.5s, visibility 0.5s;
 
     > li {
       padding: 0 2rem;
     }
 
-    ${props =>
-      props.currentFrame === 1
-        ? `opacity: 1; visibility: visible;`
-        : `opacity: 0; visibility: hidden;`};
+    ${(props: IMenuStyles) =>
+      props.hideDesktopText
+        ? `opacity: 0; visibility: hidden;`
+        : `opacity: 1; visibility: visible;`};
   `};
 `

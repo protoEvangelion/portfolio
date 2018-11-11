@@ -1,22 +1,32 @@
 import { graphql } from 'gatsby'
 import * as React from 'react'
 import { debounce } from 'lodash'
-
 import { H1, H2, Span, P, Box } from 'components/atoms'
 import { Navbar, Sidebar } from 'components/organisms'
 import { MainLayout } from 'components/templates'
 import { IIndexPageProps } from 'interfaces'
-import { Row, Col } from 'style'
+import { css, Row, Col, keyframes } from 'style'
 import { setupWheelListener } from 'helpers/addWheelListener'
-
 import LogRocket from 'logrocket'
+import 'style/global.css'
+import 'style/typography.scss'
+import { BG2, BG3, Grid, Layout, HoverRectangle } from '../style/pages/IndexStyles'
 
 LogRocket.init('myyjeg/portfolio')
 
-import 'style/global.css'
-import 'style/typography.scss'
+const fadeOutFadeIn = keyframes`
+  o% { opacity: 1; }
+  10% { opacity: 0; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+`
 
-import { BG2, BG3, Grid, Layout, HoverRectangle } from '../style/pages/IndexStyles'
+const fadeOutFadeIn2 = keyframes`
+  o% { opacity: 1; }
+  10% { opacity: 0; }
+  51% { opacity: 0; }
+  100% { opacity: 1; }
+`
 
 interface IState {
   currentFrame: number
@@ -87,6 +97,7 @@ class Index extends React.Component<IIndexPageProps, IState> {
 
   render() {
     const { isCTAHovered, isSidebarActive, hoverRectangleY, currentFrame, initialized } = this.state
+
     const layoutProps = {
       className: 'layout',
       currentFrame,
@@ -101,9 +112,11 @@ class Index extends React.Component<IIndexPageProps, IState> {
         <HoverRectangle bg="gray" isSidebarActive={isSidebarActive} yCoordinate={hoverRectangleY} />
 
         <Navbar
-          currentFrame={currentFrame}
-          dark={this.state.currentFrame === 2}
-          hideText={this.state.currentFrame !== 1}
+          animation={css`
+            ${currentFrame % 2 === 0 ? fadeOutFadeIn : fadeOutFadeIn2} 1.3s linear;
+          `}
+          hideDesktopText={currentFrame !== 1}
+          dark={currentFrame === 2}
         />
 
         <Sidebar

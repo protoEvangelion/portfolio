@@ -3,24 +3,36 @@ import * as R from 'ramda'
 import { Link } from 'components/atoms'
 import { List } from './MenuStyles'
 
+type SetMenuOpen = React.Dispatch<React.SetStateAction<boolean>>
+
 interface IMenuProps extends React.HTMLAttributes<Element> {
   ariaLabel?: string
   ariaLabelledBy?: string
   role?: string
   menuOpen: boolean
-  navItems: [string]
+  navItems: string[]
   id: string
-  setMenuOpen: () => any
+  hideDesktopText?: boolean
+  setMenuOpen?: SetMenuOpen
 }
 
 // Handles main nav & popup menu
 export const Menu = React.memo(
-  ({ navItems, menuOpen, id, role, setMenuOpen, ...rest }: IMenuProps) => (
+  ({
+    navItems,
+    menuOpen,
+    id = 'navbar',
+    role = 'menubar',
+    hideDesktopText = true,
+    setMenuOpen,
+    ...rest
+  }: IMenuProps) => (
     <List
       id={id}
       role={role}
       menuOpen={menuOpen}
       onKeyUp={e => handleKeyUp(e, setMenuOpen)}
+      hideDesktopText={hideDesktopText}
       {...rest}
     >
       {navItems.map(item => (
@@ -34,12 +46,17 @@ export const Menu = React.memo(
   )
 )
 
-function handleKeyUp({ key, currentTarget, target }: React.KeyboardEvent, setMenuOpen) {
-  const navItemNodes = currentTarget.childNodes
+function handleKeyUp(
+  { key, currentTarget, target }: React.KeyboardEvent,
+  setMenuOpen?: SetMenuOpen
+) {
+  const t = target as HTMLElement
+
+  const navItemNodes = (currentTarget.childNodes as unknown) as ReadonlyArray<HTMLElement>
   const firstNavItem = navItemNodes[0].firstChild
   const lastNavItem = navItemNodes[navItemNodes.length - 1].firstChild
-  const prevNavItem = target.parentNode.previousSibling
-  const nextNavItem = target.parentNode.nextSibling
+  const prevNavItem = t.parentNode && t.parentNode.previousSibling
+  const nextNavItem = t.parentNode && t.nextSibling
   const menuBtn = currentTarget.previousSibling
 
   const nodeToFocus = R.cond([
@@ -70,7 +87,7 @@ function handleKeyUp({ key, currentTarget, target }: React.KeyboardEvent, setMen
 
   nodeToFocus && nodeToFocus.focus()
 
-  if (key === 'Escape') {
+  if (key === 'Escape' && setMenuOpen) {
     setMenuOpen(false)
   }
 }

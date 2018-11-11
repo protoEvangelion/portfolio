@@ -23,8 +23,8 @@ import {
 } from 'styled-system'
 
 import { ifProp, prop, switchProp } from 'styled-tools'
+
 import * as styledComponents from 'styled-components'
-import { ThemedStyledComponentsModule } from 'styled-components'
 
 import { IThemeInterface } from './theme'
 
@@ -34,7 +34,7 @@ const {
   createGlobalStyle,
   keyframes,
   ThemeProvider,
-} = styledComponents as ThemedStyledComponentsModule<IThemeInterface>
+} = styledComponents as styledComponents.ThemedStyledComponentsModule<IThemeInterface>
 
 const Row = styled(GridRow)`
   ${space};
@@ -45,17 +45,17 @@ const Row = styled(GridRow)`
 // @media screen and (min-width: 64em) 1024px
 
 const media = {
-  giant: (...args) => css`
+  giant: (...args: any) => css`
     @media (min-width: 64em) {
       ${css(...args)};
     }
   `,
-  desktop: (...args) => css`
+  desktop: (...args: any) => css`
     @media (min-width: 52em) {
       ${css(...args)};
     }
   `,
-  tablet: (...args) => css`
+  tablet: (...args: any) => css`
     @media (min-width: 40em) {
       ${css(...args)};
     }

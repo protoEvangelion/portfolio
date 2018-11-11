@@ -2,6 +2,7 @@ import { Logo, Link, MenuBtn } from 'components/atoms'
 import { Menu } from 'components/molecules'
 import React, { useState, useEffect } from 'react'
 import { cold } from 'react-hot-loader'
+import { InterpolationValue } from 'styled-components'
 import { Nav } from './NavbarStyles'
 
 // const LocationIcon = () => (
@@ -11,13 +12,8 @@ import { Nav } from './NavbarStyles'
 //   </svg>
 // )
 
-interface INavbarProps {
-  currentFrame: number
-  dark?: boolean
-}
-
 const useMedia = (query: string) => {
-  const [matches, setMatches] = useState(false)
+  const [matches, setMatches] = useState<boolean>(false)
 
   useEffect(
     () => {
@@ -33,41 +29,60 @@ const useMedia = (query: string) => {
   return matches
 }
 
-export const Navbar = cold(({ currentFrame, dark }: INavbarProps) => {
-  const navItems = ['HOME', 'PROJECTS', 'CONTACT']
-  const small = useMedia('(max-width: 640px)')
-  const [menuOpen, setMenuOpen] = useState(true)
+interface INavbarProps {
+  ariaLabel?: string
+  animation?: InterpolationValue[]
+  dark?: boolean
+  hideDesktopText?: boolean
+}
 
-  return (
-    <Nav aria-label="Site Navigation" currentFrame={currentFrame}>
-      <Link className="logo-link" to="/" tabIndex={0}>
-        <Logo dark={dark || false} />
-      </Link>
+export const Navbar = cold(
+  ({
+    ariaLabel = 'Site Navigation',
+    animation,
+    dark = false,
+    hideDesktopText = false,
+  }: INavbarProps) => {
+    const navItems = ['HOME', 'PROJECTS', 'CONTACT']
+    const small = useMedia('(max-width: 640px)')
+    const [menuOpen, setMenuOpen] = useState<boolean>(true)
 
-      {small ? (
-        <>
-          <MenuBtn menuOpen={menuOpen} setMenuOpen={setMenuOpen} id="menuBtn" ariaControls="menu" />
+    return (
+      <Nav aria-label={ariaLabel} animation={animation}>
+        <Link className="logo-link" to="/" tabIndex={0}>
+          <Logo dark={dark} />
+        </Link>
 
+        {small ? (
+          <>
+            <MenuBtn
+              ariaControls="menu"
+              id="menuBtn"
+              menuOpen={menuOpen}
+              setMenuOpen={setMenuOpen}
+            />
+
+            <Menu
+              aria-labelledby="menuBtn"
+              id="navmenu"
+              menuOpen={menuOpen}
+              navItems={navItems}
+              role="menu"
+              setMenuOpen={setMenuOpen}
+            />
+          </>
+        ) : (
           <Menu
-            currentFrame={currentFrame}
-            id="navmenu"
-            aria-labelledby="menuBtn"
-            role="menu"
+            aria-haspopup="false"
+            aria-label={ariaLabel}
+            hideDesktopText={hideDesktopText}
+            id="navbar"
             menuOpen={menuOpen}
             navItems={navItems}
-            setMenuOpen={setMenuOpen}
+            role="menubar"
           />
-        </>
-      ) : (
-        <Menu
-          aria-label="Site Navigation"
-          currentFrame={currentFrame}
-          id="navbar"
-          role="menubar"
-          aria-haspopup="false"
-          navItems={navItems}
-        />
-      )}
-    </Nav>
-  )
-})
+        )}
+      </Nav>
+    )
+  }
+)

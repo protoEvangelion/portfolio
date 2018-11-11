@@ -9,14 +9,16 @@
     "build": "gatsby build",
     "clean": "git clean -xfd .cache public/ && rm -rf .cache public",
     "story": "start-storybook -p 9001 -c private/storybook",
-    "test": "cross-env NODE_ENV=test jest"
+    "test": "jest"
   },
   "devDependencies": {
     "@types/history": "^4.6.2",
+    "@types/jest": "^23.3.9",
     "@types/lodash": "^4.14.63",
     "@types/node": "^7.0.15",
-    "@types/react": "^16.4.18",
-    "@types/react-dom": "^16.0.2",
+    "@types/ramda": "^0.26.0",
+    "@types/react": "^16.7.2",
+    "@types/react-dom": "^16.0.9",
     "@types/react-helmet": "^5.0.6",
     "@types/react-redux": "^5.0.9",
     "@types/react-router": "^4.0.14",
@@ -40,25 +42,30 @@
     "gatsby-transformer-remark": "^2.1.3",
     "gatsby-transformer-sharp": "^2.1.1",
     "husky": "^0.14.3",
+    "jest": "^23.6.0",
+    "jest-dom": "^2.1.1",
     "lint-staged": "^4.3.0",
     "modularscale-sass": "^3.0.5",
     "node-sass": "^4.9.3",
     "prettier": "^1.12.1",
     "react-hot-loader": "^4.3.12",
+    "react-testing-library": "^5.2.3",
     "redux-devtools-extension": "^2.13.2",
     "stylelint": "^8.2.0",
     "stylelint-config-standard": "^17.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.0.0",
+    "ts-jest": "^23.10.4",
     "ts-loader": "^3.1.0",
     "tslint": "^5.11.0",
     "tslint-react": "3.2.0",
     "tslint-react-a11y": "^1.0.0",
     "typescript": "^3.0.3",
-    "typescript-eslint-parser": "^20.0.0"
+    "typescript-eslint-parser": "^20.0.0",
+    "typescript-styled-plugin": "^0.13.0"
   },
   "dependencies": {
-    "@types/ramda": "^0.26.0",
+    "@types/styled-system": "^3.0.8",
     "axios": "^0.15.3",
     "gatsby": "^2.0.6",
     "gatsby-image": "^2.0.0-rc.4",
@@ -75,7 +82,7 @@
     "redux": "^3.6.0",
     "styled-components": "^4.0.2",
     "styled-system": "^3.1.11",
-    "styled-tools": "^0.2.2"
+    "styled-tools": "^1.6.0"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
