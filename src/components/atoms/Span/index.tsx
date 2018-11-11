@@ -1,15 +1,10 @@
-import * as React from 'react'
-import { color, space, styled } from 'style'
-import { IText } from 'interfaces'
+import { color, space, styled } from '@/style'
+import { IColorSpaceProps } from '@/interfaces'
 
-const StyledSpan = styled.span`
+export const Span = styled<IColorSpaceProps, 'span'>('span')`
   ${color};
   ${space};
 `
-
-export const Span: React.ComponentType<IText> = ({ children, ...props }) => (
-  <StyledSpan {...props}>{children}</StyledSpan>
-)
 
 Span.defaultProps = {
   color: 'black',

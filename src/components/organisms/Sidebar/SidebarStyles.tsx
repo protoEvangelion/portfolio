@@ -1,4 +1,4 @@
-import { styled, keyframes, media } from 'style'
+import { styled, keyframes, media } from '@/style'
 
 const fadeOutFadeIn = keyframes`
   o% { opacity: 1; }

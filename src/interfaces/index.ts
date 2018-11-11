@@ -1,5 +1,3 @@
-import { alignSelf } from 'style'
-
 export interface IBoxProps extends IColorProps, ISpaceProps, IPositionProps, IWidthProps {
   center?: 'y' | 'x' | true
   cursor?: string
@@ -77,23 +75,6 @@ export interface IAllMarkdownRemark {
 }
 
 /* --- Component Props --- */
-
-export interface IBoxProps extends IColorProps, ISpaceProps, IWidthProps {
-  center?: 'y' | 'x' | true
-  cursor?: string
-  borderRadius?: string
-  opacity?: number
-  height?: string
-  transition?: string
-}
-
-export interface IFlexProps extends IBoxProps {
-  align?: string | string[]
-  justify?: string | string[]
-  flexDirection?: string | string[]
-  flexWrap?: string | string[]
-  hide?: boolean
-}
 
 export interface IIndexPageProps {
   data: {

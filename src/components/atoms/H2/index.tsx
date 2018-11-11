@@ -1,8 +1,7 @@
-import * as React from 'react'
-import { color, space, styled } from 'style'
+import { color, space, styled } from '@/style'
 import { IH1 } from 'interfaces'
 
-const StyledH2 = styled.h2`
+export const H2 = styled<IH1, 'h2'>('h2')`
   ${props =>
     props.underline &&
     `
@@ -29,10 +28,6 @@ const StyledH2 = styled.h2`
   ${color};
   ${space};
 `
-
-export const H2: React.ComponentType<IH1> = ({ children, ...props }) => (
-  <StyledH2 {...props}>{children}</StyledH2>
-)
 
 H2.defaultProps = {
   color: 'black',

@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { styled } from 'style'
-import { Box, Flex, Span } from 'components/atoms'
+import { styled } from '@/style'
+import { Box, Flex, Span } from '@/components/atoms'
 
 const StyledSpan = styled(Span)`
   position: absolute;

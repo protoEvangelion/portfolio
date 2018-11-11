@@ -6,24 +6,25 @@ interface ITransitionProps {
   duration?: number
   show: boolean
   opacity: number
+  children: (obj: any) => any
 }
 
-export const Transition: React.SFC<ITransitionProps> = props => {
+export const Transition = ({ duration = 300, opacity, show, children }: ITransitionProps) => {
   const defaultStyle = {
-    transition: `opacity ${props.duration}ms ease-in-out`,
+    transition: `opacity ${duration}ms ease-in-out`,
     opacity: 0,
   }
 
-  const transitionStyles = {
+  const transitionStyles: any = {
     entering: { opacity: 0 },
-    entered: { opacity: props.opacity },
+    entered: { opacity },
     exiting: { opacity: 0 },
   }
 
   return (
-    <ReactTransition in={props.show} timeout={props.duration} unmountOnExit>
+    <ReactTransition in={show} timeout={duration} unmountOnExit>
       {state =>
-        props.children({
+        children({
           ...defaultStyle,
           ...transitionStyles[state],
         })

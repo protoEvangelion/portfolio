@@ -45,19 +45,19 @@ const Row = styled(GridRow)`
 // @media screen and (min-width: 64em) 1024px
 
 const media = {
-  giant: (...args: any) => css`
+  giant: (arr: TemplateStringsArray, ...args: any) => css`
     @media (min-width: 64em) {
-      ${css(...args)};
+      ${css(arr, ...args)};
     }
   `,
-  desktop: (...args: any) => css`
+  desktop: (arr: TemplateStringsArray, ...args: any) => css`
     @media (min-width: 52em) {
-      ${css(...args)};
+      ${css(arr, ...args)};
     }
   `,
-  tablet: (...args: any) => css`
+  tablet: (arr: TemplateStringsArray, ...args: any) => css`
     @media (min-width: 40em) {
-      ${css(...args)};
+      ${css(arr, ...args)};
     }
   `,
 }

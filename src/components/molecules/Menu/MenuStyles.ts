@@ -1,4 +1,4 @@
-import { styled, media } from 'style'
+import { styled, media } from '@/style'
 
 interface IMenuStyles {
   hideDesktopText?: boolean

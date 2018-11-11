@@ -1,7 +1,7 @@
-import { Grid as FlexGrid, styled, space } from 'style'
-import { Box, Flex } from 'components/atoms'
-import flashlightImg from 'images/flashlight-night.png'
-import milkyWayImg from 'images/milky-way.jpg'
+import { Grid as FlexGrid, styled, space } from '@/style'
+import { Box, Flex } from '@/components/atoms'
+import flashlightImg from '@/images/flashlight-night.png'
+import milkyWayImg from '@/images/milky-way.jpg'
 
 export const Grid = styled(FlexGrid)`
   height: 100%;

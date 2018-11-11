@@ -53,3 +53,19 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 }
+
+exports.onCreateWebpackConfig = ({ stage, actions }) => {
+  console.log('==============', path.join(__dirname, 'src/utils'))
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+      alias: {
+        '@/': path.join(__dirname, 'src'),
+        '@/components': path.join(__dirname, 'src/components'),
+        '@/utils': path.join(__dirname, 'src/utils'),
+        '@/style': path.join(__dirname, 'src/style'),
+        '@/images': path.join(__dirname, 'src/images'),
+      },
+    },
+  })
+}

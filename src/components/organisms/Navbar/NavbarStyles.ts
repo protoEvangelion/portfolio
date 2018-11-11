@@ -1,4 +1,4 @@
-import { styled, keyframes, media } from 'style'
+import { css, styled, keyframes, media } from '@/style'
 import { InterpolationValue } from 'styled-components'
 
 const fadeIn = keyframes`
@@ -8,7 +8,12 @@ const fadeIn = keyframes`
 
 export const Nav = styled<{ animation?: InterpolationValue[] }, 'nav'>('nav')`
   align-items: center;
-  animation: ${props => (props.animation ? props.animation : `${fadeIn} 0.5s linear`)};
+  animation: ${props =>
+    props.animation
+      ? props.animation
+      : css`
+          ${fadeIn} 0.5s linear;
+        `};
   display: flex;
   position: fixed;
   justify-content: space-between;

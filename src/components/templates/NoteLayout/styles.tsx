@@ -1,4 +1,4 @@
-import { styled } from 'style'
+import { styled } from '@/style'
 
 export const Layout = styled.div`
   background: #282a36;

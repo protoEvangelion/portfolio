@@ -3,8 +3,10 @@
 import * as React from 'react'
 import { Button, Line1, Line2 } from './MenuBtnStyles'
 
+type SetMenuOpen = React.Dispatch<React.SetStateAction<boolean>>
+
 export interface IMenuBtn {
-  setMenuOpen: (value: boolean) => any
+  setMenuOpen: SetMenuOpen
   menuOpen: boolean
   id: string
   ariaControls: string
@@ -31,7 +33,7 @@ export const MenuBtn = React.memo(
   )
 )
 
-function handleKeyUp(e: React.KeyboardEvent, menuOpen: boolean, setMenuOpen) {
+function handleKeyUp(e: React.KeyboardEvent, menuOpen: boolean, setMenuOpen: SetMenuOpen) {
   if (menuOpen && e.key === 'Escape') {
     setMenuOpen(false)
   }

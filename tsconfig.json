@@ -17,11 +17,15 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "baseUrl": "./src",
+    "resolveJsonModule": true,
     "paths": {
-      "components/*": ["components/*"],
-      "images/*": ["images/*"],
-      "theme/*": ["theme/*"],
-      "store/*": ["store/*"]
+      // "components/*": ["components/*"],
+      "@/components/*": ["components/*"],
+      "@/utils*": ["utils"],
+      "@/style*": ["style"],
+      "@/images*": ["images"],
+      "@/interfaces*": ["interfaces"],
+      "@/store*": ["store"]
     },
     "plugins": [
       {

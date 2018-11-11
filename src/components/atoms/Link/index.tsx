@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
-import { color, styled } from 'style'
+import { color, styled } from '@/style'
 
 interface ILinkProps extends React.HTMLAttributes<Element> {
   tabIndex: number

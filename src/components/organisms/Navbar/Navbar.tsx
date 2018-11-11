@@ -1,5 +1,5 @@
-import { Logo, Link, MenuBtn } from 'components/atoms'
-import { Menu } from 'components/molecules'
+import { Logo, Link, MenuBtn } from '@/components/atoms'
+import { Menu } from '@/components/molecules'
 import React, { useState, useEffect } from 'react'
 import { cold } from 'react-hot-loader'
 import { InterpolationValue } from 'styled-components'

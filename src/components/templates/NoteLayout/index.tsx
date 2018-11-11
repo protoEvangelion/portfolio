@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Link, graphql } from 'gatsby'
-import { Box } from 'components/atoms'
+import { Box } from '@/components/atoms'
 import { INoteLayoutProps } from 'interfaces'
 
 import { Layout } from './styles'

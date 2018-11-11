@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as R from 'ramda'
-import { Link } from 'components/atoms'
+import { Link } from '@/components/atoms'
 import { List } from './MenuStyles'
 
 type SetMenuOpen = React.Dispatch<React.SetStateAction<boolean>>

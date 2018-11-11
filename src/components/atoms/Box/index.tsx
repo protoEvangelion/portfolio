@@ -1,5 +1,4 @@
-import * as React from 'react'
-import { IBoxProps, IColorProps, ISpaceProps, IWidthProps } from 'interfaces'
+import { IBoxProps } from 'interfaces'
 import {
   alignSelf,
   borderRadius,
@@ -11,12 +10,11 @@ import {
   position,
   right,
   space,
-  style,
   styled,
   top,
   width,
   zIndex,
-} from 'style'
+} from '@/style'
 
 // TODO: blacklist props like opacity, height, width, transition
 export const Box = styled<IBoxProps, 'div'>('div')`
@@ -33,6 +31,7 @@ export const Box = styled<IBoxProps, 'div'>('div')`
       case true:
         return 'left: 50%; top: 50%; transform: translate(-50%, -50%); position: absolute;'
     }
+    return ''
   }}
 
   ${alignSelf}
