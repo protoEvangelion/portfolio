@@ -49,6 +49,7 @@
     "husky": "^0.14.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.6.0",
+    "jest-axe": "^3.1.0",
     "jest-dom": "^2.1.1",
     "lint-staged": "^4.3.0",
     "modularscale-sass": "^3.0.5",

@@ -49,7 +49,7 @@ export const Navbar = cold(
 
     return (
       <Nav aria-label={ariaLabel} animation={animation}>
-        <Link className="logo-link" to="/" tabIndex={0}>
+        <Link aria-label="logo" className="logo-link" to="/" tabIndex={0}>
           <Logo dark={dark} />
         </Link>
 

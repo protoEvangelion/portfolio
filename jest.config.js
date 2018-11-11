@@ -18,5 +18,5 @@ module.exports = {
   },
   testURL: 'http://localhost',
   setupFiles: ['<rootDir>/loadershim.js'],
-  setupTestFrameworkScriptFile: require.resolve('./jest.setup.js'),
+  setupTestFrameworkScriptFile: require.resolve('./jest.setup.ts'),
 }
