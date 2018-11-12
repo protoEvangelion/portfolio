@@ -1,7 +1,9 @@
 <p align='center'>
   <h1 align='center'>My React Portfolio</h1>
-  <p align='center'><img width='150' src='https://s15.postimg.org/wy51sdtu3/400dpi_Logo_Cropped.jpg' /></p>
-  <p align='center'>A modern universal React application.</p>
+  <p align='center'>
+![Codecov branch](https://img.shields.io/codecov/c/github/protoEvangelion/portfolio/dev.svg)
+</p>
+  <p align='center'>Gatsby Static Site</p>
 </p>
 
 ## About
@@ -10,20 +12,19 @@ This portfolio was built using modern web tools and best practices. Here are som
 
 ## Features
 
-- 👀 `react` as the view.
-- 🔀 `react-router` v4 as the router.
-- 🚄 `express` with `Node.js` as the server.
-- 🖌 Styling: `CSS`, `Radium`, `Styled Components`
-- 📦 All source is bundled using `Webpack v2`.
+- 👀 `react` as the view
+- ⌨️ Static Typing: `TypeScript`
+- 💅 Styling: `Styled Components`
+- 🃏 Jest: for testing
+- 📦 All source is bundled using `Webpack v4`
 - 🚀 ES6 Javascript
 - 🔥 Hot reloading with `react-hot-loader`
-- 🤖 Optimised Webpack builds via `HappyPack`.
-- 👼 `ESlint` configuration.
-- ❤️ Continuous integration with `Travis-CI` and Heroku
+- 👼 `ESlint` configuration
+- ❤️ Continuous integration with `Travis-CI` and `Netlify`
 
 ## Running Locally
 
-`yarn && yarn run dev`
+`npm i && npm run dev`
 
 ## License
 
