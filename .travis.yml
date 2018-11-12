@@ -2,4 +2,4 @@ language: node_js
 node_js:
   - 'lts/*'
 sudo: false
-script: npm test:ci
+script: npm run test:ci
