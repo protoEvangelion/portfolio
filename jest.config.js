@@ -32,7 +32,7 @@ module.exports = {
       '<rootDir>/__mocks__/fileMock.js',
     '@/([^\\.]*)$': '<rootDir>/src/$1',
   },
-  setupFiles: ['<rootDir>/loadershim.js'],
+  setupFiles: ['<rootDir>/loaderShim.js'],
   setupTestFrameworkScriptFile: require.resolve('./jest.setup.ts'),
   testPathIgnorePatterns: ['node_modules', '.cache'],
   testRegex: '(/__tests__/.*\\.([tj]sx?)|(\\.|/)(test|spec))\\.([tj]sx?)$',
