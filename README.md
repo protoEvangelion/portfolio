@@ -1,10 +1,8 @@
 <p align='center'>
   <h1 align='center'>My React Portfolio</h1>
-  <p align='center'>
+</p>
+
 ![Codecov branch](https://img.shields.io/codecov/c/github/protoEvangelion/portfolio/dev.svg)
-</p>
-  <p align='center'>Gatsby Static Site</p>
-</p>
 
 ## About
 
