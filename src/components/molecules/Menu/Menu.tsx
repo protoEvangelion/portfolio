@@ -33,6 +33,7 @@ export const Menu = React.memo(
       menuOpen={menuOpen}
       onKeyUp={e => handleKeyUp(e, setMenuOpen)}
       hideDesktopText={hideDesktopText}
+      data-testid="menu"
       {...rest}
     >
       {navItems.map(item => (

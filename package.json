@@ -9,9 +9,9 @@
     "build": "gatsby build",
     "clean": "git clean -xfd .cache public/ && rm -rf .cache public",
     "story": "start-storybook -p 9001 -c private/storybook",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:ci": "jest && codecov"
+    "test": "jest --verbose false",
+    "test:watch": "jest --watch --verbose false",
+    "test:ci": "jest --coverage && codecov"
   },
   "devDependencies": {
     "@babel/core": "^7.1.5",
@@ -37,6 +37,7 @@
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.1.0",
     "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^22.0.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-react-hooks": "0.0.0",
@@ -54,6 +55,7 @@
     "jest": "^23.6.0",
     "jest-axe": "^3.1.0",
     "jest-dom": "^2.1.1",
+    "jest-styled-components": "^6.3.1",
     "lint-staged": "^4.3.0",
     "modularscale-sass": "^3.0.5",
     "node-sass": "^4.9.3",
@@ -68,12 +70,12 @@
     "stylelint-processor-styled-components": "^1.0.0",
     "ts-jest": "^23.10.4",
     "ts-loader": "^3.1.0",
-    "tslint": "^5.11.0",
     "tslint-react": "3.2.0",
     "tslint-react-a11y": "^1.0.0",
     "typescript": "^3.0.3",
     "typescript-eslint-parser": "^20.0.0",
-    "typescript-styled-plugin": "^0.13.0"
+    "typescript-styled-plugin": "^0.13.0",
+    "typescript-tslint-plugin": "0.0.5"
   },
   "dependencies": {
     "@types/styled-system": "^3.0.8",

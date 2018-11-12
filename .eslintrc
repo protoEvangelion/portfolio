@@ -1,6 +1,6 @@
 {
-  "extends": ["airbnb", "prettier", "prettier/react"],
-  "plugins": ["react-hooks"],
+  "extends": ["airbnb", "prettier", "prettier/react", "plugin:jest/recommended"],
+  "plugins": ["react-hooks", "jest"],
   "parser": "typescript-eslint-parser",
   "env": {
     "browser": true,
