@@ -9,7 +9,8 @@
     "build": "gatsby build",
     "clean": "git clean -xfd .cache public/ && rm -rf .cache public",
     "story": "start-storybook -p 9001 -c private/storybook",
-    "test": "jest"
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
   },
   "devDependencies": {
     "@babel/core": "^7.1.5",

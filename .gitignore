@@ -1,6 +1,7 @@
 .deploy
 .cache
 .publish
+coverage
 .temp
 dist
 node_modules
