@@ -10,9 +10,9 @@ export const List = styled<IMenuStyles, 'ul'>('ul')`
   list-style: none;
   position: relative;
 
-  ${props =>
-    props.menuOpen
-      ? `
+  ${({ menuOpen }) => {
+    if (menuOpen) {
+      return `
         justify-content: center;
         height: 100vh;
         flex-direction: column;
@@ -32,7 +32,10 @@ export const List = styled<IMenuStyles, 'ul'>('ul')`
           }
         }
       `
-      : `display: none;`};
+    } else if (menuOpen !== undefined) {
+      return `display: none;`
+    }
+  }};
 
   ${media.tablet`
     align-items: center;

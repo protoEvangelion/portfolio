@@ -9,9 +9,9 @@ interface IMenuProps extends React.HTMLAttributes<Element> {
   ariaLabel?: string
   ariaLabelledBy?: string
   role?: string
-  menuOpen: boolean
+  menuOpen?: boolean
   navItems: string[]
-  id: string
+  id?: string
   hideDesktopText?: boolean
   setMenuOpen?: SetMenuOpen
 }
@@ -54,24 +54,24 @@ function handleKeyUp(
   const t = target as HTMLElement
 
   const navItemNodes = (currentTarget.childNodes as unknown) as ReadonlyArray<HTMLElement>
-  const firstNavItem = navItemNodes[0].firstChild
-  const lastNavItem = navItemNodes[navItemNodes.length - 1].firstChild
-  const prevNavItem = t.parentNode && t.parentNode.previousSibling
-  const nextNavItem = t.parentNode && t.nextSibling
+  const firstItem = navItemNodes[0].firstChild
+  const lastItem = navItemNodes[navItemNodes.length - 1].firstChild
+  const prevItem = t.parentNode && t.parentNode.previousSibling
+  const nextItem = t.parentNode && t.parentNode.nextSibling
   const menuBtn = currentTarget.previousSibling
 
   const nodeToFocus = R.cond([
     [
       R.either(R.equals('ArrowLeft'), R.equals('ArrowUp')),
-      () => (prevNavItem ? prevNavItem.firstChild : lastNavItem),
+      () => (prevItem ? prevItem.firstChild : lastItem),
     ],
     [
       R.either(R.equals('ArrowRight'), R.equals('ArrowDown')),
-      () => (nextNavItem ? nextNavItem.firstChild : firstNavItem),
+      () => (nextItem ? nextItem.firstChild : firstItem),
     ],
     [R.equals('Escape'), () => menuBtn],
-    [R.equals('End'), () => lastNavItem],
-    [R.equals('Home'), () => firstNavItem],
+    [R.equals('End'), () => lastItem],
+    [R.equals('Home'), () => firstItem],
     [
       R.T,
       () => {
@@ -83,7 +83,7 @@ function handleKeyUp(
   ])(key)
 
   function firstLetterMatches(firstLetter: string, node: HTMLElement) {
-    return node.innerText.toLowerCase().startsWith(firstLetter.toLowerCase())
+    return node.textContent && node.textContent.toLowerCase().startsWith(firstLetter.toLowerCase())
   }
 
   nodeToFocus && nodeToFocus.focus()

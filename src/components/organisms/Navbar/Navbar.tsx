@@ -43,7 +43,7 @@ export const Navbar = cold(
     dark = false,
     hideDesktopText = false,
   }: INavbarProps) => {
-    const navItems = ['HOME', 'PROJECTS', 'CONTACT']
+    const navItems = ['HOME', 'PROJECTS', 'PCONTACT']
     const small = useMedia('(max-width: 640px)')
     const [menuOpen, setMenuOpen] = useState<boolean>(true)
 
@@ -77,7 +77,6 @@ export const Navbar = cold(
             aria-label={ariaLabel}
             hideDesktopText={hideDesktopText}
             id="navbar"
-            menuOpen={menuOpen}
             navItems={navItems}
             role="menubar"
           />
