@@ -20,8 +20,6 @@ export interface IThemeInterface {
   space: number[]
 }
 
-// export const breakpoints = ['576px', '767px', '979', '1280']
-
 export const space = [0, 4, 8, 16, 32, 64, 128]
 
 export const fontSizes = [12, 14, 16, 20, 24, 32, 48, 64, 72, 96]

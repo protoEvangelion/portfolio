@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby'
 import * as React from 'react'
 import { debounce } from 'lodash'
-import { H1, H2, Span, P, Box } from '@/components/atoms'
+import { Avatar, H1, H2, Span, P, Box } from '@/components/atoms'
 import { Navbar, Sidebar } from '@/components/organisms'
 import { MainLayout } from '@/components/templates'
 import { IIndexPageProps } from '@/interfaces'
@@ -10,7 +10,7 @@ import { setupWheelListener } from '@/utils'
 import LogRocket from 'logrocket'
 import '@/style/global.css'
 import '@/style/typography.scss'
-import { BG2, BG3, Grid, Layout, HoverRectangle } from '../style/pages/IndexStyles'
+import { BG2, BG3, Grid, Hero, Layout, HoverRectangle } from '../style/pages/IndexStyles'
 
 LogRocket.init('myyjeg/portfolio')
 
@@ -35,6 +35,7 @@ interface IState {
   initialized: boolean
   isCTAHovered: boolean
   isSidebarActive: boolean
+  menuOpen: boolean
 }
 
 class Index extends React.Component<IIndexPageProps, IState> {
@@ -45,19 +46,22 @@ class Index extends React.Component<IIndexPageProps, IState> {
     initialized: false,
     isCTAHovered: false,
     isSidebarActive: false,
+    menuOpen: false,
   }
 
   handleScroll = debounce(
     e => {
-      e.preventDefault()
+      if (!this.state.menuOpen) {
+        e.preventDefault()
 
-      const isScrollingUp = e.deltaY < 0
-      const { currentFrame, totalFrames } = this.state
+        const isScrollingUp = e.deltaY < 0
+        const { currentFrame, totalFrames } = this.state
 
-      if (isScrollingUp && currentFrame !== 1) {
-        this.setState({ currentFrame: currentFrame - 1 })
-      } else if (!isScrollingUp && currentFrame !== totalFrames) {
-        this.setState({ currentFrame: currentFrame + 1 })
+        if (isScrollingUp && currentFrame !== 1) {
+          this.setState({ currentFrame: currentFrame - 1 })
+        } else if (!isScrollingUp && currentFrame !== totalFrames) {
+          this.setState({ currentFrame: currentFrame + 1 })
+        }
       }
     },
     60,
@@ -95,6 +99,10 @@ class Index extends React.Component<IIndexPageProps, IState> {
     this.setState({ hoverRectangleY: yCoordinate })
   }
 
+  setMenuOpen = (isOpen: boolean) => {
+    this.setState({ menuOpen: isOpen })
+  }
+
   render() {
     const { isCTAHovered, isSidebarActive, hoverRectangleY, currentFrame, initialized } = this.state
 
@@ -117,6 +125,8 @@ class Index extends React.Component<IIndexPageProps, IState> {
           `}
           hideDesktopText={currentFrame !== 1}
           dark={currentFrame === 2}
+          menuOpen={this.state.menuOpen}
+          setMenuOpen={this.setMenuOpen}
         />
 
         <Sidebar
@@ -130,13 +140,17 @@ class Index extends React.Component<IIndexPageProps, IState> {
         />
 
         <Layout frameNumber={1} {...layoutProps}>
-          <Box mt="auto">
-            <H1 color="white">RYAN GARANT</H1>
+          <Hero>
+            <Avatar fixed={this.props.data.headshot.childImageSharp.fixed} />
 
-            <H1 color="white" my={0} underline>
-              REACT WEB DEVELOPER
-            </H1>
-          </Box>
+            <Box mt={5}>
+              <H1 color="white">RYAN GARANT</H1>
+
+              <H1 color="white" my={0} underline>
+                REACT WEB DEVELOPER
+              </H1>
+            </Box>
+          </Hero>
         </Layout>
 
         <Layout frameNumber={2} {...layoutProps}>
@@ -144,8 +158,10 @@ class Index extends React.Component<IIndexPageProps, IState> {
             <Span className="frame-number">02</Span>
             <Span className="frame-title">My Story</Span>
           </div>
+
           <div className="content-text">
             <H2>Blessed is the man who doesnt walk in the</H2>
+
             <P>
               Blessed is the man who doesnt walk in the counsel of the wicked, nor stand in the way
               of sinners, nor sit in the seat of scoffers; but his delight is in Yahwehs law. On his
@@ -154,6 +170,7 @@ class Index extends React.Component<IIndexPageProps, IState> {
               Whatever he does shall prosper.
             </P>
           </div>
+
           <Box width={1} height="100%">
             <BG2 alt="Man with flashlight aimed at a starry night" />
           </Box>
@@ -198,8 +215,6 @@ class Index extends React.Component<IIndexPageProps, IState> {
             </Box>
           </Grid>
         </Layout>
-
-        {/* <Hero fixed={data.headshot.childImageSharp.fixed} /> */}
       </MainLayout>
     )
   }
@@ -211,7 +226,7 @@ export const query = graphql`
   {
     headshot: file(relativePath: { regex: "/headshot/" }) {
       childImageSharp {
-        fixed(width: 75) {
+        fixed(width: 150) {
           ...GatsbyImageSharpFixed_tracedSVG
         }
       }

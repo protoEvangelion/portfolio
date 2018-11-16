@@ -17,11 +17,6 @@ export const BaseBG = styled.div`
   z-index: -1;
 `
 
-// const BG1 = styled(BaseBG)`
-//   background: radial-gradient(440.99px at 44.47% 51.81%, #011627 0%, rgba(255, 255, 255, 0) 100%),
-//     #000000;
-// `
-
 export const BG2 = styled(BaseBG)`
   background: right center / contain no-repeat url(${flashlightImg}) #fff;
 `
@@ -37,6 +32,14 @@ type ILayoutProps = {
   frameNumber: number
   initialized: boolean
 }
+
+export const Hero = styled.div`
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+`
 
 export const Layout: React.ComponentType<ILayoutProps> = styled(Flex)`
   background: ${props =>

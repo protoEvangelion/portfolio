@@ -19,17 +19,17 @@
     "baseUrl": "./src",
     "resolveJsonModule": true,
     "paths": {
-      // "components/*": ["components/*"],
       "@/components/*": ["components/*"],
+      "@/images/*": ["images/*"],
       "@/utils*": ["utils"],
       "@/style*": ["style"],
-      "@/images*": ["images"],
       "@/interfaces*": ["interfaces"],
       "@/store*": ["store"]
     },
     "plugins": [
       {
-        "name": "typescript-styled-plugin"
+        "name": "typescript-styled-plugin",
+        "tags": ["styled"]
       }
     ]
   }

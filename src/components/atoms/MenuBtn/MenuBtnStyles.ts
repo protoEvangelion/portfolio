@@ -10,7 +10,9 @@ export const Button = styled<{ menuOpen: boolean }, 'button'>('button')`
   height: ${midPoint + 4}px;
   width: ${size + 4}px;
   padding: 0;
-  position: relative;
+  position: fixed;
+  right: 1rem;
+  top: 2.3rem;
   z-index: 2;
 `
 

@@ -55,7 +55,6 @@ exports.createPages = async ({ graphql, actions }) => {
 }
 
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
-  console.log('==============', path.join(__dirname, 'src/utils'))
   actions.setWebpackConfig({
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],

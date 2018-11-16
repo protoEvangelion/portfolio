@@ -16,13 +16,6 @@ export const List = styled<IMenuStyles, 'ul'>('ul')`
         justify-content: center;
         height: 100vh;
         flex-direction: column;
-        margin: 0;
-        background: palevioletred;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
 
         > li {
           padding: 2rem 0 2rem 20%;

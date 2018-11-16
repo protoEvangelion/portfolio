@@ -6,6 +6,15 @@ const fadeIn = keyframes`
   100% { opacity: 1; }
 `
 
+export const MenuWrapper = styled.div`
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+`
+
 export const Nav = styled<{ animation?: InterpolationValue[] }, 'nav'>('nav')`
   align-items: center;
   animation: ${props =>

@@ -3,7 +3,8 @@ import { Menu } from '@/components/molecules'
 import React, { useState, useEffect } from 'react'
 import { cold } from 'react-hot-loader'
 import { InterpolationValue } from 'styled-components'
-import { Nav } from './NavbarStyles'
+import { Nav, MenuWrapper } from './NavbarStyles'
+import { AnimatedSvgBg } from './SvgBg'
 
 // const LocationIcon = () => (
 //   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -34,6 +35,8 @@ interface INavbarProps {
   animation?: InterpolationValue[]
   dark?: boolean
   hideDesktopText?: boolean
+  menuOpen: boolean
+  setMenuOpen: (isOpen: boolean) => void
 }
 
 export const Navbar = cold(
@@ -42,10 +45,11 @@ export const Navbar = cold(
     animation,
     dark = false,
     hideDesktopText = false,
+    menuOpen,
+    setMenuOpen,
   }: INavbarProps) => {
-    const navItems = ['HOME', 'PROJECTS', 'PCONTACT']
+    const navItems = ['HOME', 'PROJECTS', 'CONTACT']
     const small = useMedia('(max-width: 640px)')
-    const [menuOpen, setMenuOpen] = useState<boolean>(true)
 
     return (
       <Nav aria-label={ariaLabel} animation={animation}>
@@ -54,7 +58,9 @@ export const Navbar = cold(
         </Link>
 
         {small ? (
-          <>
+          <MenuWrapper>
+            <AnimatedSvgBg menuOpen={menuOpen} />
+
             <MenuBtn
               ariaControls="menu"
               id="menuBtn"
@@ -70,7 +76,7 @@ export const Navbar = cold(
               role="menu"
               setMenuOpen={setMenuOpen}
             />
-          </>
+          </MenuWrapper>
         ) : (
           <Menu
             aria-haspopup="false"
