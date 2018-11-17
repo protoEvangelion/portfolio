@@ -32,6 +32,10 @@ export const Nav = styled<{ animation?: InterpolationValue[] }, 'nav'>('nav')`
   right: 1rem;
   height: 3rem;
 
+  .logo {
+    margin-right: 1rem;
+  }
+
   ${media.tablet`
     justify-content: center;
     top: 4rem;
@@ -48,5 +52,5 @@ export const Nav = styled<{ animation?: InterpolationValue[] }, 'nav'>('nav')`
     top: 8rem;
     left: 8rem;
     right: 8rem;
-    `};
+  `};
 `

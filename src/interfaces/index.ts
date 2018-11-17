@@ -52,8 +52,8 @@ export interface ISpaceProps {
 }
 
 export interface IWidthProps {
-  width?: number | string[]
-  w?: number | string[]
+  width?: number[] | string[] | number | string
+  w?: number[] | string[] | number | string
 }
 
 export interface IColorSpaceProps extends ISpaceProps, IColorProps {}

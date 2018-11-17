@@ -4,21 +4,23 @@ interface ILogoProps {
   dark: boolean
 }
 
-export const Logo: React.SFC<ILogoProps> = props => (
+export const Logo: React.SFC<ILogoProps> = ({ dark, ...props }) => (
   <svg
+    className="logo"
     width="4rem"
     height="4rem"
     viewBox="0 0 99 88"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    {...props}
   >
     <path
       d="M78.5115 87.1828L98.9564 28.2875L53.7715 12.4856L53.9024 31.3853L76.3203 39.2223L61.7173 81.3269L78.5115 87.1828ZM0 60.1468L20.4416 1.24805L37.2357 7.10395L22.6327 49.1682L45.1815 57.0893V75.9453L0 60.1468Z"
-      fill={props.dark ? 'black' : '#F9F9F9'}
+      fill={dark ? 'black' : '#F9F9F9'}
     />
     <path
       d="M37.2794 7.10395L20.4852 1.24805L2.91931 51.8355C10.5933 52.9287 18.5525 53.487 26.8002 53.5173C29.3773 53.487 31.9408 53.4164 34.4876 53.302L22.6764 49.1682L37.2794 7.10395ZM53.8152 12.4856L99 28.2875L95.6479 37.8432C89.0343 41.3749 81.7328 44.3584 73.7434 46.8003L76.364 39.2223L53.9427 31.3853L53.8152 12.4856Z"
-      fill={props.dark ? '#011627' : '#FFF'}
+      fill={dark ? '#011627' : '#FFF'}
     />
     <path
       fillRule="evenodd"

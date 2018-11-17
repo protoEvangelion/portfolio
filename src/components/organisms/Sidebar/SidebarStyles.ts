@@ -65,10 +65,12 @@ export const SidebarWrapper = styled.div`
     background: cyan;
     border-radius: 50%;
     cursor: pointer;
-    height: 25px;
-    width: 25px;
+    height: 6vw;
+    width: 6vw;
+    max-width: 45px;
+    max-height: 45px;
     position: absolute;
-    top: 81%;
+    top: 80vh;
   }
 
   .bottom-line {

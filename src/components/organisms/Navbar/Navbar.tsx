@@ -1,4 +1,4 @@
-import { Logo, Link, MenuBtn } from '@/components/atoms'
+import { Logo, Link, MenuBtn, Box } from '@/components/atoms'
 import { Menu } from '@/components/molecules'
 import React, { useState, useEffect } from 'react'
 import { cold } from 'react-hot-loader'
@@ -54,7 +54,7 @@ export const Navbar = cold(
     return (
       <Nav aria-label={ariaLabel} animation={animation}>
         <Link aria-label="logo" className="logo-link" to="/" tabIndex={0}>
-          <Logo dark={dark} />
+          <Logo dark={dark && !menuOpen} />
         </Link>
 
         {small ? (
@@ -62,6 +62,7 @@ export const Navbar = cold(
             <AnimatedSvgBg menuOpen={menuOpen} />
 
             <MenuBtn
+              dark={dark}
               ariaControls="menu"
               id="menuBtn"
               menuOpen={menuOpen}

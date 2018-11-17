@@ -16,6 +16,8 @@ const StyledFlex = styled(Flex)`
   position: relative;
 `
 
+const base = 0.25
+
 const Circle = styled(Box)`
   align-items: center;
   justify-content: center;
@@ -24,6 +26,14 @@ const Circle = styled(Box)`
   width: 0.5rem;
   transition: opacity 0.3s;
 
+  width: ${base}rem;
+  height: ${base}rem;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 0 ${base * 1.5}rem ${base * 1.333}rem #fff,
+    /* inner white */ 0 0 ${base * 2.5}rem ${base * 1.5}rem #f0f,
+    /* middle magenta */ 0 0 ${base * 3.5}rem ${base * 2.25}rem #0ff; /* outer cyan */
+
   opacity: ${props => {
     if (
       (props.isSidebarActive && props.isHovered) ||
@@ -31,7 +41,7 @@ const Circle = styled(Box)`
     ) {
       return 1
     }
-    return 0.5
+    return 0.35
   }};
 `
 

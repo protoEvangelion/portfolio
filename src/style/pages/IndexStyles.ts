@@ -1,4 +1,4 @@
-import { Grid as FlexGrid, styled, space } from '@/style'
+import { Grid as FlexGrid, styled, space, media } from '@/style'
 import { Box, Flex } from '@/components/atoms'
 import flashlightImg from '@/images/flashlight-night.png'
 import milkyWayImg from '@/images/milky-way.jpg'
@@ -18,11 +18,19 @@ export const BaseBG = styled.div`
 `
 
 export const BG2 = styled(BaseBG)`
-  background: right center / contain no-repeat url(${flashlightImg}) #fff;
+  background: white;
+  height: 100%;
+  width: 100%;
+  transition: background;
+  transition-duration: 0.5s;
+
+  ${media.desktop`
+    background: right center / contain no-repeat url(${flashlightImg}) #fff;
+  `};
 `
 
 export const BG3 = styled(BaseBG)`
-  background: right center / cover no-repeat url(${milkyWayImg});
+  background: center / cover no-repeat url(${milkyWayImg});
   filter: ${props => (props.illuminate ? 'saturate(150%)' : 'saturate(60%)')};
   transition: filter 2s;
 `
@@ -38,7 +46,14 @@ export const Hero = styled.div`
   height: 100%;
   width: 100%;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
+`
+
+export const Img = styled.img`
+  border-radius: 50%;
+  width: 20vh;
+  height: 20vh;
+  margin-top: 25vh;
 `
 
 export const Layout: React.ComponentType<ILayoutProps> = styled(Flex)`
@@ -51,7 +66,7 @@ export const Layout: React.ComponentType<ILayoutProps> = styled(Flex)`
   height: 100%;
   position: absolute;
   top: ${props =>
-    props.initialized ? `${(props.frameNumber - props.currentFrame) * window.innerHeight}px` : '0'};
+    props.initialized ? `calc(${props.frameNumber - props.currentFrame} * 100vh)` : '0'};
   left: 0;
   transform: ${props => {
     if (props.sidebarActive) {
@@ -68,35 +83,43 @@ export const Layout: React.ComponentType<ILayoutProps> = styled(Flex)`
   ${space};
 
   .content-header {
-    padding-top: 5rem;
+    padding-top: 20vh;
     position: relative;
 
+    &.light span {
+      color: #fff;
+    }
+
     .frame-number {
-      position: absolute;
-      left: 0;
+      padding-right: 1rem;
     }
   }
 
-  @media screen and (min-width: 40em) {
-    .content-header {
-      padding-top: 8rem;
-    }
+  .cta-block {
+    padding-top: 5rem;
+  }
 
-    .content-header,
-    .content-text .frame-title {
-      padding-left: 7.75rem;
-    }
-
+  ${media.tablet`
     .content-header .frame-number {
-      position: static;
+      padding-right: 4rem;
     }
-  }
 
-  @media screen and (min-width: 64em) {
-    .content-header {
-      padding-top: 5rem;
+    .cta-block {
+      padding-left: 5rem;
+      display: inline-block;
+  `};
+
+  ${media.desktop`
+    .content-text {
+      width: 60%;
     }
-  }
+  `};
+
+  ${media.giant`
+    .content-text {
+      width: 45%;
+    }
+  `};
 `
 
 export const HoverRectangle = styled(Box)`

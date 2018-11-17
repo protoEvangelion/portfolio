@@ -1,7 +1,6 @@
-import { graphql } from 'gatsby'
 import * as React from 'react'
 import { debounce } from 'lodash'
-import { Avatar, H1, H2, Span, P, Box } from '@/components/atoms'
+import { H1, H2, Span, P, Box } from '@/components/atoms'
 import { Navbar, Sidebar } from '@/components/organisms'
 import { MainLayout } from '@/components/templates'
 import { IIndexPageProps } from '@/interfaces'
@@ -10,7 +9,8 @@ import { setupWheelListener } from '@/utils'
 import LogRocket from 'logrocket'
 import '@/style/global.css'
 import '@/style/typography.scss'
-import { BG2, BG3, Grid, Hero, Layout, HoverRectangle } from '../style/pages/IndexStyles'
+import { BG2, BG3, Grid, Hero, Layout, HoverRectangle, Img } from '../style/pages/IndexStyles'
+import headshot from '@/images/headshot.jpg'
 
 LogRocket.init('myyjeg/portfolio')
 
@@ -141,9 +141,9 @@ class Index extends React.Component<IIndexPageProps, IState> {
 
         <Layout frameNumber={1} {...layoutProps}>
           <Hero>
-            <Avatar fixed={this.props.data.headshot.childImageSharp.fixed} />
+            <Img src={headshot} />
 
-            <Box mt={5}>
+            <Box>
               <H1 color="white">RYAN GARANT</H1>
 
               <H1 color="white" my={0} underline>
@@ -171,23 +171,16 @@ class Index extends React.Component<IIndexPageProps, IState> {
             </P>
           </div>
 
-          <Box width={1} height="100%">
-            <BG2 alt="Man with flashlight aimed at a starry night" />
-          </Box>
+          <BG2 alt="Man with flashlight aimed at a starry night" />
         </Layout>
 
         <Layout frameNumber={3} {...layoutProps}>
-          <Grid>
-            <Row>
-              <Col xs={1}>
-                <Span>03</Span>
-              </Col>
-              <Col xs={3} xsOffset={2}>
-                <Span>Learn More</Span>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={5} xsOffset={2}>
+          <div className="content-header light">
+            <Span className="frame-number">02</Span>
+            <Span className="frame-title">Learn More</Span>
+
+            <div>
+              <div className="cta-block">
                 <H2
                   onMouseEnter={this.toggleCTAHover}
                   onMouseLeave={this.toggleCTAHover}
@@ -196,10 +189,7 @@ class Index extends React.Component<IIndexPageProps, IState> {
                 >
                   Projects
                 </H2>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={5} xsOffset={2}>
+
                 <H2
                   onMouseEnter={this.toggleCTAHover}
                   onMouseLeave={this.toggleCTAHover}
@@ -208,12 +198,11 @@ class Index extends React.Component<IIndexPageProps, IState> {
                 >
                   Contact
                 </H2>
-              </Col>
-            </Row>
-            <Box width={1} height="100%">
-              <BG3 alt="Man looking up at Milky Way" illuminate={isCTAHovered} />
-            </Box>
-          </Grid>
+              </div>
+            </div>
+          </div>
+
+          <BG3 alt="Man looking up at Milky Way" illuminate={isCTAHovered} />
         </Layout>
       </MainLayout>
     )
@@ -221,15 +210,3 @@ class Index extends React.Component<IIndexPageProps, IState> {
 }
 
 export default Index
-
-export const query = graphql`
-  {
-    headshot: file(relativePath: { regex: "/headshot/" }) {
-      childImageSharp {
-        fixed(width: 150) {
-          ...GatsbyImageSharpFixed_tracedSVG
-        }
-      }
-    }
-  }
-`

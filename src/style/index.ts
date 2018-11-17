@@ -26,23 +26,17 @@ import { ifProp, prop, switchProp } from 'styled-tools'
 
 import * as styledComponents from 'styled-components'
 
-import { IThemeInterface } from './theme'
+// import { IThemeInterface } from './theme'
 
-const {
-  default: styled,
-  css,
-  createGlobalStyle,
-  keyframes,
-  ThemeProvider,
-} = styledComponents as styledComponents.ThemedStyledComponentsModule<IThemeInterface>
+const { default: styled, css, createGlobalStyle, keyframes, ThemeProvider } = styledComponents
 
 const Row = styled(GridRow)`
   ${space};
 `
 
-// @media screen and (min-width: 40em) 640px
-// @media screen and (min-width: 52em) 832px
 // @media screen and (min-width: 64em) 1024px
+// @media screen and (min-width: 52em) 832px
+// @media screen and (min-width: 40em) 640px
 
 const media = {
   giant: (arr: TemplateStringsArray, ...args: any) => css`

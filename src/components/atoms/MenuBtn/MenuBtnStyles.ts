@@ -16,10 +16,10 @@ export const Button = styled<{ menuOpen: boolean }, 'button'>('button')`
   z-index: 2;
 `
 
-export const BaseLine = styled<{ menuOpen: boolean }, 'span'>('span')`
-  background: white;
+export const BaseLine = styled<{ dark: boolean; menuOpen: boolean }, 'span'>('span')`
+  background: ${props => (props.dark && !props.menuOpen ? 'black' : 'white')};
   display: block;
-  height: 1px;
+  height: 2px;
   left: 0;
   position: absolute;
   transform-origin: left;

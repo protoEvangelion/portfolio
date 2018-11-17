@@ -8,12 +8,13 @@ type SetMenuOpen = React.Dispatch<React.SetStateAction<boolean>>
 export interface IMenuBtn {
   setMenuOpen: SetMenuOpen
   menuOpen: boolean
+  dark: boolean
   id: string
   ariaControls: string
 }
 
 export const MenuBtn = React.memo(
-  ({ setMenuOpen, menuOpen, ariaControls, id, ...rest }: IMenuBtn) => (
+  ({ dark, setMenuOpen, menuOpen, ariaControls, id, ...rest }: IMenuBtn) => (
     <Button
       aria-controls={ariaControls}
       aria-haspopup="true"
@@ -27,8 +28,8 @@ export const MenuBtn = React.memo(
       tabIndex={0}
       {...rest}
     >
-      <Line1 menuOpen={menuOpen} />
-      <Line2 menuOpen={menuOpen} />
+      <Line1 dark={dark} menuOpen={menuOpen} />
+      <Line2 dark={dark} menuOpen={menuOpen} />
     </Button>
   )
 )
