@@ -88,10 +88,6 @@ export interface IIndexPageProps {
   }
 }
 
-export interface IH1 extends IColorSpaceProps {
-  underline?: boolean
-}
-
 export interface INotesPageProps {
   data: {
     allMarkdownRemark: IAllMarkdownRemark

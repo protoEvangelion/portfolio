@@ -24,8 +24,12 @@ export const BG2 = styled(BaseBG)`
   transition: background;
   transition-duration: 0.5s;
 
+  ${media.tablet`
+    background: right center / 30% 100% no-repeat url(${flashlightImg}) #fff;
+  `};
+
   ${media.desktop`
-    background: right center / contain no-repeat url(${flashlightImg}) #fff;
+    background-size: contain;
   `};
 `
 
@@ -33,6 +37,34 @@ export const BG3 = styled(BaseBG)`
   background: center / cover no-repeat url(${milkyWayImg});
   filter: ${props => (props.illuminate ? 'saturate(150%)' : 'saturate(60%)')};
   transition: filter 2s;
+`
+
+export const SyntaxCtn = styled.div`
+  background: #282a36;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+  display: inline-block;
+
+  .orange {
+    color: #ffb86c;
+  }
+
+  .green {
+    color: #50fa7b;
+  }
+
+  .pink {
+    color: #ff79c6;
+  }
+
+  .cyan {
+    color: #8be9fd;
+  }
+
+  .purple {
+    color: #bd93f9;
+  }
 `
 
 type ILayoutProps = {
@@ -82,16 +114,12 @@ export const Layout: React.ComponentType<ILayoutProps> = styled(Flex)`
 
   ${space};
 
-  .content-header {
-    padding-top: 20vh;
-    position: relative;
+  .frame-title {
+    padding-top: 12vh;
+    margin: 0;
 
     &.light span {
       color: #fff;
-    }
-
-    .frame-number {
-      padding-right: 1rem;
     }
   }
 
@@ -100,8 +128,8 @@ export const Layout: React.ComponentType<ILayoutProps> = styled(Flex)`
   }
 
   ${media.tablet`
-    .content-header .frame-number {
-      padding-right: 4rem;
+    .content-text {
+      width: 70%;
     }
 
     .cta-block {
@@ -109,15 +137,9 @@ export const Layout: React.ComponentType<ILayoutProps> = styled(Flex)`
       display: inline-block;
   `};
 
-  ${media.desktop`
-    .content-text {
-      width: 60%;
-    }
-  `};
-
   ${media.giant`
     .content-text {
-      width: 45%;
+      width: 55%;
     }
   `};
 `

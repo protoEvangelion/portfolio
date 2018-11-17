@@ -49,7 +49,7 @@ export const Nav = styled<{ animation?: InterpolationValue[] }, 'nav'>('nav')`
   `};
 
   ${media.desktop`
-    top: 8rem;
+    top: 4rem;
     left: 8rem;
     right: 8rem;
   `};

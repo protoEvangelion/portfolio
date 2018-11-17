@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { debounce } from 'lodash'
-import { H1, H2, Span, P, Box } from '@/components/atoms'
+import { Heading, Span, P, Box } from '@/components/atoms'
 import { Navbar, Sidebar } from '@/components/organisms'
 import { MainLayout } from '@/components/templates'
 import { IIndexPageProps } from '@/interfaces'
@@ -9,7 +9,7 @@ import { setupWheelListener } from '@/utils'
 import LogRocket from 'logrocket'
 import '@/style/global.css'
 import '@/style/typography.scss'
-import { BG2, BG3, Grid, Hero, Layout, HoverRectangle, Img } from '../style/pages/IndexStyles'
+import { BG2, BG3, SyntaxCtn, Hero, Layout, HoverRectangle, Img } from '../style/pages/IndexStyles'
 import headshot from '@/images/headshot.jpg'
 
 LogRocket.init('myyjeg/portfolio')
@@ -111,7 +111,7 @@ class Index extends React.Component<IIndexPageProps, IState> {
       currentFrame,
       initialized,
       sidebarActive: isSidebarActive,
-      py: ['2rem', '4rem', '8rem'],
+      py: ['2rem', '4rem'],
       px: ['1rem', '4rem', '8rem'],
     }
 
@@ -144,30 +144,43 @@ class Index extends React.Component<IIndexPageProps, IState> {
             <Img src={headshot} />
 
             <Box>
-              <H1 color="white">RYAN GARANT</H1>
-
-              <H1 color="white" my={0} underline>
+              <Heading color="white">RYAN GARANT</Heading>
+              {/* <span>React Web Dev</span>
+                  <span>Node.js Backend Dev</span>
+                  <span>Happily Married Dad</span>
+                  <span>Lover of Jesus Christ</span>
+                  <span>Developer Tooling Advocate</span> */}
+              <Heading color="white" my={0} underline>
                 REACT WEB DEVELOPER
-              </H1>
+              </Heading>
             </Box>
           </Hero>
         </Layout>
 
         <Layout frameNumber={2} {...layoutProps}>
-          <div className="content-header">
-            <Span className="frame-number">02</Span>
-            <Span className="frame-title">My Story</Span>
-          </div>
+          <Heading className="frame-title" level={4}>
+            Journey to Tech
+          </Heading>
 
           <div className="content-text">
-            <H2>Blessed is the man who doesnt walk in the</H2>
+            <SyntaxCtn>
+              <span className="orange">&#40;</span>
+              <span className="green">Path</span>
+              <span className="orange">&#41;</span>
+              <span className="pink">&nbsp;&#61;&nbsp;</span>
+              <span className="cyan">Finance</span> <span className="pink">&rArr;&nbsp;</span>
+              <span className="cyan">Real Estate</span> <span className="pink">&rArr;&nbsp;</span>
+              <span className="purple">Web Dev</span>
+            </SyntaxCtn>
 
             <P>
-              Blessed is the man who doesnt walk in the counsel of the wicked, nor stand in the way
-              of sinners, nor sit in the seat of scoffers; but his delight is in Yahwehs law. On his
-              law he meditates day and night. He will be like a tree planted by the streams of
-              water, that brings forth its fruit in its season, whose leaf also does not wither.
-              Whatever he does shall prosper.
+              Quickly moving from Financial investments, I entered into the fast-paced world of Real
+              Estate with a focus on marketing. After thinking of a way to escape from
+              mind-numbingly repetitive tasks, I came to the realization that:{' '}
+              <i>"Hey I can automate this!"</i>. I then discovered a new found joy & passion for
+              coding in general & then specifically landed on planet React JS. Since then I have
+              been happily traveling the landscapes of Node.js, GraphQL, & modern frontend
+              frameworks. 😄
             </P>
           </div>
 
@@ -181,23 +194,25 @@ class Index extends React.Component<IIndexPageProps, IState> {
 
             <div>
               <div className="cta-block">
-                <H2
+                <Heading
                   onMouseEnter={this.toggleCTAHover}
                   onMouseLeave={this.toggleCTAHover}
                   color="white"
                   underline
+                  level={2}
                 >
-                  Projects
-                </H2>
+                  PROJECTS
+                </Heading>
 
-                <H2
+                <Heading
                   onMouseEnter={this.toggleCTAHover}
                   onMouseLeave={this.toggleCTAHover}
                   color="white"
                   underline
+                  level={2}
                 >
-                  Contact
-                </H2>
+                  CONTACT
+                </Heading>
               </div>
             </div>
           </div>

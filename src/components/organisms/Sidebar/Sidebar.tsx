@@ -17,7 +17,6 @@ export const Sidebar: React.SFC<ISidebarProps> = ({
   function moveToNextFrame(e) {
     if (e.type === 'click' || e.key === 'Enter') {
       moveToFrame(2)
-      console.log('as;ldkfjasldjf', logoOneRef.current.focus())
     }
   }
 
