@@ -1,16 +1,18 @@
 import * as React from 'react'
 import { debounce } from 'lodash'
-import { Heading, Span, P, Box } from '@/components/atoms'
+import { Link } from 'gatsby'
+import Typist from 'react-typist'
+import { Heading, P, Box, Flex } from '@/components/atoms'
+import { Sphere3d } from '@/components/molecules'
 import { Navbar, Sidebar } from '@/components/organisms'
 import { MainLayout } from '@/components/templates'
 import { IIndexPageProps } from '@/interfaces'
-import { css, Row, Col, keyframes } from '@/style'
+import { css, keyframes } from '@/style'
 import { setupWheelListener } from '@/utils'
 import LogRocket from 'logrocket'
 import '@/style/global.css'
 import '@/style/typography.scss'
-import { BG2, BG3, SyntaxCtn, Hero, Layout, HoverRectangle, Img } from '../style/pages/IndexStyles'
-import headshot from '@/images/headshot.jpg'
+import { BG2, BG3, SyntaxCtn, Hero, Layout, HoverRectangle } from '../style/pages/IndexStyles'
 
 LogRocket.init('myyjeg/portfolio')
 
@@ -141,7 +143,8 @@ class Index extends React.Component<IIndexPageProps, IState> {
 
         <Layout frameNumber={1} {...layoutProps}>
           <Hero>
-            <Img src={headshot} />
+            {/* <Img src={headshot} /> */}
+            <Sphere3d />
 
             <Box>
               <Heading color="white">RYAN GARANT</Heading>
@@ -158,64 +161,80 @@ class Index extends React.Component<IIndexPageProps, IState> {
         </Layout>
 
         <Layout frameNumber={2} {...layoutProps}>
-          <Heading className="frame-title" level={4}>
-            Journey to Tech
-          </Heading>
+          <Flex
+            flexDirection="column"
+            justifyContent="space-around"
+            height="100%"
+            width={[1, 0.7, 0.55]}
+            pt="15vh"
+          >
+            <Heading as="h4" className="frame-title">
+              Journey to Tech 🚀
+            </Heading>
 
-          <div className="content-text">
-            <SyntaxCtn>
-              <span className="orange">&#40;</span>
-              <span className="green">Path</span>
-              <span className="orange">&#41;</span>
-              <span className="pink">&nbsp;&#61;&nbsp;</span>
-              <span className="cyan">Finance</span> <span className="pink">&rArr;&nbsp;</span>
-              <span className="cyan">Real Estate</span> <span className="pink">&rArr;&nbsp;</span>
-              <span className="purple">Web Dev</span>
-            </SyntaxCtn>
+            {this.state.currentFrame === 2 && (
+              <SyntaxCtn>
+                <Typist>
+                  <span className="orange">&#40;</span>
+                  <span className="green">Path</span>
+                  <span className="orange">&#41;</span>
+                  <span className="pink">&nbsp;&rArr;&nbsp;</span>
+                  <span className="cyan">Finance</span>{' '}
+                  <span className="pink">&nbsp;&rArr;&nbsp;</span>
+                  <span className="cyan">Real Estate</span>
+                  <span className="pink">&nbsp;&rArr;&nbsp;</span>
+                  <span className="purple">Web Dev</span>
+                </Typist>
+              </SyntaxCtn>
+            )}
 
             <P>
               Quickly moving from Financial investments, I entered into the fast-paced world of Real
               Estate with a focus on marketing. After thinking of a way to escape from
               mind-numbingly repetitive tasks, I came to the realization that:{' '}
               <i>"Hey I can automate this!"</i>. I then discovered a new found joy & passion for
-              coding in general & then specifically landed on planet React JS. Since then I have
-              been happily traveling the landscapes of Node.js, GraphQL, & modern frontend
-              frameworks. 😄
+              coding in general & then specifically landed on planet React. Since then I have been
+              happily traveling the landscapes of Node.js, GraphQL, & modern frontend frameworks. 😄
             </P>
-          </div>
+          </Flex>
 
           <BG2 alt="Man with flashlight aimed at a starry night" />
         </Layout>
 
         <Layout frameNumber={3} {...layoutProps}>
-          <div className="content-header light">
-            <Span className="frame-number">02</Span>
-            <Span className="frame-title">Learn More</Span>
+          <Flex
+            className="cta-block"
+            flexDirection="column"
+            justifyContent="center"
+            height="100%"
+            alignItems="flex-start"
+          >
+            <Heading as="h5" color="white">
+              Learn More
+            </Heading>
 
-            <div>
-              <div className="cta-block">
-                <Heading
-                  onMouseEnter={this.toggleCTAHover}
-                  onMouseLeave={this.toggleCTAHover}
-                  color="white"
-                  underline
-                  level={2}
-                >
-                  PROJECTS
-                </Heading>
+            <Link to="/projects">
+              <Heading
+                onMouseEnter={this.toggleCTAHover}
+                onMouseLeave={this.toggleCTAHover}
+                color="white"
+                level={2}
+              >
+                PROJECTS
+              </Heading>
+            </Link>
 
-                <Heading
-                  onMouseEnter={this.toggleCTAHover}
-                  onMouseLeave={this.toggleCTAHover}
-                  color="white"
-                  underline
-                  level={2}
-                >
-                  CONTACT
-                </Heading>
-              </div>
-            </div>
-          </div>
+            <Link to="/contact">
+              <Heading
+                onMouseEnter={this.toggleCTAHover}
+                onMouseLeave={this.toggleCTAHover}
+                color="white"
+                level={2}
+              >
+                CONTACT
+              </Heading>
+            </Link>
+          </Flex>
 
           <BG3 alt="Man looking up at Milky Way" illuminate={isCTAHovered} />
         </Layout>

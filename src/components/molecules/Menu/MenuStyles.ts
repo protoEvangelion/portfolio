@@ -8,7 +8,34 @@ interface IMenuStyles {
 export const List = styled<IMenuStyles, 'ul'>('ul')`
   display: flex;
   list-style: none;
-  position: relative;
+
+  li {
+    transform: scale(1);
+    transition: transform 0.5s;
+
+    &:hover {
+      transform: scale(1.1);
+
+      a::after {
+        width: 90%;
+      }
+    }
+
+    a {
+      position: relative;
+
+      &::after {
+        content: '';
+        width: 0;
+        background: linear-gradient(90deg, #f0f, #0ff);
+        height: 2px;
+        top: 130%;
+        left: 5%;
+        position: absolute;
+        transition: width 0.5s cubic-bezier(0.25, 0.1, 0.14, 1.49);
+      }
+    }
+  }
 
   ${({ menuOpen }) => {
     if (menuOpen) {
@@ -38,9 +65,10 @@ export const List = styled<IMenuStyles, 'ul'>('ul')`
     visibility: hidden;
     padding: 1rem;
     position: static;
-    transition: opacity 0.5s, visibility 0.5s;
+    transition: opacity, visibility;
+    transition-duration: 0.5s;
 
-    > li {
+    a {
       padding: 0 2rem;
     }
 

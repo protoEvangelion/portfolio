@@ -2,10 +2,9 @@ import * as React from 'react'
 import { ISidebarProps } from 'interfaces'
 import { Transition } from '../../molecules'
 import { SidebarNavItem } from './SidebarNavItem'
-import { SidebarWrapper } from './SidebarStyles'
+import { Planet, SidebarWrapper } from './SidebarStyles'
 
 export const Sidebar: React.SFC<ISidebarProps> = ({
-  logoOneRef,
   currentFrame,
   handleSidebarMouseEnter,
   handleSidebarMouseLeave,
@@ -47,8 +46,8 @@ export const Sidebar: React.SFC<ISidebarProps> = ({
 
       <Transition show={currentFrame === 1}>
         {styles => (
-          <div
-            className="next-frame-button"
+          <Planet
+            animate
             onKeyPress={moveToNextFrame}
             onClick={moveToNextFrame}
             style={styles}
@@ -58,7 +57,7 @@ export const Sidebar: React.SFC<ISidebarProps> = ({
               <path d="M7 10l5 5 5-5z" />
               <path d="M0 0h24v24H0z" fill="none" />
             </svg>
-          </div>
+          </Planet>
         )}
       </Transition>
 

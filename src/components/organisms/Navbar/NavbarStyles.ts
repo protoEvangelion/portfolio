@@ -13,6 +13,19 @@ export const MenuWrapper = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
+  transition: left 0.5s;
+
+  ${props => {
+    if (!props.menuOpen) {
+      return `
+        left: 100%;
+      `
+    }
+  }};
+
+  ${media.tablet`
+    left: 100%;
+  `};
 `
 
 export const Nav = styled<{ animation?: InterpolationValue[] }, 'nav'>('nav')`
@@ -30,7 +43,7 @@ export const Nav = styled<{ animation?: InterpolationValue[] }, 'nav'>('nav')`
   top: 2rem;
   left: 1rem;
   right: 1rem;
-  height: 3rem;
+  height: 5rem;
 
   .logo {
     margin-right: 1rem;

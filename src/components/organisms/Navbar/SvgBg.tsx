@@ -15,7 +15,8 @@ const Svg = styled.svg`
 
   position: fixed;
   height: 100%;
-  transition: opacity 1s, visibility 1s;
+  transition: opacity, visibility;
+  transition-duration: 0.5s;
   width: 100%;
 `
 

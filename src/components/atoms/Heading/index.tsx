@@ -1,5 +1,4 @@
-import * as React from 'react'
-import { css, color, space, styled } from '@/style'
+import { color, space, styled } from '@/style'
 import { IColorSpaceProps } from '@/interfaces'
 
 interface IHeading extends IColorSpaceProps {
@@ -7,26 +6,13 @@ interface IHeading extends IColorSpaceProps {
   underline?: boolean
 }
 
-const styles = css`
-  ${props =>
-    props.underline &&
-    `
-      border-bottom: 1px solid currentColor
-      display: inline-block;
-      padding-bottom: 0.7rem;
-    `};
-
+export const Heading = styled.h1`
   ${color};
   ${space};
 `
 
-export const Heading = styled(({ level, children, ...props }) =>
-  React.createElement(`h${level}`, props, children)
-)`
-  ${styles};
-`
-
 Heading.defaultProps = {
+  className: 'heading',
   level: 1,
   color: 'black',
 }

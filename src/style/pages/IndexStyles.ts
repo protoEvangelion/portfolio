@@ -1,4 +1,4 @@
-import { Grid as FlexGrid, styled, space, media } from '@/style'
+import { Grid as FlexGrid, keyframes, styled, space, media } from '@/style'
 import { Box, Flex } from '@/components/atoms'
 import flashlightImg from '@/images/flashlight-night.png'
 import milkyWayImg from '@/images/milky-way.jpg'
@@ -39,12 +39,45 @@ export const BG3 = styled(BaseBG)`
   transition: filter 2s;
 `
 
+const blink = keyframes`
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`
+
 export const SyntaxCtn = styled.div`
   background: #282a36;
-  padding: 1rem;
+  padding: 0 1rem;
+  min-height: 4rem;
   border-radius: 8px;
-  margin: 2rem 0;
+  margin: 2rem 0 1rem;
   display: inline-block;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  .Typist {
+    display: flex;
+    align-items: center;
+
+    .Cursor {
+      display: inline-block;
+      padding-left: 3px;
+
+      &--blinking {
+        color: #ff79c6;
+        font-size: 1.75em;
+        opacity: 1;
+        animation: ${blink} 1s linear infinite;
+      }
+    }
+  }
 
   .orange {
     color: #ffb86c;
@@ -114,17 +147,30 @@ export const Layout: React.ComponentType<ILayoutProps> = styled(Flex)`
 
   ${space};
 
-  .frame-title {
-    padding-top: 12vh;
-    margin: 0;
-
-    &.light span {
-      color: #fff;
-    }
-  }
-
   .cta-block {
-    padding-top: 5rem;
+    a {
+      text-decoration: none;
+    }
+
+    h1 {
+      position: relative;
+      width: auto;
+
+      &::after {
+        content: '';
+        width: 100%;
+        background: linear-gradient(90deg, #f0f, #0ff);
+        height: 3px;
+        top: 100%;
+        left: 0;
+        position: absolute;
+        transition: width 0.5s cubic-bezier(0.25, 0.1, 0.14, 1.49);
+      }
+
+      &:hover::after {
+        width: 200%;
+      }
+    }
   }
 
   ${media.tablet`
@@ -134,7 +180,6 @@ export const Layout: React.ComponentType<ILayoutProps> = styled(Flex)`
 
     .cta-block {
       padding-left: 5rem;
-      display: inline-block;
   `};
 
   ${media.giant`

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { styled } from '@/style'
-import { Box, Flex, Span } from '@/components/atoms'
+import { Flex, Span } from '@/components/atoms'
 
 const StyledSpan = styled(Span)`
   position: absolute;
@@ -18,17 +18,13 @@ const StyledFlex = styled(Flex)`
 
 const base = 0.25
 
-const Circle = styled(Box)`
+const Circle = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  height: 0.5rem;
-  width: 0.5rem;
   transition: opacity 0.3s;
-
   width: ${base}rem;
   height: ${base}rem;
-  border-radius: 50%;
   background-color: #fff;
   box-shadow: 0 0 ${base * 1.5}rem ${base * 1.333}rem #fff,
     /* inner white */ 0 0 ${base * 2.5}rem ${base * 1.5}rem #f0f,
@@ -64,13 +60,11 @@ export class SidebarNavItem extends React.Component {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
         width={0.99}
-        p={2}
         alignItems="center"
         justifyContent="center"
         tabIndex="1"
       >
         <Circle
-          bg="white"
           currentFrame={this.props.currentFrame}
           frame={this.props.frame}
           isHovered={this.state.isHovered}

@@ -1,4 +1,5 @@
 import { styled, keyframes, media } from '@/style'
+import { Planet as UnPositionedPlanet } from '@/components/atoms'
 
 const fadeOutFadeIn = keyframes`
   o% { opacity: 1; }
@@ -14,7 +15,29 @@ const fadeOutFadeIn2 = keyframes`
   100% { opacity: 1; }
 `
 
-const planetBase = 2
+const planetAnimation = keyframes`
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+`
+
+export const Planet = styled(UnPositionedPlanet)`
+  animation: ${planetAnimation} 3s infinite;
+  animation-timing-function: cubic-bezier(0.25, 0.1, 0.31, 0.99);
+  cursor: pointer;
+  height: 6vw;
+  width: 6vw;
+  max-width: 45px;
+  max-height: 45px;
+  position: absolute;
+  top: 80vh;
+`
 
 export const SidebarWrapper = styled.div`
   align-items: center;
@@ -50,7 +73,7 @@ export const SidebarWrapper = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: ${props => (props.currentFrame === 1 ? '15%' : '25%')};
+    height: ${props => (props.currentFrame === 1 ? '20%' : '25%')};
     position: absolute;
     top: ${props => (props.currentFrame === 1 ? '40%' : '50%')};
     ${props => props.currentFrame !== 1 && 'transform: translateY(-50%)'};
@@ -61,27 +84,6 @@ export const SidebarWrapper = styled.div`
   .center-line {
     height: 5%;
     top: 70%;
-  }
-
-  .next-frame-button {
-    cursor: pointer;
-    height: 6vw;
-    width: 6vw;
-    max-width: 45px;
-    max-height: 45px;
-    position: absolute;
-    top: 80vh;
-
-    border-radius: 50%;
-    box-shadow:
-    /* inner white */ inset 0 0 ${planetBase * 0.1667}rem #fff,
-      /* inner left magenta short */ inset ${planetBase * 0.067}rem 0 ${planetBase * 0.2667}rem #f0f,
-      /* inner right cyan short */ inset ${planetBase * -0.067}rem 0 ${planetBase * 0.2667}rem #0ff,
-      /* inner left magenta broad */ inset ${planetBase * 0.067}rem 0 ${planetBase}rem #f0f,
-      /* inner right cyan broad */ inset ${planetBase * 0.1667}rem 0 ${planetBase * 0.1667}rem #0ff,
-      /* outer white */ 0 0 ${planetBase * 0.1667}rem #fff,
-      /* outer left magenta */ ${planetBase * -0.0333}rem 0 ${planetBase * 0.2667}rem #f0f,
-      /* outer right cyan */ ${planetBase * 0.0333}rem 0 ${planetBase * 0.2667}rem #0ff;
   }
 
   .bottom-line {

@@ -58,7 +58,7 @@ export const Navbar = cold(
         </Link>
 
         {small ? (
-          <MenuWrapper>
+          <MenuWrapper menuOpen={menuOpen}>
             <AnimatedSvgBg menuOpen={menuOpen} />
 
             <MenuBtn
