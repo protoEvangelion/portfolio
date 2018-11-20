@@ -5,6 +5,7 @@ import { ThemeProvider, createGlobalStyle } from '@/style'
 import theme from 'style/theme'
 
 interface IMainLayout {
+  onWheel: () => any
   children: any
 }
 
@@ -45,7 +46,7 @@ export const MainLayout: React.SFC<IMainLayout> = props => (
 
           <GlobalStyle />
 
-          {props.children}
+          <main onWheel={props.onWheel}>{props.children}</main>
         </>
       </ThemeProvider>
     )}

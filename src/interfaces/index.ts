@@ -88,6 +88,17 @@ export interface IIndexPageProps {
   }
 }
 
+export interface IIndexPageState {
+  currentFrame: number
+  hoverRectangleY: number
+  totalFrames: number
+  initialized: boolean
+  isCTAHovered: boolean
+  isSidebarActive: boolean
+  inTransit: boolean
+  menuOpen: boolean
+}
+
 export interface INotesPageProps {
   data: {
     allMarkdownRemark: IAllMarkdownRemark

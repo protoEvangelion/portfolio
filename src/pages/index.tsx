@@ -1,14 +1,12 @@
 import * as React from 'react'
-import { debounce } from 'lodash'
 import { Link } from 'gatsby'
 import Typist from 'react-typist'
 import { Heading, P, Box, Flex } from '@/components/atoms'
 import { Sphere3d } from '@/components/molecules'
 import { Navbar, Sidebar } from '@/components/organisms'
 import { MainLayout } from '@/components/templates'
-import { IIndexPageProps } from '@/interfaces'
+import { IIndexPageProps, IIndexPageState } from '@/interfaces'
 import { css, keyframes } from '@/style'
-import { setupWheelListener } from '@/utils'
 import LogRocket from 'logrocket'
 import '@/style/global.css'
 import '@/style/typography.scss'
@@ -30,17 +28,7 @@ const fadeOutFadeIn2 = keyframes`
   100% { opacity: 1; }
 `
 
-interface IState {
-  currentFrame: number
-  hoverRectangleY: null
-  totalFrames: number
-  initialized: boolean
-  isCTAHovered: boolean
-  isSidebarActive: boolean
-  menuOpen: boolean
-}
-
-class Index extends React.Component<IIndexPageProps, IState> {
+class Index extends React.Component<IIndexPageProps, IIndexPageState> {
   state = {
     currentFrame: 1,
     hoverRectangleY: null,
@@ -48,36 +36,27 @@ class Index extends React.Component<IIndexPageProps, IState> {
     initialized: false,
     isCTAHovered: false,
     isSidebarActive: false,
+    inTransit: false,
     menuOpen: false,
   }
 
-  handleScroll = debounce(
-    e => {
-      if (!this.state.menuOpen) {
-        e.preventDefault()
-
-        const isScrollingUp = e.deltaY < 0
-        const { currentFrame, totalFrames } = this.state
-
-        if (isScrollingUp && currentFrame !== 1) {
-          this.setState({ currentFrame: currentFrame - 1 })
-        } else if (!isScrollingUp && currentFrame !== totalFrames) {
-          this.setState({ currentFrame: currentFrame + 1 })
-        }
-      }
-    },
-    60,
-    { leading: true, trailing: false, maxWait: 1250 }
-  )
-
   componentDidMount() {
-    setupWheelListener()
-    window.addWheelListener(window, this.handleScroll)
     this.setState({ initialized: true })
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('wheel', this.handleScroll)
+  handleScroll = e => {
+    if (!this.state.menuOpen) {
+      e.preventDefault()
+
+      const isScrollingUp = e.deltaY < 0
+      const { currentFrame, totalFrames } = this.state
+
+      if (isScrollingUp && currentFrame !== 1) {
+        this.moveToFrame(currentFrame - 1)
+      } else if (!isScrollingUp && currentFrame !== totalFrames) {
+        this.moveToFrame(currentFrame + 1)
+      }
+    }
   }
 
   toggleCTAHover = () => {
@@ -93,10 +72,12 @@ class Index extends React.Component<IIndexPageProps, IState> {
   }
 
   moveToFrame = (frame: number) => {
-    this.setState({ currentFrame: frame })
+    this.setState({ currentFrame: frame, inTransit: true }, () => {
+      setTimeout(() => this.setState({ inTransit: false }), 1500)
+    })
   }
 
-  updateCoordinates = dimensions => {
+  updateCoordinates = (dimensions: ClientRect) => {
     const yCoordinate = dimensions.top + (dimensions.height - 47) / 2
     this.setState({ hoverRectangleY: yCoordinate })
   }
@@ -118,7 +99,7 @@ class Index extends React.Component<IIndexPageProps, IState> {
     }
 
     return (
-      <MainLayout>
+      <MainLayout onWheel={!this.state.inTransit ? this.handleScroll : () => null}>
         <HoverRectangle bg="gray" isSidebarActive={isSidebarActive} yCoordinate={hoverRectangleY} />
 
         <Navbar
