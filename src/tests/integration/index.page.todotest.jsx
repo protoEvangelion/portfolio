@@ -1,7 +1,7 @@
 import * as React from 'react'
 import ReactDOM from 'react-dom/server'
 import { axe, toHaveNoViolations } from 'jest-axe'
-import { Navbar } from '@/components/organisms'
+import { Navbar } from '@/components/organisms/Navbar/Navbar'
 
 expect.extend(toHaveNoViolations)
 

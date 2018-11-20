@@ -1,4 +1,4 @@
-import { Logo, Link, MenuBtn, Box } from '@/components/atoms'
+import { Logo, Link, MenuBtn } from '@/components/atoms'
 import { Menu } from '@/components/molecules'
 import React, { useState, useEffect } from 'react'
 import { cold } from 'react-hot-loader'
