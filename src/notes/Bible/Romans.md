@@ -1,6 +1,6 @@
 ---
-title: 'DBs'
-description: 'Fundamentals of SQL DBs like SQLite, Postgres & MySQL'
+title: 'Romans'
+description: 'Romans Questions'
 author: 'Ryan Garant'
 ---
 
