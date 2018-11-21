@@ -1,9 +1,7 @@
 ---
-title: "DBs"
-description: "Fundamentals of SQL DBs like SQLite, Postgres & MySQL"
-author: "Ryan Garant"
-
-
+title: 'DBs'
+description: 'Fundamentals of SQL DBs like SQLite, Postgres & MySQL'
+author: 'Ryan Garant'
 ---
 
 <article id="1">

@@ -124,7 +124,6 @@ class Index extends React.Component<IIndexPageProps, IIndexPageState> {
 
         <Layout frameNumber={1} {...layoutProps}>
           <Hero>
-            {/* <Img src={headshot} /> */}
             <Sphere3d />
 
             <Box>
