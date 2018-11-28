@@ -6,30 +6,13 @@ const fadeIn = keyframes`
   100% { opacity: 1; }
 `
 
-export const MenuWrapper = styled.div`
-  margin: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: left 0.5s;
+interface INavProps {
+  animation?: InterpolationValue[]
+  bottom?: boolean
+}
 
-  ${props => {
-    if (!props.menuOpen) {
-      return `
-        left: 100%;
-      `
-    }
-  }};
-
-  ${media.tablet`
-    left: 100%;
-  `};
-`
-
-export const Nav = styled<{ animation?: InterpolationValue[] }, 'nav'>('nav')`
-  align-items: center;
+export const Nav = styled<INavProps, 'nav'>('nav')`
+  align-items: flex-start;
   animation: ${props =>
     props.animation
       ? props.animation
@@ -40,30 +23,45 @@ export const Nav = styled<{ animation?: InterpolationValue[] }, 'nav'>('nav')`
   position: fixed;
   justify-content: space-between;
   z-index: 2;
-  top: 2rem;
   left: 1rem;
   right: 1rem;
   height: 5rem;
+
+  ${props => (props.bottom ? 'bottom: 1rem' : 'top: 2rem')};
 
   .logo {
     margin-right: 1rem;
   }
 
   ${media.tablet`
-    justify-content: center;
-    top: 4rem;
+    align-items: center;
     left: 4rem;
     right: 4rem;
 
-    .logo-link {
-      position: absolute;
-      left: 0;
-    }
+    ${props => {
+      if (props.bottom) {
+        return `
+          bottom: 1rem; justify-content: flex-start
+        `
+      }
+      return `justify-content: center`
+    }};
   `};
 
   ${media.desktop`
-    top: 4rem;
     left: 8rem;
     right: 8rem;
+    top: 4rem;
+
+    ${props => {
+      if (!props.bottom) {
+        return `
+          .logo-link {
+            position: absolute;
+            left: 0;
+          }
+        `
+      }
+    }};
   `};
 `

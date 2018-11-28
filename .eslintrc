@@ -12,6 +12,7 @@
   "rules": {
     "no-undef": 0,
     "no-else-return": ["error", { "allowElseIf": true }],
+    "no-param-reassign": 0,
     "no-use-before-define": 0,
     "no-unused-expressions": ["error", { "allowShortCircuit": true }],
     "no-unused-vars": 0,

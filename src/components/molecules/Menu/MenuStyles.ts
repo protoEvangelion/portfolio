@@ -1,6 +1,7 @@
 import { styled, media } from '@/style'
 
 interface IMenuStyles {
+  dark?: boolean
   hideDesktopText?: boolean
   menuOpen?: boolean
 }
@@ -8,6 +9,14 @@ interface IMenuStyles {
 export const List = styled<IMenuStyles, 'ul'>('ul')`
   display: flex;
   list-style: none;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: left 0.5s;
 
   li {
     transform: scale(1);
@@ -22,6 +31,7 @@ export const List = styled<IMenuStyles, 'ul'>('ul')`
     }
 
     a {
+      color: ${props => (props.dark && !props.menuOpen ? 'black' : 'white')};
       position: relative;
 
       &::after {

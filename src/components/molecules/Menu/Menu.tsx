@@ -2,12 +2,14 @@ import * as React from 'react'
 import * as R from 'ramda'
 import { Link } from '@/components/atoms'
 import { List } from './MenuStyles'
+import { AnimatedSvgBg } from './SvgBg'
 
 type SetMenuOpen = React.Dispatch<React.SetStateAction<boolean>>
 
 interface IMenuProps extends React.HTMLAttributes<Element> {
   ariaLabel?: string
   ariaLabelledBy?: string
+  dark?: boolean
   role?: string
   menuOpen?: boolean
   navItems: string[]
@@ -19,6 +21,7 @@ interface IMenuProps extends React.HTMLAttributes<Element> {
 // Handles main nav & popup menu
 export const Menu = React.memo(
   ({
+    dark = false,
     navItems,
     menuOpen,
     id = 'navbar',
@@ -28,6 +31,7 @@ export const Menu = React.memo(
     ...rest
   }: IMenuProps) => (
     <List
+      dark={dark}
       id={id}
       role={role}
       menuOpen={menuOpen}
@@ -36,6 +40,8 @@ export const Menu = React.memo(
       data-testid="menu"
       {...rest}
     >
+      {menuOpen && <AnimatedSvgBg menuOpen={menuOpen} />}
+
       {navItems.map(item => (
         <li key={`${id}_${item}`} role={role === 'menubar' ? 'none' : undefined}>
           <Link tabIndex={0} to={item === 'HOME' ? '/' : `/${item.toLowerCase()}`} role="menuitem">

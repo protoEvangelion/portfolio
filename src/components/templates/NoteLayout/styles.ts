@@ -4,6 +4,9 @@ export const Layout = styled.div`
   background: #282a36;
   height: 100%;
   color: #f8f8f2;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 
   input {
     background: #282a36;
