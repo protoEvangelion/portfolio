@@ -9,12 +9,14 @@
     "build": "gatsby build",
     "clean": "git clean -xfd .cache public/ && rm -rf .cache public",
     "story": "start-storybook -p 9001 -c private/storybook",
+    "svgs": "node src/utils/generateSvgs.js",
     "test": "jest --verbose false",
     "test:watch": "jest --watch --verbose false",
     "test:ci": "jest --coverage && codecov"
   },
   "devDependencies": {
     "@babel/core": "^7.1.5",
+    "@svgr/core": "^4.1.0",
     "@types/history": "^4.6.2",
     "@types/jest": "^23.3.9",
     "@types/lodash": "^4.14.63",
@@ -90,6 +92,7 @@
     "react-helmet": "^5.0.1",
     "react-modal": "^3.5.1",
     "react-redux": "^5.0.6",
+    "react-reveal": "^1.2.2",
     "react-styled-flexboxgrid": "^2.6.0",
     "react-transition-group": "^2.5.0",
     "react-typist": "^2.0.4",

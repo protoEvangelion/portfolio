@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { Illustration } from '@/images/Illustration'
-import { Navbar } from '@/components/organisms'
+import { Illustration } from '@/assets/Illustration'
+import { Navbar, Projects } from '@/components/organisms'
 import { styled } from '@/style'
 
-const Main = styled.main`
+const Hero = styled.div`
   background: white;
   position: relative;
   width: 100%;
@@ -15,18 +15,18 @@ const Main = styled.main`
     right: 0;
     height: 90vh;
   }
-
-  nav {
-    position: ;
-  }
 `
 
 const ProjectsPage = () => (
-  <Main>
-    <Illustration />
+  <>
+    <Hero>
+      <Illustration />
 
-    <Navbar bottom dark />
-  </Main>
+      <Navbar bottom dark />
+    </Hero>
+
+    <Projects />
+  </>
 )
 
 export default ProjectsPage

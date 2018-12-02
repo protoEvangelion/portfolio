@@ -1,5 +1,5 @@
 import * as React from 'react'
-import headshot from '@/images/headshot.jpg'
+import headshot from '@/assets/headshot.jpg'
 import { styled } from '@/style'
 import { Planet as UnPositionedPlanet } from '@/components/atoms'
 

@@ -11,6 +11,7 @@ interface IMainLayout {
 
 const GlobalStyle = createGlobalStyle`
   body {
+    background: #282a36;
     overflow: hidden;
   }
 `

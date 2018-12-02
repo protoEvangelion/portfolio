@@ -1,0 +1,20 @@
+<svg viewBox="0 0 35 35">
+    <ellipse
+        cx="18"
+        cy="18"
+        fill="none"
+        rx="8"
+        ry="8"
+        strokeMiterlimit="10"
+        strokeWidth="1.5"
+        stroke="currentColor"
+    />
+    <path
+        d="M14 18h8M18 22v-8"
+        fill="none"
+        strokeLinecap="round"
+        strokeMiterlimit="10"
+        strokeWidth="1.5"
+        stroke="currentColor"
+    />
+</svg>

@@ -20,7 +20,7 @@
     "resolveJsonModule": true,
     "paths": {
       "@/components/*": ["components/*"],
-      "@/images/*": ["images/*"],
+      "@/assets/*": ["assets/*"],
       "@/utils*": ["utils"],
       "@/style*": ["style"],
       "@/interfaces*": ["interfaces"],
