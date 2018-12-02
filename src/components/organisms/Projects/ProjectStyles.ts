@@ -1,4 +1,4 @@
-import { styled } from '@/style'
+import { media, styled } from '@/style'
 import { Box } from '@/components/atoms'
 
 export const Credits = styled.div`
@@ -7,7 +7,11 @@ export const Credits = styled.div`
   justify-content: center;
   text-align: center;
   flex-direction: column;
-  padding: 10rem 25% 15rem;
+  padding: 10rem 1rem 15rem;
+
+  ${media.tablet`
+    padding: 10rem 25% 15rem;
+  `};
 `
 
 export const Img = styled.img`
@@ -27,11 +31,12 @@ export const Img = styled.img`
 
 export const Wrapper = styled(Box)`
   background: ${props => props.gradient};
-  padding: 15rem 0 30rem;
+  padding: 5rem 1rem 30rem;
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  flex-direction: column;
 
   svg {
     position: absolute;
@@ -41,10 +46,21 @@ export const Wrapper = styled(Box)`
     width: 100%;
   }
 
-  > a,
-  .react-reveal {
-    width: 45%;
-  }
+  ${media.tablet`
+    padding: 12rem 4rem 25rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+
+    > a,
+    .react-reveal {
+      width: 45%;
+    }
+  `};
+
+  ${media.desktop`
+    padding: 15rem 8rem 30rem;
+  `};
 `
 
 const firstColor = '#f0f'
@@ -55,6 +71,7 @@ export const Text = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  padding-bottom: 3rem;
 
   h4 {
     margin: 0 0 3rem;
