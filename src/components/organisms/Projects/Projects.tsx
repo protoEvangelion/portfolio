@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Svg } from '@/components/atoms'
+import { Svg } from '@/components/atoms'
 import { projects } from './projectData'
 import { Credits, Img, Wrapper, Text } from './ProjectStyles'
 import Fade from 'react-reveal/Fade'
@@ -34,7 +34,7 @@ export const Projects = () => (
       <Wrapper key={project.name} px={['1rem', '4rem', '8rem']} gradient={project.gradient}>
         <Svg name={`curve${i + 1}`} />
 
-        <Fade bottom>
+        <Fade bottom ssrFadeout>
           <Text>
             <h4>{project.name}</h4>
 

@@ -23,13 +23,15 @@ const useMedia = (query: string) => {
 }
 
 interface INavbarProps {
+  absolute?: boolean
   ariaLabel?: string
   animation?: InterpolationValue[]
   dark?: boolean
   hideDesktopText?: boolean
-  menuOpen: boolean
+  menuOpen?: boolean
   bottom?: boolean
-  setMenuOpen: (isOpen: boolean) => void
+  setMenuOpen?: (isOpen: boolean) => void
+  visible?: boolean
 }
 
 export const Navbar = cold(
@@ -40,7 +42,9 @@ export const Navbar = cold(
     hideDesktopText = false,
     menuOpen,
     setMenuOpen,
+    absolute = false,
     bottom = false,
+    visible = true,
   }: INavbarProps) => {
     const navItems = ['HOME', 'PROJECTS', 'CONTACT']
     const small = useMedia('(max-width: 640px)')
@@ -50,7 +54,13 @@ export const Navbar = cold(
     }
 
     return (
-      <Nav aria-label={ariaLabel} animation={animation} bottom={bottom}>
+      <Nav
+        absolute={absolute}
+        aria-label={ariaLabel}
+        animation={animation}
+        bottom={bottom}
+        visible={visible}
+      >
         <Link aria-label="logo" className="logo-link" to="/" tabIndex={0}>
           <Logo dark={dark && !menuOpen} />
         </Link>
@@ -90,3 +100,5 @@ export const Navbar = cold(
     )
   }
 )
+
+Navbar.displayName = 'Navbar'

@@ -13,11 +13,12 @@ const Svg = styled.svg`
         visibility: hidden;
       `};
 
-  position: fixed;
+  position: absolute;
   height: 100%;
   transition: opacity, visibility;
   transition-duration: 0.5s;
   width: 100%;
+  transform: translateX(0);
 `
 
 export function AnimatedSvgBg(props) {

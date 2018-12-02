@@ -7,8 +7,10 @@ const fadeIn = keyframes`
 `
 
 interface INavProps {
+  absolute?: boolean
   animation?: InterpolationValue[]
   bottom?: boolean
+  visible: boolean
 }
 
 export const Nav = styled<INavProps, 'nav'>('nav')`
@@ -19,15 +21,46 @@ export const Nav = styled<INavProps, 'nav'>('nav')`
       : css`
           ${fadeIn} 0.5s linear;
         `};
+  box-sizing: content-box;
   display: flex;
-  position: fixed;
   justify-content: space-between;
   z-index: 2;
-  left: 1rem;
-  right: 1rem;
   height: 5rem;
+  opacity: 1;
+  padding: 1rem;
+  visibility: visible;
+  transition: opacity, visibility, transform;
+  transition-duration: 0.5s;
 
-  ${props => (props.bottom ? 'bottom: 1rem' : 'top: 2rem')};
+  ${props => {
+    if (props.bottom) {
+      return `
+        padding-top: 87vh;
+      `
+    }
+  }};
+
+  ${props => {
+    if (props.absolute) {
+      return `
+        padding: 0;
+        top: 2rem;
+        position: absolute;
+        left: 1rem;
+        right: 1rem;
+      `
+    }
+  }};
+
+  ${props => {
+    if (!props.visible) {
+      return `
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-300px);
+      `
+    }
+  }};
 
   .logo {
     margin-right: 1rem;
@@ -35,27 +68,50 @@ export const Nav = styled<INavProps, 'nav'>('nav')`
 
   ${media.tablet`
     align-items: center;
-    left: 4rem;
-    right: 4rem;
+    padding: 2rem 4rem;
+    justify-content: center;
 
     ${props => {
       if (props.bottom) {
         return `
-          bottom: 1rem; justify-content: flex-start
+          padding-top: 87vh;
+          justify-content: flex-start;
         `
       }
-      return `justify-content: center`
+    }};
+
+    ${props => {
+      if (props.absolute) {
+        return `
+          padding-left: 0;
+          padding-right: 0;
+          left: 4rem;
+          right: 4rem;
+        `
+      }
     }};
   `};
 
   ${media.desktop`
-    left: 8rem;
-    right: 8rem;
-    top: 4rem;
+    padding: 4rem 8rem;
 
     ${props => {
-      if (!props.bottom) {
+      if (props.bottom) {
         return `
+            padding-top: 2rem;
+          `
+      }
+    }};
+
+    ${props => {
+      if (props.absolute) {
+        return `
+          padding-left: 0;
+          padding-right: 0;
+          left: 8rem;
+          right: 8rem;
+          top: 4rem;
+
           .logo-link {
             position: absolute;
             left: 0;

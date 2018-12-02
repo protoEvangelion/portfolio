@@ -103,6 +103,7 @@ class Index extends React.Component<IIndexPageProps, IIndexPageState> {
         <HoverRectangle bg="gray" isSidebarActive={isSidebarActive} yCoordinate={hoverRectangleY} />
 
         <Navbar
+          absolute
           animation={css`
             ${currentFrame % 2 === 0 ? fadeOutFadeIn : fadeOutFadeIn2} 1.3s linear;
           `}
