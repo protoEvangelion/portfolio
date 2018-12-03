@@ -1,6 +1,6 @@
 import * as React from 'react'
 import galaxy from '@/assets/galaxy.jpg'
-import { styled } from '@/style'
+import { styled, media } from '@/style'
 
 const Img = styled.div`
   background: url(${galaxy}) no-repeat center center fixed;
@@ -9,6 +9,20 @@ const Img = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  a {
+    position: fixed;
+    bottom: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    ${media.tablet`
+      bottom: 1rem;
+      right: 1rem;
+      left: unset;
+      transform: translateX(0);
+    `};
+  }
 `
 
 const Email = styled.div`
@@ -25,6 +39,10 @@ const Email = styled.div`
   &:hover {
     transform: translateY(-30px);
   }
+
+  ${media.giant`
+    padding: 10rem;
+  `};
 `
 
 const ContactPage = () => (
@@ -32,6 +50,10 @@ const ContactPage = () => (
     <Email>
       <h4>ryantgarant@gmail.com</h4>
     </Email>
+
+    <a href="https://www.freepik.com/free-vector/lovely-galaxy-background-with-flat-design_2859825.htm">
+      Link to illustration
+    </a>
   </Img>
 )
 

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Illustration } from '@/assets/Illustration'
+import { Telescope } from '@/assets/illustrations/Telescope'
 import { Navbar, Projects } from '@/components/organisms'
 import { styled } from '@/style'
 import { throttle } from 'lodash'
@@ -37,7 +37,7 @@ class ProjectsPage extends React.Component {
     return (
       <div onWheel={this.showHideNavbar}>
         <Hero>
-          <Illustration />
+          <Telescope />
 
           <Navbar bottom dark visible={this.state.isNavbarVisible} />
         </Hero>
