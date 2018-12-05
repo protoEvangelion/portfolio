@@ -4,5 +4,6 @@
 export { Hero } from './Hero'
 export { Navbar } from './Navbar/Navbar'
 export { Sidebar } from './Sidebar/Sidebar'
+export { NotesSidebar } from './NotesSidebar/NotesSidebar'
 export { Projects } from './Projects/Projects'
 // export { ProjectHeader } from './ProjectHeader'

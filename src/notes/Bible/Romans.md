@@ -133,4 +133,26 @@ Ro. 1:10 - what we are left to our flesh without the Spirit
 - using a metaphor of slavery
 - acting in the way that Paul is: doing the things he despises.
 
+### verse 17
+
+> In verse 17, is Paul avoiding personal responsibility for his sin by claiming that the sin is doing the sinning?
+
+- Paul is **not avoiding** personal responsibility but trying to emphasize how sin's lingering effects still swayed him though he desired to carry out the Law of God.
+- lean on your own strength => you fall => God picks you up tells you to rely on his strength by the Holy Spirit
+- "The real him" doesn't want to do what his flesh wants to do
+  - That's not who he is anymore
+    - he has been given a new heart
+
+> Discuss the possibility that Paul is embracing the Gnosticism or Greek dualism of his day.
+> Explain its meaning and how Paul could apply this concept.
+
+- **Gnosticism**: spirit (good), matter (bad)
+  - Their practical conclusion from that is whatever done in the body even the most messed up sin is of no consequence because real life is in the spiritual realm
+  - Also believe that they have a higher knowledge than others and have achieved a higher plane of existence (sounds like Scientology)
+- That being said there is a hint of truth to dualism
+  - Although the flesh is indeed sinful, we know that we will be given glorified bodies in heaven where there will be no more sin
+  - We know there are amazing things in the spiritual realm but also a great spiritual war raging between good and evil beings
+- Paul was not espousing Gnosticism or dualism because in the previous ch he says that salvation is a **free gift** of God
+  - Not by attaining a higher plane of existence
+
 </article>

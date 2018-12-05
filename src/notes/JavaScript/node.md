@@ -62,3 +62,54 @@ author: 'Ryan Garant'
 - `next()` will call the next middleware
 
 </article>
+
+<article id="2">
+
+## GraphQL
+
+### GraphQL vs REST
+
+- GraphQL only has one URL whereas REST has a resource url + verb combo
+  - you also don't have to version the urls anymore either
+- In REST, the **shape and size of the data** resource determined by the server
+  - with gql it's determined by the **query**(request)
+  - So REST data is hardcoded, in gql it is dynamically determined at runtime
+- In REST a single request will execute on one controller on the server
+  - In gql a request could potentially hit several resolvers (which are like controllers)
+- In REST multiple calls to get related data whereas you can
+
+### DB Schema vs GQL Schema
+
+- DB schema is for keeping data consistent when adding data to db
+- GQL schema is for defvining what resources are available for querying, how they relate and how you can query them
+- Both schemas can be the same or not.
+  - DB schema is a **good starting point** for your GQL schema
+- GQL schema sits in front of your DB queries
+  - it validates incoming request queries
+- Some GraphQL tools create GQL APIs based off of your DB schemas and visa versa
+
+### Creating schemas with SDL
+
+- Schema Definition Language (SDL)
+- Instead of using functions to create a schema, use a verbose, string based syntax for your schemas
+  - later you can consume it as an AST and do whatever you want with it
+
+### Scalar and Object Types
+
+- Everything boils down to these values
+- Built in **primitives**
+  - String
+  - Int
+  - Float
+  - Boolean
+  - ID (no validation; just a unique string)
+
+### Resolvers
+
+> tldr; Are like controllers but instead resolve types all the way down
+
+- Resposible for **retrieving data**
+- Every query and mutation your schema has, must have a resolver that returns the specified type
+- types and fields on types often have resolvers as well
+- Incoming query dictates which resolvers run and in which **order**
+  </article>

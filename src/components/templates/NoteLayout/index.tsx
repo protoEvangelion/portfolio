@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Link, graphql } from 'gatsby'
-import { Box, Flex } from '@/components/atoms'
+import { Box } from '@/components/atoms'
 import { INoteLayoutProps } from 'interfaces'
 
 import { Layout } from './styles'
@@ -16,6 +16,10 @@ export const NoteLayout = (props: INoteLayoutProps) => {
           </Link>
         ))}
       </Flex> */}
+
+      <Link to="/notes">
+        <button>Notes</button>
+      </Link>
 
       <Box p={1}>
         <h1>{data.markdownRemark.frontmatter.title}</h1>

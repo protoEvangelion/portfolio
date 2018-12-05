@@ -1,12 +1,10 @@
 import { styled } from '@/style'
 
-export const Layout = styled.div`
+export const Layout = styled.section`
   background: #282a36;
-  height: 100%;
   color: #f8f8f2;
   width: 100%;
-  display: flex;
-  flex-direction: column;
+  padding: 3rem 1rem;
 
   input {
     background: #282a36;
