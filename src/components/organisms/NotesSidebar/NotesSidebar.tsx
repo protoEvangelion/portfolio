@@ -1,6 +1,6 @@
 import React from 'react'
 import { Sidebar } from './NotesSidebarStyles'
-import { Accordion } from 'components/molecules'
+import { Accordion } from '@/components/molecules'
 import { map, orderBy } from 'lodash'
 import { Link } from 'gatsby'
 
@@ -33,7 +33,7 @@ const SidebarContent = ({ path, tree }) => {
   return orderBy(unorderedTree, 'key', 'asc')
 }
 
-export default function SidebarWrapper({ path, tree, isMobile, showSidebar, section }) {
+export function NotesSidebar({ path, tree, isMobile, showSidebar, section }) {
   return (
     <Sidebar
       className={`sidebar ${isMobile && showSidebar ? 'onScreen' : ''} ${

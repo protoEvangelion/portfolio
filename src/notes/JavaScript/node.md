@@ -61,9 +61,89 @@ author: 'Ryan Garant'
   - cors: set up cors
 - `next()` will call the next middleware
 
+#### Routes
+
+- Express allows you to abstract to use a router
+  - similar to what app can do as it relates to verb combos
+  - then you can mount it to app the same way as middleware
+  - Best practice to abstract lots of routes out into different files
+
+```js
+router.get('/me', (req, res) => {
+  res.send({ me: 'Ryan' })
+})
+
+app.use('/api', router)
+```
+
 </article>
 
 <article id="2">
+
+## Data Modeling with Mongo
+
+- Schemas for _schemaless_ db? yes!
+  - MongoDB is a Schemaless document store
+  - you will go cray cray if you don't use schemas though
+
+### Schemas
+
+- Schemas define the instructions for the model
+- They include
+  - validations
+  - hooks
+  - default values
+  - operations like trimming
+  - indexes
+- Schemas create models which allow us to interact with MongoDB
+
+### Routes & Controllers
+
+> Controllers are just middleware with the intent to return data
+
+- Think of `res.send` as your return statement
+  - Don't write code after that for the most part
+  - Webhooks would be one of the only reasons to do this
+    - send a response immediately and then go process the webhook
+- Controllers implement logic to interact with DB
+- Can generalize controllers for different routes
+  - getOne
+  - getMany
+  - updateOne
+  - createOne
+  - removeOne
+
+### Using models inside
+
+#### CRUD
+
+- **C**: `model.create({})`, `new model()`
+- **R**: `model.find()`, `model.findOne()`, `model.findById()`
+- **U**: `model.update()`, `model.findByIdAndUpdate()`
+- **D**: `model.remove()`, `model.findByIdAndRemove()`
+
+### Authentication
+
+> You can never really truly protect an api, but requiring auth can make it safer
+
+- **Authentication** controls if a request can proceed or not
+- **Authorization** controls if authenticated request has the correct permissions to access a resource
+- **Identification** determines who the requester is
+
+#### JWT Auth
+
+> Tokens passed on every request--it's stateless
+
+- traditional methods of auth are stateful in that they keep track of sessions in redis or something
+- a type of **bearer tokens**
+  - api key is another type
+- Created by a **combo of secret and payload** like a user object
+  - api verifies token was created with expected secrets
+  - then return token that can be used for authorization and identification
+
+</article>
+
+<article id="3">
 
 ## GraphQL
 
