@@ -155,4 +155,33 @@ Ro. 1:10 - what we are left to our flesh without the Spirit
 - Paul was not espousing Gnosticism or dualism because in the previous ch he says that salvation is a **free gift** of God
   - Not by attaining a higher plane of existence
 
+### verse 23
+
+> What is the "law in my members" warring against the "law of my mind"?
+> Is Paul saying that the flesh and the mind are divided against each other?
+
+- The way I took this question is what is the tension about between law of members and mind?
+  - **law of mind**: rational thought or reason as it relates to doing God's Law capital L
+  - **law of flesh**: propensity to sin
+  - What I aspire to be as a child of God who loves Him & others is at war with my desire to love & please my self
+  - It's a war of **pleasure**
+  - The war is about pleasing self vs pleasing God
+  - Those two things are mutually exclusive when they become the primary aim
+  - I don't think this conflict will be resolved until we see God face to face and will be pure as He is pure
+    - 1 Jn 3:2-3
+  - Or put another way, his lower level nature to please self constantly battles with his higher level new nature
+  - I am starting to see this picture of a born again believer, who delights in the Law of God, crying out for deliverance because he knows that left to himself he is stuck.
+    - He can't do what he want's to do.
+    - He recognizes though, that his **only hope is in Jesus** death on His behalf that can free his to live out his new nature
+    - I keep going back to 1 Jn 3:3
+      - "And everyone who thus hopes in him purifies himself as he is pure."
+
+> As Jesus said before, how can a house divided against itself continue to stand? (Luke 11:17)
+
+- Not sure how this relates
+
+> Was Paul more sinful than we are?
+
+- If it's a matter of comparing where I am right now in my walk to where he was as he was writing this letter then I would be the more sinful one no question.
+
 </article>
