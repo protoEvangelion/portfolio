@@ -6,6 +6,8 @@
 
 ## About
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/protoEvangelion/portfolio.svg)](https://greenkeeper.io/)
+
 This portfolio was built using modern web tools and best practices. Here are some of the neat tools used below:
 
 ## Features
