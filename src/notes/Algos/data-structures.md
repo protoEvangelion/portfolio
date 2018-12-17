@@ -252,7 +252,7 @@ _Provided by [Brian Holt](http://btholt.github.io/four-semesters-of-cs/)_
 
 ### Tree Taversal
 
-- The way that you access nodes on a tree data structure
+> The way that you access nodes on a tree data structure
 
 #### Depth First
 
