@@ -184,4 +184,21 @@ Ro. 1:10 - what we are left to our flesh without the Spirit
 
 - If it's a matter of comparing where I am right now in my walk to where he was as he was writing this letter then I would be the more sinful one no question.
 
+### verse 24
+
+> With what insight does Paul conclude the chapter?
+> There may be more than one ... so mention what you see.
+
+- Paul is saying that he is **desperately wicked** & **incapable of carrying out God's Law**, which if left unfixed, will lead to an eternal **death**.
+  - In other words he is hopeless and his only hope for eternal life is Christ who can carry out the Law perfectly on his behalf.
+  - It is also Christ who can **continually free him** to from his fleshly desires to sin to actually carry out the righteousness he so desires to do
+
+> What does verse 24 have in common with Luke 5:8 and with Isaiah 6:5?
+
+- Paul, Peter & Isaiah all recognize that God is supremely **holy**, that they are **wicked**, and that God does not abide with **unholiness**.
+
+> How does this apply to your life and mine? Discuss.
+
+- The one thing that has been impressed upon me is the need to rely upon Christ's strength & liberating power moment by moment
+
 </article>
