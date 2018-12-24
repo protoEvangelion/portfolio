@@ -82,7 +82,7 @@
   "dependencies": {
     "@types/styled-system": "^3.0.8",
     "axios": "^0.18.0",
-    "gatsby": "^2.0.6",
+    "gatsby": "^2.0.31",
     "gatsby-image": "^2.0.0-rc.4",
     "lodash": "^4.17.4",
     "logrocket": "^0.6.17",
