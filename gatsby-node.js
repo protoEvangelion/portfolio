@@ -12,6 +12,12 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       name: 'slug',
       value: `/notes${slug}`,
     })
+
+    createNodeField({
+      node,
+      name: 'isIndex',
+      value: node.fileAbsolutePath.includes('index.md'),
+    })
   }
 }
 

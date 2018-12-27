@@ -64,6 +64,7 @@ export const Nav = styled<INavProps, 'nav'>('nav')`
 
   .logo {
     margin-right: 1rem;
+    width: 70px;
   }
 
   ${media.tablet`

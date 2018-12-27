@@ -26,5 +26,21 @@ module.exports = {
         path: `${__dirname}/src/notes`,
       },
     },
+    {
+      resolve: `gatsby-remark-relative-images`,
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+            },
+          },
+        ],
+      },
+    },
   ],
 }

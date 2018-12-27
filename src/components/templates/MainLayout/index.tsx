@@ -1,20 +1,13 @@
 import * as React from 'react'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
-import { ThemeProvider, createGlobalStyle } from '@/style'
+import { ThemeProvider } from '@/style'
 import theme from 'style/theme'
 
 interface IMainLayout {
   onWheel: () => any
   children: any
 }
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    background: #282a36;
-    overflow: hidden;
-  }
-`
 
 export const MainLayout: React.SFC<IMainLayout> = props => (
   <StaticQuery
@@ -40,12 +33,10 @@ export const MainLayout: React.SFC<IMainLayout> = props => (
               },
               {
                 name: 'keywords',
-                content: 'gatsbyjs, gatsby, javascript, sample, something',
+                content: 'gatsbyjs, gatsby, javascript',
               },
             ]}
           />
-
-          <GlobalStyle />
 
           <main onWheel={props.onWheel}>{props.children}</main>
         </>

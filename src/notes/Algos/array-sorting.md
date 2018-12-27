@@ -4,7 +4,7 @@ description: 'Array sorting algo complexity'
 author: 'Ryan Garant'
 ---
 
-![](images/sorting.jpg)
+![](images/sorting.png)
 _Provided by [Big O Cheatsheet](http://bigocheatsheet.com/)_
 
 <article id="1">

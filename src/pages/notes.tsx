@@ -1,15 +1,39 @@
 import * as React from 'react'
 import { MainLayout } from '@/components/templates'
-import { Link, graphql } from 'gatsby'
+import { Card } from '@/components/molecules'
+import { graphql } from 'gatsby'
 import { INotesPageProps } from 'interfaces'
+import { createGlobalStyle, styled } from '@/style'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCogs } from '@fortawesome/free-solid-svg-icons'
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    background: ${props => props.theme.colors.background};
+  }
+`
+
+library.add(faCogs)
+
+const Wrapper = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: space-around;
+`
 
 const Notes: React.SFC<INotesPageProps> = props => (
   <MainLayout>
-    {props.data.allMarkdownRemark.edges.map(({ node }) => (
-      <Link key={node.id} to={node.fields.slug}>
-        <h3>{node.frontmatter.title}</h3>
-      </Link>
-    ))}
+    <GlobalStyle />
+
+    <Wrapper>
+      {props.data.allMarkdownRemark.edges
+        .filter(({ node }) => node.fields.isIndex)
+        .map(({ node }) => (
+          <Card key={node.id} title={node.frontmatter.title} link={node.fields.slug} />
+        ))}
+    </Wrapper>
   </MainLayout>
 )
 
@@ -21,6 +45,7 @@ export const query = graphql`
           id
           fields {
             slug
+            isIndex
           }
           frontmatter {
             title

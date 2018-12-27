@@ -6,11 +6,18 @@ import { Sphere3d } from '@/components/molecules'
 import { Navbar, Sidebar } from '@/components/organisms'
 import { MainLayout } from '@/components/templates'
 import { IIndexPageProps, IIndexPageState } from '@/interfaces'
-import { css, keyframes } from '@/style'
+import { css, createGlobalStyle, keyframes } from '@/style'
 import LogRocket from 'logrocket'
 import '@/style/global.css'
 import '@/style/typography.scss'
 import { BG2, BG3, SyntaxCtn, Hero, Layout, HoverRectangle } from '../style/pages/IndexStyles'
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    background: #282a36;
+    overflow: hidden;
+  }
+`
 
 LogRocket.init('myyjeg/portfolio')
 
@@ -100,6 +107,8 @@ class Index extends React.Component<IIndexPageProps, IIndexPageState> {
 
     return (
       <MainLayout onWheel={!this.state.inTransit ? this.handleScroll : () => null}>
+        <GlobalStyle />
+
         <HoverRectangle bg="gray" isSidebarActive={isSidebarActive} yCoordinate={hoverRectangleY} />
 
         <Navbar
