@@ -14,6 +14,9 @@ author: "Ryan Garant"
 
 > Programming itself is a stack--think recursion
 
+![Big O of Common Data Structures](images/data-structure-big-O.png)
+_Provided by [bigocheatsheet](http://bigocheatsheet.com/)_
+
 ![stack](https://btholt.github.io/four-semesters-of-cs/img/stack.png)
 
 ![stack](https://www.tutorialspoint.com/data_structures_algorithms/images/stack_representation.jpg)
@@ -22,8 +25,7 @@ author: "Ryan Garant"
   the "call stack" goes along with this concept
 - Most programming languages are based on a stack
 - Arrays have a stack interface but they are not a pure stack
-  - Because with a pure stack you push on top and pop
-  from top
+  - Because with a pure stack you only push on top and pop from top
   - You can't get to anything beneath the top node
 
 <p data-height="300" data-theme-id="31719" data-slug-hash="KxgNYb" data-default-tab="js" data-user="RyanGarant" data-pen-title="Naive JS Stack Data Structure" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/KxgNYb/">Naive JS Stack Data Structure</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
@@ -34,9 +36,11 @@ author: "Ryan Garant"
 
 - **FIFO**
 - All stacks need to have the methods enqueue (add/push) and dequeue (remove/pop)
-- There are priority queues like for streaming video \* Items that have a higher priority get queued or dequeued first
+- There are **priority queues** like for streaming video
+  - Items that have a higher priority get queued or dequeued first
 
-<p data-height="300" data-theme-id="31719" data-slug-hash="PdbbzN" data-default-tab="js" data-user="RyanGarant" data-pen-title="Naive es6 Queue" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/PdbbzN/">Naive es6 Queue</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="300" data-theme-id="31719" data-slug-hash="EGENzq" data-default-tab="js,result" data-user="RyanGarant" data-pen-title="es6 Queue w/tests" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/EGENzq/">es6 Queue w/tests</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+
 
 ### Linked List
 
