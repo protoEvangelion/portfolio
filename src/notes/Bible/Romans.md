@@ -202,3 +202,43 @@ Ro. 1:10 - what we are left to our flesh without the Spirit
 - The one thing that has been impressed upon me is the need to rely upon Christ's strength & liberating power moment by moment
 
 </article>
+
+<article id="ch8">
+
+## Chapter 8
+
+> Explain the term "no condemnation" in verse 1.
+
+- Paul progress his thoughts that he has been developing earlier
+- Ro. 5:18 "_Therefore, as one trespass led to condemnation for all men, so one act of righteousness leads to justification and life for all men._"
+- Ro. 7:6 "_But now we are released from the law, having died to that which held us captive, so that we serve in the new way of the Spirit and not in the old way of the written code._"
+- **_No condemnation_**
+  - or penalty from God's judgment because He is the one of _justifies & condemns_ (v. 3-34)
+  - _Paraphrase_: We **will not be sentenced by the Judge** with the punishment we deserve for not upholding the Law
+- An interesting practical thought developed by NAC, is that wallowing in guilt and not moving past it, is a form of trying to pay for our sentence which has already been fully paid for by Christ
+
+> Is it possible for a true Christian to so offend God, after having being forgiven, that he loses his salvation?
+
+- It brings me great **hope**, **quiets** my soul, and **humbles** me to know that God predestined me to salvation knowing who I would be before & after conversion
+  - Knowing all the sin I would commit
+  - Knowing all the times I would rebel
+  - Knowing my innermost thoughts, desires & intentions
+- And that He would hold me so tight knowing all that
+  - so much so that nothing in all of creation could separate me from His love...even myself or my own sin
+- This doesn't give me a **license to sin** but a **license to hope**
+- Praise God that salvation rests on Christ's strength and not my own!
+
+> What does it mean to be a "true Christian"?
+
+- I guess you can take this question in a few directions
+- The angle I approached it from was Galatians 5...fruit of the Spirit
+  - If you have the **Spirit of God** residing in you, you are a true Christian
+  - v 14 "_For all who are led by the Spirit of God are sons of God._"
+
+> Discuss the possibilities of condemnation for future sin, using other Scripture.
+
+- I know of no Scripture that speaks to eternal condemnation (_that is going to Hell_) for future sins
+- The only one that I know of that comes close is a present sin which is blaspheming the Holy Spirit
+  - And if you have the Holy Spirit residing in you, you cannot do that.
+
+</article>

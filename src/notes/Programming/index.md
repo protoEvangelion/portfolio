@@ -1,0 +1,50 @@
+---
+title: 'Programming'
+description: 'General Programming Tips'
+author: 'Ryan Garant'
+---
+
+<article id="1">
+
+## Notes from The Pragmatic Programmer
+
+- _Pragmaticus_: latin for "skilled in business"
+- Team based software construction should be rigorous and disciplined
+  - This however does not preclude individual creativity and craftsmanship
+- _Kaizen_: Japanese term for continuously making small improvements
+  - the reason for dramatic gains in productivity and quality in Japanese manufacturing
+
+### The Philosophy
+
+> Pragmatic programming is a philosophy of approaching problems and their solutions while looking at the bigger picture
+
+#### Excuses
+
+- Don't make excuses, make solutions
+- Don't blame your computer, software, or other things (you should have made contingencies)
+- If you are the leader or could have prevented it, take responsibility and think of solutions to fix the problem now and/or ways to prevent it in the future.
+
+#### Entropy
+
+- Entropy relates to the amount of disorder in a system
+  - Nature tends toward disorder
+    - **Software rot** is when disorder increases
+
+> One broken window, left unrepaired for any substantial length of time, instills in the inhabitants of the building a sense of abandonment--sense that the powers that be don't care about the building.
+
+- If your code has a broken window, board it up
+  - comment out offending code
+  - add an implementation message
+  - take some action to prevent further damage
+- **Neglect** accelerates rot faster than any other factor
+  - When you are on a team where everything is clean & elegant, you take more care not to mess it up
+
+#### Good Enough Software
+
+- A lot of the time users are willing to _live with software that is a bit buggy_ but allows them to do what they want to do
+- You have to to weigh the risk reward ratio in your sphere of whether or not it's worth the investment to perfect the software
+- Also, you need to know when to stop
+  - Artists say that hard work is ruin if they over paint
+  - The painting gets lost in the paint
+
+</article>

@@ -9,6 +9,8 @@ _Provided by [Big O Cheatsheet](http://bigocheatsheet.com/)_
 
 <article id="1">
 
+- The fastest you can go in any comparison sorting algo for worst case is `n log n`
+
 ## Quick Sort
 
 - Divide and conquer / recursive

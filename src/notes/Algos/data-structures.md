@@ -28,7 +28,7 @@ _Provided by [bigocheatsheet](http://bigocheatsheet.com/)_
   - Because with a pure stack you only push on top and pop from top
   - You can't get to anything beneath the top node
 
-<p data-height="300" data-theme-id="31719" data-slug-hash="KxgNYb" data-default-tab="js" data-user="RyanGarant" data-pen-title="Naive JS Stack Data Structure" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/KxgNYb/">Naive JS Stack Data Structure</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="300" data-theme-id="31719" data-slug-hash="QzrXYJ" data-default-tab="js,result" data-user="RyanGarant" data-pen-title="JS Stack Data Structure From Scratch w/ Tests" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/QzrXYJ/">JS Stack Data Structure From Scratch w/ Tests</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 
 ### Queue
 
