@@ -47,4 +47,23 @@ author: 'Ryan Garant'
   - Artists say that hard work is ruin if they over paint
   - The painting gets lost in the paint
 
+#### Invest in your Knowledge Portfolio
+
+> It's a lot like managing an investment portfolio
+
+1. **Invest Regularly**: even if small amount (think compound interest)
+2. **Diversify**: The more tech you are comfortable with, the better you can adapt to change
+3. **Manage Risk**: Choose wisely which shiny new tech you invest in
+4. **Buy Low, Sell High**: It's worth it to invest in new languages. Those who got on the Java train when it first came out were rewarded handsomely
+5. **Review & Rebalance**: Is it time to brush up on DB tech? Or how bout positioning yourself for a job opening
+
+_Challenges_:
+
+- learn a new language a year
+- read a technical book each quarter
+- read a non technical book each quarter
+- take classes
+- participate in one meetup
+- Go to a trade show or conf
+
 </article>
