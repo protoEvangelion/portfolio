@@ -86,7 +86,7 @@
     "@types/styled-system": "^3.0.8",
     "axios": "^0.18.0",
     "gatsby": "^2.0.6",
-    "gatsby-image": "^2.0.0-rc.4",
+    "gatsby-image": "^2.0.26",
     "gatsby-remark-images": "^3.0.1",
     "gatsby-remark-relative-images": "^0.2.1",
     "lodash": "^4.17.4",
