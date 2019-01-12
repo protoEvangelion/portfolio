@@ -10,7 +10,6 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     'gatsby-plugin-sharp',
-    'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-source-filesystem',
@@ -30,13 +29,19 @@ module.exports = {
       resolve: `gatsby-remark-relative-images`,
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 590,
+            },
+          },
+          {
+            resolve: 'gatsby-remark-prismjs',
+            options: {
+              inlineCodeMarker: '†',
             },
           },
         ],

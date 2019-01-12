@@ -4,15 +4,9 @@ description: "Fundamentals: algorithms, computing, 1's & 0's"
 author: 'Ryan Garant'
 ---
 
-#{$page.description}
-
 <article id="1">
 
 ## Big O Notation
-
-[![bigocheatsheet.png](https://s20.postimg.org/arpf7xsl9/bigocheatsheet.png)](https://postimg.org/image/x3n81brp5/)
-
-[![array_Big_O.png](https://s20.postimg.org/w2mzc7app/array_Big_O.png)](https://postimg.org/image/hjfuashkp/)
 
 - [Big O Cheatsheet](http://bigocheatsheet.com/)
 

@@ -6,9 +6,26 @@ export const Layout = styled.section`
   width: 100%;
   padding: 3rem 1rem;
 
+  > div {
+    max-width: 570px;
+    margin: 0 auto;
+  }
+
   input {
     background: #282a36;
     color: #f8f8f2;
+  }
+
+  ul p {
+    margin-bottom: 0.25em;
+  }
+
+  ul li {
+    padding-bottom: 0.2em;
+  }
+
+  img {
+    border-radius: 4px;
   }
 
   .gatsby-highlight,
@@ -17,6 +34,10 @@ export const Layout = styled.section`
   .katex-display,
   code {
     background: #23242f !important;
+  }
+
+  .gatsby-resp-image-wrapper {
+    margin-left: unset !important;
   }
 
   .tab-dropdown-wrapper {
@@ -28,6 +49,48 @@ export const Layout = styled.section`
   .command-suggestion:hover,
   .context-menu button:hover {
     background: #4d5b86;
+  }
+
+  /* --- Blockquote --- */
+
+  blockquote {
+    display: block;
+    background: #282a36;
+    padding: 15px 20px 15px 45px;
+    margin: 3rem 0;
+    position: relative;
+    font-size: 1.3em;
+    font-style: italic;
+    border-radius: 4px;
+    border-left: 15px solid #ff79c6;
+    border-right: 2px solid #ff79c6;
+    box-shadow: 2px 2px 15px #ccc;
+
+    &::before {
+      content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' class='octicon octicon-quote' viewBox='0 0 14 16' version='1.1' width='112' aria-hidden='true'%3E%3Cpath fill='%23ff79c6' fill-rule='evenodd' d='M6.16 3.5C3.73 5.06 2.55 6.67 2.55 9.36c.16-.05.3-.05.44-.05 1.27 0 2.5.86 2.5 2.41 0 1.61-1.03 2.61-2.5 2.61-1.9 0-2.99-1.52-2.99-4.25 0-3.8 1.75-6.53 5.02-8.42L6.16 3.5zm7 0c-2.43 1.56-3.61 3.17-3.61 5.86.16-.05.3-.05.44-.05 1.27 0 2.5.86 2.5 2.41 0 1.61-1.03 2.61-2.5 2.61-1.89 0-2.98-1.52-2.98-4.25 0-3.8 1.75-6.53 5.02-8.42l1.14 1.84h-.01z'%3E%3C/path%3E%3C/svg%3E");
+      font-size: 60px;
+      font-weight: bold;
+      position: absolute;
+      left: -32px;
+      top: -15px;
+    }
+
+    &::after {
+      /*Reset to make sure*/
+      content: '';
+    }
+
+    a {
+      text-decoration: none;
+      background: #eee;
+      cursor: pointer;
+      padding: 0 3px;
+      color: #c76c0c;
+
+      &:hover {
+        color: #666;
+      }
+    }
   }
 
   /* --- Colors Only --- */
@@ -54,6 +117,10 @@ export const Layout = styled.section`
   span,
   p {
     color: #f8f8f2;
+  }
+
+  .language-text {
+    color: #50fa7b;
   }
 
   /* --- Fills Only --- */
@@ -170,6 +237,12 @@ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascr
   }
 
   /* Code blocks */
+  p > code {
+    font-size: 0.75em;
+    border-radius: 0.5em;
+    padding: 0.5em 0.75em;
+  }
+
   pre[class*='language-'] {
     background: rgba(40, 41, 54, 1) !important;
     border-radius: 0.5em;
