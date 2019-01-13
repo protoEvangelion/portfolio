@@ -26,11 +26,11 @@ _Provided by [Big O Cheatsheet](http://bigocheatsheet.com/)_
   - left arr will be <= to pivot
   - right arr will be > pivot
 - keep recursing over those instructions until you hit the base case where the length of arr is 1 or 0
-  - once you hit that, concat the left list, the right list, & the pivot
+  - once you hit that, concat the left list, the pivot, and then the right list
 
 ### Implementation
 
-<p data-height="300" data-theme-id="31719" data-slug-hash="jXLeYO" data-default-tab="js,result" data-user="RyanGarant" data-pen-title="Visualized Algo: Quicksort Exercise" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/jXLeYO/">Visualized Algo: Quicksort Exercise</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="300" data-theme-id="31719" data-slug-hash="jXLeYO" data-default-tab="js" data-user="RyanGarant" data-pen-title="Visualized Algo: Quicksort Exercise" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/jXLeYO/">Visualized Algo: Quicksort Exercise</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 
 </article>
 
@@ -109,6 +109,6 @@ _Provided by [Big O Cheatsheet](http://bigocheatsheet.com/)_
 
 ### Implementation
 
-<p data-height="300" data-theme-id="31719" data-slug-hash="ZVpYdq" data-default-tab="js,result" data-user="RyanGarant" data-pen-title="Visualized Algo: Merge Sort" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/ZVpYdq/">Visualized Algo: Merge Sort</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="300" data-theme-id="31719" data-slug-hash="ZVpYdq" data-default-tab="js" data-user="RyanGarant" data-pen-title="Visualized Algo: Merge Sort" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/ZVpYdq/">Visualized Algo: Merge Sort</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 
 </article>

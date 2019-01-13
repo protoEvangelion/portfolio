@@ -26,7 +26,7 @@ export const NoteLayout = (props: INoteLayoutProps) => {
       <GlobalStyle />
 
       <Helmet>
-        <script async src="https://static.codepen.io/assets/embed/ei.js" />
+        <script src="https://static.codepen.io/assets/embed/ei.js" />
       </Helmet>
 
       <Link to="/notes">Notes</Link>
@@ -37,10 +37,10 @@ export const NoteLayout = (props: INoteLayoutProps) => {
         <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
       </Box>
 
-      <Flex flexDirection="column" height="100%">
+      <Flex flexDirection="column" height="100%" pt="50vh">
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <Link key={node.id} to={node.fields.slug}>
-            <h5>{node.frontmatter.title}</h5>
+            {node.frontmatter.title}
           </Link>
         ))}
       </Flex>
