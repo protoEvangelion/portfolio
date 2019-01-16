@@ -7,6 +7,9 @@ import { createGlobalStyle } from '@/style'
 import { Layout } from './styles'
 import fontFiles from './fonts'
 
+import '@/style/global.css'
+import '@/style/typography.scss'
+
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'Fira Code iScript';
