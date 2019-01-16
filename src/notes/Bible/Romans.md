@@ -241,4 +241,33 @@ Ro. 1:10 - what we are left to our flesh without the Spirit
 - The only one that I know of that comes close is a present sin which is blaspheming the Holy Spirit
   - And if you have the Holy Spirit residing in you, you cannot do that.
 
+> The mention of the Spirit in chapter 8 far outweighs its reference in ch. 1-7. In what proportion?
+
+- 1 to 20
+
+> What does the presence of the Spirit accomplish in the life of a true believer?
+
+- Reflecting on ch7, when Paul didn't rely on the Spirit, he did things he didn't want to do
+- The Spirit brings
+  - **life** & **peace** v6
+  - **submits** to God's law v7
+    - and therefore pleases God
+  - empowers us to **put to death** the deeds of the body v13
+  - gives us **hope** that our bodies will be redeemed v23
+  - helps us in our **weakness** v26
+  - Spirit **intercedes** for us in our prayers with groanings to deep for words according to God's will v27-28
+
+> Why do you think that more Christians do not rely upon the Spirit?
+
+- From my experience, the reasons I don't are:
+  - kind of mystical
+  - hard to understand the promptings of the Spirit
+  - wondering if these are my thoughts or the Spirit's thoughts
+  - Sometimes because of extreme charasmatics, we go to the other end of the spectrum, which is just understand God's word and do what it says
+
+> What is missing? Discuss.
+
+- I don't really here a lot about the Spirit in my circles
+  - So at lack of knowledge
+
 </article>
