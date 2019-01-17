@@ -10,13 +10,16 @@
     "graphql": true
   },
   "rules": {
+    "no-console": 0,
     "no-undef": 0,
     "no-else-return": ["error", { "allowElseIf": true }],
     "no-param-reassign": 0,
+    "no-underscore-dangle": 0,
     "no-use-before-define": 0,
     "no-unused-expressions": ["error", { "allowShortCircuit": true }],
     "no-unused-vars": 0,
     "no-restricted-globals": 0,
+    "no-var": 0,
     "default-case": 0,
     "react/default-props-match-prop-types": 0,
     "import/no-unresolved": 0,
@@ -28,6 +31,8 @@
     "react/no-danger": 0,
     "react/no-unused-prop-types": 0,
     "react/prop-types": 0,
-    "react-hooks/rules-of-hooks": "error"
+    "react-hooks/rules-of-hooks": "error",
+    "strict": 0,
+    "vars-on-top": 0
   }
 }

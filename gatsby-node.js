@@ -60,7 +60,93 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 }
 
-exports.onCreateWebpackConfig = ({ stage, actions }) => {
+const resolvableExtensions = () => [`.ts`, `.tsx`]
+
+// Add Babel plugin
+try {
+  require.resolve(`babel-plugin-styled-components`)
+} catch (e) {
+  throw new Error(
+    `'babel-plugin-styled-components' is not installed which is needed by plugin 'gatsby-plugin-styled-components'`
+  )
+}
+
+function onCreateBabelConfig({ actions, stage }, options) {
+  const ssr = stage === `build-html` || stage === `build-javascript`
+
+  actions.setBabelPlugin({
+    name: `babel-plugin-styled-components`,
+    stage,
+    options: { ...options, ssr },
+  })
+
+  actions.setBabelPreset({
+    name: `@babel/preset-typescript`,
+    options,
+  })
+}
+
+function onCreateWebpackConfig(
+  { actions, stage, loaders },
+  cssLoaderOptions = {},
+  postCssPlugins,
+  ...sassOptions
+) {
+  const jsLoader = loaders.js()
+
+  if (!jsLoader) {
+    return
+  }
+
+  const PRODUCTION = stage !== `develop`
+  const isSSR = stage.includes(`html`)
+
+  const resolve = module => require.resolve(module)
+
+  const sassLoader = {
+    loader: resolve(`sass-loader`),
+    options: {
+      sourceMap: !PRODUCTION,
+      ...sassOptions,
+    },
+  }
+
+  const sassRule = {
+    test: /\.s(a|c)ss$/,
+    use: isSSR
+      ? [loaders.null()]
+      : [
+          loaders.miniCssExtract(),
+          loaders.css({ ...cssLoaderOptions, importLoaders: 2 }),
+          loaders.postcss({ plugins: postCssPlugins }),
+          sassLoader,
+        ],
+  }
+  const sassRuleModules = {
+    test: /\.module\.s(a|c)ss$/,
+    use: [
+      !isSSR && loaders.miniCssExtract(),
+      loaders.css({ ...cssLoaderOptions, modules: true, importLoaders: 2 }),
+      loaders.postcss({ plugins: postCssPlugins }),
+      sassLoader,
+    ].filter(Boolean),
+  }
+
+  let configRules = []
+
+  switch (stage) {
+    case `develop`:
+    case `build-javascript`:
+    case `build-html`:
+    case `develop-html`:
+      configRules = configRules.concat([
+        {
+          oneOf: [sassRuleModules, sassRule],
+        },
+      ])
+      break
+  }
+
   actions.setWebpackConfig({
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
@@ -72,5 +158,18 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
         '@/assets': path.join(__dirname, 'src/assets'),
       },
     },
+    module: {
+      rules: [
+        {
+          test: /\.tsx?$/,
+          use: jsLoader,
+        },
+        ...configRules,
+      ],
+    },
   })
 }
+
+exports.resolvableExtensions = resolvableExtensions
+exports.onCreateBabelConfig = onCreateBabelConfig
+exports.onCreateWebpackConfig = onCreateWebpackConfig
