@@ -270,4 +270,30 @@ Ro. 1:10 - what we are left to our flesh without the Spirit
 - I don't really here a lot about the Spirit in my circles
   - So at lack of knowledge
 
+> Why did God have to replace the law of God (the law of sin and death) with the law of faith?
+
+- Vs 2 here seems to be the pivot point between ch. 7 & 8 where we see sin & Spirit contrasted
+- When Paul says **free** from, he continues with the motif of slavery
+- Romans 6:18 | and, having been set free from sin, have become slaves of righteousness.
+- We are still in bondage but to a new master.
+  - And this bondage is indeed freedom from the tyranny of our old master sin which would have killed us in the end.
+- So instead of the word "replace", I would say "new master"
+- _"For this grievous war did the grace of the Spirit put a stop to, by slaying sin, and making the contest light to us and crowning us at the outstart, and then drawing us to the struggle with abundant help. Next as it is ever his wont to turn from the Spirit to the Son and the Father, and to reckon all our estate to lean upon the Trinity"_ ~ St. John Chrysostom around 400 AD
+
+> Was the law of God not good, holy and righteous? What was the problem?
+
+- _The law teaches righteousness but cannot give righteousness_ ~ Calvin (paraphrase)
+- The purpose of the law was to expose how wicked we are, how far the chasm is between us and God, and then ultimately lead us to the foot of the cross so that we can cry out "_nothing in my hands I bring, simply to the cross I cling_"
+- So then the law cannot **save** us but it can lead us to the **Savior**
+
+> Didn't God know that the old law would not work? Or did it work? Discuss in contrast.
+
+- Paul asks a similar question in Galatians 3:
+
+  - 21Is the law then contrary to the promises of God? Certainly not! For if a law had been given that could give life, then righteousness would indeed be by the law. 22 But the Scripture imprisoned everything under sin, so that the promise by faith in Jesus Christ might be given to those who believe. 23 Now before faith came, we were held captive under the law, imprisoned until the coming faith would be revealed. 24 So then, the law was our guardian until Christ came, in order that we might be justified by faith.
+
+- I think the law works as God intended it in two ways:
+  1.  **Salvation**: _Saved by faith_; Brings an unbeliever to the end of themselves and shows them they are separated from God and under His wrath unless they place their faith in the One who upheld the Law perfectly and can impute righteousness
+  2.  **Sanctification**: _Walk by faith_; Humbles a believer as they recognize how far they fall short when they don't walk by faith
+
 </article>

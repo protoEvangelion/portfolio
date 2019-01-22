@@ -8,7 +8,7 @@ author: "Ryan Garant"
 
 <article id="1">
 
-> I am not content, nor should you be, at stopping once something just works, and not really knowing why. I gently challenge you to journey down that bumpy "_road less traveled_" and embrace all that JavaScript is and can do. With that knowledge, no **technique**, no **framework**, no popular **buzzword** acronym of the week, will be beyond your understanding. ~Kyle Simpson
+> I am not content, nor should you be, at stopping once something just works, and not really knowing why. I gently challenge you to journey down that bumpy _road less traveled_ and embrace all that JavaScript is and can do. With that knowledge, no **technique**, no **framework**, no popular **buzzword** acronym of the week, will be beyond your understanding. ~Kyle Simpson
 
 ## Core Principles of JS
 
@@ -16,17 +16,17 @@ author: "Ryan Garant"
 
 - Definition: parsing and executing the code line after line
 - The thread never executes more than one line at a time
-  - Hence the name \*"single threaded"
+  - Hence the name "single threaded"
 - **The thread of execution** will never enter your function declaration until you call the function
 
 #### Execution Context Example
 
 ```js
-const num = 3;
+const num = 3
 
 function multiplyBy2(inputNumber) {
   const result = inputNumber * 2
-  resturn result
+  return result
 }
 
 const output = multiplyBy2(4)
@@ -306,6 +306,7 @@ App.addProject('client features')
 - These rules only apply if `ToBoolean` is legitimately invoked
 
 - **Falsy**
+
   - If coerced to `ToBoolean` it returns false
   - **Exhaustive list of falsy values**:
     - 0, +0, -0
@@ -313,6 +314,9 @@ App.addProject('client features')
     - NaN
     - false
     - undefined
+    - '', "", ``
+    - document.all
+
 - **Truthy**
   - Everything not on the falsy list
   - ie
