@@ -194,9 +194,10 @@ set
 
 #### Binary Search Trees
 
-![](images/bst.jpg)
+![](images/bst.png)
 _Provided by [Brian Holt](http://btholt.github.io/four-semesters-of-cs/)_
 
+- values can be of **any type** not just numbers
 - smaller nodes on left, larger nodes on right
 - Nodes that have no children are **leaves**
 - A node has 0, 1, or 2 subtrees
@@ -207,7 +208,17 @@ _Provided by [Brian Holt](http://btholt.github.io/four-semesters-of-cs/)_
   - Once you get to a null node, stick your node there
 - BSTs don't perform well if you add a sorted list to it
 
-<p data-height="300" data-theme-id="31719" data-slug-hash="LJXXee" data-default-tab="js,result" data-user="RyanGarant" data-pen-title="Visualized Data Structure: Binary Tree Exercise" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/LJXXee/">Visualized Data Structure: Binary Tree Exercise</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+##### Clarification Q's
+
+- Are duplicate values allowed?
+- Does it have to be balanced?
+- Does it have to be binary?
+
+<p class="codepen" data-height="300" data-theme-id="31719" data-default-tab="js" data-user="RyanGarant" data-slug-hash="KJzgpL" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="Visualized Data Structure: Recursive Binary Tree w/ add method">
+  <span>See the Pen <a href="https://codepen.io/RyanGarant/pen/KJzgpL/">
+  Visualized Data Structure: Recursive Binary Tree w/ add method</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
 
 #### AVL Tree
 
@@ -258,18 +269,59 @@ _Provided by [Brian Holt](http://btholt.github.io/four-semesters-of-cs/)_
 
 > The way that you access nodes on a tree data structure
 
+- **Use case**: Occasionally you need to serialize the entire tree into a flat data structure or process nodes one by one
+
 #### Depth First
 
-You have 3 options of how you want to process the nodes
+You have *3 options* of how you want to process the nodes:
+  - The process/visit task could vary but let's say our processing task will be to add each node into an array
 
 1. **preorder**
+   - process itself, then left tree, the right tree
    - Most intuitive
+   - Good for making deep copies
+
+```typescript
+function preOrderTraversal(node: TreeNode) {
+  if (node !== null) {
+    processTask(node)
+    preOrderTraversal(node.left)
+    preOrderTraversal(node.right)
+  }
+}
+```
+
 2. **inorder**
+   - process left tree, then itself, the right tree
    - Allows you to get a sorted list
+
+```typescript
+function inOrderTraversal(node: TreeNode) {
+  if (node !== null) {
+    inOrderTraversal(node.left)
+    processTask(node)
+    inOrderTraversal(node.right)
+  }
+}
+```
+
 3. **postorder**
    - Process left tree then right tree then itself
 
+```typescript
+function postOrderTraversal(node: TreeNode) {
+  if (node !== null) {
+    postOrderTraversal(node.left)
+    postOrderTraversal(node.right)
+    processTask(node)
+  }
+}
+```
+
 #### Breadth First
+
+- Process one level at a time
+- Use Queues
 
 </article>
 
@@ -376,7 +428,36 @@ console.log(myWeeklyMenu.storage)
 
 </article>
 
+<article id="3">
+
+## Practical Takeaways
+
+- Note: *ASID* stands for:
+  - Access
+  - Search
+  - Insertion
+  - Delete
+
+### Out of the Box JS Data Structures
+
+> Pretty much just arrays, HiddenClasses, and hash tables
+
+- **Map, WeakMap, Set, WeakSet** are implemented using *hash tables* in v8 [4]
+  - **Constant time** on avg for ASID
+  - v8 moved implementation from js to C++ but this is what it looks like in JS [5]
+- **Array** is under the hood implemented as a C++ *Array* most of the time unless array is sparse or holey
+- **Object** is implemented as *hidden classes* [6]
+- **Typed Array**: are array-like objects that provide a mechanism for accessing raw binary data
+  - Use-cases for binary data in JS are, including, but not limited to the processing of assets for use in WebGL
+  - traffic-optimization for AJAX, WebSockets and WebRTC
+  - usage of WebUSB and WebAudio
+
+</article>
+
 
 [1]: https://odino.org/this-is-how-a-dumb-hashtable-works/
 [2]: https://github.com/getify/Functional-Light-JS/blob/13a3bdafb4edb83207db76212312472aab20d06a/manuscript/ch5.md#once-is-enough-thanks
 [3]: https://en.wikipedia.org/wiki/Bloom_filter#Examples
+[4]: https://v8.dev/blog/hash-code
+[5]: https://chromium.googlesource.com/v8/v8/+/909500aa1db9789b68e101045a6359a7fcb30e83/src/collection.js#294
+[6]: https://v8.dev/blog/fast-properties#hiddenclasses-and-descriptorarrays

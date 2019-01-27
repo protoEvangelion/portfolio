@@ -100,7 +100,7 @@ author: 'Ryan Garant'
 
 ### Hash Table
 
-- Count the number of occurences of all characters or words in a body of text or string
+- Count the number of occurrences of all characters or words in a body of text or string
 - Delete duplicates in a list
 - Find a unique value in a list
 - Find if two integers in a list add up to k
@@ -108,7 +108,7 @@ author: 'Ryan Garant'
 ### Array / string
 
 - Rotate a matrix, string, or an array
-- Given an m x n bollean matrix, if an element is 0, set its entire row and column to 0
+- Given an m x n boolean matrix, if an element is 0, set its entire row and column to 0
 - Search foa value
 - Write a function encodes a string by turning all spaces in `%20`
 - Merge two sorted lists into one list
