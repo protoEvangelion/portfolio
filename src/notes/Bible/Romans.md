@@ -296,4 +296,43 @@ Ro. 1:10 - what we are left to our flesh without the Spirit
   1.  **Salvation**: _Saved by faith_; Brings an unbeliever to the end of themselves and shows them they are separated from God and under His wrath unless they place their faith in the One who upheld the Law perfectly and can impute righteousness
   2.  **Sanctification**: _Walk by faith_; Humbles a believer as they recognize how far they fall short when they don't walk by faith
 
-</article>
+> What kinds of things are you setting your mind upon day by day? Read vv. 5-8. Are your thoughts carnal or spiritual?
+
+- Ultimately spiritual things because the Spirit dwells within me
+  - Sometimes I can reduce the decibels of those thoughts though
+- **Good**:
+  - thinking on scripture
+  - about how God is working in the present moment and how He promises to work in the future
+- **Bad**:
+
+  - watching violent tv shows
+  - at work I can dwell on the problems instead of taking ownership or realizing that God promised this in the form of "sweat of the brow"
+  - focusing on the wrongs of others
+
+- Though the trendline of my thoughts is headed away from carnal towards the spiritual, I still battle against fleshly thoughts on the daily
+
+> What does it mean to "set your mind"?
+
+- _thanatos_ (death)
+- _zōē_ (life)
+- _phronēma_ (to set mind on, mindset, way of thinking; is a noun which is wierd because the english text reads as a verb)
+
+- Although I think we can draw out some practical principles from this text, primarily it seems to be dealing with the thought life of a non believer vs a believer
+  - I think this is the same type of life spoken of in vs. 11, resurrection life
+
+> If you have a carnal thought, will God condemn you?
+
+- no, it's what we do with the thought that matters. The next part of the chapter says that literally nothing can separate us from the love of God.
+  - A lot of times my carnal thoughts are of my own desires
+  - But sometimes they are just thoughts that I have no desire to have
+  - if I let it linger, then it can do damage
+  - But if I bring it up to God and sift it against His word I can take it captive
+  - vs 12 talks about this war idea further that we are in the process of putting to death the deeds of our flesh
+
+> What do spiritual thoughts yield? Is it the same as in Romans 12:2?
+
+- eternal life and peace
+- Though they seem to be related I think they are different yields
+- in Ro 8, the life and peace is the reverse of what the flesh would have yielded, which is condemnation and no peace with God forever
+- whereas in Ro 12 it is dealing with the daily renewing of our minds by swimming in Scripture so that we can discern the will of God and do it
+  </article>

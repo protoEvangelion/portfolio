@@ -134,7 +134,7 @@ export const Layout = styled.section`
   }
 
   em {
-    display: block;
+    display: inline-block;
     padding-top: 0.3rem;
   }
 

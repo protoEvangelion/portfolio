@@ -220,6 +220,26 @@ _Provided by [Brian Holt](http://btholt.github.io/four-semesters-of-cs/)_
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 
+##### Balances
+
+- **Complete Binary Tree**
+  - every level of the tree is fully filled except for leaf level
+- **Full Binary Tree**
+  - every node has either zero or two children
+- **Perfect Binary Tree**
+  - both full and complete
+
+##### Min Heap
+
+- root is minimum node
+- complete binary tree (rightmost on leaf level don't have to be filled)
+- Two methods:
+  1. `insert`
+    - insert element at bottom rightmost spot even if smaller
+    - then rebalance the tree by bubbling up the node to where it will be in its proper min location
+  2. `extractMin`
+    -
+
 #### AVL Tree
 
 > AVL search trees help maintain fast lookups which is the main strength of BSTs
