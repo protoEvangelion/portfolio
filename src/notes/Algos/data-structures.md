@@ -229,17 +229,6 @@ _Provided by [Brian Holt](http://btholt.github.io/four-semesters-of-cs/)_
 - **Perfect Binary Tree**
   - both full and complete
 
-##### Min Heap
-
-- root is minimum node
-- complete binary tree (rightmost on leaf level don't have to be filled)
-- Two methods:
-  1. `insert`
-    - insert element at bottom rightmost spot even if smaller
-    - then rebalance the tree by bubbling up the node to where it will be in its proper min location
-  2. `extractMin`
-    -
-
 #### AVL Tree
 
 > AVL search trees help maintain fast lookups which is the main strength of BSTs
@@ -474,6 +463,62 @@ console.log(myWeeklyMenu.storage)
 
 </article>
 
+<article id="4">
+
+## Heap
+
+![heap in node js](https://cdn-images-1.medium.com/max/1000/0*rxL52gBVz5zK64Pa.png)
+
+- useful DS when needing to repeatedly remove object with highest or lowest priority
+- Also useful in efficient graph algos like Dijkstra
+- specialized **tree-based** data structure
+  - not always a binary tree but can be
+- Introduced by Williams in 1964 for the heapsorting algo
+  - `n log n` across board with constant space!
+- Can be a *priority queue*
+- meaningful relationship is only between parent and child not siblings
+  - therefore is not ordered but partially ordered
+
+- **Min Heap**
+  - root is minimum node
+  - parent < child
+
+- **Max Heap**
+  - root is max node
+  - parent > child
+
+### Operations [7]
+
+#### Common:
+
+1. find-max [or find-min]: find a maximum item of a max-heap, or a minimum item of a min-heap, respectively (a.k.a. peek)
+2. insert: adding a new key to the heap (a.k.a., push)
+3. extract-max [or extract-min]: returns the node of maximum value from a max heap [or minimum value from a min heap] after removing it from the heap (a.k.a., pop)
+4. delete-max [or delete-min]: removing the root node of a max heap [or min heap], respectively
+5. replace: pop root and push a new key. More efficient than pop followed by push, since only need to balance once, not twice, and appropriate for fixed-size heaps.
+
+#### Creation
+
+1. create-heap: create an empty heap
+2. heapify: create a heap out of given array of elements
+3. merge (union): joining two heaps to form a valid new heap containing all the elements of both, preserving the original heaps.
+5. meld: joining two heaps to form a valid new heap containing all the elements of both, destroying the original heaps.
+
+#### Inspection
+
+1. size: return the number of items in the heap.
+2. is-empty: return true if the heap is empty, false otherwise.
+
+#### Internal
+
+1. increase-key or decrease-key: updating a key within a max- or min-heap, respectively
+2. delete: delete an arbitrary node (followed by moving last node and sifting to maintain heap)
+3. sift-up: move a node up in the tree, as long as needed; used to restore heap condition after insertion. Called "sift" because node moves up the tree until it reaches the correct level, as in a sieve.
+4. sift-down: move a node down in the tree, similar to sift-up; used to restore heap condition after deletion or replacement.
+
+
+</article>
+
 
 [1]: https://odino.org/this-is-how-a-dumb-hashtable-works/
 [2]: https://github.com/getify/Functional-Light-JS/blob/13a3bdafb4edb83207db76212312472aab20d06a/manuscript/ch5.md#once-is-enough-thanks
@@ -481,3 +526,4 @@ console.log(myWeeklyMenu.storage)
 [4]: https://v8.dev/blog/hash-code
 [5]: https://chromium.googlesource.com/v8/v8/+/909500aa1db9789b68e101045a6359a7fcb30e83/src/collection.js#294
 [6]: https://v8.dev/blog/fast-properties#hiddenclasses-and-descriptorarrays
+[7]: https://en.wikipedia.org/wiki/Heap_(data_structure)#Operations
