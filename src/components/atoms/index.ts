@@ -1,7 +1,7 @@
 export { Avatar } from './Avatar'
 export { Box } from './Box'
 export { Flex } from './Flex'
-export { Link } from './Link'
+export { Link } from './Link/Link'
 export { Logo } from './Logo'
 export { Heading } from './Heading'
 export { Span } from './Span'

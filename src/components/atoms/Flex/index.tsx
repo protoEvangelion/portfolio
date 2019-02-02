@@ -3,7 +3,9 @@ import { alignItems, flexDirection, flexWrap, justifyContent, styled } from '@/s
 import { IFlexProps } from 'interfaces'
 import { Box } from '../Box'
 
-export const Flex = styled<IFlexProps>(({ ...props }) => <Box {...props} />)`
+export const Flex = styled<IFlexProps>(
+  ({ alignItems, flexDirection, flexWrap, justifyContent, ...props }) => <Box {...props} />
+)`
   display: ${props => (props.hide ? 'none' : 'flex')};
 
   ${alignItems};

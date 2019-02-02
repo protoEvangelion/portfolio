@@ -24,8 +24,10 @@ export const Layout = styled.section`
     padding-bottom: 0.2em;
   }
 
-  img {
+  img,
+  .gatsby-resp-image-wrapper {
     border-radius: 4px;
+    margin: 1rem 0 3rem;
   }
 
   .gatsby-highlight,
@@ -82,13 +84,13 @@ export const Layout = styled.section`
 
     a {
       text-decoration: none;
-      background: #eee;
+      background: none;
       cursor: pointer;
       padding: 0 3px;
-      color: #c76c0c;
+      color: #50fa7b;
 
       &:hover {
-        color: #666;
+        color: #bd93f9;
       }
     }
   }
@@ -138,13 +140,10 @@ export const Layout = styled.section`
     padding-top: 0.3rem;
   }
 
-  img {
-    margin-bottom: 0;
-  }
-
   input {
     border: 1px solid #ff79c6;
   }
+
   input[type='text']:focus {
     box-shadow: 0 0 5px #50fa7b;
     border: 1px solid #50fa7b;

@@ -6,7 +6,7 @@ author: 'Ryan Garant'
 
 > These ideas are condensed from Dr. Starrett's book _Deskbound | Standing Up to a Sitting World_ [1]
 
-<article id="1">
+<article id="standing-workstation">
 
 ## Standing Workstation
 
@@ -55,8 +55,10 @@ author: 'Ryan Garant'
 - [slant board](https://www.amazon.com/dp/B077GBLFL3/ref=sspa_dk_hqp_detail_aax_0?psc=1)
 - box to put foot on
 - **Shoes**
-  - none
-  - or shoes that are as close to no shoes as possible, with flat sole
+  - barefoot is the recommended option
+  - 2nd best is shoes with flat sole
+    - less cushion for softer surfaces
+    - more cushion for harder surfaces
 
 #### Stool
 
@@ -69,6 +71,52 @@ author: 'Ryan Garant'
 - I opted for the middle ground and have been very happy with the [VARIDESK](https://www.amazon.com/gp/product/B00JI6NCCK/ref=oh_aui_search_asin_title?ie=UTF8&psc=1)
 
 ### Creating a Movement-Rich environment
+
+</article>
+
+<article id="bracing-sequence">
+
+## Bracing Sequence
+
+- Created by Dr. Starrett
+- Everytime you catch your self out of position while standing throughout the day, use the bracing sequence
+  - It is a short simple system that will give you consistent & healthy results
+  - This is a chore at first but becomes instinctual
+
+### Step by Step
+
+**Step 1: Set pelvis in neutral position**
+
+- position your feet parallel directly under hips
+- slightly squeeze glutes
+- subtly screw hips into ground by turning left leg counterclockwise & right leg clockwise
+
+![Step 1](images/step-1.png)
+
+**Step 2: Brace position by balancing rib cage over pelvis**
+
+- maintain previous position
+- stiffen trunk & orient rib cage over pelvis while breathing out
+- almost as if you are bracing for a punch in the gut
+
+![Step 2](images/step-2.png)
+
+**Step 3: Organize shoulders**
+
+- screw shoulders backward while arms at side until palms face forward
+- drive arms back & up until they are perpendicular with the floor and palms facing upward
+- don't let ribs flare or tilt
+
+![Step 3](images/step-3.png)
+
+**Step 4: Set head in neutral position**
+
+- balance head over shoulders
+- fix gaze straight ahead
+- align ears over center of shoulders, hips & ankles
+- complete sequence by letting forearms & hands relax at sides with thumbs pointed forward and shoulders in casually wound-up, stable shape
+
+![Step 4](images/step-4.png)
 
 </article>
 

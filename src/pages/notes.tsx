@@ -31,7 +31,7 @@ const Notes: React.SFC<INotesPageProps> = props => (
       {props.data.allMarkdownRemark.edges
         .filter(({ node }) => node.fields.isIndex)
         .map(({ node }) => (
-          <Card key={node.id} title={node.frontmatter.title} link={node.fields.slug} />
+          <Card bg="white" key={node.id} title={node.frontmatter.title} link={node.fields.slug} />
         ))}
     </Wrapper>
   </MainLayout>

@@ -1,10 +1,10 @@
 import * as React from 'react'
 import { media, styled } from '@/style'
-import { Flex, Heading } from '@/components/atoms'
-import { Link } from 'gatsby'
+import { Flex, Heading, Link } from '@/components/atoms'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 interface ICardProps {
+  bg?: string
   link: string
   title: string
 }
@@ -15,7 +15,7 @@ const StyledLink = styled(Link)`
 
 const CardWrapper = styled(Flex)`
   backface-visibility: hidden;
-  background: ${props => props.theme.colors.foreground};
+  background: ${({ bg = 'white', theme }) => theme.colors[bg]};
   border-radius: 8px;
   box-shadow: 0 50px 40px rgba(0, 0, 0, 0.7);
   color: black;
@@ -82,7 +82,7 @@ const CardWrapper = styled(Flex)`
 `
 
 export const Card = ({ link, title }: ICardProps) => (
-  <CardWrapper as={StyledLink} bg="cyan" justifyContent="center" alignItems="center" to={link}>
+  <CardWrapper as={StyledLink} bg="white" justifyContent="center" alignItems="center" to={link}>
     <FontAwesomeIcon icon="cogs" size="3x" />
 
     <Heading color="black" as="h3">

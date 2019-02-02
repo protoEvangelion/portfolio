@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { IBoxProps } from 'interfaces'
 import {
   alignSelf,
@@ -16,8 +17,7 @@ import {
   zIndex,
 } from '@/style'
 
-// TODO: blacklist props like opacity, height, width, transition
-export const Box = styled<IBoxProps, 'div'>('div')`
+const BoxUnfiltered = styled<IBoxProps, 'div'>('div')`
   ${props => props.cursor && `cursor: ${props.cursor};`}
   ${props => props.height && `height: ${props.height};`}
   ${props => props.opacity && `opacity: ${props.opacity};`}
@@ -48,5 +48,22 @@ export const Box = styled<IBoxProps, 'div'>('div')`
   ${width}
   ${zIndex}
 `
+
+export const Box = ({
+  borderRadius,
+  bottom,
+  color,
+  left,
+  height,
+  opacity,
+  position,
+  right,
+  space,
+  top,
+  transition,
+  width,
+  zIndex,
+  ...props
+}) => <BoxUnfiltered {...props} />
 
 Box.displayName = 'Box'
