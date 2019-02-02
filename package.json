@@ -8,6 +8,7 @@
     "dev": "gatsby develop --port 7777",
     "build": "gatsby build",
     "clean": "git clean -xfd .cache public/ && rm -rf .cache public",
+    "serve": "gatsby serve",
     "story": "start-storybook -p 9001 -c private/storybook",
     "svgs": "node src/utils/generateSvgs.js",
     "test": "jest --verbose false",
