@@ -20,7 +20,7 @@
     "@babel/preset-typescript": "^7.1.0",
     "@svgr/core": "^4.1.0",
     "@types/history": "^4.6.2",
-    "@types/jest": "^23.3.9",
+    "@types/jest": "^24.0.0",
     "@types/lodash": "^4.14.63",
     "@types/node": "^10.12.15",
     "@types/ramda": "^0.26.0",
