@@ -335,4 +335,42 @@ Ro. 1:10 - what we are left to our flesh without the Spirit
 - Though they seem to be related I think they are different yields
 - in Ro 8, the life and peace is the reverse of what the flesh would have yielded, which is condemnation and no peace with God forever
 - whereas in Ro 12 it is dealing with the daily renewing of our minds by swimming in Scripture so that we can discern the will of God and do it
+
+> Do you really have the Spirit of Christ dwelling within you?
+
+- Yes the Spirit of Christ dwells within me.
+  - I know this because when God saved me, my desire for wicked things was totally gone.
+    - Certain wicked desires remained which have been dwindling through sanctification.
+  - Also the next time a saw my family members after getting saved, they were like "Ryan what happened to you?!"
+  - Also I have been led to help others with no strings attached, which is something I never would have done
+
+> What will be the outward evidence of His life within you? Remember back (if you can) to former discussions we've had about what things you will "want" to do if the Spirit of Christ is indwelling. List 6 evidences.
+
+1. Serving others with no strings attached
+2. Loving others that I would have completely avoided in the past
+3. Bearing Fruit of Spirit
+4. Witnessing to others about the glory of Christ and what He did in my life
+5. Exercising spiritual gifts
+6. Following God's commandments
+
+> What does it mean to have "life given to our mortal bodies" (v. 11)?
+
+- We live and we die
+- This is referring to the physical resurrection of our dead body when Christ returns
+- zōopoieōmake make alive in; verb is in future tense
+- The Spirit is our guarantor for being heirs with Christ
+
+> Explain how the Spirit gives life to our bodies which are dying?
+
+- Fitzmyer comments that Paul was playing on the two meanings of πνεῦμα:
+
+> Without the Spirit, the source of Christian vitality, the human “body” is like a corpse because of the influence of sin … but in union with Christ the human “spirit” lives.
+
+- I have practical life in that:
+  - I have joy that lasts longer than a party or drugs
+  - I have true fulfillment
+  - I know my purpose and the reason for my creation
+  - I am much happier when I sin less. Sin makes me sad haha
+- So that I can say Christ in John 10:10 that it is true when He said that He came to bring and have life in full
+
   </article>
