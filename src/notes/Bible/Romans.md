@@ -373,4 +373,23 @@ Ro. 1:10 - what we are left to our flesh without the Spirit
   - I am much happier when I sin less. Sin makes me sad haha
 - So that I can say Christ in John 10:10 that it is true when He said that He came to bring and have life in full
 
+> What does the phrase "the Spirit is life because of righteousness mean"? Can we simplify some of these concepts into our every day terms
+
+- God wants us to do what he wants us to do and He
+- currently we do not have a relationship with God because we did what He told us not to do
+- God is perfect and holds us to His unmovable standard
+- We are made to live forever, so if we do not get right with God on His terms before we die, we will be separated from Him forever
+- On top of that, we will be punished by Him forever
+- The only alternative to this is getting right by God
+- When we do that, He will give us His Spirit so that we can finally do what He asks us to moment by moment and forever
+- This is the opposite of death because we won't suffer the punishment of God but the benefits for all eternity
+
+> Relate vs 1-11 to ch 7
+
+- I cannot do what God asks me to do because I am a slave to my desires
+- My desires are contrary to God's desires
+- Even if I want to do what the law says like in Ro. 7, I cannot unless God works through me
+- So God the Father sent Jesus to do what we couldn't do
+- then Jesus sent the Spirit to continue to do what we still can't do
+
   </article>
