@@ -63,7 +63,7 @@
     "prettier": "^1.12.1",
     "react-hot-loader": "^4.3.12",
     "react-test-renderer": "^16.6.1",
-    "react-testing-library": "^5.2.3",
+    "react-testing-library": "^6.0.0",
     "redux-devtools-extension": "^2.13.2",
     "sass-loader": "^7.1.0",
     "stylelint": "^9.9.0",
