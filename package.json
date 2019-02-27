@@ -105,7 +105,7 @@
     "react-typist": "^2.0.4",
     "redux": "^4.0.1",
     "styled-components": "^4.0.2",
-    "styled-system": "^3.1.11",
+    "styled-system": "^4.0.1",
     "styled-tools": "^1.6.0"
   },
   "lint-staged": {
