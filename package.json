@@ -85,7 +85,7 @@
     "@fortawesome/react-fontawesome": "^0.1.3",
     "@types/styled-system": "^3.0.8",
     "axios": "^0.18.0",
-    "gatsby": "^2.0.31",
+    "gatsby": "^2.1.29",
     "gatsby-image": "^2.0.31",
     "gatsby-plugin-react-helmet": "^3.0.8",
     "gatsby-remark-images": "^3.0.7",
