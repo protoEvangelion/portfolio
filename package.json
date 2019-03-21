@@ -16,7 +16,7 @@
     "test:ci": "jest --coverage && codecov"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.5",
+    "@babel/core": "^7.4.0",
     "@babel/preset-typescript": "^7.1.0",
     "@svgr/core": "^4.1.0",
     "@types/history": "^4.6.2",
