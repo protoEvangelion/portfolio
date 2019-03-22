@@ -101,7 +101,7 @@
     "react-redux": "^6.0.0",
     "react-reveal": "^1.2.2",
     "react-styled-flexboxgrid": "^3.0.0",
-    "react-transition-group": "^2.5.0",
+    "react-transition-group": "^2.7.0",
     "react-typist": "^2.0.4",
     "redux": "^4.0.1",
     "styled-components": "^4.0.2",
