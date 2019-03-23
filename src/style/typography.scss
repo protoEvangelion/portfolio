@@ -1,18 +1,18 @@
 @import '~modularscale-sass/stylesheets/modularscale';
-@import url('https://fonts.googleapis.com/css?family=Gugi|Roboto:300,400');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900|Space+Mono:400,700');
 
-h1,
+h1 {
+  font-family: 'Space Mono', 'Lucida Console', Monaco, monospace;
+}
+
 h2,
 h3,
 h4,
-h5 {
-  font-family: Gugi, Verdana, Geneva, sans-serif;
-}
-
+h5,
 p,
 a,
 span {
-  font-family: Roboto, TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, serif;
+  font-family: Roboto, 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 }
 
 $modularscale: (
