@@ -5,7 +5,7 @@
   "repository": "https://github.com/protoEvangelion/portfolio",
   "version": "2.0.0",
   "scripts": {
-    "dev": "gatsby develop --port 7777",
+    "dev": "gatsby develop -H 0.0.0.0 -p 7777 -o",
     "build": "gatsby build",
     "clean": "git clean -xfd .cache public/ && rm -rf .cache public",
     "serve": "gatsby serve",
