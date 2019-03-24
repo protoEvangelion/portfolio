@@ -111,7 +111,7 @@ export const Hero = styled.div`
   height: 100%;
   width: 100%;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 `
 
 export const Img = styled.img`

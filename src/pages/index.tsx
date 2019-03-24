@@ -137,14 +137,14 @@ class Index extends React.Component<IIndexPageProps, IIndexPageState> {
             <Sphere3d />
 
             <Box>
-              <Heading color="white">RYAN GARANT</Heading>
+              <Heading color="gray7" my={0} >Ryan Garant</Heading>
               {/* <span>React Web Dev</span>
                   <span>Node.js Backend Dev</span>
                   <span>Happily Married Dad</span>
                   <span>Lover of Jesus Christ</span>
                   <span>Developer Tooling Advocate</span> */}
               <Heading color="white" my={0} underline>
-                REACT WEB DEVELOPER
+                React Web Developer
               </Heading>
             </Box>
           </Hero>
