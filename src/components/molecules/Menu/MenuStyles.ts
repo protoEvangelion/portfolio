@@ -33,13 +33,17 @@ export const List = styled<IMenuStyles, 'ul'>('ul')`
     a {
       color: ${props => (props.dark && !props.menuOpen ? 'black' : 'white')};
       position: relative;
+      font-weight: 900;
+      letter-spacing: 0.2rem;
 
       &::after {
         content: '';
         width: 0;
-        background: linear-gradient(90deg, #f0f, #0ff);
-        height: 2px;
-        top: 130%;
+        background-image: url('/images/icons/line-hover-wave.svg');
+        background-repeat: no-repeat;
+        height: 48px;
+        top: 0;
+        z-index: -1;
         left: 5%;
         position: absolute;
         transition: width 0.5s cubic-bezier(0.25, 0.1, 0.14, 1.49);
