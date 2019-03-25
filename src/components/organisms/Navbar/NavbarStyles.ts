@@ -70,7 +70,7 @@ export const Nav = styled<INavProps, 'nav'>('nav')`
   ${media.tablet`
     align-items: center;
     padding: 2rem 4rem;
-    justify-content: center;
+    justify-content: space-between;
 
     ${props => {
       if (props.bottom) {
@@ -112,11 +112,6 @@ export const Nav = styled<INavProps, 'nav'>('nav')`
           left: 8rem;
           right: 8rem;
           top: 4rem;
-
-          .logo-link {
-            position: absolute;
-            left: 0;
-          }
         `
       }
     }};

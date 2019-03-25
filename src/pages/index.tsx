@@ -137,7 +137,9 @@ class Index extends React.Component<IIndexPageProps, IIndexPageState> {
             <Sphere3d />
 
             <Box>
-              <Heading color="gray7" my={0} >Ryan Garant</Heading>
+              <Heading color="gray7" my={0}>
+                Ryan Garant
+              </Heading>
               {/* <span>React Web Dev</span>
                   <span>Node.js Backend Dev</span>
                   <span>Happily Married Dad</span>
@@ -157,6 +159,7 @@ class Index extends React.Component<IIndexPageProps, IIndexPageState> {
             height="100%"
             width={[1, 0.7, 0.55]}
             pt="15vh"
+            maxWidth="80ch"
           >
             <Heading as="h4" className="frame-title">
               Journey to Tech 🚀
