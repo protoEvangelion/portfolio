@@ -61,7 +61,7 @@
     "modularscale-sass": "^3.0.5",
     "node-sass": "^4.9.3",
     "prettier": "^1.12.1",
-    "react-hot-loader": "^4.3.12",
+    "react-hot-loader": "^4.8.2",
     "react-test-renderer": "^16.6.1",
     "react-testing-library": "^5.2.3",
     "redux-devtools-extension": "^2.13.2",
