@@ -88,7 +88,7 @@
     "gatsby": "^2.0.31",
     "gatsby-image": "^2.0.39",
     "gatsby-plugin-react-helmet": "^3.0.12",
-    "gatsby-remark-images": "^3.0.1",
+    "gatsby-remark-images": "^3.0.10",
     "gatsby-remark-relative-images": "^0.2.1",
     "lodash": "^4.17.4",
     "logrocket": "^0.6.17",
