@@ -13,7 +13,9 @@
     "svgs": "node src/utils/generateSvgs.js",
     "test": "jest --verbose false",
     "test:watch": "jest --watch --verbose false",
-    "test:ci": "jest --coverage && codecov"
+    "test:ci": "jest --coverage && codecov",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "devDependencies": {
     "@babel/core": "^7.1.5",
@@ -106,7 +108,8 @@
     "redux": "^4.0.1",
     "styled-components": "^4.0.2",
     "styled-system": "^3.1.11",
-    "styled-tools": "^1.6.0"
+    "styled-tools": "^1.6.0",
+    "snyk": "^1.161.1"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -121,5 +124,6 @@
   },
   "stylelint": {
     "extends": "stylelint-config-standard"
-  }
+  },
+  "snyk": true
 }
