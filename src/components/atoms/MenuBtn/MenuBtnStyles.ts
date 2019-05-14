@@ -5,6 +5,8 @@ const midPoint = size / Math.sqrt(2)
 
 export const Button = styled<{ menuOpen: boolean }, 'button'>('button')`
   align-self: center;
+  background: transparent;
+  border: 0px;
   box-sizing: border-box;
   cursor: pointer;
   height: ${midPoint + 4}px;

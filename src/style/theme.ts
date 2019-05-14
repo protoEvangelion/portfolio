@@ -70,7 +70,7 @@ export const colors = {
   gray2: '#dee1e3',
   gray3: '#cfd3d7',
   gray4: '#bfc5c9',
-  gray5: '#adb4b9',
+  gray5: '#BEC4C8',
   gray6: '#98a1a8',
   gray7: '#7f8b93',
   gray8: '#606e79',

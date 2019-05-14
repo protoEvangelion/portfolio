@@ -1,4 +1,4 @@
-import { styled, media } from '@/style'
+import { media, styled } from '@/style'
 
 interface IMenuStyles {
   dark?: boolean
@@ -38,13 +38,15 @@ export const List = styled<IMenuStyles, 'ul'>('ul')`
 
       &::after {
         content: '';
+        height: 20px;
         width: 0;
         background-image: url('/images/icons/line-hover-wave.svg');
         background-repeat: no-repeat;
-        height: 48px;
-        top: 0;
+        background-size: cover;
+        top: 80%;
         z-index: -1;
         left: 5%;
+        right: 0;
         position: absolute;
         transition: width 0.5s cubic-bezier(0.25, 0.1, 0.14, 1.49);
       }

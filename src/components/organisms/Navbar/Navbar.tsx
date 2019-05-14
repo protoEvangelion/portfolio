@@ -1,8 +1,7 @@
-import { Logo, Link, MenuBtn } from '@/components/atoms'
+import { Link, Logo, MenuBtn } from '@/components/atoms'
 import { Menu } from '@/components/molecules'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { cold } from 'react-hot-loader'
-import { InterpolationValue } from 'styled-components'
 import { Nav } from './NavbarStyles'
 
 const useMedia = (query: string) => {
@@ -23,82 +22,54 @@ const useMedia = (query: string) => {
 }
 
 interface INavbarProps {
-  absolute?: boolean
   ariaLabel?: string
-  animation?: InterpolationValue[]
-  dark?: boolean
-  hideDesktopText?: boolean
   menuOpen?: boolean
-  bottom?: boolean
   setMenuOpen?: (isOpen: boolean) => void
-  visible?: boolean
 }
 
-export const Navbar = cold(
-  ({
-    ariaLabel = 'Site Navigation',
-    animation,
-    dark = false,
-    hideDesktopText = false,
-    menuOpen,
-    setMenuOpen,
-    absolute = false,
-    bottom = false,
-    visible = true,
-  }: INavbarProps) => {
-    const navItems = ['HOME', 'PROJECTS', 'CONTACT']
-    const small = useMedia('(max-width: 640px)')
+export const Navbar = cold(({ ariaLabel = 'Site Navigation' }: INavbarProps) => {
+  const navItems = ['ABOUT', 'PROJECTS', 'CONTACT']
+  const small = useMedia('(max-width: 640px)')
 
-    if (!setMenuOpen) {
-      ;[menuOpen, setMenuOpen] = React.useState(false)
-    }
+  const [menuOpen, setMenuOpen] = React.useState(false)
 
-    return (
-      <Nav
-        absolute={absolute}
-        aria-label={ariaLabel}
-        animation={animation}
-        bottom={bottom}
-        visible={visible}
-      >
-        <Link aria-label="logo" className="logo-link" to="/" tabIndex={0}>
-          <Logo dark={dark && !menuOpen} />
-        </Link>
+  return (
+    <Nav aria-label={ariaLabel}>
+      {small ? (
+        <>
+          <Link aria-label="logo" className="logo-link" to="/" tabIndex={0}>
+            <Logo light />
+          </Link>
 
-        {small ? (
-          <>
-            <MenuBtn
-              dark={dark}
-              ariaControls="menu"
-              id="menuBtn"
-              menuOpen={menuOpen}
-              setMenuOpen={setMenuOpen}
-            />
+          <MenuBtn ariaControls="menu" id="menuBtn" menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
-            <Menu
-              aria-labelledby="menuBtn"
-              dark={dark}
-              id="navmenu"
-              menuOpen={menuOpen}
-              navItems={navItems}
-              role="menu"
-              setMenuOpen={setMenuOpen}
-            />
-          </>
-        ) : (
+          <Menu
+            aria-labelledby="menuBtn"
+            id="navmenu"
+            menuOpen={menuOpen}
+            navItems={navItems}
+            role="menu"
+            setMenuOpen={setMenuOpen}
+          />
+        </>
+      ) : (
+        <>
+          <Link aria-label="logo" className="logo-link" to="/" tabIndex={0}>
+            <Logo dark />
+          </Link>
+
           <Menu
             aria-haspopup="false"
             aria-label={ariaLabel}
-            dark={dark}
-            hideDesktopText={hideDesktopText}
+            dark={true}
             id="navbar"
             navItems={navItems}
             role="menubar"
           />
-        )}
-      </Nav>
-    )
-  }
-)
+        </>
+      )}
+    </Nav>
+  )
+})
 
 Navbar.displayName = 'Navbar'

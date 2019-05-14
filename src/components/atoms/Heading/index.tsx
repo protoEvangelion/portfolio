@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { color, space, styled } from '@/style'
 import { IColorSpaceProps } from '@/interfaces'
+import { color, space, styled } from '@/style'
+import * as React from 'react'
 
 interface IHeadingProps extends IColorSpaceProps {
   className?: string
@@ -20,5 +20,6 @@ export const Heading: React.SFC<IHeadingProps> = ({ level, ...props }) => (
 Heading.defaultProps = {
   className: 'heading',
   level: 1,
-  color: 'black',
+  color: '#011627',
+  m: 1,
 }

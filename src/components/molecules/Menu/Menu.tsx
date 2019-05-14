@@ -1,6 +1,6 @@
-import * as React from 'react'
-import * as R from 'ramda'
 import { Link } from '@/components/atoms'
+import * as R from 'ramda'
+import * as React from 'react'
 import { List } from './MenuStyles'
 import { AnimatedSvgBg } from './SvgBg'
 
@@ -14,7 +14,6 @@ interface IMenuProps extends React.HTMLAttributes<Element> {
   menuOpen?: boolean
   navItems: string[]
   id?: string
-  hideDesktopText?: boolean
   setMenuOpen?: SetMenuOpen
 }
 
@@ -26,7 +25,6 @@ export const Menu = React.memo(
     menuOpen,
     id = 'navbar',
     role = 'menubar',
-    hideDesktopText = true,
     setMenuOpen,
     ...rest
   }: IMenuProps) => (
@@ -36,7 +34,6 @@ export const Menu = React.memo(
       role={role}
       menuOpen={menuOpen}
       onKeyUp={e => handleKeyUp(e, setMenuOpen)}
-      hideDesktopText={hideDesktopText}
       data-testid="menu"
       {...rest}
     >
