@@ -1,7 +1,7 @@
 // export { AppList } from './AppList'
 // export { FeatureList } from './FeatureList'
 // export { Footer } from './Footer'
-export { Hero } from './Hero/Hero'
+export { HeroCard } from './HeroCard/HeroCard'
 export { Navbar } from './Navbar/Navbar'
 export { NotesSidebar } from './NotesSidebar/NotesSidebar'
 export { Projects } from './Projects/Projects'

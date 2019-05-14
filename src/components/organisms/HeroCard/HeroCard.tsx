@@ -1,23 +1,25 @@
 import { Heading } from '@/components/atoms'
-import { media, styled } from '@/style'
+import { css, media, styled } from '@/style'
 import * as React from 'react'
 import Astronaut from './Astronaut'
+import CardBlobLeft from './CardBlobLeft'
 import CardBlobRight from './CardBlobRight'
 
 const Container = styled.section`
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: relative;
 
   #astronaut {
-    position: absolute;
+    position: fixed;
     left: 50%;
     bottom: -10%;
     width: 110vw;
     transform: translateX(-50%);
   }
 
-  #card-blob-right {
+  #card-blob-right,
+  #card-blob-left {
     display: none;
   }
 
@@ -25,17 +27,22 @@ const Container = styled.section`
     #astronaut {
       right: -3vw;
       left: unset;
-      top: 5vw;
+      /* top: 5vw; */
       width: 70vw;
       transform: none;
+      z-index: -1;
     }
 
     #card-blob-right {
       display: block;
-      position: absolute;
-      left: 3vw;
-      top: 3vw;
+      margin: 3vw 3vw 12vw;
       width: 94vw;
+    }
+  `};
+
+  ${({ scrollPos }) => css`
+    #astronaut {
+      top: ${scrollPos};
     }
   `};
 `
@@ -71,8 +78,8 @@ const HeadingWrapper = styled.div`
   `};
 `
 
-export const Hero = () => (
-  <Container>
+export const HeroCard = ({ scrollPos }) => (
+  <Container scrollPos={scrollPos}>
     <Astronaut />
 
     <CardBlobRight />
@@ -86,5 +93,7 @@ export const Hero = () => (
         Full Stack JS Web Dev
       </Heading>
     </HeadingWrapper>
+
+    <CardBlobLeft />
   </Container>
 )
