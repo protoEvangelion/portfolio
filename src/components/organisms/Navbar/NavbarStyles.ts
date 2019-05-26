@@ -4,9 +4,9 @@ export const Nav = styled.nav`
   align-items: flex-start;
   box-sizing: content-box;
   display: flex;
-  justify-content: space-between;
   z-index: 2;
   height: 5rem;
+  justify-content: space-between;
   opacity: 1;
   position: absolute;
   left: 5vw;
@@ -20,11 +20,10 @@ export const Nav = styled.nav`
 
   ${media.tablet`
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: ${({ left }) => (left ? 'flex-start' : 'space-between')};
   `};
 
   ${media.desktop`
     align-items: center;
-    justify-content: space-between;
   `};
 `

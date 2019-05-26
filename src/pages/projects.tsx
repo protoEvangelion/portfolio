@@ -1,8 +1,8 @@
-import * as React from 'react'
 import { Telescope } from '@/assets/illustrations/Telescope'
 import { Navbar, Projects } from '@/components/organisms'
 import { styled } from '@/style'
 import { throttle } from 'lodash'
+import * as React from 'react'
 
 const Hero = styled.section`
   background: white;
@@ -39,7 +39,7 @@ class ProjectsPage extends React.Component {
         <Hero>
           <Telescope />
 
-          <Navbar bottom dark visible={this.state.isNavbarVisible} />
+          <Navbar left dark visible={this.state.isNavbarVisible} />
         </Hero>
 
         <Projects />

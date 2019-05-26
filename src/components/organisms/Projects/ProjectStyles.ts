@@ -1,8 +1,8 @@
-import { media, styled } from '@/style'
 import { Box } from '@/components/atoms'
+import { media, styled } from '@/style'
 
 export const Credits = styled.div`
-  background: linear-gradient(180deg, white 0%, #f6f6f6 100%);
+  /* background: linear-gradient(180deg, white 0%, #f6f6f6 100%); */
   display: flex;
   justify-content: center;
   text-align: center;

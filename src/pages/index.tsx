@@ -1,14 +1,7 @@
 import { Flex } from '@/components/atoms'
 import { HeroCard, Navbar } from '@/components/organisms'
-import { createGlobalStyle, styled } from '@/style'
-import * as React from 'react'
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    background: linear-gradient(297.43deg, rgb(22, 41, 57) 20.31%, #0d0021 100%);
-    overflow-x: hidden;
-  }
-`
+import { styled } from '@/style'
+import React, { useEffect, useRef, useState } from 'react'
 
 const Container = styled(Flex)`
   width: 100%;
@@ -16,21 +9,54 @@ const Container = styled(Flex)`
   position: relative;
 `
 
-function Home() {
-  const [scrollPos, setScrollPos] = React.useState(window.scrollY)
+const isClient = typeof window === 'object'
 
-  const handleScroll = () => {
-    console.log(window.scrollY)
-    setScrollPos(window.scrollY)
-  }
+export interface State {
+  x: number
+  y: number
+}
+
+const useWindowScroll = (): State => {
+  const frame = useRef(0)
+
+  const [state, setState] = useState<State>({
+    x: isClient ? window.scrollX : 0,
+    y: isClient ? window.scrollY : 0,
+  })
+
+  useEffect(() => {
+    const handler = () => {
+      cancelAnimationFrame(frame.current)
+      frame.current = requestAnimationFrame(() => {
+        setState({
+          x: window.scrollX,
+          y: window.scrollY,
+        })
+      })
+    }
+
+    window.addEventListener('scroll', handler, {
+      capture: false,
+      passive: true,
+    })
+
+    return () => {
+      cancelAnimationFrame(frame.current)
+      window.removeEventListener('scroll', handler)
+    }
+  }, [])
+
+  return state
+}
+
+function Home() {
+  const { x, y } = useWindowScroll()
 
   return (
-    <main onWheel={handleScroll}>
-      <GlobalStyle />
-
+    <main>
       <Container alignItems="center" justifyContent="center">
         <Navbar />
-        <HeroCard scrollPos={scrollPos} />
+        <HeroCard y={y} />
       </Container>
     </main>
   )

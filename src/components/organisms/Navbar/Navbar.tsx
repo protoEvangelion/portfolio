@@ -1,7 +1,6 @@
 import { Link, Logo, MenuBtn } from '@/components/atoms'
 import { Menu } from '@/components/molecules'
 import React, { useEffect, useState } from 'react'
-import { cold } from 'react-hot-loader'
 import { Nav } from './NavbarStyles'
 
 const useMedia = (query: string) => {
@@ -27,14 +26,14 @@ interface INavbarProps {
   setMenuOpen?: (isOpen: boolean) => void
 }
 
-export const Navbar = cold(({ ariaLabel = 'Site Navigation' }: INavbarProps) => {
+export const Navbar = ({ ariaLabel = 'Site Navigation', left }: INavbarProps) => {
   const navItems = ['ABOUT', 'PROJECTS', 'CONTACT']
   const small = useMedia('(max-width: 640px)')
 
   const [menuOpen, setMenuOpen] = React.useState(false)
 
   return (
-    <Nav aria-label={ariaLabel}>
+    <Nav aria-label={ariaLabel} left={left}>
       {small ? (
         <>
           <Link aria-label="logo" className="logo-link" to="/" tabIndex={0}>
@@ -70,6 +69,6 @@ export const Navbar = cold(({ ariaLabel = 'Site Navigation' }: INavbarProps) => 
       )}
     </Nav>
   )
-})
+}
 
 Navbar.displayName = 'Navbar'

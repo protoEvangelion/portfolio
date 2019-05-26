@@ -1,7 +1,7 @@
-import { Grid as FlexGrid, keyframes, styled, space, media } from '@/style'
-import { Box, Flex } from '@/components/atoms'
 import flashlightImg from '@/assets/flashlight-night.png'
 import milkyWayImg from '@/assets/milky-way.jpg'
+import { Box, Flex } from '@/components/atoms'
+import { Grid as FlexGrid, keyframes, media, space, styled } from '@/style'
 
 export const Grid = styled(FlexGrid)`
   height: 100%;
@@ -122,10 +122,6 @@ export const Img = styled.img`
 `
 
 export const Layout: React.ComponentType<ILayoutProps> = styled(Flex)`
-  background: ${props =>
-    props.frameNumber === 1
-      ? 'radial-gradient(440.99px at 44.47% 51.81%, #011627 0%, rgba(255, 255, 255, 0) 100%), #000000'
-      : ''};
   flex-direction: column;
   width: 100%;
   height: 100%;
@@ -159,7 +155,6 @@ export const Layout: React.ComponentType<ILayoutProps> = styled(Flex)`
       &::after {
         content: '';
         width: 100%;
-        background: linear-gradient(90deg, #f0f, #0ff);
         height: 3px;
         top: 100%;
         left: 0;
