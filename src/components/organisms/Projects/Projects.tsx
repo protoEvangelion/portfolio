@@ -1,8 +1,8 @@
-import React from 'react'
 import { Svg } from '@/components/atoms'
-import { projects } from './projectData'
-import { Credits, Img, Wrapper, Text } from './ProjectStyles'
+import React from 'react'
 import Fade from 'react-reveal/Fade'
+import { projects } from './projectData'
+import { Credits, Img, Text, Wrapper } from './ProjectStyles'
 
 export const Projects = () => (
   <main>

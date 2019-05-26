@@ -3,6 +3,7 @@ import { media, styled } from '@/style'
 
 export const Credits = styled.div`
   /* background: linear-gradient(180deg, white 0%, #f6f6f6 100%); */
+  color: #fff;
   display: flex;
   justify-content: center;
   text-align: center;

@@ -41,7 +41,11 @@ export const Menu = React.memo(
 
       {navItems.map(item => (
         <li key={`${id}_${item}`} role={role === 'menubar' ? 'none' : undefined}>
-          <Link tabIndex={0} to={item === 'HOME' ? '/' : `/${item.toLowerCase()}`} role="menuitem">
+          <Link
+            tabIndex={0}
+            to={item === 'HOME' ? '/' : `/${item === 'ABOUT' ? '' : item.toLowerCase()}`}
+            role="menuitem"
+          >
             {item}
           </Link>
         </li>
