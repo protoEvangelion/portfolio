@@ -1,16 +1,23 @@
-import * as React from 'react'
-import { Link, graphql } from 'gatsby'
 import { Box, Flex } from '@/components/atoms'
-import { INoteLayoutProps } from 'interfaces'
-import { Helmet } from 'react-helmet'
 import { createGlobalStyle } from '@/style'
-import { Layout } from './styles'
+import { graphql, Link } from 'gatsby'
+import { INoteLayoutProps } from 'interfaces'
+import * as React from 'react'
+import { Helmet } from 'react-helmet'
 import fontFiles from './fonts'
-
-import '@/style/global.css'
-import '@/style/typography.scss'
+import { Layout } from './styles'
 
 const GlobalStyle = createGlobalStyle`
+  #___gatsby,
+  #___gatsby > div {
+    box-sizing: border-box;
+    height: 100%;
+  }
+
+  #___gatsby > div {
+    position: relative;
+  }
+
   @font-face {
     font-family: 'Fira Code iScript';
     font-style: normal;

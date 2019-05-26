@@ -1,4 +1,3 @@
-/*helps footer stick to bottom of page gracefully*/
 * {
   box-sizing: border-box;
 }
@@ -12,14 +11,4 @@ body {
   height: 100vh;
   background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
   overflow-x: hidden;
-}
-
-#___gatsby,
-#___gatsby > div {
-  box-sizing: border-box;
-  height: 100%;
-}
-
-#___gatsby > div {
-  position: relative;
 }
