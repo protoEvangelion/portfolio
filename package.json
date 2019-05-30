@@ -65,7 +65,7 @@
     "react-hot-loader": "4.8.0",
     "react-is": "^16.8.6",
     "react-test-renderer": "^16.6.1",
-    "react-testing-library": "^5.2.3",
+    "react-testing-library": "^8.0.1",
     "redux-devtools-extension": "^2.13.2",
     "sass-loader": "^7.1.0",
     "stylelint": "^9.9.0",
