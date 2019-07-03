@@ -15,7 +15,7 @@ const CardWrapper = styled.div`
 `
 
 const HeadingWrapper = styled.div`
-  @media (min-width: 40em) and (max-width: 57em) {
+  @media (min-width: 40em) and (max-width: 62em) {
     .heading {
       font-size: 1.8em;
     }
@@ -37,11 +37,17 @@ const HeadingsLeft = styled(HeadingWrapper)`
 `
 
 const HeadingsRight = styled(HeadingWrapper)`
-  height: 100%;
+  height: 60vw;
   display: flex;
   flex-direction: column;
-  padding: 15vw 15vw 0 50vw;
+  justify-content: center;
+  padding: 1vw 15vw 0 50vw;
   max-width: 100%;
+
+  @media (max-width: 75em) {
+    padding-right: 7vw;
+    font-size: 0.5em;
+  }
 `
 
 export const HeroCard = ({ y }) => {
@@ -53,6 +59,8 @@ export const HeroCard = ({ y }) => {
   )
 
   const percentageFromTop = pixelsFromTop === 0 ? 0 : y / pixelsFromTop
+
+  console.log('pixelsFromTop', y, pixelsFromTop, percentageFromTop)
 
   return (
     <section>

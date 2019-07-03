@@ -2,12 +2,15 @@ import { media, styled } from '@/style';
 import * as React from 'react';
 
 const Svg = styled.svg.attrs({
-  style: ({ percentageFromTop }) => ({ left: `${(1 - percentageFromTop) * 40 - 5}vw` }),
+  style: ({ percentageFromTop }) => ({
+    left: `${(1 - percentageFromTop) * 40 - 5}vw`,
+    top: `${(1 + percentageFromTop) * 10 - 5}vh`
+  }),
 })`
   position: fixed;
   bottom: 0;
   width: 110vw;
-  will-change: left;
+  will-change: right;
 
   ${media.tablet`
       width: 70vw;

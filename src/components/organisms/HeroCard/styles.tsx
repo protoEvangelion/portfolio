@@ -19,7 +19,7 @@ export const SyntaxCtn = styled.div`
   border-radius: 8px;
   margin: 2rem 0 1rem;
   display: inline-block;
-  width: 75%;
+  width: 100%;
   display: flex;
   align-items: center;
 

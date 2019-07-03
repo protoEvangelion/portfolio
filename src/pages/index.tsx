@@ -11,27 +11,16 @@ const Container = styled(Flex)`
 
 const isClient = typeof window === 'object'
 
-export interface State {
-  x: number
-  y: number
-}
-
-const useWindowScroll = (): State => {
+const useWindowScroll = (): number => {
   const frame = useRef(0)
 
-  const [state, setState] = useState<State>({
-    x: isClient ? window.scrollX : 0,
-    y: isClient ? window.scrollY : 0,
-  })
+  const [state, setState] = useState<number>(isClient ? window.scrollY : 0)
 
   useEffect(() => {
     const handler = () => {
       cancelAnimationFrame(frame.current)
       frame.current = requestAnimationFrame(() => {
-        setState({
-          x: window.scrollX,
-          y: window.scrollY,
-        })
+        setState(window.scrollY)
       })
     }
 
@@ -50,12 +39,13 @@ const useWindowScroll = (): State => {
 }
 
 function Home() {
-  const { x, y } = useWindowScroll()
+  const y = useWindowScroll()
 
   return (
     <main>
       <Container alignItems="center" justifyContent="center">
         <Navbar />
+
         <HeroCard y={y} />
       </Container>
     </main>
