@@ -62,7 +62,7 @@
     "modularscale-sass": "^3.0.5",
     "node-sass": "^4.9.3",
     "prettier": "^1.12.1",
-    "react-hot-loader": "4.8.0",
+    "react-hot-loader": "4.12.13",
     "react-is": "^16.8.6",
     "react-test-renderer": "^16.6.1",
     "react-testing-library": "^5.2.3",
