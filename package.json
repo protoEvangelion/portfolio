@@ -13,7 +13,9 @@
     "svgs": "node src/utils/generateSvgs.js",
     "test": "jest --verbose false",
     "test:watch": "jest --watch --verbose false",
-    "test:ci": "jest --coverage && codecov"
+    "test:ci": "jest --coverage && codecov",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "devDependencies": {
     "@babel/core": "^7.1.5",
@@ -86,13 +88,13 @@
     "@fortawesome/free-solid-svg-icons": "^5.6.3",
     "@fortawesome/react-fontawesome": "^0.1.3",
     "@types/styled-system": "^3.0.8",
-    "axios": "^0.18.0",
-    "gatsby": "^2.0.31",
+    "axios": "^0.18.1",
+    "gatsby": "^2.0.84",
     "gatsby-image": "^2.0.0-rc.4",
     "gatsby-plugin-react-helmet": "^3.0.5",
     "gatsby-remark-images": "^3.0.1",
-    "gatsby-remark-relative-images": "^0.2.1",
-    "lodash": "^4.17.4",
+    "gatsby-remark-relative-images": "^0.2.3",
+    "lodash": "^4.17.12",
     "logrocket": "^0.6.17",
     "prismjs": "^1.15.0",
     "ramda": "^0.26.1",
@@ -108,7 +110,8 @@
     "redux": "^4.0.1",
     "styled-components": "^4.0.2",
     "styled-system": "^3.1.11",
-    "styled-tools": "^1.6.0"
+    "styled-tools": "^1.6.0",
+    "snyk": "^1.244.0"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -123,5 +126,6 @@
   },
   "stylelint": {
     "extends": "stylelint-config-standard"
-  }
+  },
+  "snyk": true
 }
