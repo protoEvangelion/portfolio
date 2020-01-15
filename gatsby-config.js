@@ -17,28 +17,28 @@ module.exports = {
   },
   plugins: [
     '@pauliescanlon/gatsby-theme-gatstats',
-    `gatsby-plugin-typescript`,
-    `gatsby-plugin-styled-components`,
-    'gatsby-plugin-react-helmet',
-    {
-      resolve: `gatsby-plugin-alias-imports`,
-      options: {
-        alias: {
-          '@/': path.join(__dirname, 'src'),
-          '@/components': path.join(__dirname, 'src/components'),
-          '@/utils': path.join(__dirname, 'src/utils'),
-          '@/style': path.join(__dirname, 'src/style'),
-          '@/assets': path.join(__dirname, 'src/assets'),
-        },
-        extensions: ['ts', 'tsx'],
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'assets',
-        path: `${__dirname}/src/assets/`,
-      },
-    },
+    // `gatsby-plugin-typescript`,
+    // `gatsby-plugin-styled-components`,
+    // 'gatsby-plugin-react-helmet',
+    // {
+    //   resolve: `gatsby-plugin-alias-imports`,
+    //   options: {
+    //     alias: {
+    //       '@/': path.join(__dirname, 'src'),
+    //       '@/components': path.join(__dirname, 'src/components'),
+    //       '@/utils': path.join(__dirname, 'src/utils'),
+    //       '@/style': path.join(__dirname, 'src/style'),
+    //       '@/assets': path.join(__dirname, 'src/assets'),
+    //     },
+    //     extensions: ['ts', 'tsx'],
+    //   },
+    // },
+    // {
+    //   resolve: 'gatsby-source-filesystem',
+    //   options: {
+    //     name: 'assets',
+    //     path: `${__dirname}/src/assets/`,
+    //   },
+    // },
   ],
 };

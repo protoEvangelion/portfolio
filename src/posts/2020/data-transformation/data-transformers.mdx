@@ -1,0 +1,106 @@
+---
+title: Functional Programming Data Transformers in JS
+
+tags: ['Functional Programming', 'JavaScript', 'Monads']
+date: 2020-01-14
+featuredImage: pipes.jpg
+embeddedImages:
+  - pipes.jpg
+---
+
+At the end of the day we want to produce reliable, bug-free programs. Depending on your domain, this ideal may be more or less of a concern. One spot that bugs lurk, is in code that transforms data because so many things can go wrong.
+
+Imagine hitting an API, massaging that data into the shape that you want, and then perform an effect like building UI. If you view this like a pipeline, there are so many things that can go wrong at each connector in the pipe. The API could be down, it may not return the data in the shape with the types you expect, and not to mention all the the potential failures in the transformation logic.
+
+The example below of transforming response data from an api has three steps:
+
+1. Validate
+2. Transform
+3. Handle error OR spit out the transformed data
+
+To begin, we will "quarantine" the side effects to step three so our error prone steps (_one and two_) have a high degree of reliability because they are pure. I got the idea of quarantining side effects from Kyle Simpson's amazing book: [Functional-Light JavaScript](https://github.com/getify/Functional-Light-JS/blob/13a3bdafb4edb83207db76212312472aab20d06a/manuscript/ch5.md) The example below will use monads to achieve this:
+
+    import moment from 'moment'
+
+    import {
+      map,
+      camelCaseKeys,
+      getProp,
+      pipek,
+      isPropValString,
+      isPropValArray,
+      isPropValTimestamp,
+      handleTransformError,
+      isResponseOK,
+      id,
+    } from './utils/fp'
+
+    const validatePayload = pipek(
+      isPropValString('industry'),
+      isPropValTimestamp('endDate'),
+      isPropValArray('trends.you'),
+      isPropValArray('trends.industry'),
+      isPropValArray('trends.population')
+    )
+
+    /* Response is an object that has a payload and maybe
+    other keys like status code */
+    function transform(response) {
+      return isResponseOK(response)
+        .flatMap(getProp('payload.data'))
+        .map(camelCaseKeys)
+        .flatMap(validatePayload)
+        .map(transformPayload)
+        .cata(handleTransformError, id)
+    }
+
+    /* Prep data for UI visualization line chart */
+    function transformPayload({ trends, lastProcessedDate }) {
+      const xAxisValues = Array(trends.length)
+        .fill(0)
+        .map((_, i) => moment(lastProcessedDate).subtract(i * 2, 'weeks'))
+        .reverse()
+
+      return {
+        dataPoints: map(trends, (yValues, benchmark) => ({
+          points: yValues.map((y, i) => ({
+            y,
+            x: xAxisValues[i].format('MMM DD'),
+          })),
+        })),
+      }
+    }
+
+That might look a bit scary if you are not familiar with **monads** (_just objects in JS with a map & a flatMap method similar to mapping over an array_). In any case it is quickly apparent what is going on and that there are three essential phases in this pipeline:
+
+1. `validatePayload` → validates that we are getting what we want from the api
+2. `transformPayload` → if data is what we expect, transform away
+3. `.cata` → handle the error if one occurred anywhere in the pipeline, otherwise spit out the transformation with `id`
+
+We kick off the pipeline by checking if the response was OK, camel casing keys for convenience, validating the response to ensure it is what we expect, transforming the payload, and handling the error or spitting out the transformed result.
+
+## Benefits of this Functional Approach
+
+1. Forced to think about where errors can occur
+2. Reliability
+3. Readability
+
+## Handling Errors
+
+Using monads allows us to "fail-fast" and short-circuit at any step of the pipeline where something goes wrong. You can also use the `Validation` monad to collect errors if you don't want to fail fast.
+
+This style of programming forces you to think of edge cases that you would likely not think of in a more imperative style because at each stage, there is a potential branch in the code that is **either a success or an error**.
+
+Unlike promises where you don't have to handle the error with `.catch` , at the end of our pipeline using the `.cata` method you are forced to handle the error case with the first arg. Keeping steps one and two pure also removes a whole class of errors that arises from side effects.
+
+## Reliability
+
+With this approach, error handling and edge cases are top of mind. This builds confidence in my delivered software because I have thought of what can go wrong and built in patterns that remove entire classes of errors. Moreover, I know that every time I run the `validate` or `transform` functions with the same input, I will get the same output every time! Every. Single. Time. How's that for reliability!
+
+## Readability
+
+When it comes to readability, there is a learning curve to really grasp what's going on. But a benefit to writing this way is you can compose smaller functions to create bigger functions which speeds up development, is less lines of code, and requires less mental overhead to understand what's going on.
+
+When you are aware of this pattern of quarantining side effects to the end of your pipeline, you can focus on the pure calculations taking place and don't have to hold in your head the entire file or state of the program to understand the code.
+
+Overall, this style of "quarantine" programming builds confidence in the shipped product and is more easily maintained by my future self and others!
