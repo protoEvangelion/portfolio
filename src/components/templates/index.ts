@@ -1,2 +1,1 @@
-export { MainLayout } from './MainLayout'
-export { NoteLayout } from './NoteLayout'
+export { MainLayout } from './MainLayout';

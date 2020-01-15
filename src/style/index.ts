@@ -1,6 +1,7 @@
 // I import & export all my styled component related libraries for easy clean importing
 
-import { Grid, Col, Row as GridRow } from 'react-styled-flexboxgrid'
+import { Col, Grid, Row as GridRow } from 'react-styled-flexboxgrid'
+import * as styledComponents from 'styled-components'
 import {
   alignItems,
   alignSelf,
@@ -21,10 +22,7 @@ import {
   width,
   zIndex,
 } from 'styled-system'
-
 import { ifProp, prop, switchProp } from 'styled-tools'
-
-import * as styledComponents from 'styled-components'
 
 // import { IThemeInterface } from './theme'
 
@@ -57,7 +55,6 @@ const media = {
 }
 
 export {
-  /* Grid */
   Grid,
   Col,
   Row,

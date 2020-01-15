@@ -1,10 +1,10 @@
-import { media, styled } from '@/style';
 import * as React from 'react';
+import { media, styled } from '@/style';
 
 const Svg = styled.svg.attrs({
   style: ({ percentageFromTop }) => ({
     left: `${(1 - percentageFromTop) * 40 - 5}vw`,
-    top: `${(1 + percentageFromTop) * 10 - 5}vh`
+    top: `${(1 + percentageFromTop) * 10 - 5}vh`,
   }),
 })`
   position: fixed;
@@ -17,7 +17,7 @@ const Svg = styled.svg.attrs({
       transform: none;
       z-index: -2;
   `};
-`
+`;
 
 const SvgAstronaut = props => (
   <Svg id="astronaut" viewBox="0 0 893 787" fill="none" {...props}>
@@ -444,6 +444,6 @@ const SvgAstronaut = props => (
       />
     </defs>
   </Svg>
-)
+);
 
-export default SvgAstronaut
+export default SvgAstronaut;

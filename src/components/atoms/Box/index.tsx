@@ -1,5 +1,3 @@
-import * as React from 'react'
-import { IBoxProps } from 'interfaces'
 import {
   alignSelf,
   borderRadius,
@@ -17,7 +15,7 @@ import {
   zIndex,
 } from '@/style'
 
-const BoxUnfiltered = styled<IBoxProps, 'div'>('div')`
+export const Box = styled.div`
   ${props => props.cursor && `cursor: ${props.cursor};`}
   ${props => props.height && `height: ${props.height};`}
   ${props => props.opacity && `opacity: ${props.opacity};`}
@@ -48,22 +46,5 @@ const BoxUnfiltered = styled<IBoxProps, 'div'>('div')`
   ${width}
   ${zIndex}
 `
-
-export const Box = ({
-  borderRadius,
-  bottom,
-  color,
-  left,
-  height,
-  opacity,
-  position,
-  right,
-  space,
-  top,
-  transition,
-  width,
-  zIndex,
-  ...props
-}) => <BoxUnfiltered {...props} />
 
 Box.displayName = 'Box'

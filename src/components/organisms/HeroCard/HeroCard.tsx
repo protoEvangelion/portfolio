@@ -1,18 +1,18 @@
-import { Flex, Heading, P } from '@/components/atoms'
-import { media, styled } from '@/style'
-import * as React from 'react'
-import Typist from 'react-typist'
-import Astronaut from './Astronaut'
-import CardBlob from './CardBlob'
-import Rocket from './Rocket'
-import { SyntaxCtn } from './styles'
+import * as React from 'react';
+import Typist from 'react-typist';
+import { Flex, Heading, P } from '@/components/atoms';
+import { media, styled } from '@/style';
+import Astronaut from './Astronaut';
+import CardBlob from './CardBlob';
+import Rocket from './Rocket';
+import { SyntaxCtn } from './styles';
 
 const CardWrapper = styled.div`
   position: relative;
   height: 71.4vw;
   width: 100vw;
   z-index: 1;
-`
+`;
 
 const HeadingWrapper = styled.div`
   @media (min-width: 40em) and (max-width: 62em) {
@@ -26,7 +26,7 @@ const HeadingWrapper = styled.div`
       font-size: 4vw;
     }
   `};
-`
+`;
 
 const HeadingsLeft = styled(HeadingWrapper)`
   padding: 25vw 0 0 5vw;
@@ -34,7 +34,7 @@ const HeadingsLeft = styled(HeadingWrapper)`
   ${media.tablet`
     max-width: 50%;
   `};
-`
+`;
 
 const HeadingsRight = styled(HeadingWrapper)`
   height: 60vw;
@@ -48,23 +48,26 @@ const HeadingsRight = styled(HeadingWrapper)`
     padding-right: 7vw;
     font-size: 0.5em;
   }
-`
+`;
 
 export const HeroCard = ({ y }) => {
-  const ref = React.useRef(null)
+  const ref = React.useRef(null);
 
   const pixelsFromTop = React.useMemo(
     () => (ref.current ? ref.current.getBoundingClientRect().height : 0),
     [ref.current]
-  )
+  );
 
-  const percentageFromTop = pixelsFromTop === 0 ? 0 : y / pixelsFromTop
+  const percentageFromTop = pixelsFromTop === 0 ? 0 : y / pixelsFromTop;
 
-  console.log('pixelsFromTop', y, pixelsFromTop, percentageFromTop)
+  const style = {
+    left: `${(1 - percentageFromTop) * 40 - 5}vw`,
+    top: `${(1 + percentageFromTop) * 10 - 5}vh`,
+  };
 
   return (
     <section>
-      <Astronaut percentageFromTop={percentageFromTop} />
+      <Astronaut style={style} />
 
       <CardWrapper>
         <CardBlob />
@@ -142,5 +145,5 @@ export const HeroCard = ({ y }) => {
         </HeadingsRight>
       </CardWrapper>
     </section>
-  )
-}
+  );
+};
