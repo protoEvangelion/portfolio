@@ -6,11 +6,11 @@ date: 2020-01-15
 featuredImage: passenger.jpg
 ---
 
-*What does it mean for a thing in a programming language to be first class?* **It means it is a value**. Why is this important? One reason is that you cannot compose operators in non functional first languages.
+_What does it mean for a thing in a programming language to be first class?_ **It means it is a value**. Why is this important? One reason is that you cannot compose operators in non functional first languages.
 
-*For example in JavaScript, how would you compose the ternary operator with other functions?*
+_For example in JavaScript, how would you compose the ternary operator with other functions?_
 
-We will use the `compose` function from the popular JS library [Ramda]([https://ramdajs.com/docs/#](https://ramdajs.com/docs/#compose)compose):
+We will use the `compose` function from the popular JS library [Ramda](<[https://ramdajs.com/docs/#](https://ramdajs.com/docs/#compose)compose>):
 
 ```javascript
 import * as R from 'ramda'
@@ -20,26 +20,26 @@ const isTruthy = (x) => Boolean(x)
 R.compose(? :, isTruthy)(false) // THIS FAILS
 ```
 
-This fails because the first argument is not first class (*a value*)! The saving grace in JS, is that you can get around this by wrapping the operator in a function (*which is first class*):
+This fails because the first argument is not first class (_a value_)! The saving grace in JS, is that you can get around this by wrapping the operator in a function (_which is first class_):
 
 ```javascript
-R.compose((x) => x ? 'hi' : 'bye', isTruthy)(true) // 'hi'
+R.compose(x => (x ? 'hi' : 'bye'), isTruthy)(true); // 'hi'
 ```
 
 This is great that we have functions at our disposal to let us sort of convert something into a first class thing. But what if you knew that the value of the true branch would be `'hi'` **ahead of time**, but wanted to compute the value of `'bye'` at **run time**. One common use case is if your user gave you a list of settings at run time but you had set up some good defaults ahead of time. This is a contrived example, but we can achieve this like so:
 
 ```javascript
-const sayBye = predicate => greeting => predicate(greeting) ? greeting : 'hi'
+const sayBye = predicate => greeting => (predicate(greeting) ? greeting : 'hi');
 
-R.compose(sayBye(isTruthy), x => x.greeting)({ greeting: 'bye' }) // 'bye'
+R.compose(sayBye(isTruthy), x => x.greeting)({ greeting: 'bye' }); // 'bye'
 ```
 
 But since the concept of a ternary do this or that based on a condition is so common, we can **abstract the ternary operator into a function:**
 
 ```javascript
-const ternary = predicate => y => z => data => predicate(data) ? y(data) : z(data)
+const ternary = predicate => y => z => data => (predicate(data) ? y(data) : z(data));
 
-ternary(() => false)(() => 'hi')(x => x.greeting)({ greeting: 'bye' }) // 'bye'
+ternary(() => false)(() => 'hi')(x => x.greeting)({ greeting: 'bye' }); // 'bye'
 ```
 
 We need the arguments to be functions so we can access the last argument `data` if need be. And we curry here so that we can pass one argument at a time because we may not have all the details up front. This is known as partial application which can be super useful!
@@ -47,11 +47,7 @@ We need the arguments to be functions so we can access the last argument `data` 
 Using just Ramda functions:
 
 ```javascript
-R.ifElse(
-    R.F,
-    R.always('hi'),
-    R.prop('greeting')
-)({ greeting: 'bye' }) // 'bye'
+R.ifElse(R.F, R.always('hi'), R.prop('greeting'))({ greeting: 'bye' }); // 'bye'
 ```
 
 You don't have to go the full blown Ramda route. However it is quite helpful to have this distinction in mind of what is first class and not. It opens up a whole new world of possibilities like partial application and function composition!

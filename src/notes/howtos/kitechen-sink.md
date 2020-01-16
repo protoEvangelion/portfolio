@@ -1,12 +1,12 @@
 ---
-title: "Hello World: The remark Kitchen Sink"
-date: "2016-04-15"
+title: 'Hello World: The remark Kitchen Sink'
+date: '2016-04-15'
 draft: false
-author: "Ryan Garant"
+author: 'Ryan Garant'
 tags:
-  - remark
-  - Kitchen Sink
-  - Images
+    - remark
+    - Kitchen Sink
+    - Images
 ---
 
 ![](joshua-earle-234740.jpg) _Photo by
@@ -128,7 +128,7 @@ In this example, leading and trailing spaces are shown with with dots: ⋅
 
 1.  First ordered list item
 2.  Another item
-    - Unordered sub-list.
+    -   Unordered sub-list.
 3.  Actual numbers don't matter, just that it's a number
     1.  Ordered sub-list
 4.  And another item.
@@ -141,11 +141,11 @@ To have a line break without a paragraph, you will need to use two trailing
 spaces.\
  Note that this line is separate, but within the same paragraph.
 
-- Unordered list can use asterisks
+-   Unordered list can use asterisks
 
-* Or minuses
+*   Or minuses
 
-- Or pluses
+-   Or pluses
 
 <a name="links"></a>
 
@@ -253,11 +253,11 @@ raw Markdown line up prettily. You can also use inline Markdown.
 
 Colons can be used to align columns.
 
-| Tables        | Are           | Cool  |
-| ------------- | :-----------: | ----: |
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      | $12   |
-| zebra stripes | are neat      | $1    |
+| Tables        |      Are      |   Cool |
+| ------------- | :-----------: | -----: |
+| col 3 is      | right-aligned | \$1600 |
+| col 2 is      |   centered    |   \$12 |
+| zebra stripes |   are neat    |    \$1 |
 
 There must be at least 3 dashes separating each header cell. The outer pipes (|)
 are optional, and you don't need to make the raw Markdown line up prettily. You
@@ -313,11 +313,11 @@ You can also use raw HTML in your Markdown, and it'll mostly work pretty well.
 
 ```html
 <dl>
-  <dt>Definition list</dt>
-  <dd>Is something people use sometimes.</dd>
+    <dt>Definition list</dt>
+    <dd>Is something people use sometimes.</dd>
 
-  <dt>Markdown in HTML</dt>
-  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
+    <dt>Markdown in HTML</dt>
+    <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
 </dl>
 ```
 

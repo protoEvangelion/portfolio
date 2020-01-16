@@ -1,12 +1,12 @@
 ---
-title: "Copying Linked Files and Intercepting Local Links"
-date: "2017-03-21"
+title: 'Copying Linked Files and Intercepting Local Links'
+date: '2017-03-21'
 draft: false
 author: Daisy Buchanan
 tags:
-  - remark
-  - linked files
-  - local links
+    - remark
+    - linked files
+    - local links
 ---
 
 ![](denys-nevozhai-184452.jpg) _Photo by

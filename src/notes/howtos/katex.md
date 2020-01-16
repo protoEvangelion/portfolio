@@ -1,12 +1,12 @@
 ---
-title: "Rendering math equations with KaTeX"
-date: "2017-08-07"
+title: 'Rendering math equations with KaTeX'
+date: '2017-08-07'
 draft: false
 author: Daisy Buchanan
 tags:
-  - remark
-  - math
-  - KaTeX
+    - remark
+    - math
+    - KaTeX
 ---
 
 [gatsby-remark-katex][1] adds math equation support to gatsby using
@@ -38,6 +38,7 @@ $$
 ```
 
 **Example output:**
+
 $$
 a^2 + b^2 = c^2
 $$

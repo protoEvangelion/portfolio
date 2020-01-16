@@ -1,11 +1,11 @@
-import { color, space, styled } from '@/style'
-import { IColorSpaceProps } from '@/interfaces'
+import { color, space, styled } from '@/style';
+import { IColorSpaceProps } from '@/interfaces';
 
 export const Span = styled<IColorSpaceProps, 'span'>('span')`
-  ${color};
-  ${space};
-`
+    ${color};
+    ${space};
+`;
 
 Span.defaultProps = {
-  color: 'black',
-}
+    color: 'black',
+};

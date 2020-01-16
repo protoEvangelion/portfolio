@@ -5,8 +5,8 @@ import { ThemeProvider, createGlobalStyle } from '@/style';
 import theme from '@/style/theme';
 
 interface IMainLayout {
-  onWheel: () => any;
-  children: any;
+    onWheel: () => any;
+    children: any;
 }
 
 const GlobalStyle = createGlobalStyle`
@@ -27,39 +27,39 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export const MainLayout: React.SFC<IMainLayout> = props => (
-  <StaticQuery
-    query={graphql`
-      {
-        site {
-          siteMetadata {
-            title
-            description
-          }
-        }
-      }
-    `}
-    render={data => (
-      <ThemeProvider theme={theme}>
-        <>
-          <Helmet
-            title={data.site.siteMetadata.title}
-            meta={[
-              {
-                name: 'description',
-                content: data.site.siteMetadata.description,
-              },
-              {
-                name: 'keywords',
-                content: 'gatsbyjs, gatsby, javascript',
-              },
-            ]}
-          />
+    <StaticQuery
+        query={graphql`
+            {
+                site {
+                    siteMetadata {
+                        title
+                        description
+                    }
+                }
+            }
+        `}
+        render={data => (
+            <ThemeProvider theme={theme}>
+                <>
+                    <Helmet
+                        title={data.site.siteMetadata.title}
+                        meta={[
+                            {
+                                name: 'description',
+                                content: data.site.siteMetadata.description,
+                            },
+                            {
+                                name: 'keywords',
+                                content: 'gatsbyjs, gatsby, javascript',
+                            },
+                        ]}
+                    />
 
-          <GlobalStyle />
+                    <GlobalStyle />
 
-          <main onWheel={props.onWheel}>{props.children}</main>
-        </>
-      </ThemeProvider>
-    )}
-  />
+                    <main onWheel={props.onWheel}>{props.children}</main>
+                </>
+            </ThemeProvider>
+        )}
+    />
 );

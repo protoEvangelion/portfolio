@@ -9,30 +9,31 @@ https://perfmattersconf.com/2019.perfmattersconf.com/
 
 Use this outline to below to topics of interest. They are self contained modules that make sense on their own.
 
-- Intro
-  - Guiding principles
-  - Vision for company wide perf culture
-  - Dozens of practical tips you can apply today
-- Building a company wide performance culture
-  - Culture of happy users
-  - Obtaining buy in from executive sponsorship, product teams, marketing team, and developers
-  - Setting Performance Budgets connected to business value
-- Practical ideas to apply
-  - SVG
-  - Fonts
-  - JS
-  - Images
-  - Network
-  - 3rd party
+-   Intro
+    -   Guiding principles
+    -   Vision for company wide perf culture
+    -   Dozens of practical tips you can apply today
+-   Building a company wide performance culture
+    -   Culture of happy users
+    -   Obtaining buy in from executive sponsorship, product teams, marketing team, and developers
+    -   Setting Performance Budgets connected to business value
+-   Practical ideas to apply
+    -   SVG
+    -   Fonts
+    -   JS
+    -   Images
+    -   Network
+    -   3rd party
 
 **Todo**:
-- start with the problem
-- Tie in the idea that it is significantly more costly to undue systemic performance, than it is to integrate at ideation stages & daily developer workflows
-- make sure that it is clear you are speaking about site performance
-- stick to gleaning metaphor not thread
-- make sure you are not communicating this as the end all be all or as a replacement for the Gospel
-- Discuss how this is an aggregate of ideas
-- Highlight practical tips somehow?
+
+-   start with the problem
+-   Tie in the idea that it is significantly more costly to undue systemic performance, than it is to integrate at ideation stages & daily developer workflows
+-   make sure that it is clear you are speaking about site performance
+-   stick to gleaning metaphor not thread
+-   make sure you are not communicating this as the end all be all or as a replacement for the Gospel
+-   Discuss how this is an aggregate of ideas
+-   Highlight practical tips somehow?
 
 ## Big Ideas
 
@@ -40,12 +41,11 @@ The overarching principle gleaned from the 2019 Perf Matters conf, was how to we
 
 ## Building a company wide performance Culture
 
-  If performance is not included at the ideation & design stages, the problem that can easily result is systemic inefficiency at every layer of the product. Though tools & techniques can band-aid performance to an acceptable level, they will not fix the heart of the problem. If the culture of the company isn't behind your performance efforts, it will be near impossible to affect lasting changes.
+If performance is not included at the ideation & design stages, the problem that can easily result is systemic inefficiency at every layer of the product. Though tools & techniques can band-aid performance to an acceptable level, they will not fix the heart of the problem. If the culture of the company isn't behind your performance efforts, it will be near impossible to affect lasting changes.
 
 ### Who To Get Involved In Pef Culture
 
-  So how do you attain buy in from various groups within your company? The recommendations given involve first getting product teams on board, then moving to gain executive sponsorship, involving marketing stakeholders, and finally the implementing developer teams.
-
+So how do you attain buy in from various groups within your company? The recommendations given involve first getting product teams on board, then moving to gain executive sponsorship, involving marketing stakeholders, and finally the implementing developer teams.
 
 #### Product Teams
 
@@ -64,11 +64,11 @@ Why include marketing in gaining momentum on building a perf culture? If marketi
 Selling the implementing developer teams (especially if you are on one), is much easier since the language and benefits of performance comes much more naturally. Most developers I have interacted with really care about making their tools, processes, and work fast, but they often feel pressured to deliver features fast, so they have the time to ensure their work is performant. That is why it is so important to build a culture of performance at the higher levels first so that developers have the sponsorship to include a performance mindset in their daily workflows. Some practical ideas to help integrate a perf mindset in a developer team's daily workflow is abstracting common patterns that require perf optimizations. One area you can abstract is delaying image loading. Instead of leaving each developer of a component that includes an image on their own to figure out how to lazy load load it, if all they had to do was add an attribute to the image, that would save time and improve implementation consistency. Chrome has recently announced that it is working on abstracting image lazy loading to the browser level. https://addyosmani.com/blog/lazy-loading/
 
 A few more practical ideas discussed are:
-- Display a competitor dashboard for your team to rally behind
-- Setup a rotating perf team, of a couple people (junior to senior), that take ownership for perf success for a given sprint
-- Make public your perf dashboard easily accessible for every one on a given team
-- Surface perf regression alerts as a through RUM or synthetic reporting service like Dynatrace and/or SpeedCurve
 
+-   Display a competitor dashboard for your team to rally behind
+-   Setup a rotating perf team, of a couple people (junior to senior), that take ownership for perf success for a given sprint
+-   Make public your perf dashboard easily accessible for every one on a given team
+-   Surface perf regression alerts as a through RUM or synthetic reporting service like Dynatrace and/or SpeedCurve
 
 ### Applying Perf Optimizations
 
@@ -99,13 +99,13 @@ In order to hold the line on perf budgets, you can integrate them at the **CI le
 
 The final tip to reduce work on the main thread, is to skip compilation by transcending into the "hot run" code caching ether. Though the implementation might change, v8 handles code caching through cold, warm, & hot runs. Hot runs are the fastest as you can completely skip the step of compilation. [](https://www.notion.so/29206c2c66e546e98bde28442511e41a#724d70bd58864e55a398541a4caedd41) [https://v8.dev/blog/code-caching-for-devs](https://v8.dev/blog/code-caching-for-devs). On the third time a resource is loaded, Chrome hands the file & its metadata from the cache to v8 which then deserializes the data & skips compilation. In order to get into a hot run, there are a few things we can do:
 
-- Don't change code
-- Don't change urls
-- Don't change execution behavior
-- Split out stable files like 3rd party libraries
-- Group smaller files together (<1kb will not be cached)
-- Avoid inline scripts
-- Use service worker caches which will lead to a hot run on the 2nd load instead of 3rd
+-   Don't change code
+-   Don't change urls
+-   Don't change execution behavior
+-   Split out stable files like 3rd party libraries
+-   Group smaller files together (<1kb will not be cached)
+-   Avoid inline scripts
+-   Use service worker caches which will lead to a hot run on the 2nd load instead of 3rd
 
 In order to test if your files are being hot cached, you can use chrome://tracing and starting Chrome with `google-chrome --user-data-dir="$(mktemp -d)"`. You can get more instructions on the internals of v8 code caching and testing if files are "hot" [here on the v8 blog](https://v8.dev/blog/code-caching-for-devs#tracing).
 
@@ -121,11 +121,11 @@ Another area where you can have your cake and eat it too, is by using variable f
 
 Delivered by the guy who created the infamous WebPageTest tool, [Patrick Meenan](https://www.slideshare.net/patrickmeenan/resource-loading-prioritization-http2-oh-my) gave us tons of info on how to improve upon the network bottleneck. The main recommendation is to optimally order resources for the user. Some other gleanings were:
 
-- Use CDNs that don't have [broken http/2 implementations](https://github.com/andydavies/http2-prioritization-issues#cdns--cloud-hosting-services)
-- Stop [sharding](https://www.cloudflare.com/website-optimization/http2/what-is-http2/) domains
-- Use priority hint attributes like `importance="low"` and `rel="preload"`
-- Hide non-critical resources like images using lazy loading techniques
-- Minimize 3rd-party resources early in load
+-   Use CDNs that don't have [broken http/2 implementations](https://github.com/andydavies/http2-prioritization-issues#cdns--cloud-hosting-services)
+-   Stop [sharding](https://www.cloudflare.com/website-optimization/http2/what-is-http2/) domains
+-   Use priority hint attributes like `importance="low"` and `rel="preload"`
+-   Hide non-critical resources like images using lazy loading techniques
+-   Minimize 3rd-party resources early in load
 
 #### Minimizing 3rd Party Impact
 
@@ -151,35 +151,16 @@ Townsend offers these questions to clarify how to deal with a given 3rd party sc
 6. Can you preconnect or preload?
 
 Answering the question of self-hosting is quite critical. If possible, you can benefit from:
-- no DNS lookup
-- no Connection Setup
-- no SSL negotiation
-- better http/2 prioritization
-- use far-future expiry through control fingerprints
-- plays nice with CSPs
+
+-   no DNS lookup
+-   no Connection Setup
+-   no SSL negotiation
+-   better http/2 prioritization
+-   use far-future expiry through control fingerprints
+-   plays nice with CSPs
 
 An area to look to apply the optimization of self-hosting is tag managers like GTM. When dealing with tag managers, he recommends to migrate long term scripts from your tag manager to the core site.
 
 #### Tools to Help
 
 To easily see where JS is coming from, use the Chrome devtools Network tab and group by domain. To get a visual of how 3rd parties fan out on your site you can use [requestmap.webperf.tools](http://requestmap.webperf.tools/render/190429_YT_172b9846c7eec3a5d121f865be7501ab). In order to rate your 3rd parties in either the vendor selection process or just to understand how they fair, you can use the jsmanners.com tool.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,24 +1,24 @@
 ---
-title: "Using Excerpts"
-date: "2017-11-14"
+title: 'Using Excerpts'
+date: '2017-11-14'
 draft: false
-author: "Ryan Garant"
+author: 'Ryan Garant'
 tags:
-  - remark
-  - excerpts
+    - remark
+    - excerpts
 ---
 
 `gatsby-transformer-remark` allows you to get an excerpt from a markdown post. By default, it will prune the first 140 characters, but you can optionally specify a `pruneLength` in the graphql query.
 
 ```graphql
 {
-  allMarkdownRemark {
-    edges {
-      node {
-        excerpt(pruneLength: 280)
-      }
+    allMarkdownRemark {
+        edges {
+            node {
+                excerpt(pruneLength: 280)
+            }
+        }
     }
-  }
 }
 ```
 
@@ -26,10 +26,10 @@ You can also manually mark in your markdown where to stop excerpting—similar t
 
 ```json
 {
-  "resolve": `gatsby-transformer-remark`,
-  "options": {
-    "excerpt_separator": `<!-- end -->`
-  }
+    "resolve": `gatsby-transformer-remark`,
+    "options": {
+        "excerpt_separator": `<!-- end -->`
+    }
 }
 ```
 

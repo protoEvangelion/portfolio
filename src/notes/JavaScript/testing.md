@@ -16,13 +16,13 @@ author: 'Ryan Garant'
 
 ### A few types of tests
 
-- Regression
-- a11y
-- unit (testing a function)
-- perf
-- integration (testing integrations with APIs)
-- penetration
-- i18n
-- e2e (tests the entire app as a user like Cypress)
+-   Regression
+-   a11y
+-   unit (testing a function)
+-   perf
+-   integration (testing integrations with APIs)
+-   penetration
+-   i18n
+-   e2e (tests the entire app as a user like Cypress)
 
 </article>

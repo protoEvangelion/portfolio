@@ -1,13 +1,13 @@
 ---
-title: "Responsive Images and iFrames"
-date: "2017-01-02"
+title: 'Responsive Images and iFrames'
+date: '2017-01-02'
 draft: false
-author: "Ryan Garant"
+author: 'Ryan Garant'
 tags:
-  - remark
-  - Images
-  - Videos
-  - iFrames
+    - remark
+    - Images
+    - Videos
+    - iFrames
 ---
 
 ![](mikael-cho-214358.jpg) _Photo by [Mikael Cho](https://unsplash.com/@mikael)

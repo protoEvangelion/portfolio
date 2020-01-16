@@ -1,1 +1,1 @@
-export { setupWheelListener } from './addWheelListener'
+export { setupWheelListener } from './addWheelListener';

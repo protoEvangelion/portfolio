@@ -1,7 +1,7 @@
 ---
-title: "Linux"
-description: "Modifying XKB"
-author: "Ryan Garant"
+title: 'Linux'
+description: 'Modifying XKB'
+author: 'Ryan Garant'
 ---
 
 <article id="1">
@@ -10,20 +10,20 @@ author: "Ryan Garant"
 
 ### Remapping arrow keys to Left Win + l, k, j, i
 
-- Show current config
+-   Show current config
 
 ```bash
 setxkbmap -print -verbose 10
 ```
 
-- Add Left, Right, Up, Down to third level modifier
+-   Add Left, Right, Up, Down to third level modifier
 
 ```
 sudo nano /usr/share/X11/xkb/symbols/us
 ```
 
-- Example of the file above
-  - The spot after the 2nd comma is the "third level modifier"
+-   Example of the file above
+    -   The spot after the 2nd comma is the "third level modifier"
 
 ```
     key <AD08> {        [         i,    I, Up           ]       };
@@ -45,9 +45,9 @@ sudo nano /usr/share/X11/xkb/symbols/us
     key <AC11> {        [ apostrophe,   quotedbl, End   ]       };
 ```
 
-- Then restart `Alt + F2` and type `r` then hit `enter`
+-   Then restart `Alt + F2` and type `r` then hit `enter`
 
-- Finally, set Left Win as the Third Level Modifier
+-   Finally, set Left Win as the Third Level Modifier
 
 ```bash
 setxkbmap -layout us -option "lv3:lwin_switch"

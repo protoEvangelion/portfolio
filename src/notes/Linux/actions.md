@@ -1,11 +1,8 @@
 ---
-title: "Actions"
-description: "Cool actions you can do in linux"
-author: "Ryan Garant"
-
----
-
-<article id="1">
+title: 'Actions'
+description: 'Cool actions you can do in linux'
+author: 'Ryan Garant'
+---<article id="1">
 
 ## Adding GitHub name and email in the global config
 
@@ -58,7 +55,7 @@ username ALL=(ALL) NOPASSWD: ALL
 
 ## Permissions
 
-- Permissions are granted with:
+-   Permissions are granted with:
 
 ```
 chmod a+x filename
@@ -66,16 +63,16 @@ chmod a+x filename
 
 If you run a `ls -l` in the cli you will get a list of files and folders with a string at the front like so:
 
-- -rw-rw-r--
-  - The first space will be blank for a file but `d` if it is a **directory**
-  - The next three spaces represent permissions for **current user**
-  - The next three **groups**
-  - The next three **all users**
-  - `x` = executable
-  - `w` = writable
-  - `r` = readable
+-   -rw-rw-r--
+    -   The first space will be blank for a file but `d` if it is a **directory**
+    -   The next three spaces represent permissions for **current user**
+    -   The next three **groups**
+    -   The next three **all users**
+    -   `x` = executable
+    -   `w` = writable
+    -   `r` = readable
 
-* So when running `a+x` you are saying to make file executable for all users
+*   So when running `a+x` you are saying to make file executable for all users
 
 </article>
 
@@ -83,13 +80,13 @@ If you run a `ls -l` in the cli you will get a list of files and folders with a 
 
 ## How to Remap Keys in Ubuntu
 
-- This approach relies upon a program to listen for keys events and then dispatching the key combo you want using a virtual keybard
+-   This approach relies upon a program to listen for keys events and then dispatching the key combo you want using a virtual keybard
 
 1.  `sudo apt install xvkbd` This is the virtual keyboard
 2.  `sudo apt install xbindkeys` This is the listener
 3.  `sudo apt install xbindkeys-config` This is the listener gui
 
-- The data goes into your `.xbindkeysrc` file in your home dir
+-   The data goes into your `.xbindkeysrc` file in your home dir
 
 Here is an example:
 
@@ -103,10 +100,10 @@ Here is an example:
     Control+Shift+Mod2+Mod5 + l
 ```
 
-- The above simply listens for the meta key + control + shift and sends a select left and select right text command with the virtual keyboard
+-   The above simply listens for the meta key + control + shift and sends a select left and select right text command with the virtual keyboard
 
-- After modifying your `.xbindkeysrc` file you must kill the xbindkeys process with `pkill -9 xbindkeys` and then rerun it with `xbindkeys`
-  - If you want to verify it is running you can do `pgrep xbindkeys` which will output the **pid**
+-   After modifying your `.xbindkeysrc` file you must kill the xbindkeys process with `pkill -9 xbindkeys` and then rerun it with `xbindkeys`
+    -   If you want to verify it is running you can do `pgrep xbindkeys` which will output the **pid**
 
 </article>
 

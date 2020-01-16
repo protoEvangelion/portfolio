@@ -1,74 +1,76 @@
-import { Link, Logo, MenuBtn } from '@/components/atoms'
-import { Menu } from '@/components/molecules'
-import React, { useEffect, useState } from 'react'
-import { Nav } from './NavbarStyles'
+import { Link, Logo, MenuBtn } from '@/components/atoms';
+import { Menu } from '@/components/molecules';
+import React, { useEffect, useState } from 'react';
+import { Nav } from './NavbarStyles';
 
 const useMedia = (query: string) => {
-  const [matches, setMatches] = useState<boolean>(false)
+    const [matches, setMatches] = useState<boolean>(false);
 
-  useEffect(
-    () => {
-      const media = window.matchMedia(query)
-      const listener = () => setMatches(media.matches)
-      media.addListener(listener)
-      listener()
-      return () => media.removeListener(listener)
-    },
-    [query]
-  )
+    useEffect(() => {
+        const media = window.matchMedia(query);
+        const listener = () => setMatches(media.matches);
+        media.addListener(listener);
+        listener();
+        return () => media.removeListener(listener);
+    }, [query]);
 
-  return matches
-}
+    return matches;
+};
 
 interface INavbarProps {
-  ariaLabel?: string
-  menuOpen?: boolean
-  setMenuOpen?: (isOpen: boolean) => void
+    ariaLabel?: string;
+    menuOpen?: boolean;
+    setMenuOpen?: (isOpen: boolean) => void;
 }
 
 export const Navbar = ({ ariaLabel = 'Site Navigation', left }: INavbarProps) => {
-  const navItems = ['ABOUT', 'PROJECTS', 'CONTACT']
-  const small = useMedia('(max-width: 640px)')
+    const navItems = ['ABOUT', 'PROJECTS', 'CONTACT'];
+    const small = useMedia('(max-width: 640px)');
 
-  const [menuOpen, setMenuOpen] = React.useState(false)
+    const [menuOpen, setMenuOpen] = React.useState(false);
 
-  return (
-    <Nav aria-label={ariaLabel} left={left}>
-      {small ? (
-        <>
-          <Link aria-label="logo" className="logo-link" to="/" tabIndex={0}>
-            <Logo light />
-          </Link>
+    return (
+        <Nav aria-label={ariaLabel} left={left}>
+            {small ? (
+                <>
+                    <Link aria-label="logo" className="logo-link" to="/" tabIndex={0}>
+                        <Logo light />
+                    </Link>
 
-          <MenuBtn ariaControls="menu" id="menuBtn" menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+                    <MenuBtn
+                        ariaControls="menu"
+                        id="menuBtn"
+                        menuOpen={menuOpen}
+                        setMenuOpen={setMenuOpen}
+                    />
 
-          <Menu
-            aria-labelledby="menuBtn"
-            id="navmenu"
-            menuOpen={menuOpen}
-            navItems={navItems}
-            role="menu"
-            setMenuOpen={setMenuOpen}
-          />
-        </>
-      ) : (
-        <>
-          <Link aria-label="logo" className="logo-link" to="/" tabIndex={0}>
-            <Logo dark />
-          </Link>
+                    <Menu
+                        aria-labelledby="menuBtn"
+                        id="navmenu"
+                        menuOpen={menuOpen}
+                        navItems={navItems}
+                        role="menu"
+                        setMenuOpen={setMenuOpen}
+                    />
+                </>
+            ) : (
+                <>
+                    <Link aria-label="logo" className="logo-link" to="/" tabIndex={0}>
+                        <Logo dark />
+                    </Link>
 
-          <Menu
-            aria-haspopup="false"
-            aria-label={ariaLabel}
-            dark={true}
-            id="navbar"
-            navItems={navItems}
-            role="menubar"
-          />
-        </>
-      )}
-    </Nav>
-  )
-}
+                    <Menu
+                        aria-haspopup="false"
+                        aria-label={ariaLabel}
+                        dark={true}
+                        id="navbar"
+                        navItems={navItems}
+                        role="menubar"
+                    />
+                </>
+            )}
+        </Nav>
+    );
+};
 
-Navbar.displayName = 'Navbar'
+Navbar.displayName = 'Navbar';

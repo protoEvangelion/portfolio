@@ -1,5 +1,5 @@
 ---
-title: "Getting an Excerpt with a Separator"
+title: 'Getting an Excerpt with a Separator'
 draft: false
 example: true
 author: Daisy Buchanan
@@ -11,10 +11,10 @@ You can manually mark in your markdown where to stop excerpting—similar to Jek
 
 ```json
 {
-  "resolve": `gatsby-transformer-remark`,
-  "options": {
-    "excerpt_separator": `<!-- end -->`
-  }
+    "resolve": `gatsby-transformer-remark`,
+    "options": {
+        "excerpt_separator": `<!-- end -->`
+    }
 }
 ```
 

@@ -1,5 +1,5 @@
 ---
-title: "A Default, 140 Character Excerpt"
+title: 'A Default, 140 Character Excerpt'
 draft: false
 example: true
 author: Daisy Buchanan
@@ -11,12 +11,12 @@ This example uses the default pruning method.
 
 ```graphql
 {
-  allMarkdownRemark {
-    edges {
-      node {
-        excerpt(pruneLength: 280)
-      }
+    allMarkdownRemark {
+        edges {
+            node {
+                excerpt(pruneLength: 280)
+            }
+        }
     }
-  }
 }
 ```
