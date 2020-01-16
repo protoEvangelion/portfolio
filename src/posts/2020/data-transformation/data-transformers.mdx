@@ -5,7 +5,7 @@ tags: ['Functional Programming', 'JavaScript', 'Monads']
 date: 2020-01-14
 featuredImage: pipes.jpg
 embeddedImages:
-  - pipes.jpg
+    - pipes.jpg
 ---
 
 At the end of the day we want to produce reliable, bug-free programs. Depending on your domain, this ideal may be more or less of a concern. One spot that bugs lurk, is in code that transforms data because so many things can go wrong.
@@ -20,56 +20,58 @@ The example below of transforming response data from an api has three steps:
 
 To begin, we will "quarantine" the side effects to step three so our error prone steps (_one and two_) have a high degree of reliability because they are pure. I got the idea of quarantining side effects from Kyle Simpson's amazing book: [Functional-Light JavaScript](https://github.com/getify/Functional-Light-JS/blob/13a3bdafb4edb83207db76212312472aab20d06a/manuscript/ch5.md) The example below will use monads to achieve this:
 
-    import moment from 'moment'
+```javascript
+import moment from 'moment';
 
-    import {
-      map,
-      camelCaseKeys,
-      getProp,
-      pipek,
-      isPropValString,
-      isPropValArray,
-      isPropValTimestamp,
-      handleTransformError,
-      isResponseOK,
-      id,
-    } from './utils/fp'
+import {
+    map,
+    camelCaseKeys,
+    getProp,
+    pipek,
+    isPropValString,
+    isPropValArray,
+    isPropValTimestamp,
+    handleTransformError,
+    isResponseOK,
+    id,
+} from './utils/fp';
 
-    const validatePayload = pipek(
-      isPropValString('industry'),
-      isPropValTimestamp('endDate'),
-      isPropValArray('trends.you'),
-      isPropValArray('trends.industry'),
-      isPropValArray('trends.population')
-    )
+const validatePayload = pipek(
+    isPropValString('industry'),
+    isPropValTimestamp('endDate'),
+    isPropValArray('trends.you'),
+    isPropValArray('trends.industry'),
+    isPropValArray('trends.population')
+);
 
-    /* Response is an object that has a payload and maybe
-    other keys like status code */
-    function transform(response) {
-      return isResponseOK(response)
+/* Response is an object that has a payload and maybe
+ other keys like status code */
+function transform(response) {
+    return isResponseOK(response)
         .flatMap(getProp('payload.data'))
         .map(camelCaseKeys)
         .flatMap(validatePayload)
         .map(transformPayload)
-        .cata(handleTransformError, id)
-    }
+        .cata(handleTransformError, id);
+}
 
-    /* Prep data for UI visualization line chart */
-    function transformPayload({ trends, lastProcessedDate }) {
-      const xAxisValues = Array(trends.length)
+/* Prep data for UI visualization line chart */
+function transformPayload({ trends, lastProcessedDate }) {
+    const xAxisValues = Array(trends.length)
         .fill(0)
         .map((_, i) => moment(lastProcessedDate).subtract(i * 2, 'weeks'))
-        .reverse()
+        .reverse();
 
-      return {
+    return {
         dataPoints: map(trends, (yValues, benchmark) => ({
-          points: yValues.map((y, i) => ({
-            y,
-            x: xAxisValues[i].format('MMM DD'),
-          })),
+            points: yValues.map((y, i) => ({
+                y,
+                x: xAxisValues[i].format('MMM DD'),
+            })),
         })),
-      }
-    }
+    };
+}
+```
 
 That might look a bit scary if you are not familiar with **monads** (_just objects in JS with a map & a flatMap method similar to mapping over an array_). In any case it is quickly apparent what is going on and that there are three essential phases in this pipeline:
 
