@@ -6,7 +6,7 @@ date: 2020-01-15
 featuredImage: passenger.jpg
 ---
 
-_What does it mean for a thing in a programming language to be first class?_ **It means it is a value**. Why is this important? One reason is that you cannot compose operators in non functional first languages.
+_What does it mean for a thing in a programming language to be first class?_ **It means it is a value**. Why is this important? You cannot compose operators in non functional first languages. If you played with legos as a kid...ahem...or as an adult, then you know how cool composition can be!
 
 _For example in JavaScript, how would you compose the ternary operator with other functions?_
 
@@ -26,7 +26,7 @@ This fails because the first argument is not first class (_a value_)! The saving
 R.compose(x => (x ? 'hi' : 'bye'), isTruthy)(true); // 'hi'
 ```
 
-This is great that we have functions at our disposal to let us sort of convert something into a first class thing. But what if you knew that the value of the true branch would be `'hi'` **ahead of time**, but wanted to compute the value of `'bye'` at **run time**. One common use case is if your user gave you a list of settings at run time but you had set up some good defaults ahead of time. This is a contrived example, but we can achieve this like so:
+This is great that we have functions at our disposal to let us convert something into a first class value. But what if you had the value `'hi'` **ahead of time**, but wanted to compute the value of `'bye'` at **run time**? One common use case is if your user gave you a list of settings at run time but you had set up some good defaults ahead of time. This is a contrived example, but we can achieve this like so:
 
 ```javascript
 const sayBye = predicate => greeting => (predicate(greeting) ? greeting : 'hi');
@@ -34,7 +34,7 @@ const sayBye = predicate => greeting => (predicate(greeting) ? greeting : 'hi');
 R.compose(sayBye(isTruthy), x => x.greeting)({ greeting: 'bye' }); // 'bye'
 ```
 
-But since the concept of a ternary do this or that based on a condition is so common, we can **abstract the ternary operator into a function:**
+But since this ternary concept ("*do this or that*") based on a condition is so common, we can **abstract the ternary operator into a function:**
 
 ```javascript
 const ternary = predicate => y => z => data => (predicate(data) ? y(data) : z(data));
