@@ -88,6 +88,7 @@
     "@fortawesome/react-fontawesome": "^0.1.3",
     "@pauliescanlon/gatsby-theme-gatstats": "0.0.53",
     "@types/styled-system": "^3.0.8",
+    "axios": "^0.19.2",
     "fluture": "^12.2.0",
     "gatsby": "^2.18.6",
     "gatsby-image": "^2.0.0-rc.4",
