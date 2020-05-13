@@ -3,7 +3,7 @@ const R = require('ramda');
 const fs = require('fs-extra');
 const path = require('path');
 const fetch = require('node-fetch');
-const { get } = require('axios');
+const axios = require('axios');
 const {
     debugMode,
     fork,
@@ -19,23 +19,7 @@ const {
     node,
 } = require('fluture');
 
-const http = require('http');
-const https = require('https');
-
-const httpAgent = new http.Agent({
-    keepAlive: true,
-});
-const httpsAgent = new https.Agent({
-    keepAlive: true,
-});
-const options = {
-    agent(_parsedURL) {
-        if (_parsedURL.protocol == 'http:') {
-            return httpAgent;
-        }
-        return httpsAgent;
-    },
-};
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 debugMode(true);
 
@@ -46,7 +30,7 @@ debugMode(true);
 
 // TODO: add validation
 const getNotionPage = R.curry((id, route, meta) =>
-    encaseP(get)(`http://notion-cloudflare-worker.rhino.workers.dev/v1/${route}/${id}`).pipe(
+    encaseP(axios.get)(`http://notion-cloudflare-worker.rhino.workers.dev/v1/${route}/${id}`).pipe(
         map(({ data }) => ({ ...meta, data }))
     )
 );
@@ -54,13 +38,17 @@ const getNotionPage = R.curry((id, route, meta) =>
 // TODO: add safety around createWriteStream
 const writeImage = ({ coverImage, coverImageDest, folder, ...meta }) =>
     console.log('->', coverImage) ||
-    encaseP(get)(coverImage)
+    encaseP(axios)({
+        method: 'get',
+        url: coverImage,
+        responseType: 'stream',
+    })
         .pipe(
             chain(res => {
                 fs.ensureDirSync(folder);
 
                 const stream = fs.createWriteStream(coverImageDest);
-                res.body.pipe(stream);
+                res.data.pipe(stream);
 
                 return node(done => stream.on('close', done));
             })
@@ -121,12 +109,13 @@ function buildMeta({ post: title, coverImage, ...rest }) {
     const fileName = `${folderName}.mdx`;
     const folder = path.resolve(__dirname, 'src/posts/2020', folderName);
 
-    const coverImageDest =
-        coverImage && `${folder}/coverImage${coverImage.endsWith('.png') ? '.png' : '.jpg'}`;
+    const coverageImageExt = coverImage.endsWith('.png') ? '.png' : '.jpg';
+    const coverImageDest = coverImage && `${folder}/coverImage${coverageImageExt}`;
 
     return {
         ...rest,
         coverImage: coverImage.replace('https://', 'http://'),
+        coverImageName: `coverImage${coverageImageExt}`,
         coverImageDest,
         folder,
         fileName,
@@ -135,12 +124,12 @@ function buildMeta({ post: title, coverImage, ...rest }) {
     };
 }
 
-function buildTemplate({ data, tags, coverImageDest, title, ...rest }) {
+function buildTemplate({ data, tags, coverImageName, title, ...rest }) {
     const fileContent = `
     ---
     title: ${title}
     tags: [${tags}]
-    featuredImage: ${coverImageDest}
+    featuredImage: ${coverImageName}
     date: 2020-01-14
     ---
 
