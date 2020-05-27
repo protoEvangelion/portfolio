@@ -1,5 +1,8 @@
 const _ = require('lodash/fp');
 const R = require('ramda');
+const ReactDOMServer = require('react-dom/server');
+const React = require('react');
+const { NotionRenderer } = require('react-notion');
 const fs = require('fs-extra');
 const path = require('path');
 const fetch = require('node-fetch');
@@ -18,7 +21,10 @@ const {
     parallel,
     node,
 } = require('fluture');
+var TurndownService = require('turndown');
+const { renderNotion } = require('./mappings');
 
+// TODO: is there a better way?
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 debugMode(true);
@@ -125,20 +131,23 @@ function buildMeta({ post: title, coverImage, ...rest }) {
 }
 
 function buildTemplate({ data, tags, coverImageName, title, ...rest }) {
-    const fileContent = `
-    ---
-    title: ${title}
-    tags: [${tags}]
-    featuredImage: ${coverImageName}
-    date: 2020-01-14
-    ---
+    const turndownService = new TurndownService({ codeBlockStyle: 'fenced' });
 
-    import { NotionRenderer } from 'react-notion';
+    const markdown = turndownService.turndown(
+        ReactDOMServer.renderToStaticMarkup(
+            React.createElement(NotionRenderer, { blockMap: data }, null)
+        )
+    );
 
-    <NotionRenderer blockMap={${JSON.stringify(data)}} />
-`
-        .trim()
-        .replace(/^ +/gm, '');
+    const fileContent = `---
+title: ${title}
+tags: [${tags}]
+featuredImage: ${coverImageName}
+date: 2020-01-14
+---
+
+${markdown}
+`.trim();
 
     return {
         ...rest,
