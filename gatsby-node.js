@@ -22,7 +22,6 @@ const {
     node,
 } = require('fluture');
 var TurndownService = require('turndown');
-const { renderNotion } = require('./mappings');
 
 // TODO: is there a better way?
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
