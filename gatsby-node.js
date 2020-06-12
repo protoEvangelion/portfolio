@@ -24,6 +24,7 @@ const {
 var TurndownService = require('turndown');
 
 // TODO: is there a better way?
+// allows image downloading
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 debugMode(true);
@@ -89,24 +90,6 @@ exports.onPreBootstrap = () => {
             )
             .pipe(map(x => console.log('---------->', x) || x))
     ).catch(x => console.error('ERROR!!!!!!!!!', x));
-
-    // return Promise.all(
-    //     fileIds.map(id => {
-    //         // TODO: make title dynamic
-    //         // TODO: make year dynamic
-    //         // TODO: make tags dynamic
-    //         // TODO: write image
-    //         const title = 'Super Cool Example';
-
-    //         const Future = tagBy(_.isString, title)
-    //             .pipe(map(buildMeta))
-    //             .pipe(chain(getNotionPage(id)))
-    //             .pipe(map(buildTemplate))
-    //             // .pipe(map(x => console.log('!!!!', x) || x))
-
-    //         return promise(Future);
-    //     })
-    // );
 };
 
 function buildMeta({ post: title, coverImage, ...rest }) {
@@ -129,7 +112,7 @@ function buildMeta({ post: title, coverImage, ...rest }) {
     };
 }
 
-function buildTemplate({ data, tags, coverImageName, title, ...rest }) {
+function buildTemplate({ data, tags, coverImageName, title, date, ...rest }) {
     const turndownService = new TurndownService({ codeBlockStyle: 'fenced' });
 
     const markdown = turndownService.turndown(
@@ -142,7 +125,7 @@ function buildTemplate({ data, tags, coverImageName, title, ...rest }) {
 title: ${title}
 tags: [${tags}]
 featuredImage: ${coverImageName}
-date: 2020-01-14
+date: ${date}
 ---
 
 ${markdown}
