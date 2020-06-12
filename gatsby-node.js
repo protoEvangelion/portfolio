@@ -43,7 +43,6 @@ const getNotionPage = R.curry((id, route, meta) =>
 
 // TODO: add safety around createWriteStream
 const writeImage = ({ coverImage, coverImageDest, folder, ...meta }) =>
-    console.log('->', coverImage) ||
     encaseP(axios)({
         method: 'get',
         url: coverImage,
@@ -61,10 +60,6 @@ const writeImage = ({ coverImage, coverImageDest, folder, ...meta }) =>
         )
         .pipe(map(() => ({ coverImageDest, ...meta })));
 
-// const safeWriteFile = encase(fs.writeFileSync);
-
-// const formatResponse = R.over(R.lensPath(['rows']), R.map(R.pipe(lowerCaseKeys, buildMeta)))
-// const getPage = R.over(R.lens(R.prop('id'), R.assoc('pageContent'), getNotionPage))
 const writeImageAndGetPost = data => writeImage(data).pipe(chain(getNotionPage(data.id, 'page')));
 
 exports.onPreBootstrap = () => {
@@ -88,14 +83,14 @@ exports.onPreBootstrap = () => {
                     )
                 )
             )
-            .pipe(map(x => console.log('---------->', x) || x))
     ).catch(x => console.error('ERROR!!!!!!!!!', x));
 };
 
-function buildMeta({ post: title, coverImage, ...rest }) {
+function buildMeta({ post: title, coverImage, date, ...rest }) {
     const folderName = _.kebabCase(title);
     const fileName = `${folderName}.mdx`;
-    const folder = path.resolve(__dirname, 'src/posts/2020', folderName);
+    const year = new Date(date).getFullYear();
+    const folder = `${__dirname}/src/posts/${year}/${folderName}`;
 
     const coverageImageExt = coverImage.endsWith('.png') ? '.png' : '.jpg';
     const coverImageDest = coverImage && `${folder}/coverImage${coverageImageExt}`;
@@ -105,6 +100,7 @@ function buildMeta({ post: title, coverImage, ...rest }) {
         coverImage: coverImage.replace('https://', 'http://'),
         coverImageName: `coverImage${coverageImageExt}`,
         coverImageDest,
+        date,
         folder,
         fileName,
         title,
