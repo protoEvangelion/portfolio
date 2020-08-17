@@ -103,7 +103,7 @@
     "gatsby-plugin-styled-components": "^3.1.14",
     "gatsby-plugin-typescript": "^2.1.20",
     "gatsby-remark-relative-images": "^0.2.3",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.20",
     "prismjs": "^1.15.0",
     "ramda": "^0.26.1",
     "react": "^16.13.1",
@@ -115,7 +115,7 @@
     "react-styled-flexboxgrid": "^3.0.0",
     "react-transition-group": "^2.5.0",
     "react-typist": "^2.0.4",
-    "styled-components": "^5.0.0-regexrehydrate",
+    "styled-components": "^5.0.0",
     "styled-system": "^3.1.11",
     "styled-tools": "^1.6.0"
   },
