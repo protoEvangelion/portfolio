@@ -1,1 +1,0 @@
-export { setupWheelListener } from './addWheelListener';
