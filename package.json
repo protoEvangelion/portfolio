@@ -104,7 +104,7 @@
     "gatsby-plugin-typescript": "^2.1.20",
     "gatsby-remark-relative-images": "^0.2.3",
     "lodash": "^4.17.15",
-    "prismjs": "^1.15.0",
+    "prismjs": "^1.23.0",
     "ramda": "^0.26.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
