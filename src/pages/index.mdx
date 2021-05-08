@@ -20,7 +20,7 @@ import { format } from 'date-fns';
 
 ## About
 
-Hey, I'm R.G. 👋 I like to improve the lives of developers & users alike through tech that improves code quality & dev workflows! To this end, you can read about my thoughts on paradigms like functional programming, tools like TypeScript, & pro tips for your cli & IDE 😁
+Hey, I'm R.G. 👋 I like to improve the lives of developers & users alike through tech that improves code quality & dev workflows! To this end, you can read about my thoughts on paradigms like functional programming, tools like TypeScript, & pro tips for your CLI & IDE 😁
 
 <Divider />
 
@@ -119,10 +119,6 @@ Hey, I'm R.G. 👋 I like to improve the lives of developers & users alike throu
 
 ## Projects
 
-You can use the `<SourceList filter="projects" />` component from any `.mdx`.
-
-Here we use it to return all the `projects` by using the filter prop
-
 <SourceList filter="projects">
     {projects => (
         <Flex
@@ -154,9 +150,6 @@ Here we use it to return all the `projects` by using the filter prop
                                     p: 3,
                                 }}
                             >
-                                <Text sx={{ fontSize: 0, color: 'muted' }}>
-                                    {format(new Date(date), 'd-MMM-u')}
-                                </Text>
                                 <Heading variant="styles.h4" sx={{ color: 'text' }}>
                                     {title}
                                 </Heading>
