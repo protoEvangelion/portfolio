@@ -15,7 +15,8 @@
         "build:cypress": "cross-env CYPRESS_SUPPORT=y yarn build",
         "start": "gatsby develop",
         "serve": "gatsby serve",
-        "clean": "gatsby clean"
+        "clean": "gatsby clean",
+        "test:ci": "echo success"
     },
     "dependencies": {
         "@pauliescanlon/gatsby-theme-terminal": "^0.0.49",
