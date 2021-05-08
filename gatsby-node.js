@@ -15,13 +15,14 @@ const {
     reject,
     promise,
     parallel,
-    node,
+    bichain,
+    bimap,
 } = require('fluture');
 var TurndownService = require('turndown');
 
 // TODO: is there a better way?
 // allows image downloading
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+// process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 debugMode(true);
 
@@ -32,8 +33,6 @@ debugMode(true);
 
 // TODO: add validation
 
-const devApi = 'http://127.0.0.1:8787';
-const prodApi = 'http://notion-cloudflare-worker.rhino.workers.dev';
 const hostedApi = 'https://notion-api.splitbee.io/v1';
 
 const url = path => `${hostedApi}/${path}`;
@@ -49,25 +48,28 @@ const writeImage = ({ coverImage, coverImageDest, folder, ...meta }) =>
     encaseP(axios)({
         method: 'get',
         url: coverImage,
-        responseType: 'stream',
+        responseType: 'arraybuffer',
     })
         .pipe(
-            chain(res => {
+            bichain(console.error)(res => {
+                const ext = res.headers['content-type'] === 'image/jpeg' ? '.jpg' : '.png';
+
                 fs.ensureDirSync(folder);
+                const file = `${coverImageDest}${ext}`;
 
-                const stream = fs.createWriteStream(coverImageDest);
-                res.data.pipe(stream);
+                console.log('image----->', file);
 
-                return node(done => stream.on('close', done));
+                const data = new Uint8Array(Buffer.from(res.data, 'binary'));
+
+                return encaseP(() => fs.writeFile(file, data).then(() => ext))();
             })
         )
-        .pipe(map(() => ({ coverImageDest, ...meta })));
+        .pipe(bimap(console.error)(ext => ({ coverImageName: ext, ...meta })));
 
 const writeImageAndGetPost = data => writeImage(data).pipe(chain(getNotionPage(data.id, 'page')));
 
 exports.onPreBootstrap = () => {
     const notionTableId = '9bb6d36e52374b0e91b43ff06a5a1a9c';
-    const fileIds = [''];
 
     return promise(
         getNotionPage(notionTableId, 'table', {})
@@ -75,7 +77,6 @@ exports.onPreBootstrap = () => {
                 map(({ data: rows }) =>
                     rows
                         .filter(({ Published }) => Published)
-                        .map(x => console.log(x) || x)
                         .map(R.pipe(lowerCaseKeys, buildMeta, writeImageAndGetPost))
                 )
             )
@@ -92,24 +93,20 @@ exports.onPreBootstrap = () => {
     ).catch(x => console.error('ERROR!!!!!!!!!', x));
 };
 
-function buildMeta({ post: title, coverImage = [], date, ...rest }) {
+function buildMeta({ post: title, coverImage, date, ...rest }) {
     const folderName = _.kebabCase(title);
     const fileName = `${folderName}.mdx`;
     const year = new Date(date).getFullYear();
     const folder = `${__dirname}/src/posts/${year}/${folderName}`;
     const cover =
-        (coverImage[0] && coverImage[0].url) ||
-        'https://www.notion.so/image/https:%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe25f6c16-7bfb-4c3a-89c6-49b75a80e17a%2Ffirstclass.jpg?table=block&id=222204bd-350a-4004-bd5b-20c6e3ffb488&cache=v2';
-
-    console.log('coverImage', { post: title, coverImage: cover, date, ...rest });
-
-    const coverageImageExt = cover.endsWith('.png') ? '.png' : '.jpg';
-    const coverImageDest = cover && `${folder}/coverImage${coverageImageExt}`;
+        coverImage && coverImage.startsWith('www.')
+            ? coverImage.replace('www.', 'https://www.')
+            : coverImage.replace('notion://', 'https://');
+    const coverImageDest = cover && `${folder}/coverImage`;
 
     return {
         ...rest,
         coverImage: cover,
-        coverImageName: `coverImage${coverageImageExt}`,
         coverImageDest,
         date,
         folder,
@@ -130,9 +127,10 @@ function buildTemplate({ data, tags, coverImageName, title, date, ...rest }) {
 
     const fileContent = `---
 title: ${title}
-tags: [${tags}]
-featuredImage: ${coverImageName}
 date: ${date}
+author: R.G.
+tags: [${tags}]
+featuredImage: coverImage${coverImageName}
 ---
 
 ${markdown}
@@ -155,14 +153,6 @@ function tryCatch(fn, ...args) {
     }
 
     resolve(result);
-}
-
-function tagBy(predicate, data) {
-    return predicate(data) ? resolve(data) : reject('Predicate failed in tagBy');
-}
-
-function hyphenate(x) {
-    return x.replace(' ', '-');
 }
 
 function lowerCaseKeys(obj) {
