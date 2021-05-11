@@ -19,6 +19,8 @@
         "test:ci": "echo success"
     },
     "dependencies": {
+        "@emotion/react": "^11.1.5",
+        "mdx-embed": "^0.0.17",
         "@mdx-js/mdx": "^1.5.5",
         "@mdx-js/react": "^1.5.5",
         "@pauliescanlon/gatsby-theme-terminal": "^0.0.49",
