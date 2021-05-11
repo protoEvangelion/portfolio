@@ -1,4 +1,7 @@
-import React, { Fragment } from 'react';
+/** @jsx jsx */
+import { jsx } from 'theme-ui';
+
+import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 // import { MDXProvider } from '@mdx-js/react'
 import Prism from '@theme-ui/prism';
