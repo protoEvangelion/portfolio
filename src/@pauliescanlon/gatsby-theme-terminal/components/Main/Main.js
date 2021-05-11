@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
 
-import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 // import { MDXProvider } from '@mdx-js/react'
 import Prism from '@theme-ui/prism';
@@ -72,7 +71,7 @@ export const Main = ({ children }) => {
     // } = useConfig()
 
     return (
-        <Fragment>
+        <>
             <Box
                 as="header"
                 sx={{
@@ -81,7 +80,7 @@ export const Main = ({ children }) => {
                         `${theme.borderWidths[1]}px solid ${theme.colors.surface}`,
                 }}
             ></Box>
-        </Fragment>
+        </>
     );
 };
 
