@@ -36,7 +36,6 @@ module.exports = {
         //         mdx: false,
         //     },
         // },
-        `gatsby-plugin-mdx-embed`,
         {
             resolve: `@pauliescanlon/gatsby-theme-terminal`,
             options: {
