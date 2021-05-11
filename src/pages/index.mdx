@@ -2,119 +2,102 @@
 navigationLabel: Home
 ---
 
-import { format } from 'date-fns';
+import { mix } from '@theme-ui/color';
+import { PostCard } from '../components/PostCard';
 
-<SiteMetaData>
-    {siteMetadata => {
-        const { name, description } = siteMetadata;
-        return (
-            <Fragment>
-                <Heading variant="styles.h1">{name}</Heading>
-                <Text>{description}</Text>
-            </Fragment>
-        );
-    }}
-</SiteMetaData>
+<Alert variant="success">Actively releasing new blog content 👀</Alert>
+<Divider />
+
+# [R.G.](#r-g)
+
+React UI Developer / Senior Engineer based in Silicon Valley / Made in USA 🇺🇸
 
 <Divider />
 
-## About
+## [intro](#intro)
 
-Hey, I'm R.G. 👋 I like to improve the lives of developers & users alike through tech that improves code quality & dev workflows! To this end, you can read about my thoughts on paradigms like functional programming, tools like TypeScript, & pro tips for your CLI & IDE 😁
+Hey there, I'm R.G. 👋! I like to go fast. Particularly, I ❤️ tools, paridigms, & tech that enables developers to move quickly while shipping less bugs. Dive into my world by checking out some of the blogs below 😊
 
 <Divider />
 
-<Flex sx={{ flexWrap: "wrap" }}>  
-  <Box
-    sx={{
-      width: ["100%", "100%", "55%"],
-      mb: 3,
-      pr: [0,0, 4],
-    }}
-  >
+<Flex
+  sx={{ flexWrap: 'wrap'}}
+>
+<Box
+  sx={{
+    width: ["100%", "100%", "55%"],
+    mb: 3,
+    pr: [0,0, 4],
+  }}
+>
 
 ## Contact
 
-<Heading variant="styles.h3" sx={{ mb: 0 }}>
-    Email
-</Heading>
-<Link href="mailto:ryrycodecli@gmail.com" variant="styles.a">
-    ryrycodecli@gmail.com
+<Text>Twitter</Text>
+<Link href="https://twitter.com/protoEvangelion" target="_blank" variant="styles.a">
+    https://twitter.com/protoEvangelion
 </Link>
 <Divider />
 
-<Heading variant="styles.h3" sx={{ mb: 0 }}>
-    Twitter
-</Heading>
-<Link href="https://twitter.com/protoEvangelion/" variant="styles.a">
-    https://twitter.com/protoEvangelion/
+<Text>GitHub</Text>
+<Link href="https://github.com/protoEvangelion" target="_blank" variant="styles.a">
+    https://github.com/protoEvangelion
 </Link>
 <Divider />
 
-<Heading variant="styles.h3" sx={{ mb: 0 }}>
-    GitHub
-</Heading>
-<Link href="https://github.com/protoEvangelion/" variant="styles.a">
-    https://github.com/protoEvangelion/
+<Text>Web</Text>
+<Link
+  href="https://www.artg.me"
+  target="_blank"
+  variant="styles.a"
+>
+  https://artg.me/
 </Link>
 <Divider />
+<Divider />
+</Box>
 
-<Heading variant="styles.h3" sx={{ mb: 0 }}>
-    LinkedIn
-</Heading>
-<Link href="https://www.linkedin.com/in/ryantgarant/" variant="styles.a">
-    https://www.linkedin.com/in/ryantgarant/
-</Link>
+<Box
+  sx={{
+    width: ["100%", "100%", "45%"],
+    mb: 3
+  }}
+>
+
+## Blog Topics
+
 <Divider />
 
-  </Box>
-
-  <Box
-    sx={{
-      width: ["100%", "100%", "45%"],
-      mb: 3
-    }}
-  >
-
-## Top 5 tags
-
-<SourceTags filter="posts">
+<SourceTags>
     {tags => (
-        <Flex sx={{ flexDirection: 'column' }}>
+        <Box>
             {tags
-                .splice(0, 5)
                 .sort((a, b) => b.percent - a.percent)
                 .map((tag, index) => {
                     const { name, count, percent } = tag;
                     return (
-                        <Box key={index} sx={{ color: 'muted', mb: 3, svg: { fill: 'muted' } }}>
-                            <Flex sx={{ lineHeight: 'normal' }}>
-                                <Text sx={{ color: 'secondary', mr: 2, mb: 0 }}>{`${name}`}</Text>
-                                <Text sx={{ color: 'muted' }}>{percent}</Text>
-                                <Text sx={{ color: 'error' }}>%</Text>
-                            </Flex>
-                            <Flex>
-                                <Box>{'['}</Box>
-                                <Box sx={{ flexBasis: '100%' }}>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 1200 8"
-                                        width="100%"
-                                        height="8"
-                                    >
-                                        <rect width={`${percent * 3}%`} height={4} />
-                                    </svg>
-                                </Box>
-                                <Box> {']'}</Box>
-                            </Flex>
-                        </Box>
+                        <Badge
+                            key={index}
+                            variant="primary"
+                            sx={{
+                                mr: 2,
+                                mb: 2,
+                                color: mix('secondary', 'primary', `${index / tags.length}`),
+                                borderColor: mix('secondary', 'primary', `${index / tags.length}`),
+                            }}
+                        >
+                            {name}
+                        </Badge>
                     );
                 })}
-        </Flex>
+        </Box>
     )}
 </SourceTags>
 
-  </Box>
+<Divider />
+<Divider />
+
+</Box>
 </Flex>
 
 ## Projects
@@ -165,57 +148,57 @@ Hey, I'm R.G. 👋 I like to improve the lives of developers & users alike throu
 
 ## Latest Posts
 
+<Divider />
+
 <SourceList filter="posts">
     {posts => (
-        <Flex
+        <Grid
             sx={{
-                flexWrap: 'wrap',
-                ml: theme => `-${theme.space[2]}px`,
-                mr: theme => `-${theme.space[2]}px`,
+                gridTemplateColumns: ['1fr', '1fr', '1fr 1fr'],
             }}
         >
             {posts
                 .filter(edge => !edge.node.frontmatter.isPrivate)
-                .sort(
-                    (a, b) => new Date(b.node.frontmatter.date) - new Date(a.node.frontmatter.date)
-                )
-                .splice(0, 3)
+                .reduce((posts, post) => {
+                    return post.node.frontmatter.pinned ? [post, ...posts] : [...posts, post];
+                }, [])
+                .splice(0, 4)
                 .map((edge, index) => {
                     const {
-                        frontmatter: { title, date, url, misc },
+                        featuredImageUrlSharp,
+                        frontmatter: { title, tags, date, dateModified, pinned },
+                        excerpt,
                         fields: { slug },
                     } = edge.node;
                     return (
-                        <Box
+                        <PostCard
                             key={index}
-                            sx={{
-                                mb: 3,
-                                maxWidth: ['100%', '50%', '33.333%'],
-                                width: ['100%', '50%', '33.333%'],
-                            }}
-                        >
-                            <Link href={slug} sx={{ textDecoration: 'none' }}>
-                                <Card
-                                    sx={{
-                                        ml: 2,
-                                        mr: 2,
-                                        p: 3,
-                                    }}
-                                >
-                                    <Text sx={{ fontSize: 0, color: 'muted' }}>
-                                        {format(new Date(date), 'd-MMM-u')}
-                                    </Text>
-                                    <Heading variant="styles.h4" sx={{ color: 'text' }}>
-                                        {title}
-                                    </Heading>
-                                    <Text sx={{ textDecoration: 'underline' }}>View project</Text>
-                                </Card>
-                            </Link>
-                        </Box>
+                            title={title}
+                            featuredImageUrlSharp={featuredImageUrlSharp}
+                            tags={tags}
+                            date={date}
+                            dateModified={dateModified}
+                            excerpt={excerpt}
+                            slug={slug}
+                            pinned={pinned}
+                        />
                     );
                 })}
-        </Flex>
+        </Grid>
     )}
 </SourceList>
 
 <Divider />
+<Divider />
+
+<Flex
+    sx={{
+        justifyContent: 'center',
+    }}
+>
+    <Box>
+        <Button as="a" variant="styles.buttons.ghost" href="/posts">
+            More posts ✏️
+        </Button>
+    </Box>
+</Flex>
