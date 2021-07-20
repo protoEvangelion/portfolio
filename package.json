@@ -19,7 +19,7 @@
         "test:ci": "echo success"
     },
     "dependencies": {
-        "@pauliescanlon/gatsby-theme-terminal": "^0.0.49",
+        "@pauliescanlon/gatsby-theme-terminal": "^0.0.50",
         "date-fns": "^2.10.0",
         "ramda": "^0.27.1",
         "@mdx-js/mdx": "^1.5.5",
