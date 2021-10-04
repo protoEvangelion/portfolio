@@ -1,144 +1,129 @@
-import { merge } from 'theme-ui';
-import { tailwind } from '@theme-ui/presets';
+import codeTheme from '@theme-ui/prism/presets/shades-of-purple.json';
+import baseTheme from '@pauliescanlon/gatsby-theme-terminal/src/gatsby-plugin-theme-ui';
 
-const theme = merge(tailwind, {
-    initialColorModeName: `dark`,
-    useCustomProperties: true,
+const theme = {
+    ...baseTheme,
     colors: {
-        primary: tailwind.colors.orange[4],
-        secondary: tailwind.colors.indigo[6],
-        text: tailwind.colors.gray[3],
-        heading: tailwind.colors.white,
-        background: `#141821`,
-        divider: tailwind.colors.gray[8],
-        textMuted: tailwind.colors.gray[5],
-        icon_brightest: tailwind.colors.white,
-        icon_darker: tailwind.colors.gray[7],
-        icon_darkest: tailwind.colors.gray[8],
-        icon_red: tailwind.colors.red[6],
-        icon_blue: tailwind.colors.blue[6],
-        icon_orange: tailwind.colors.orange[5],
-        icon_yellow: tailwind.colors.yellow[5],
-        icon_pink: tailwind.colors.pink[5],
-        icon_purple: tailwind.colors.purple[6],
-        icon_green: tailwind.colors.green[5],
-        modes: {
-            light: {
-                text: tailwind.colors.gray[8],
-                heading: tailwind.colors.black,
-                primary: tailwind.colors.orange[7],
-                background: tailwind.colors.gray[1],
-                divider: tailwind.colors.gray[2],
-                textMuted: tailwind.colors.gray[6],
-                icon_brightest: tailwind.colors.gray[2],
-                icon_darker: tailwind.colors.gray[4],
-                icon_darkest: tailwind.colors.gray[6],
-            },
-        },
+        ...baseTheme.colors,
+        text: '#FFFFFF',
+        muted: '#8b87ea',
+        primary: '#f056c7',
+        secondary: '#c39eff',
+        error: '#ff4343',
+        success: '#58e6d9',
+        warning: '#fdd835',
+        background: '#131127',
+        surface: '#232140',
+        highlight: '#ffeb3b',
+        placeholder: '#4e4b85',
     },
-    breakpoints: [`400px`, `600px`, `900px`, `1200px`, `1600px`],
-    footer: {
-        textAlign: `center`,
-        display: `block`,
-        position: `absolute`,
-        bottom: 0,
-        color: `textMuted`,
-        px: [2, 3],
-        py: [3, 4],
-    },
+
     styles: {
+        ...baseTheme.styles,
         root: {
-            margin: 0,
-            padding: 0,
-            boxSizing: `border-box`,
-            textRendering: `optimizeLegibility`,
-            WebkitFontSmoothing: `antialiased`,
-            MozOsxFontSmoothing: `grayscale`,
-            color: `text`,
-            backgroundColor: `background`,
-            a: {
-                color: `primary`,
-                textDecoration: `none`,
-                transition: `all 0.3s ease-in-out`,
-                '&:hover': {
-                    color: `primary`,
-                    textDecoration: `none`,
+            ...baseTheme.styles.root,
+            '.mdx-embed': {
+                '.twitter-tweet-mdx-embed': {
+                    minHeight: 500,
                 },
+                my: 5,
+            },
+            '.gatsby-image-wrapper': {
+                my: 5,
             },
         },
+
         p: {
-            fontSize: [1, 2],
-            letterSpacing: `-0.003em`,
-            lineHeight: `body`,
-            '--baseline-multiplier': 0.179,
-            '--x-height-multiplier': 0.35,
-            color: `text`,
-        },
-        blockquote: {
-            marginLeft: 0,
-            p: {
-                fontSize: [2, 3],
-                fontWeight: `medium`,
-                color: `heading`,
+            ...baseTheme.styles.p,
+            a: {
+                ...baseTheme.styles.p.a,
+                color: 'secondary',
+                wordBreak: 'break-word',
+            },
+            code: {
+                ...baseTheme.styles.p.code,
+                color: 'inherit',
+                fontSize: '14px',
+                wordBreak: 'break-word',
+                backgroundColor: 'surface',
+            },
+            mark: {
+                color: 'background',
+                backgroundColor: 'highlight',
             },
         },
-        h1: {
-            fontSize: [6, 7, 8],
-            mt: 2,
-            mb: 3,
-            textShadow: `rgba(255, 255, 255, 0.15) 0px 5px 35px`,
-            letterSpacing: `wide`,
-            color: `heading`,
+        pre: {
+            ...baseTheme.styles.pre,
+            ...codeTheme,
         },
-        h2: {
-            fontSize: [4, 5, 6],
-            mt: 2,
-            mb: 2,
-            color: `heading`,
-        },
-        h3: {
-            fontSize: [3, 4, 5],
-            mt: 3,
-            color: `heading`,
-        },
-        h4: {
-            fontSize: [2, 3, 4],
-            color: `heading`,
-        },
-        h5: {
-            fontSize: [1, 2, 3],
-            color: `heading`,
-        },
-        h6: {
-            fontSize: 1,
-            mb: 2,
-            color: `heading`,
+        a: {
+            ...baseTheme.styles.a,
+            color: 'secondary',
+            button: {
+                cursor: 'pointer',
+            },
         },
     },
-    layout: {
-        container: {
-            maxWidth: `5xl`,
-        },
-    },
+
     buttons: {
-        toggle: {
-            color: `background`,
-            border: `none`,
-            backgroundColor: `text`,
-            cursor: `pointer`,
-            alignSelf: `center`,
-            px: 3,
-            py: 2,
-            ml: 3,
+        ...baseTheme.buttons,
+        success: {
+            ...baseTheme.buttons.success,
         },
-    },
-    texts: {
-        bigger: {
-            p: {
-                fontSize: [2, 3, 4],
+        primary: {
+            ...baseTheme.buttons.primary,
+            ':disabled': {
+                cursor: 'not-allowed',
+                backgroundColor: 'surface',
+            },
+        },
+        ghost: {
+            ...baseTheme.buttons.primary,
+            color: 'muted',
+            backgroundColor: 'background',
+            transition: '.2s linear background-color',
+            ':hover:enabled': {
+                backgroundColor: 'surface',
             },
         },
     },
-});
+
+    forms: {
+        ...baseTheme.forms,
+        label: {
+            ...baseTheme.forms.label,
+            color: 'primary',
+        },
+        input: {
+            ...baseTheme.forms.input,
+            '::placeholder': {
+                color: 'placeholder',
+            },
+        },
+    },
+
+    alerts: {
+        ...baseTheme.alerts,
+        warning: {
+            ...baseTheme.alerts.primary,
+            color: 'background',
+            backgroundColor: 'warning',
+            a: {
+                color: 'primary',
+            },
+        },
+    },
+
+    cards: {
+        primary: {
+            ...baseTheme.cards.primary,
+            transition: '.2s linear box-shadow, .2s ease-in-out transform',
+            ':hover': {
+                transform: 'translateY(-0.25rem)',
+                boxShadow: 2,
+            },
+        },
+    },
+};
 
 export default theme;
