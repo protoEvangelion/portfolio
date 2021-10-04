@@ -1,0 +1,158 @@
+---
+title: Communicating Between Distributed Webpack Servers
+date: 2020-11-21
+author: R.G.
+tags: [JavaScript,Webpack,NodeJS]
+featuredImage: coverImage.jpg
+---
+
+_Why would you ever have multiple Webpack builds running and have a need to communicate between them?_
+
+There are many use cases in Webpack like simply communicating between child processes in NodeJS. One cool use case I had was to produce an excellent dev experience for our new micro frontend architecture built with [Webpack's new Module Federation](https://module-federation.github.io/) released in v5. This technology will spin up a node process for each Webpack dev-server (we have about 20~). So e simply wanted to know when Webpack was done bundling each dev-server and show some cool ASCII art when all are complete like so:
+
+![notion image](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb287862d-996b-4285-a8a9-1472363cf24b%2FUntitled.png?table=block&id=f9a5c604-c4ee-4ab3-a9a8-27de1d162d96&cache=v2)
+
+![notion image](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff1358046-db83-475f-b6d2-1ffb01be6c07%2FUntitled.png?table=block&id=2aedc4b0-7737-43ac-b31c-dfa0b7307c08&cache=v2)
+
+![notion image](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F64ca9969-7cb1-4101-8ff5-48a8328d6da7%2FUntitled.png?table=block&id=4d7f5ab9-abe0-45ff-811d-68f0d6078b1b&cache=v2)
+
+* * *
+
+💡
+
+There are two pieces to figuring out when all builds are complete.
+
+> 1\. Create a master NodeJS file that kicks off all the Webpack builds 2. Add a custom plugin function in each Webpack build that will communicate back to a master process
+
+Step 1
+------
+
+Create a node file that you will call from the command line. I'll post the full file further down in this blog, but here is the core logic:
+
+```javascript
+const spawn = require('cross-spawn');
+const webpackArgs = ['webpack-dev-server', `--config=${path.join(__dirname, `webpack.${name}.config.js`)}`];
+const stdio = ['pipe', 'pipe', 'pipe'];
+
+const wds = spawn('npx', webpackArgs, {
+    stdio,
+    env: { NODE_ENV: 'development', PATH: process.env.PATH }
+});
+
+// CORE LOGIC
+wds.on('message', message => {
+    message === 'ready' && numberOfAppsReady++;
+    const readyForLiftoff = numberOfAppsReady === numberOfAppsReadyNeeded;
+
+    if (!hasLiftedOff && readyForLiftoff) {
+        console.log(prefix, colors.bold.green(`${appOnly ? ' --- IGNITION SUCCESSFUL ---' : liftoffAsciiArt}`));
+
+        hasLiftedOff = true;
+    } else if (!hasLiftedOff) {
+        console.log(prefix, colors.bold.green(` is READY, but other micro apps still preparing for launch.`));
+    }
+});
+```
+
+Step 2
+------
+
+In your webpack configs, adjust your `devServer` config sending the "ready" message when it's done compiling:
+
+```javascript
+// unique port to this dev server
+const port = 3000
+
+const webpackConfig = {
+    entry: '...',
+    output: '...',
+    devServer: {
+        host: '0.0.0.0',
+        public: `localhost:${port}`,
+        disableHostCheck: true,
+        port,
+        onListening: server => {
+            server.compiler.hooks.done.tap('done', () => {
+                setImmediate(() => {
+                    process.send && process.send('ready');
+                });
+            });
+        }
+    },
+    ...
+}
+```
+
+Summary
+-------
+
+Using the npm package `cross-spawn` we call each Webpack file which corresponds to each micro app. We receive "ready" messages from each Webpack server and tally up until we reach the total amount of Webpack servers. Once that happens, we know that all the servers have finished their initial bundle and we can show some sweet art or take any other action that requires knowing all processes have successfully completed!
+
+* * *
+
+### Full node file example:
+
+```javascript
+const spawn = require('cross-spawn');
+const path = require('path')
+const { argv } = require('yargs');
+const colors = require('ansi-colors');
+const { liftoffAsciiArt } = require('./ascii-art');
+
+const cmds = ['app1', 'app2', 'app3']
+
+const numberOfAppsReadyNeeded = cmds.length;
+let hasLiftedOff = false;
+let numberOfAppsReady = 0;
+
+cmds.forEach((name, i) => {
+    const webpackArgs = ['webpack-dev-server', `--config=${path.join(__dirname, `webpack.${name}.config.js`)}`];
+    const stdio = ['pipe', 'pipe', 'pipe'];
+    
+    // If this is not a Windows machine, add ipc
+    os.platform() !== 'win32' && stdio.push('ipc');
+
+    const wds = spawn('npx', webpackArgs, {
+        stdio,
+        env: { NODE_ENV: 'development', PATH: process.env.PATH }
+    });
+
+    const prefix = color(`[${name}]`, 'whatever-color');
+    console.log(prefix, colors.yellow.bold.underline(' --- IGNITING ---\n'));
+
+    wds.stdout.on('data', data => {
+        console.log(prefix, ` ${data}`);
+    });
+
+    // CORE LOGIC
+    wds.on('message', message => {
+        message === 'ready' && numberOfAppsReady++;
+
+        const readyForLiftoff = numberOfAppsReady === numberOfAppsReadyNeeded;
+
+        if (!hasLiftedOff && readyForLiftoff) {
+            console.log(prefix, colors.bold.green(`${appOnly ? ' --- IGNITION SUCCESSFUL ---' : liftoffAsciiArt}`));
+
+            hasLiftedOff = true;
+        } else if (!hasLiftedOff) {
+            console.log(prefix, colors.bold.green(` is READY, but other micro apps still preparing for launch.`));
+        }
+    });
+
+    // Handle errors
+    wds.stderr.on('data', data => {
+        const dataStr = ` ${data}`;
+        const doesNotIncludeDeprecationWarning = !dataStr.includes('[DEP_WEBPACK_COMPILATION_NORMAL_MODULE_LOADER_HOOK]');
+
+        doesNotIncludeDeprecationWarning && console.error(prefix, dataStr);
+    });
+
+    wds.on('error', err => {
+        console.log(prefix, ' Failed to start webpack dev server. ', err);
+    });
+
+    wds.on('close', code => {
+        console.log(prefix, `EXITING --> child process exited with code ${code}`);
+    });
+});
+```

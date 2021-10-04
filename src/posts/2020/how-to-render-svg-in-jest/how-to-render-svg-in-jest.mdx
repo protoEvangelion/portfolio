@@ -1,0 +1,98 @@
+---
+title: How to render svg in Jest
+date: 2020-12-08
+author: R.G.
+tags: [Testing,JavaScript,Code Quality]
+featuredImage: coverImage.jpg
+---
+
+Jest uses JSDom which does not support svg rendering methods. However, adding a couple very simple global DOM methods will get you a long way towards rendering your SVG so that you can test it.
+
+> The simple way is to use the jest-canvas-mock npm package, but if you don't want a dependency, then the below will help.
+
+Step 1: Add methods to DOM
+--------------------------
+
+In your setup file add these two methods:
+
+```javascript
+// setup.js
+
+HTMLCanvasElement.prototype.getContext = function () {
+        return {
+            fillRect: function() {},
+            clearRect: function(){},
+            getImageData: function(x, y, w, h) {
+                return  {
+                    data: new Array(w*h*4)
+                };
+            },
+            putImageData: function() {},
+            createImageData: function(){ return []},
+            setTransform: function(){},
+            drawImage: function(){},
+            save: function(){},
+            fillText: function(){},
+            restore: function(){},
+            beginPath: function(){},
+            moveTo: function(){},
+            lineTo: function(){},
+            closePath: function(){},
+            stroke: function(){},
+            translate: function(){},
+            scale: function(){},
+            rotate: function(){},
+            arc: function(){},
+            fill: function(){},
+            measureText: function(){
+                return { width: 0 };
+            },
+            transform: function(){},
+            rect: function(){},
+            clip: function(){},
+        };
+    }
+SVGSVGElement.prototype.createSVGMatrix = () => {
+    return {};
+};
+```
+
+I add my setup file to `setupFilesAfterEnv` config property:
+
+```javascript
+// jest.config.js
+
+module.exports = {
+    setupFilesAfterEnv: ['./jest/setup.js'],
+    ...
+}
+```
+
+Step 2: Test It!
+----------------
+
+My use case was to test FusionCharts which is a library that paints a whole swath of svgs to a canvas and adding the two simple methods worked for most charts. In my case there was a lot more involved in figuring out how to wait for a render event to complete. A basic approach though is to simply wait for rendering to complete and then snapshot the result:
+
+```javascript
+describe('Ensure chart svg is rendered correctly', () => {
+    // add div container to the DOM so fusion charts can attach
+
+    it('Line chart renders', () => {
+				// wait for some rendering event or promise to complete
+        // Get html from the DOM
+        const svgHtml = document.getElementById(`custom-chart-1`);
+
+        expect(svgHtml).toMatchSnapshot();
+    });
+});
+```
+
+Sample:
+
+```javascript
+exports[`Line chart renders`] = `"<div id=\\"custom-chart-3\\"><svg height=\\"342\\" version=\\"1.1\\" width=\\"512\\" xmlns=\\"http://www.w3.org/2000/svg\\" style=\\"overflow: hidden; user-select: none; cursor: default; vertical-align: middle; position: relative; background-color: rgb(255, 255, 255);\\" id=\\"raphael-\\"><desc></desc><defs></defs><g class=\\"raphael--parentgroup\\"><g class=\\"raphael--background\\"><rect x=\\"0\\"...
+```
+
+* * *
+
+Two simple steps and you will be able to snapshot real SVG elements!

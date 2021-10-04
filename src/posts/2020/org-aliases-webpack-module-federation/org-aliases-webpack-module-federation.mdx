@@ -1,0 +1,64 @@
+---
+title: Org Aliases + Webpack Module Federation
+date: 2020-05-21
+author: R.G.
+tags: [Webpack,JavaScript]
+featuredImage: coverImage.png
+---
+
+Module Federation enables you to seamlessly import any file Webpack can handle across repos, micro frontends, or Node.js micro services. However if you prefix your imports with a character that is not a valid JS variable like `@yourorg` it will not work unless you adjust your plugin config.
+
+As a side not, you do not want to solve this with Webapack resolve aliases because that will include whatever module it resolves in your bundle. You can use aliases if they resolve something already in your folder though...or if you just don't mind the bloat!
+
+Example
+-------
+
+Here is simplified folder structure which could be inside a monorepo or separate repos:
+
+```javascript
+/MicroApp
+  some-file.js
+/shared
+  utils.js
+  Button.js
+```
+
+Here is the import style we are trying to achieve:
+
+```javascript
+// some-file.js
+import { sharedUtil } from '@org/utils';
+// OR a default import
+import Button from '@org/Button';
+```
+
+In order to make this possible, in your Webpack Module Federation plugin config, you will need to add type `window` or `this`:
+
+```javascript
+plugins: [
+    new ModuleFederationPlugin({
+        name: '@org',
+        library: { type: 'window', name: '@org' },
+        filename: 'remoteEntry.js'
+    })
+]
+```
+
+Most of the examples you will see specify the library like this: `library: { type: 'var', name: 'name' },`. The reason it doesn't work is because the `remoteEntry.js` file that this plugin spits out will have a header like: `var @org;@org =`.
+
+```javascript
+// with type: 'var'
+var @org;@org =
+
+// with type: 'window'
+window["@org"] =
+
+// with type: 'this'
+this["@org"] =
+```
+
+However because the variable contains "@" it is not a valid variable declaration.
+
+**[See valid variable characters](https://stackoverflow.com/questions/1661197/what-characters-are-valid-for-javascript-variable-names)**
+
+Enjoy your handy dandy prefixes!

@@ -1,0 +1,51 @@
+---
+title: Build A Simple Local ESLint Plugin
+date: 2020-06-11
+author: R.G.
+tags: [JavaScript,Code Quality]
+featuredImage: coverImage.jpg
+---
+
+Motivation
+==========
+
+Do you want to build a local eslint plugin for your project without publishing it to npm? Then follow these simple steps to get started.
+
+Simple Setup Steps
+==================
+
+1.  Install generators`npm install -g yo generator-eslint`
+
+2.  Create a directory at root of your project like `eslint-rules`
+
+3.  cd into it & run `yo eslint:plugin` & follow prompts
+
+4.  Run `yo eslint:rule` to set up your first rule
+
+5.  cd back to root of your project
+
+6.  Add your new plugin as a local npm package: `yarn add --dev file:./eslint-rules`
+
+7.  Configure your rule in your eslint config however you named it in the prompts:
+
+```javascript
+rules: {
+        'your-local-npm-package-name/your-rule-name': [
+            'error',
+            {
+                foo: 'bar'
+            }
+        ]
+}
+```
+
+Bonus
+-----
+
+For fast iteration on your your new rule, you will need to add some **npm symlinks**. If you don't, then every time you customize your rule, you will have to re `npm install`. Adding the symlinks is a simple two step process:
+
+1.  cd into your local plugin dir & run `npm link`
+
+2.  cd back to the root of your project & run `npm link your-local-npm-package-name`
+
+Now every time you make a change, it will automatically be applied next time ESLint runs!

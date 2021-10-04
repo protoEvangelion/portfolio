@@ -1,0 +1,119 @@
+---
+title: Declaring TypeScript Globals
+date: 2021-05-17
+author: R.G.
+tags: [TypeScript]
+featuredImage: coverImage.png
+---
+
+## Declare a Global Type
+
+-   Create a definition file with the `.d.ts` extension and place it in your project
+    -   Make sure the file is part of your `includes` array in `tsconfig.json`
+-   This example comes from the [ts-migrate tool](https://github.com/airbnb/ts-migrate) which leverages a global fix me alias
+
+```tsx
+type $TSFixMe = any;
+type $TSFixMeFunction = (...args: any[]) => any;
+
+// another file
+const sayHi = (greeting: $TSFixMe): string
+const sayBye: $TSFixMeFunction
+
+```
+
+-   Global interface
+
+```tsx
+interface IUser {
+    name: string;
+    mail: string;
+}
+```
+
+## Declaring a Global Variable
+
+-   Declare a global app variable
+
+```tsx
+declare const ENV_KEY = 'some config key';
+```
+
+-   Declare a global variable called `HelloDomNode` which is a DOM node that has an `Element` prototype & constructor
+
+```tsx
+declare var HelloDomNode: {
+    prototype: Element;
+    new (): Element;
+};
+
+// another file
+const node = new HelloDomNode();
+
+node.innerHTML;
+```
+
+Here are some weird caveats to keep in mind any time you use the `declare` keyword: [https://stackoverflow.com/a/66768386/6502003](https://stackoverflow.com/a/66768386/6502003)
+
+## Declaring a Global Function
+
+Adding global functions is an anti-pattern so use wisely 😉
+
+-   Extend the Window global object
+-   If you get an error like "Augmentations for the global scope can only be directly nested in external modules or ambient module declarations.ts", make sure to import or export something so TS considers this a module. At the very least you can do: `export default {}`
+
+```tsx
+type CustomData = {
+    data: 'hey there 👋';
+};
+
+declare global {
+    interface Window {
+        CUSTOM_DATA: CustomData;
+    }
+}
+
+// another file
+window.CUSTOM_DATA;
+```
+
+-   Extend the NodeJS global object
+-   Adding it to the namespace allows you to define the global
+-   Adding the function in the declare block allows consumers to call it without prefixing the function call with `global.` or `window.`
+
+```tsx
+import type { mount } from 'enzyme';
+
+declare global {
+    namespace NodeJS {
+        interface Global {
+            mountWithTheme: typeof mountWithTheme;
+        }
+    }
+
+    function mountWithTheme(child: React.ReactElement): ReturnType<typeof mount>;
+}
+
+// setup globals file
+global.mountWithTheme = () => {
+    //...
+};
+
+// test file
+mount(() => <div></div>, {});
+```
+
+## Add/Extend NPM Modules Types
+
+-   This will add or extend types for a library that doesn't have types or that doesn't have the right types
+-   Ideally though you could contribute to a new or existing `@types/something` package to the [definitely typed project](https://definitelytyped.org/)
+
+```tsx
+// any file or in a *.d.ts file
+declare module '@styled-system/theme-get' {
+    export function themeGet(path: string, fallback: string): any;
+}
+
+// another file
+import { themeGet } from '@styled-system/theme-get';
+```
