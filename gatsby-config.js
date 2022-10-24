@@ -36,14 +36,6 @@ module.exports = {
         `gatsby-plugin-image`,
         `gatsby-transformer-sharp`,
         {
-            resolve: `gatsby-plugin-hotjar`,
-            options: {
-                includeInDevelopment: true, // optional parameter to include script in development
-                id: process.env.HOTJAR_ID,
-                sv: process.env.HOTJAR_VERSION,
-            },
-        },
-        {
             resolve: `gatsby-plugin-sharp`,
             options: {
                 defaults: {
