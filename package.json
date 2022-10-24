@@ -6,7 +6,7 @@
     "author": "Ryan Garant",
     "license": "MIT",
     "scripts": {
-        "build": "gatsby build",
+        "build": "gatsby build --prefix-paths",
         "dev": "gatsby develop",
         "develop:cypress": "cross-env CYPRESS_SUPPORT=y yarn develop",
         "build:cypress": "cross-env CYPRESS_SUPPORT=y yarn build",
@@ -25,6 +25,7 @@
         "gatsby": "^3.9.1",
         "gatsby-image": "^3.11.0",
         "gatsby-plugin-image": "^1.9.0",
+        "gatsby-plugin-ipfs": "^2.0.2",
         "gatsby-plugin-mdx": "^2.10.1",
         "gatsby-plugin-mdx-embed": "^0.0.20-alpha",
         "gatsby-plugin-sharp": "^3.9.0",
