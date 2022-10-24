@@ -3,7 +3,7 @@
     "name": "RG",
     "description": "My Portfolio + Blog",
     "version": "0.2.8",
-    "author": "Ryan Garant",
+    "author": "R.G.",
     "license": "MIT",
     "scripts": {
         "build": "gatsby build --prefix-paths",
@@ -24,6 +24,7 @@
         "fuse.js": "^6.4.6",
         "gatsby": "^3.9.1",
         "gatsby-image": "^3.11.0",
+        "gatsby-plugin-hotjar": "^1.1.1",
         "gatsby-plugin-image": "^1.9.0",
         "gatsby-plugin-ipfs": "^2.0.2",
         "gatsby-plugin-mdx": "^2.10.1",
