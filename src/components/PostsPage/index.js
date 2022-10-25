@@ -39,11 +39,7 @@ export const PostsPage = () => {
                 {posts => {
                     const filteredByTags = posts.filter(({ node }) =>
                         query.tags.length
-                            ? query.tags.some(
-                                  tag =>
-                                      console.log(tag, node.frontmatter.tags) ||
-                                      node.frontmatter.tags.includes(tag)
-                              )
+                            ? query.tags.some(tag => node.frontmatter.tags.includes(tag))
                             : true
                     );
 
@@ -61,18 +57,6 @@ export const PostsPage = () => {
                     const searchResults = query.term.length
                         ? results.map(result => result.item)
                         : filteredByTags;
-
-                    console.log({
-                        term: query.term,
-                        results,
-                        posts,
-                        query,
-                        filtered: posts.filter(
-                            ({ node }) =>
-                                console.log(query.tags, node.frontmatter.tags) ||
-                                query.tags.some(tag => node.frontmatter.tags.includes(tag))
-                        ),
-                    });
 
                     return (
                         <Fragment>

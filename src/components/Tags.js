@@ -15,7 +15,6 @@ export function Tags({ query }) {
                         .map((tag, index) => {
                             const { name } = tag;
                             const color = mix('secondary', 'primary', `${index / tags.length}`);
-                            console.log('shadow', `inset 0 0 30px ${color}, 0 0 30px ${color}`);
 
                             return (
                                 <Link

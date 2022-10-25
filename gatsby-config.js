@@ -30,7 +30,7 @@ module.exports = {
         },
     },
     plugins: [
-        `gatsby-plugin-ipfs`,
+        // `gatsby-plugin-ipfs`,
         `gatsby-plugin-sitemap`,
         `gatsby-plugin-mdx-embed`,
         `gatsby-plugin-image`,
