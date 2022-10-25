@@ -4,6 +4,7 @@ navigationLabel: Home
 
 import { mix } from '@theme-ui/color';
 import { PostCard } from '../components/PostCard';
+import { Tags } from '../components/Tags';
 
 # [R.G.](#r-g)
 
@@ -65,31 +66,7 @@ Hey there, I'm R.G. 👋! I like to go fast. Particularly, I ❤️ tools, parid
 
 <Divider />
 
-<SourceTags>
-    {tags => (
-        <Box>
-            {tags
-                .sort((a, b) => b.percent - a.percent)
-                .map((tag, index) => {
-                    const { name, count, percent } = tag;
-                    return (
-                        <Badge
-                            key={index}
-                            variant="primary"
-                            sx={{
-                                mr: 2,
-                                mb: 2,
-                                color: mix('secondary', 'primary', `${index / tags.length}`),
-                                borderColor: mix('secondary', 'primary', `${index / tags.length}`),
-                            }}
-                        >
-                            {name}
-                        </Badge>
-                    );
-                })}
-        </Box>
-    )}
-</SourceTags>
+<Tags />
 
 <Divider />
 <Divider />

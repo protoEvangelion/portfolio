@@ -15,7 +15,6 @@ export const PostCard = ({
     slug,
     pinned,
 }) => {
-    console.log(featuredImageUrl);
     return (
         <Box
             sx={{

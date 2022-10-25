@@ -21,7 +21,7 @@ module.exports = {
             'nodejs',
             'web',
         ],
-        siteUrl: 'https://artg.me',
+        siteUrl: 'https://iamrhino.com',
         siteImage: 'headshot.jpg', // pop an image in the static folder to use it as the og:image,
         profileImage: 'headshot.jpg',
         lang: `eng`,
