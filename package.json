@@ -5,9 +5,6 @@
     "version": "0.2.8",
     "author": "R.G.",
     "license": "MIT",
-    "engines": {
-        "node": ">=14.0.0"
-    },
     "scripts": {
         "build": "gatsby build --prefix-paths --noColor",
         "dev": "gatsby develop",
@@ -44,7 +41,6 @@
     "devDependencies": {
         "axios": "^0.21.1",
         "cross-env": "^7.0.2",
-        "eslint-config-react-app": "^7.0.1",
         "fluture": "^14.0.0",
         "fs-extra": "^8.1.0",
         "react-notion": "^0.9.3",
