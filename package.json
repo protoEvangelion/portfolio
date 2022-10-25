@@ -5,6 +5,9 @@
     "version": "0.2.8",
     "author": "R.G.",
     "license": "MIT",
+    "engines": {
+        "node": ">=14.0.0"
+    },
     "scripts": {
         "build": "gatsby build --prefix-paths --noColor",
         "dev": "gatsby develop",
