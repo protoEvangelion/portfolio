@@ -1,7 +1,10 @@
 import { useStaticQuery, graphql } from 'gatsby';
+import { PostsTagsQuery } from '../../graphql-types';
 
-export const useTags = filter => {
-    const query = useStaticQuery(graphql`
+type PostTagsQueryReturn = PostsTagsQuery['allMdx']['edges'];
+type UseTags = (filter?: string) => PostTagsQueryReturn;
+export const useTags: UseTags = filter => {
+    const query: PostsTagsQuery = useStaticQuery(graphql`
         query postsTags {
             allMdx(
                 filter: {
@@ -27,12 +30,14 @@ export const useTags = filter => {
         }
     `);
 
-    if (!filter) return query.allMdx.edges.filter(edge => edge.node.frontmatter.isPrivate !== true);
+    if (!filter)
+        return query.allMdx.edges.filter(edge => edge?.node?.frontmatter?.isPrivate !== true);
 
     return query.allMdx.edges
         .map(edge => edge)
         .filter(
             edge =>
-                edge.node.fields.slug.includes(filter) && edge.node.frontmatter.isPrivate !== true
+                edge?.node?.fields?.slug?.includes?.(filter) &&
+                edge?.node?.frontmatter?.isPrivate !== true
         );
 };

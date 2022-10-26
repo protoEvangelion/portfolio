@@ -2,17 +2,20 @@ import React, { useState } from 'react';
 import { Box, Grid, Input, Text } from 'theme-ui';
 
 import { SourceList } from '@pauliescanlon/gatsby-theme-terminal';
-import { PostCard } from '../PostCard';
+import { PostCard } from './PostCard';
 
 import Fuse from 'fuse.js';
 import { Fragment } from 'react';
 import { useLocation, navigate } from '@reach/router';
-import { Tags } from '../Tags';
-import { getUrl } from '../../utils/get-url';
+import { Tags } from './Tags';
+import { getUrl } from '../utils/get-url';
+import { Query } from '../types';
 
-const getUrlParams = search => {
+type GetUrlParams = (search: string) => Query;
+const getUrlParams: GetUrlParams = search => {
     const params = new URLSearchParams(search.slice(1));
     const tags = params.get('tags');
+
     return {
         tags: tags ? tags.split(',') : [],
         term: params.get('term') || '',

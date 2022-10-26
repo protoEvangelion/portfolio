@@ -21,5 +21,3 @@ export function Video({ url }) {
         )
     );
 }
-
-export default Video;

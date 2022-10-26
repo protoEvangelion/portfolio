@@ -1,11 +1,4 @@
-// require(`dotenv`).config({
-//     path: `.env`,
-// });
-
-// const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE;
-
 module.exports = {
-    pathPrefix: '__GATSBY_IPFS_PATH_PREFIX__',
     siteMetadata: {
         author: `R.G.`,
         name: 'R.G. Blog',
@@ -30,7 +23,7 @@ module.exports = {
         },
     },
     plugins: [
-        // `gatsby-plugin-ipfs`,
+        `gatsby-plugin-graphql-codegen`,
         `gatsby-plugin-sitemap`,
         `gatsby-plugin-mdx-embed`,
         `gatsby-plugin-image`,

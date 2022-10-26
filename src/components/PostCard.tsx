@@ -1,9 +1,18 @@
 import React from 'react';
-import { Link as GatsbyLink } from 'gatsby';
+import GatsbyLink from 'gatsby-link';
 import { format } from 'date-fns';
-import { Flex, Box, Badge, Link, Card, Heading, Text } from 'theme-ui';
+import { Flex, Box, Badge, Link, Card, Heading, Text, LinkProps } from 'theme-ui';
 import { mix } from '@theme-ui/color';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+
+interface ILink extends LinkProps {
+    to?: string;
+}
+type ForwardRef<T, P> = React.ForwardRefExoticComponent<
+    React.PropsWithoutRef<P> & React.RefAttributes<T>
+>;
+type MergedLinkProps = ForwardRef<HTMLAnchorElement, ILink>;
+const MergedLink: MergedLinkProps = Link;
 
 export const PostCard = ({
     title,
@@ -15,6 +24,8 @@ export const PostCard = ({
     slug,
     pinned,
 }) => {
+    const img = getImage(featuredImageUrl?.childImageSharp?.gatsbyImageData);
+
     return (
         <Box
             sx={{
@@ -23,7 +34,7 @@ export const PostCard = ({
                 flexDirection: 'column',
             }}
         >
-            <Link
+            <MergedLink
                 as={GatsbyLink}
                 to={slug}
                 sx={{
@@ -50,12 +61,7 @@ export const PostCard = ({
                             },
                         }}
                     >
-                        {featuredImageUrl ? (
-                            <GatsbyImage
-                                alt={title}
-                                image={getImage(featuredImageUrl.childImageSharp.gatsbyImageData)}
-                            />
-                        ) : null}
+                        {featuredImageUrl ? <GatsbyImage alt={title} image={img!} /> : null}
                     </Box>
                     <Box
                         sx={{
@@ -75,7 +81,7 @@ export const PostCard = ({
                             }}
                         >
                             {pinned ? (
-                                <span as="span" role="img" aria-label="A thumbtack (drawing pin)">
+                                <span role="img" aria-label="A thumbtack (drawing pin)">
                                     📌
                                 </span>
                             ) : null}
@@ -125,15 +131,11 @@ export const PostCard = ({
                                           sx={{
                                               mr: 2,
                                               mb: 2,
-                                              color: mix(
-                                                  'muted',
-                                                  'primary',
-                                                  `${index / tags.length}`
-                                              ),
+                                              color: mix('muted', 'primary', index / tags.length),
                                               borderColor: mix(
                                                   'muted',
                                                   'primary',
-                                                  `${index / tags.length}`
+                                                  index / tags.length
                                               ),
                                           }}
                                       >
@@ -147,7 +149,7 @@ export const PostCard = ({
                         <Text sx={{ color: 'secondary', textAlign: 'right' }}>View post</Text>
                     </Box>
                 </Card>
-            </Link>
+            </MergedLink>
         </Box>
     );
 };

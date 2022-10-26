@@ -3,25 +3,35 @@ import PropTypes from 'prop-types';
 
 import { useTags } from '../utils/use-tags';
 
-export const SourceTags = ({ filter, children }) => {
-    const count = Object.values(
+type Tag = {
+    name: string | null;
+    count: number;
+    percent: number;
+};
+type SourceTagsProps = {
+    filter?: string;
+    children: (tags: Tag[]) => React.ReactElement;
+};
+export const SourceTags = ({ filter, children }: SourceTagsProps) => {
+    const count: Tag[] = Object.values(
         useTags(filter)
-            .filter(edge => edge.node.frontmatter.tags)
-            .reduce((items, item) => {
-                const { tags } = item.node.frontmatter;
-                tags.forEach(tag => {
-                    items.push({
+            .filter(edge => edge?.node?.frontmatter?.tags)
+            .reduce<Tag[]>((items, item) => {
+                const tags = item?.node?.frontmatter?.tags || [];
+
+                return [
+                    ...items,
+                    ...tags.map(tag => ({
                         name: tag,
                         count: 1,
                         percent: 1,
-                    });
-                });
-                return items;
+                    })),
+                ];
             }, [])
             .reduce((items, item) => {
-                const { count, name } = item;
-                items[name] = items[name] || { count: 0, name };
-                items[name].count += count;
+                const { count, name = 'ts' } = item;
+                items[name!] = items[name!] || { count: 0, name };
+                items[name!].count += count;
 
                 return items;
             }, [])
