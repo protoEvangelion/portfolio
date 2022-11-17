@@ -349,6 +349,10 @@ export type SitePluginPluginOptions = {
   stripMetadata?: Maybe<Scalars['Boolean']>;
   defaultQuality?: Maybe<Scalars['Int']>;
   failOnError?: Maybe<Scalars['Boolean']>;
+  source?: Maybe<Array<Maybe<SitePluginPluginOptionsSource>>>;
+  allExtensions?: Maybe<Scalars['Boolean']>;
+  isTSX?: Maybe<Scalars['Boolean']>;
+  jsxPragma?: Maybe<Scalars['String']>;
   defaultLayouts?: Maybe<SitePluginPluginOptionsDefaultLayouts>;
   extensions?: Maybe<Array<Maybe<Scalars['String']>>>;
   lessBabel?: Maybe<Scalars['Boolean']>;
@@ -356,11 +360,7 @@ export type SitePluginPluginOptions = {
   root?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
-  source?: Maybe<Array<Maybe<SitePluginPluginOptionsSource>>>;
   pathCheck?: Maybe<Scalars['Boolean']>;
-  allExtensions?: Maybe<Scalars['Boolean']>;
-  isTSX?: Maybe<Scalars['Boolean']>;
-  jsxPragma?: Maybe<Scalars['String']>;
 };
 
 export type SitePluginPluginOptionsDefaults = {
@@ -369,13 +369,13 @@ export type SitePluginPluginOptionsDefaults = {
   placeholder?: Maybe<Scalars['String']>;
 };
 
-export type SitePluginPluginOptionsDefaultLayouts = {
-  default?: Maybe<Scalars['String']>;
-};
-
 export type SitePluginPluginOptionsSource = {
   name?: Maybe<Scalars['String']>;
   dir?: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsDefaultLayouts = {
+  default?: Maybe<Scalars['String']>;
 };
 
 export type SitePluginPackageJson = {
@@ -2866,6 +2866,10 @@ export type SitePluginPluginOptionsFilterInput = {
   stripMetadata?: InputMaybe<BooleanQueryOperatorInput>;
   defaultQuality?: InputMaybe<IntQueryOperatorInput>;
   failOnError?: InputMaybe<BooleanQueryOperatorInput>;
+  source?: InputMaybe<SitePluginPluginOptionsSourceFilterListInput>;
+  allExtensions?: InputMaybe<BooleanQueryOperatorInput>;
+  isTSX?: InputMaybe<BooleanQueryOperatorInput>;
+  jsxPragma?: InputMaybe<StringQueryOperatorInput>;
   defaultLayouts?: InputMaybe<SitePluginPluginOptionsDefaultLayoutsFilterInput>;
   extensions?: InputMaybe<StringQueryOperatorInput>;
   lessBabel?: InputMaybe<BooleanQueryOperatorInput>;
@@ -2873,21 +2877,13 @@ export type SitePluginPluginOptionsFilterInput = {
   root?: InputMaybe<StringQueryOperatorInput>;
   name?: InputMaybe<StringQueryOperatorInput>;
   path?: InputMaybe<StringQueryOperatorInput>;
-  source?: InputMaybe<SitePluginPluginOptionsSourceFilterListInput>;
   pathCheck?: InputMaybe<BooleanQueryOperatorInput>;
-  allExtensions?: InputMaybe<BooleanQueryOperatorInput>;
-  isTSX?: InputMaybe<BooleanQueryOperatorInput>;
-  jsxPragma?: InputMaybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsDefaultsFilterInput = {
   quality?: InputMaybe<IntQueryOperatorInput>;
   formats?: InputMaybe<StringQueryOperatorInput>;
   placeholder?: InputMaybe<StringQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsDefaultLayoutsFilterInput = {
-  default?: InputMaybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsSourceFilterListInput = {
@@ -2897,6 +2893,10 @@ export type SitePluginPluginOptionsSourceFilterListInput = {
 export type SitePluginPluginOptionsSourceFilterInput = {
   name?: InputMaybe<StringQueryOperatorInput>;
   dir?: InputMaybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsDefaultLayoutsFilterInput = {
+  default?: InputMaybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginPackageJsonFilterInput = {
@@ -3097,6 +3097,12 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___stripMetadata'
   | 'pluginCreator___pluginOptions___defaultQuality'
   | 'pluginCreator___pluginOptions___failOnError'
+  | 'pluginCreator___pluginOptions___source'
+  | 'pluginCreator___pluginOptions___source___name'
+  | 'pluginCreator___pluginOptions___source___dir'
+  | 'pluginCreator___pluginOptions___allExtensions'
+  | 'pluginCreator___pluginOptions___isTSX'
+  | 'pluginCreator___pluginOptions___jsxPragma'
   | 'pluginCreator___pluginOptions___defaultLayouts___default'
   | 'pluginCreator___pluginOptions___extensions'
   | 'pluginCreator___pluginOptions___lessBabel'
@@ -3104,13 +3110,7 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___root'
   | 'pluginCreator___pluginOptions___name'
   | 'pluginCreator___pluginOptions___path'
-  | 'pluginCreator___pluginOptions___source'
-  | 'pluginCreator___pluginOptions___source___name'
-  | 'pluginCreator___pluginOptions___source___dir'
   | 'pluginCreator___pluginOptions___pathCheck'
-  | 'pluginCreator___pluginOptions___allExtensions'
-  | 'pluginCreator___pluginOptions___isTSX'
-  | 'pluginCreator___pluginOptions___jsxPragma'
   | 'pluginCreator___packageJson___name'
   | 'pluginCreator___packageJson___description'
   | 'pluginCreator___packageJson___version'
@@ -3293,6 +3293,12 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___stripMetadata'
   | 'pluginOptions___defaultQuality'
   | 'pluginOptions___failOnError'
+  | 'pluginOptions___source'
+  | 'pluginOptions___source___name'
+  | 'pluginOptions___source___dir'
+  | 'pluginOptions___allExtensions'
+  | 'pluginOptions___isTSX'
+  | 'pluginOptions___jsxPragma'
   | 'pluginOptions___defaultLayouts___default'
   | 'pluginOptions___extensions'
   | 'pluginOptions___lessBabel'
@@ -3300,13 +3306,7 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___root'
   | 'pluginOptions___name'
   | 'pluginOptions___path'
-  | 'pluginOptions___source'
-  | 'pluginOptions___source___name'
-  | 'pluginOptions___source___dir'
   | 'pluginOptions___pathCheck'
-  | 'pluginOptions___allExtensions'
-  | 'pluginOptions___isTSX'
-  | 'pluginOptions___jsxPragma'
   | 'packageJson___name'
   | 'packageJson___description'
   | 'packageJson___version'
