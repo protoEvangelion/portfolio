@@ -21,7 +21,11 @@ export default function HTML(props) {
                     src="https://cdn.lr-in-prod.com/LogRocket.min.js"
                     crossOrigin="anonymous"
                 ></script>
-                <script>window.LogRocket && window.LogRocket.init('myyjeg/portfolio');</script>
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `window.LogRocket && window.LogRocket.init('myyjeg/portfolio')`,
+                    }}
+                ></script>
             </head>
             <body {...props.bodyAttributes}>
                 {props.preBodyComponents}
