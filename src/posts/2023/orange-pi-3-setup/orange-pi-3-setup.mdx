@@ -1,0 +1,61 @@
+---
+title: Booting Orange Pi 3 from eMMC
+date: 2023-08-06
+author: R.G.
+tags: [Orange Pi, Single Board Computer]
+featuredImage: coverImage.png
+---
+
+In this post I'll show you how I went about flashing an Orange Pi 3 and booting from onboard eMMC storage.
+
+> Note this also worked for my Orange Pi Zero 2 albeit it was much simpler because it doesn't have all the eMMC steps.
+
+1. Download the image for your orange pi model: https://www.armbian.com/orangepi3-lts/
+    1. I used armbian because I heard it has the best support for orange pi
+2. Flash it:
+    1. On mac I used: https://etcher.balena.io/
+    2. Tried raspberry pi imager and kept getting an error about not having a “FAT” file system even though I made sure the SD was formatted as FAT
+3. Plug it in to orange pi and also connect ethernet
+4. Find orange pi ip
+5. SSH into it:
+    1. `ssh root@192.168.x.x`
+        1. Password was 1234 though user/pass could change depending on the image you download
+        2. If you get an error like “too many failed authentications”, try this:
+        
+        ```jsx
+        ssh -o IdentitiesOnly=yes root@192.168.x.x
+        ```
+        
+    2. On mac I prefer using VSCode ssh via Microsoft’s “Remote - SSH” plugin. However, I had to use ssh from the plain terminal for armbian to walk me through the welcome setup. On vscode, to setup ssh, simply use the ssh plugin and add the host: 
+        
+        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/482fa7fd-341a-428e-b707-5b60239513a2/Untitled.png)
+        
+6. Run through all the setup prompts to create user & so forth
+7. `sudo apt update` and `sudo apt full-upgrade`
+8. `armbian-install` Run the armbian script to boot from emmc instead of sd card
+9. `sudo shutdown -h now`
+10. Pull the SD and reformat it so it doesn’t boot from the image on it and free up space.
+11. Insert SD and power on. System should still boot.
+12. Mount the SD on boot:
+    1. `sudo cp /etc/fstab /etc/fstab.bak` back up auto mount config
+    2. `fdisk -l` identify the partition you want to mount
+    3. `sudo blkid /dev/mmcblk0p2` get the info from the partition
+    4. `sudo nano /etc/fstab` add info from blkid as new line item:
+        
+        ```bash
+        # my sd card is third one down:
+        # <file system>                                 <mount point>   <type>  <options>                                                       <dump>  <pass>
+        tmpfs                                           /tmp            tmpfs   defaults,nosuid                                                 0       0
+        UUID=f26d9dc6-60b0-451b-b4ef-28a743705cex       /               ext4    defaults,noatime,commit=600,errors=remount-ro,x-gvfs-hide       0       1
+        UUID=647D-3E34                                  /home/ao0/dev   exfat   defaults,uid=1000,gid=1000,umask=022                            0       0
+        ```
+        
+    5. `sudo mount -a`
+    6. `df -h` to check that it was mounted
+    7. `touch ~/dev/hello.txt` create a new file in the folder you mounted
+    8. `reboot` and see if that file is still there 
+
+## Resources
+
+- https://docs.armbian.com/User-Guide_Getting-Started/#how-to-install-to-emmc-nand-sata-nvme-usb
+- https://www.crosstalksolutions.com/orange-pi-5-simple-overview-and-installation-with-m-2-ssd/
