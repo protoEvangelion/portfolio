@@ -8,10 +8,26 @@ featuredImage: coverImage.png
 
 # Peer Dependences NPM v6 vs v7 vs v8 - The Saga Continues 🚀
 
+## TLDR
+
+Using npm v8+, add something like this to your package.json to override peer dependencies:
+
+```json
+    "overrides": {
+        "gatsby": "$gatsby",
+        "react": "$react",
+        "react-dom": "$react-dom"
+    }
+```
+
+> The $ sign will point to the version listed in your package json dynamically. So if you have react v17 in your package.json `$react` will point to v17.
+
 ## Introduction: A Tale of Three Versions
+
 Ah, NPM versions, the unsung heroes of your development woes! We've seen it evolve from the "just warn me and I'll figure it out" attitude of v6 to the "let me handle that for you" approach in v7, and finally to the "fine, have it your way" compromise of v8. Let's unpack these changes!
 
 ## NPM v6: The Good Ol' Days
+
 Remember when NPM v6 was like that one friend who always points out problems but never helps fix them? It's like saying, "Hey, your car's on fire," and then just walking away. Classic!
 
 Check out this repo and follow along with the commands to truly understand what is going on: https://github.com/protoEvangelion/npm-v6-vs-v7
@@ -29,6 +45,7 @@ Here, NPM v6 would throw warnings about missing peer dependencies. But, it never
 ![v6](https://raw.githubusercontent.com/protoEvangelion/npm-v6-vs-v7/master/v6/peerv6.png)
 
 ## NPM v7: The Helpful Neighbor
+
 Enter NPM v7, the superhero version we didn't know we needed! It doesn't just point out the fire; it brings a bucket of water! This version automatically installs those pesky peer dependencies.
 
 ```bash
@@ -52,6 +69,7 @@ npm i @angular/common@13 # Nope, not happening!
 ![v7fail](https://raw.githubusercontent.com/protoEvangelion/npm-v6-vs-v7/master/v7/v7fail.png)
 
 ## NPM v8: The Compromise
+
 NPM v8 is like your mom allowing you to have ice cream for dinner but only if you eat your veggies too. The `overrides` feature lets you have your cake and eat it too, but with a side of responsibility.
 
 ```bash
@@ -73,6 +91,7 @@ Finally, peace reigns in the kingdom of dependencies. Just remember, with great 
 > Pro Tip: The best way to solve a peer dependency issue is to upgrade your dependencies or the peers themselves. It's like updating your wardrobe; sometimes, you just need to let go of the 90s...or embrace it..I dunno :shrug:
 
 ## Conclusion: The Never-Ending Story
+
 The world of NPM versions is a wild ride, from the laissez-faire attitude of v6 to the over-eager helpfulness of v7, and the balanced approach of v8. As developers, we adapt, overcome, and occasionally, grumble about it on Twitter.
 
 Happy coding, and may your build never fail! 🚀

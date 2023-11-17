@@ -31,12 +31,6 @@ Hey there, I'm R.G. 👋! I like to go fast. Particularly, I ❤️ tools, parid
 
 ## Contact
 
-<Text>Twitter: </Text>
-<Link href="https://twitter.com/protoEvangelion" target="_blank" variant="styles.a">
-    https://twitter.com/protoEvangelion
-</Link>
-<Divider />
-
 <Text>GitHub: </Text>
 <Link href="https://github.com/protoEvangelion" target="_blank" variant="styles.a">
     https://github.com/protoEvangelion
@@ -78,51 +72,32 @@ Hey there, I'm R.G. 👋! I like to go fast. Particularly, I ❤️ tools, parid
 
 <SourceList filter="projects">
     {projects => (
-        <Flex
+        <Grid
             sx={{
-                flexWrap: 'wrap',
-                ml: theme => `-${theme.space[2]}px`,
-                mr: theme => `-${theme.space[2]}px`,
+                gridTemplateColumns: ['1fr', '1fr', '1fr 1fr'],
+                paddingBottom: '3rem',
             }}
         >
             {projects.map((edge, index) => {
                 const {
-                    frontmatter: { title, date, url, misc },
+                    frontmatter: { title, date, url, misc, tags, featuredImage },
                     fields: { slug },
                 } = edge.node;
                 return (
-                    <Box
+                    <PostCard
                         key={index}
-                        sx={{
-                            mb: 3,
-                            maxWidth: ['100%', '50%', '33.333%'],
-                            width: ['100%', '50%', '33.333%'],
-                        }}
-                    >
-                        <Link href={slug} sx={{ textDecoration: 'none' }}>
-                            <Card
-                                sx={{
-                                    ml: 2,
-                                    mr: 2,
-                                    p: 3,
-                                }}
-                            >
-                                <Heading variant="styles.h4" sx={{ color: 'text' }}>
-                                    {title}
-                                </Heading>
-                                <Text sx={{ textDecoration: 'underline' }}>View project</Text>
-                            </Card>
-                        </Link>
-                    </Box>
+                        tags={tags}
+                        title={title}
+                        featuredImage={featuredImage}
+                        slug={slug}
+                    />
                 );
             })}
-        </Flex>
+        </Grid>
     )}
 </SourceList>
 
 ## Latest Posts
-
-<Divider />
 
 <SourceList filter="posts">
     {posts => (
@@ -139,8 +114,7 @@ Hey there, I'm R.G. 👋! I like to go fast. Particularly, I ❤️ tools, parid
                 .splice(0, 4)
                 .map((edge, index) => {
                     const {
-                        featuredImageUrlSharp,
-                        frontmatter: { title, tags, date, dateModified, pinned },
+                        frontmatter: { title, tags, date, dateModified, pinned, featuredImage },
                         excerpt,
                         fields: { slug },
                     } = edge.node;
@@ -148,7 +122,7 @@ Hey there, I'm R.G. 👋! I like to go fast. Particularly, I ❤️ tools, parid
                         <PostCard
                             key={index}
                             title={title}
-                            featuredImageUrlSharp={featuredImageUrlSharp}
+                            featuredImage={featuredImage}
                             tags={tags}
                             date={date}
                             dateModified={dateModified}

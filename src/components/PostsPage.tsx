@@ -115,7 +115,7 @@ export const PostsPage = () => {
                                             <PostCard
                                                 key={index}
                                                 title={title}
-                                                featuredImageUrl={featuredImage}
+                                                featuredImage={featuredImage}
                                                 tags={tags}
                                                 date={date}
                                                 dateModified={dateModified}

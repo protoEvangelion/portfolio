@@ -6,11 +6,11 @@
     "author": "R.G.",
     "license": "MIT",
     "scripts": {
-        "build": "gatsby build --noColor",
-        "dev": "gatsby develop",
+        "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider gatsby build --noColor",
+        "dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider gatsby develop",
         "develop:cypress": "cross-env CYPRESS_SUPPORT=y yarn develop",
         "build:cypress": "cross-env CYPRESS_SUPPORT=y yarn build",
-        "start": "gatsby develop",
+        "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider gatsby develop",
         "serve": "gatsby serve",
         "clean": "gatsby clean",
         "test:ci": "echo success"
@@ -28,7 +28,6 @@
         "gatsby-plugin-graphql-codegen": "^3.1.1",
         "gatsby-plugin-hotjar": "^1.1.1",
         "gatsby-plugin-image": "^1.9.0",
-        "gatsby-plugin-ipfs": "^2.0.2",
         "gatsby-plugin-mdx": "^2.10.1",
         "gatsby-plugin-mdx-embed": "^0.0.20-alpha",
         "gatsby-plugin-sharp": "^3.9.0",
@@ -48,5 +47,11 @@
         "fs-extra": "^8.1.0",
         "react-notion": "^0.9.3",
         "turndown": "^7.0.0"
+    },
+    "overrides": {
+        "gatsby": "$gatsby",
+        "react": "$react",
+        "react-dom": "$react-dom",
+        "source-map": "^0.8.0-beta.0"
     }
 }

@@ -16,7 +16,7 @@ const MergedLink: MergedLinkProps = Link;
 
 export const PostCard = ({
     title,
-    featuredImageUrl,
+    featuredImage,
     tags,
     date,
     dateModified,
@@ -24,8 +24,7 @@ export const PostCard = ({
     slug,
     pinned,
 }) => {
-    const img = getImage(featuredImageUrl?.childImageSharp?.gatsbyImageData);
-
+    const img = getImage(featuredImage?.childImageSharp?.gatsbyImageData);
     return (
         <Box
             sx={{
@@ -58,10 +57,13 @@ export const PostCard = ({
                             minHeight: '1px',
                             '.gatsby-image-wrapper': {
                                 m: 0,
+                                height: '100%',
                             },
+                            height: '400px',
+                            maxHeight: '400px',
                         }}
                     >
-                        {featuredImageUrl ? <GatsbyImage alt={title} image={img!} /> : null}
+                        {featuredImage ? <GatsbyImage alt={title} image={img!} /> : null}
                     </Box>
                     <Box
                         sx={{
@@ -103,15 +105,17 @@ export const PostCard = ({
                                 </Text>
                             ) : null}
 
-                            <Text
-                                sx={{
-                                    mb: 1,
-                                    color: dateModified ? 'muted' : 'success',
-                                    textDecoration: dateModified ? 'line-through' : 'none',
-                                }}
-                            >
-                                {format(new Date(date), 'd-MMM-u')}
-                            </Text>
+                            {date ? (
+                                <Text
+                                    sx={{
+                                        mb: 1,
+                                        color: dateModified ? 'muted' : 'success',
+                                        textDecoration: dateModified ? 'line-through' : 'none',
+                                    }}
+                                >
+                                    {format(new Date(date), 'd-MMM-u')}
+                                </Text>
+                            ) : null}
                         </Flex>
                         <Text sx={{ mb: 1, color: 'text', wordBreak: 'break-word' }}>
                             {excerpt}
@@ -146,7 +150,9 @@ export const PostCard = ({
                             : null}
                     </Box>
                     <Box sx={{ p: 3 }}>
-                        <Text sx={{ color: 'secondary', textAlign: 'right' }}>View post</Text>
+                        <Text sx={{ color: 'secondary', textAlign: 'right' }}>
+                            View {!date ? 'Project' : 'Post'}
+                        </Text>
                     </Box>
                 </Card>
             </MergedLink>

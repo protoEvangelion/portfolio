@@ -1,5 +1,0 @@
-language: node_js
-node_js:
-  - 'lts/*'
-sudo: false
-script: npm run test:ci
