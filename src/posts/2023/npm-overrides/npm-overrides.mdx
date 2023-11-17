@@ -1,0 +1,78 @@
+---
+title: NPM Overrides v6 vs v7
+date: 2023-11-17
+author: R.G.
+tags: [npm, overrides]
+featuredImage: coverImage.png
+---
+
+# Peer Dependences NPM v6 vs v7 vs v8 - The Saga Continues 🚀
+
+## Introduction: A Tale of Three Versions
+Ah, NPM versions, the unsung heroes of your development woes! We've seen it evolve from the "just warn me and I'll figure it out" attitude of v6 to the "let me handle that for you" approach in v7, and finally to the "fine, have it your way" compromise of v8. Let's unpack these changes!
+
+## NPM v6: The Good Ol' Days
+Remember when NPM v6 was like that one friend who always points out problems but never helps fix them? It's like saying, "Hey, your car's on fire," and then just walking away. Classic!
+
+Check out this repo and follow along with the commands to truly understand what is going on: https://github.com/protoEvangelion/npm-v6-vs-v7
+
+```bash
+# Switch to the retro world of npm v6
+npm i npm@6 -g
+npm -v # Ah, the nostalgia - 6.x.x
+cd v6
+npm install
+```
+
+Here, NPM v6 would throw warnings about missing peer dependencies. But, it never really did anything about it. It was more about raising flags than fixing problems.
+
+![v6](https://raw.githubusercontent.com/protoEvangelion/npm-v6-vs-v7/master/v6/peerv6.png)
+
+## NPM v7: The Helpful Neighbor
+Enter NPM v7, the superhero version we didn't know we needed! It doesn't just point out the fire; it brings a bucket of water! This version automatically installs those pesky peer dependencies.
+
+```bash
+# Leaping into the future with npm v7
+cd v7
+npm i npm@7 -g
+npm -v # Welcome to the future - 7.x.x
+npm install
+```
+
+Gone are the warnings, and in comes the smooth sailing of dependency management. It's like having a butler for your packages!
+
+![v7](https://raw.githubusercontent.com/protoEvangelion/npm-v6-vs-v7/master/v7/peerv7.png)
+
+But wait, there's a twist! If you try to install a peer dependency that doesn't play nice with others, NPM v7 throws a tantrum.
+
+```bash
+npm i @angular/common@13 # Nope, not happening!
+```
+
+![v7fail](https://raw.githubusercontent.com/protoEvangelion/npm-v6-vs-v7/master/v7/v7fail.png)
+
+## NPM v8: The Compromise
+NPM v8 is like your mom allowing you to have ice cream for dinner but only if you eat your veggies too. The `overrides` feature lets you have your cake and eat it too, but with a side of responsibility.
+
+```bash
+# Stepping into the realm of npm v8
+cd v8
+npm i npm@8 -g
+npm -v # 8.x.x, the land of 'overrides'
+npm i @angular/common@13 # This time, it's personal
+```
+
+With overrides, you can sidestep peer dependency conflicts, but you need to manually install the overridden packages.
+
+```bash
+npm i @angular/common@13 @angular/core@13 @angular/cdk@13 # DIY time!
+```
+
+Finally, peace reigns in the kingdom of dependencies. Just remember, with great power comes great responsibility.
+
+> Pro Tip: The best way to solve a peer dependency issue is to upgrade your dependencies or the peers themselves. It's like updating your wardrobe; sometimes, you just need to let go of the 90s...or embrace it..I dunno :shrug:
+
+## Conclusion: The Never-Ending Story
+The world of NPM versions is a wild ride, from the laissez-faire attitude of v6 to the over-eager helpfulness of v7, and the balanced approach of v8. As developers, we adapt, overcome, and occasionally, grumble about it on Twitter.
+
+Happy coding, and may your build never fail! 🚀
