@@ -6,7 +6,7 @@
     "author": "R.G.",
     "license": "MIT",
     "scripts": {
-        "build": "gatsby build --noColor",
+        "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider gatsby build --noColor",
         "dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider gatsby develop",
         "develop:cypress": "cross-env CYPRESS_SUPPORT=y yarn develop",
         "build:cypress": "cross-env CYPRESS_SUPPORT=y yarn build",
