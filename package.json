@@ -5,6 +5,9 @@
     "version": "0.2.8",
     "author": "R.G.",
     "license": "MIT",
+    "engines": {
+        "node": ">=20.0.0"
+    },
     "scripts": {
         "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider gatsby build --noColor",
         "dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider gatsby develop",
